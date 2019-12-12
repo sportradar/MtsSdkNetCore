@@ -1,0 +1,1101 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NJsonSchema.CodeGeneration.TypeScript</name>
+    </assembly>
+    <members>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.DataConversionGenerator">
+            <summary>Generates data conversion code.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.DataConversionGenerator.RenderConvertToJavaScriptCode(NJsonSchema.CodeGeneration.TypeScript.DataConversionParameters)">
+            <summary>Generates the code to convert a data object to the target class instances.</summary>
+            <returns>The generated code.</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.DataConversionGenerator.RenderConvertToClassCode(NJsonSchema.CodeGeneration.TypeScript.DataConversionParameters)">
+            <summary>Generates the code to convert a data object to the target class instances.</summary>
+            <returns>The generated code.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.DataConversionParameters">
+            <summary>The template parameters.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.DataConversionParameters.Variable">
+            <summary>Gets the variable.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.DataConversionParameters.Value">
+            <summary>Gets the value.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.DataConversionParameters.Schema">
+            <summary>Gets the schema.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.DataConversionParameters.IsPropertyNullable">
+            <summary>Gets a value indicating whether the property is nullable.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.DataConversionParameters.TypeNameHint">
+            <summary>Gets the type name hint.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.DataConversionParameters.Resolver">
+            <summary>Gets the resolver.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.DataConversionParameters.NullValue">
+            <summary>Gets or sets the null value.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.DataConversionParameters.Settings">
+            <summary>Gets or sets the settings.</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel">
+            <summary>The TypeScript class template model.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.#ctor(System.String,System.String,NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings,NJsonSchema.CodeGeneration.TypeScript.TypeScriptTypeResolver,NJsonSchema.JsonSchema4,System.Object)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel" /> class.</summary>
+            <param name="typeName">The type name.</param>
+            <param name="discriminatorName">The name to compare the discriminator against.</param>
+            <param name="settings">The settings.</param>
+            <param name="resolver">The resolver.</param>
+            <param name="schema">The schema.</param>
+            <param name="rootObject">The root object.</param>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.Class">
+            <summary>Gets the class name (the postfix 'Base' is used when using an extension class).</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.ActualClass">
+            <summary>Gets the actual class name (i.e. the derived class when using an extension class).</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.DerivedClassNames">
+            <summary>Gets the derived class names.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.DiscriminatorName">
+            <summary>Gets the name for the discriminator check.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.HasDiscriminator">
+            <summary>Gets a value indicating whether the class has a discriminator property.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.HasBaseDiscriminator">
+            <summary>Gets a value indicating whether the class or an inherited class has a discriminator property.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.BaseDiscriminator">
+            <summary>Gets the class discriminator property name (may be defined in a inherited class).</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.HasDescription">
+            <summary>Gets a value indicating whether the class has description.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.Description">
+            <summary>Gets the description.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.InheritedSchema">
+            <summary>Gets the inherited schema.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.HasInheritance">
+            <summary>Gets a value indicating whether this class has a parent class.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.Inheritance">
+            <summary>Gets the inheritance code.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.BaseClass">
+            <summary>Gets the base class name.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.HasIndexerProperty">
+            <summary>Gets a value indicating whether the class inherits from dictionary.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.IndexerPropertyValueType">
+            <summary>Gets the type of the indexer property value.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel.Properties">
+            <summary>Gets the property models.</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Models.EnumTemplateModel">
+            <summary>The TypeScript enum template model.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Models.EnumTemplateModel.#ctor(System.String,NJsonSchema.JsonSchema4,NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.TypeScript.Models.EnumTemplateModel" /> class.</summary>
+            <param name="typeName">Name of the type.</param>
+            <param name="schema">The schema.</param>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.EnumTemplateModel.Name">
+            <summary>Gets the name of the enum.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.EnumTemplateModel.HasDescription">
+            <summary>Gets a value indicating whether the enum has description.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.EnumTemplateModel.Description">
+            <summary>Gets the description.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.EnumTemplateModel.Enums">
+            <summary>Gets the enum values.</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Models.FileTemplateModel">
+            <summary>The TypeScript file template model.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Models.FileTemplateModel.#ctor(NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.TypeScript.Models.FileTemplateModel"/> class.</summary>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.FileTemplateModel.Types">
+            <summary>Gets or sets the code of all types.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.FileTemplateModel.ExtensionCode">
+            <summary>Gets or sets the extension code.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.FileTemplateModel.HasModuleName">
+            <summary>Gets or sets a value indicating whether the file has module name.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.FileTemplateModel.ModuleName">
+            <summary>Gets or sets the name of the module.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.FileTemplateModel.HasNamespace">
+            <summary>Gets or sets a value indicating whether the file has module name.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.FileTemplateModel.Namespace">
+            <summary>Gets or sets the name of the module.</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Models.PropertyModel">
+            <summary>The TypeScript property template model.</summary>
+            <seealso cref="T:NJsonSchema.CodeGeneration.Models.PropertyModelBase" />
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Models.PropertyModel.#ctor(NJsonSchema.CodeGeneration.TypeScript.Models.ClassTemplateModel,NJsonSchema.JsonProperty,System.String,NJsonSchema.CodeGeneration.TypeScript.TypeScriptTypeResolver,NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.TypeScript.Models.PropertyModel"/> class.</summary>
+            <param name="classTemplateModel">The class template model.</param>
+            <param name="property">The property.</param>
+            <param name="parentTypeName">Name of the parent type.</param>
+            <param name="resolver">The resolver.</param>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.PropertyModel.InterfaceName">
+            <summary>Gets the name of the property in an interface.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.PropertyModel.HasDescription">
+            <summary>Gets a value indicating whether the property has description.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.PropertyModel.Description">
+            <summary>Gets the description.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.PropertyModel.Type">
+            <summary>Gets the type of the property.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.PropertyModel.IsArray">
+            <summary>Gets a value indicating whether the property type is an array.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.PropertyModel.ArrayItemType">
+            <summary>Gets the type of the array item.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.PropertyModel.IsReadOnly">
+            <summary>Gets a value indicating whether the property is read only.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.PropertyModel.IsOptional">
+            <summary>Gets a value indicating whether the property is optional.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.PropertyModel.IsDiscriminator">
+            <summary>Gets a value indicating whether the property is an inheritance discriminator.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.PropertyModel.ConvertToClassCode">
+            <summary>Gets the convert to class code.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Models.PropertyModel.ConvertToJavaScriptCode">
+            <summary>Gets the convert to JavaScript code.</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplate">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplate.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ClassTemplateBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplate">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplate.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToClassTemplateBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplate">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplate.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.ConvertToJavaScriptTemplateBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplate">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplate.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.EnumTemplateBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplate">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplate.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.FileTemplateBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplate">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplate.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.InterfaceTemplateBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplate">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplate.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.Templates.KnockoutClassTemplateBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.TypeScriptDateTimeType">
+            <summary>Specifies the TypeScript date time type handling.</summary>
+        </member>
+        <member name="F:NJsonSchema.CodeGeneration.TypeScript.TypeScriptDateTimeType.Date">
+            <summary>Uses the JavaScript Date object for date time handling.</summary>
+        </member>
+        <member name="F:NJsonSchema.CodeGeneration.TypeScript.TypeScriptDateTimeType.MomentJS">
+            <summary>Uses the MomentJS.js for date time handling.</summary>
+        </member>
+        <member name="F:NJsonSchema.CodeGeneration.TypeScript.TypeScriptDateTimeType.String">
+            <summary>Uses the strings for date time handling (no conversion).</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.TypeScriptDefaultValueGenerator">
+            <summary>Converts the default value to a TypeScript identifier.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.TypeScriptDefaultValueGenerator.#ctor(NJsonSchema.CodeGeneration.ITypeResolver)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.TypeScript.TypeScriptDefaultValueGenerator"/> class.</summary>
+            <param name="typeResolver">The type resolver.</param>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.TypeScriptDefaultValueGenerator.GetDefaultValue(NJsonSchema.JsonSchema4,System.Boolean,System.String,System.String,System.Boolean)">
+            <summary>Gets the default value code.</summary>
+            <param name="schema">The schema.</param>
+            <param name="allowsNull">Specifies whether the default value assignment also allows null.</param>
+            <param name="targetType">The type of the target.</param>
+            <param name="typeNameHint">The type name hint to use when generating the type and the type name is missing.</param>
+            <param name="useSchemaDefault">if set to <c>true</c> uses the default value from the schema if available.</param>
+            <returns>The code.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.TypeScriptExtensionCode">
+            <summary>Provides access to the extension code (used in TypeScript).</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.TypeScriptExtensionCode.#ctor(System.String,System.String[],System.String[])">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.ExtensionCode" /> class.</summary>
+            <param name="code">The code.</param>
+            <param name="extendedClasses">The extended classes.</param>
+            <param name="baseClasses">The base classes.</param>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGenerator">
+            <summary>The TypeScript interface and enum code generator. </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGenerator.#ctor(NJsonSchema.JsonSchema4)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGenerator"/> class.</summary>
+            <param name="schema">The schema.</param>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGenerator.#ctor(NJsonSchema.JsonSchema4,NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGenerator"/> class.</summary>
+            <param name="settings">The generator settings.</param>
+            <param name="schema">The schema.</param>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGenerator.#ctor(NJsonSchema.JsonSchema4,NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings,NJsonSchema.CodeGeneration.TypeScript.TypeScriptTypeResolver,System.Object)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGenerator" /> class.</summary>
+            <param name="schema">The schema.</param>
+            <param name="settings">The generator settings.</param>
+            <param name="resolver">The resolver.</param>
+            <param name="rootObject">The root object to search for all JSON Schemas.</param>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGenerator.RootObject">
+            <summary>Gets or sets the root object.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGenerator.Settings">
+            <summary>Gets the generator settings.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGenerator.GenerateFile(System.String)">
+            <summary>Generates the file.</summary>
+            <param name="rootTypeNameHint">The root type name hint.</param>
+            <returns>The file contents.</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGenerator.GenerateType(System.String)">
+            <summary>Generates the type.</summary>
+            <param name="typeNameHint">The fallback type name.</param>
+            <returns>The code.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings">
+            <summary>The generator settings.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings"/> class.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings.TypeScriptVersion">
+            <summary>Gets or sets the target TypeScript version (default: 1.8).</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings.MarkOptionalProperties">
+            <summary>Gets or sets a value indicating whether to mark optional properties with ? (default: false).</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings.TypeStyle">
+            <summary>Gets or sets the type style (experimental, default: Class).</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings.DateTimeType">
+            <summary>Gets or sets the date time type (default: 'Date').</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings.ModuleName">
+            <summary>Gets or sets the TypeScript module name (default: '', no module).</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings.Namespace">
+            <summary>Gets or sets the TypeScript namespace (default: '', no namespace).</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings.ExtendedClasses">
+            <summary>Gets or sets the list of extended classes (the classes must be implemented in the <see cref="P:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings.ExtensionCode"/>).</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings.ExtensionCode">
+            <summary>Gets or sets the extension code to append to the generated code.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings.ClassTypes">
+            <summary>Gets or sets the type names which always generate plain TypeScript classes.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings.NullValue">
+            <summary>Gets or sets the TypeScript null value.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings.GetTypeStyle(System.String)">
+            <summary>Gets the type style of the given type name.</summary>
+            <param name="typeName">The type name.</param>
+            <returns>The type style.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.TypeScriptNullValue">
+            <summary>The TypeScript null value used in object initializers.</summary>
+        </member>
+        <member name="F:NJsonSchema.CodeGeneration.TypeScript.TypeScriptNullValue.Null">
+            <summary>JavaScript null.</summary>
+        </member>
+        <member name="F:NJsonSchema.CodeGeneration.TypeScript.TypeScriptNullValue.Undefined">
+            <summary>JavaScript undefined.</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.TypeScriptPropertyNameGenerator">
+            <summary>Generates the property name for a given TypeScript <see cref="T:NJsonSchema.JsonProperty"/>.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.TypeScriptPropertyNameGenerator.Generate(NJsonSchema.JsonProperty)">
+            <summary>Generates the property name.</summary>
+            <param name="property">The property.</param>
+            <returns>The new name.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.TypeScriptTypeResolver">
+            <summary>Manages the generated types and converts JSON types to CSharp types. </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.TypeScriptTypeResolver.#ctor(NJsonSchema.CodeGeneration.TypeScript.TypeScriptGeneratorSettings,System.Object)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.TypeScript.TypeScriptTypeResolver" /> class.</summary>
+            <param name="settings">The settings.</param>
+            <param name="rootObject">The root object to search for JSON Schemas.</param>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.TypeScriptTypeResolver.Settings">
+            <summary>Gets the generator settings.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeScript.TypeScriptTypeResolver.Namespace">
+            <summary>Gets or sets the namespace of the generated classes.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.TypeScriptTypeResolver.Resolve(NJsonSchema.JsonSchema4,System.Boolean,System.String)">
+            <summary>Resolves and possibly generates the specified schema.</summary>
+            <param name="schema">The schema.</param>
+            <param name="isNullable">Specifies whether the given type usage is nullable.</param>
+            <param name="typeNameHint">The type name hint to use when generating the type and the type name is missing.</param>
+            <returns>The type name.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="schema"/> is <see langword="null" />.</exception>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeScript.TypeScriptTypeResolver.CreateTypeGenerator(NJsonSchema.JsonSchema4)">
+            <summary>Creates a type generator.</summary>
+            <param name="schema">The schema.</param>
+            <returns>The generator.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeScript.TypeScriptTypeStyle">
+            <summary>The TypeScript type styles.</summary>
+        </member>
+        <member name="F:NJsonSchema.CodeGeneration.TypeScript.TypeScriptTypeStyle.Interface">
+            <summary>Generates interfaces which can add typings to existing JSON.</summary>
+        </member>
+        <member name="F:NJsonSchema.CodeGeneration.TypeScript.TypeScriptTypeStyle.Class">
+            <summary>Generates classes which can be constructed from JSON.</summary>
+        </member>
+        <member name="F:NJsonSchema.CodeGeneration.TypeScript.TypeScriptTypeStyle.KnockoutClass">
+            <summary>Generates classes with KnockoutJS observable properties.</summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,736 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NJsonSchema.CodeGeneration.CSharp</name>
+    </assembly>
+    <members>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.CSharpClassStyle">
+            <summary>The CSharp styles.</summary>
+        </member>
+        <member name="F:NJsonSchema.CodeGeneration.CSharp.CSharpClassStyle.Poco">
+            <summary>Generates POCOs (Plain Old C# Objects).</summary>
+        </member>
+        <member name="F:NJsonSchema.CodeGeneration.CSharp.CSharpClassStyle.Inpc">
+            <summary>Generates classes implementing the <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> interface.</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.CSharpDefaultValueGenerator">
+            <summary>Converts the default value to a TypeScript identifier.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.CSharpDefaultValueGenerator.#ctor(NJsonSchema.CodeGeneration.ITypeResolver,NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.CSharp.CSharpDefaultValueGenerator" /> class.</summary>
+            <param name="typeResolver">The type resolver.</param>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.CSharpDefaultValueGenerator.GetDefaultValue(NJsonSchema.JsonSchema4,System.Boolean,System.String,System.String,System.Boolean)">
+            <summary>Gets the default value code.</summary>
+            <param name="schema">The schema.</param>
+            <param name="allowsNull">Specifies whether the default value assignment also allows null.</param>
+            <param name="targetType">The type of the target.</param>
+            <param name="typeNameHint">The type name hint to use when generating the type and the type name is missing.</param>
+            <param name="useSchemaDefault">if set to <c>true</c> uses the default value from the schema if available.</param>
+            <returns>The code.</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.CSharpDefaultValueGenerator.GetEnumDefaultValue(NJsonSchema.JsonSchema4,NJsonSchema.JsonSchema4,System.String)">
+            <summary>Gets the enum default value.</summary>
+            <param name="schema">The schema.</param>
+            <param name="actualSchema">The actual schema.</param>
+            <param name="typeNameHint">The type name hint.</param>
+            <returns>The enum default value.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.CSharpGenerator">
+            <summary>The CSharp code generator.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.CSharpGenerator.#ctor(NJsonSchema.JsonSchema4)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.CSharp.CSharpGenerator"/> class.</summary>
+            <param name="schema">The schema.</param>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.CSharpGenerator.#ctor(NJsonSchema.JsonSchema4,NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.CSharp.CSharpGenerator"/> class.</summary>
+            <param name="schema">The schema.</param>
+            <param name="settings">The generator settings.</param>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.CSharpGenerator.#ctor(NJsonSchema.JsonSchema4,NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings,NJsonSchema.CodeGeneration.CSharp.CSharpTypeResolver)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.CSharp.CSharpGenerator"/> class.</summary>
+            <param name="schema">The schema.</param>
+            <param name="settings">The generator settings.</param>
+            <param name="resolver">The resolver.</param>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.CSharpGenerator.Settings">
+            <summary>Gets the generator settings.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.CSharpGenerator.GenerateFile(System.String)">
+            <summary>Generates the file.</summary>
+            <param name="rootTypeNameHint">The root type name hint.</param>
+            <returns>The file contents.</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.CSharpGenerator.GenerateType(System.String)">
+            <summary>Generates the type.</summary>
+            <param name="typeNameHint">The type name hint.</param>
+            <returns>The code.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings">
+            <summary>The generator settings.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings"/> class.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings.Namespace">
+            <summary>Gets or sets the .NET namespace of the generated types.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings.RequiredPropertiesMustBeDefined">
+            <summary>Gets or sets a value indicating whether a required property must be defined in JSON 
+            (sets Required.Always when the property is required) (default: true).</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings.GenerateDataAnnotations">
+            <summary>Gets or sets a value indicating whether to generated data annotation attributes (default: true).</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings.DateType">
+            <summary>Gets or sets the date .NET type (default: 'DateTime').</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings.DateTimeType">
+            <summary>Gets or sets the date time .NET type (default: 'DateTime').</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings.TimeType">
+            <summary>Gets or sets the time .NET type (default: 'TimeSpan').</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings.TimeSpanType">
+            <summary>Gets or sets the time span .NET type (default: 'TimeSpan').</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings.ArrayType">
+            <summary>Gets or sets the generic array .NET type (default: 'ObservableCollection').</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings.DictionaryType">
+            <summary>Gets or sets the generic dictionary .NET type (default: 'Dictionary').</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings.ClassStyle">
+            <summary>Gets or sets the CSharp class style (default: 'Poco').</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings.JsonConverters">
+            <summary>Gets or sets the custom Json.NET converters (class names) which are registered for serialization and deserialization.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings.GenerateImmutableArrayProperties">
+            <summary>Gets or sets a value indicating whether to remove the setter for non-nullable array properties (default: false).</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings.GenerateImmutableDictionaryProperties">
+            <summary>Gets or sets a value indicating whether to remove the setter for non-nullable dictionary properties (default: false).</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.CSharpJsonConverters">
+            <summary>Generates JSON converter code.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.CSharpJsonConverters.GenerateConverters(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>Generates the JSON converter code.</summary>
+            <param name="jsonConverterTypes">The Json.NET converter types.</param>
+            <returns>The code.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.CSharpPropertyNameGenerator">
+            <summary></summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.CSharpPropertyNameGenerator.Generate(NJsonSchema.JsonProperty)">
+            <summary>Generates the property name.</summary>
+            <param name="property">The property.</param>
+            <returns>The new name.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.CSharpTypeResolver">
+            <summary>Manages the generated types and converts JSON types to CSharp types. </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.CSharpTypeResolver.#ctor(NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.CSharp.CSharpTypeResolver"/> class.</summary>
+            <param name="settings">The generator settings.</param>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.CSharpTypeResolver.Settings">
+            <summary>Gets the generator settings.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.CSharpTypeResolver.Resolve(NJsonSchema.JsonSchema4,System.Boolean,System.String)">
+            <summary>Resolves and possibly generates the specified schema.</summary>
+            <param name="schema">The schema.</param>
+            <param name="isNullable">Specifies whether the given type usage is nullable.</param>
+            <param name="typeNameHint">The type name hint to use when generating the type and the type name is missing.</param>
+            <returns>The type name.</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.CSharpTypeResolver.GenerateClasses">
+            <summary>Generates all necessary classes.</summary>
+            <returns>The code.</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.CSharpTypeResolver.AddGenerator(NJsonSchema.JsonSchema4,System.String)">
+            <summary>Adds a generator for the given schema if necessary.</summary>
+            <param name="schema">The schema.</param>
+            <param name="typeNameHint">The type name hint.</param>
+            <returns>The type name of the created generator.</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.CSharpTypeResolver.CreateTypeGenerator(NJsonSchema.JsonSchema4)">
+            <summary>Creates a type generator.</summary>
+            <param name="schema">The schema.</param>
+            <returns>The generator.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel">
+            <summary>The CSharp class template model.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel.#ctor(System.String,NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings,NJsonSchema.CodeGeneration.CSharp.CSharpTypeResolver,NJsonSchema.JsonSchema4)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel"/> class.</summary>
+            <param name="typeName">Name of the type.</param>
+            <param name="settings">The settings.</param>
+            <param name="resolver">The resolver.</param>
+            <param name="schema">The schema.</param>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel.Class">
+            <summary>Gets or sets the class name.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel.ActualClass">
+            <summary>Gets the class.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel.Namespace">
+            <summary>Gets the namespace.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel.HasAdditionalPropertiesType">
+            <summary>Gets a value indicating whether an additional properties type is available.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel.AdditionalPropertiesType">
+            <summary>Gets the type of the additional properties.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel.Properties">
+            <summary>Gets the property models.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel.HasDescription">
+            <summary>Gets a value indicating whether the class has description.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel.Description">
+            <summary>Gets the description.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel.Inpc">
+            <summary>Gets a value indicating whether the class style is INPC.</summary>
+            <value><c>true</c> if inpc; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel.HasDiscriminator">
+            <summary>Gets a value indicating whether the class has discriminator property.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel.Discriminator">
+            <summary>Gets the discriminator property name.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel.HasInheritance">
+            <summary>Gets a value indicating whether the class has a parent class.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel.BaseClass">
+            <summary>Gets the base class name.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel.JsonConverters">
+            <summary>Gets the JSON converters code.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel.Inheritance">
+            <summary>Gets the inheritance code.</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.Models.EnumTemplateModel">
+            <summary>The CSharp enum template model.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Models.EnumTemplateModel.#ctor(System.String,NJsonSchema.JsonSchema4,NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.CSharp.Models.EnumTemplateModel" /> class.</summary>
+            <param name="typeName">Name of the type.</param>
+            <param name="schema">The schema.</param>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.EnumTemplateModel.Name">
+            <summary>Gets the name.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.EnumTemplateModel.HasDescription">
+            <summary>Gets a value indicating whether the enum has description.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.EnumTemplateModel.Description">
+            <summary>Gets the description.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.EnumTemplateModel.IsStringEnum">
+            <summary>Gets a value indicating whether the enum is of type string.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.EnumTemplateModel.Enums">
+            <summary>Gets the enum values.</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.Models.FileTemplateModel">
+            <summary>The CSharp file template model.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.FileTemplateModel.Namespace">
+            <summary>Gets or sets the namespace.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.FileTemplateModel.Classes">
+            <summary>Gets or sets the classes code.</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel">
+            <summary>The CSharp property template model.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.#ctor(NJsonSchema.CodeGeneration.CSharp.Models.ClassTemplateModel,NJsonSchema.JsonProperty,NJsonSchema.CodeGeneration.CSharp.CSharpTypeResolver,NJsonSchema.CodeGeneration.CSharp.CSharpGeneratorSettings)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel"/> class.</summary>
+            <param name="classTemplateModel">The class template model.</param>
+            <param name="property">The property.</param>
+            <param name="resolver">The resolver.</param>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.Name">
+            <summary>Gets the name of the property.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.Type">
+            <summary>Gets the type of the property.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.HasDescription">
+            <summary>Gets a value indicating whether the property has a description.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.Description">
+            <summary>Gets the description.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.FieldName">
+            <summary>Gets the name of the field.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.HasSetter">
+            <summary>Gets a value indicating whether this is an array property which cannot be null.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.JsonPropertyRequired">
+            <summary>Gets the json property required.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.RenderRequiredAttribute">
+            <summary>Gets a value indicating whether to render a required attribute.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.RenderRangeAttribute">
+            <summary>Gets a value indicating whether to render a range attribute.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.RangeMinimumValue">
+            <summary>Gets the minimum value of the range attribute.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.RangeMaximumValue">
+            <summary>Gets the maximum value of the range attribute.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.RenderStringLengthAttribute">
+            <summary>Gets a value indicating whether to render a string length attribute.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.StringLengthMinimumValue">
+            <summary>Gets the minimum value of the string length attribute.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.StringLengthMaximumValue">
+            <summary>Gets the maximum value of the string length attribute.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.RenderRegularExpressionAttribute">
+            <summary>Gets a value indicating whether to render a regular expression attribute.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.RegularExpressionValue">
+            <summary>Gets the regular expression value for the regular expression attribute.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Models.PropertyModel.IsStringEnum">
+            <summary>Gets a value indicating whether the property type is string enum.</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplate">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplate.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.ClassTemplateBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplate">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplate.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.EnumTemplateBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplate">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplate.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.FileTemplateBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplate">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplate.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CSharp.Templates.JsonInheritanceConverterTemplateBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+    </members>
+</doc>

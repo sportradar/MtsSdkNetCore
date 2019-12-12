@@ -1,0 +1,218 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Ticket response 2.3 schema",
+  "required": [
+    "version",
+    "signature",
+    "result",
+    "exchangeRate"
+  ],
+  "definitions": {
+    "id": {
+      "type": "string",
+      "description": "Ticket/bet id",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "selectionIndex": {
+      "type": "integer",
+      "description": "Selection index from 'ticket.selections' array (zero based)",
+      "maximum": 62,
+      "minimum": 0
+    },
+    "reason": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Object carrying information about rejection cause",
+      "required": [
+        "code"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "Rejection code"
+        },
+        "message": {
+          "type": "string",
+          "description": "Rejection reason description"
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "description": "Acceptance status - accepted, rejected",
+      "enum": [
+        "rejected",
+        "accepted"
+      ]
+    }
+  },
+  "properties": {
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reason"
+      ],
+      "properties": {
+        "ticketId": {
+          "description": "External ticket id",
+          "$ref": "#/definitions/id"
+        },
+        "status": {
+          "$ref": "#/definitions/status"
+        },
+        "reason": {
+          "$ref": "#/definitions/reason"
+        },
+        "betDetails": {
+          "type": "array",
+          "description": "Bet-level rejection details",
+          "items": {
+            "type": "object",
+            "description": "Reason on bet level",
+            "required": [
+              "selectionIndex",
+              "reason",
+              "betId"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "betId": {
+                "description": "Bet id",
+                "$ref": "#/definitions/id"
+              },
+              "reason": {
+                "$ref": "#/definitions/reason"
+              },
+              "selectionDetails": {
+                "type": "array",
+                "description": "Per-selection rejection reasons",
+                "items": {
+                  "type": "object",
+                  "description": "Reason on selection level",
+                  "additionalProperties": false,
+                  "properties": {
+                    "selectionIndex": {
+                      "$ref": "#/definitions/selectionIndex"
+                    },
+                    "reason": {
+                      "$ref": "#/definitions/reason"
+                    },
+                    "rejectionInfo": {
+                      "type": "object",
+                      "description": "Rejection information on selection level",
+                      "additionalProperties": false,
+                      "properties": {
+                        "eventId": {
+                          "type": "string",
+                          "description": "Rejected selection's related Betradar event (match or outright) id",
+                          "minLength": 1,
+                          "maxLength": 100
+                        },
+                        "id": {
+                          "type": "string",
+                          "description": "Rejected selection's related Selection id",
+                          "minLength": 1,
+                          "maxLength": 1000
+                        },
+                        "odds": {
+                          "type": ["integer", "null"],
+                          "description": "Rejected selection's related Odds",
+                          "maximum": 1000000000,
+                          "minimum": 10000
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "reoffer": {
+                "type": "object",
+                "description": "Bet reoffer details, mutually exclusive with alternativeStake",
+                "required": [
+                  "type"
+                ],
+                "properties": {
+                  "stake": {
+                    "type": "number",
+                    "description": "Reoffer stake. Double multiplied by 10_000 and rounded to a long value",
+                    "maximum": 1000000000000000000,
+                    "minimum": 1
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "Reoffer type, if auto then stake will be present. If manual you should wait for reoffer stake over Reply channel",
+                    "enum": [
+                      "auto",
+                      "manual"
+                    ]
+                  }
+                }
+              },
+              "alternativeStake": {
+                "type": "object",
+                "description": "Alternative stake, mutually exclusive with reoffer",
+                "required": [
+                  "stake"
+                ],
+                "properties": {
+                  "stake": {
+                    "type": "number",
+                    "description": "Alternative stake. Double multiplied by 10_000 and rounded to a long value",
+                    "maximum": 1000000000000000000,
+                    "minimum": 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "autoAcceptedOdds": {
+      "type": "array",
+      "description": "Contains odds auto-acceptance information",
+      "items": {
+        "type": "object",
+        "description": "Odds auto-acceptance selection information",
+        "additionalProperties": false,
+        "properties": {
+          "selectionIndex": {
+            "$ref": "#/definitions/selectionIndex"
+          },
+          "requestedOdds": {
+            "type": "integer",
+            "description": "Odds with which the ticket was placed",
+            "maximum": 1000000000,
+            "minimum": 10000
+          },
+          "usedOdds": {
+            "type": "integer",
+            "description": "Odds with which the ticket was accepted",
+            "maximum": 1000000000,
+            "minimum": 10000
+          }
+        }
+      }
+    },
+    "version": {
+      "type": "string",
+      "description": "JSON format version (must be '2.3')",
+      "pattern": "^(2\\.3)$",
+      "minLength": 3,
+      "maxLength": 3
+    },
+    "signature": {
+      "type": "string",
+      "description": "Response signature (previous betAcceptanceId)"
+    },
+    "exchangeRate": {
+      "type": "number",
+      "description": "The exchange rate used when converting currencies to EUR. Double multiplied by 10_000 and rounded to a long value",
+      "maximum": 1000000000000000000,
+      "minimum": 1
+    }
+  }
+}

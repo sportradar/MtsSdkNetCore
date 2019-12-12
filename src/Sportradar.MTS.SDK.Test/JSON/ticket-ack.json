@@ -1,0 +1,9 @@
+﻿{
+  "sender": { "bookmakerId": 9985 },
+  "ticketId": "ticket-4144",
+  "ticketStatus": 1,
+  "code": 1024,
+  "message": "ticket accepted",
+  "timestampUtc": 1487071715740,
+  "version": "2.0"
+}

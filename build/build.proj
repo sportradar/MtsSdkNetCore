@@ -1,0 +1,198 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectName>Sportradar.MTS.SDK</ProjectName>
+    <ProjectRootDir>..\src\Sportradar.MTS.SDK</ProjectRootDir>
+    <ReleaseMode>Release</ReleaseMode>
+    <NugetUrl>http://www.nuget.org</NugetUrl>
+    <NugetKey></NugetKey>
+    <MajorVersion Condition="'$(MajorVersion)' == ''">2</MajorVersion>
+    <MinorVersion Condition="'$(MinorVersion)' == ''">3</MinorVersion>
+    <BuildNumber Condition="'$(BuildNumber)' == ''">3</BuildNumber>
+    <Revision Condition="'$(Revision)' == ''">2</Revision>
+    <BuildPlanName Condition="'$(BuildPlanName)' == ''">LocalBuild</BuildPlanName>
+    <BuildKey Condition="'$(BuildKey)' == ''">NOKEY</BuildKey>
+    <Timestamp>$([System.DateTime]::Now.ToString("yyyy-MM-dd\THH:mm:ss"))</Timestamp>
+
+    <!-- you get new line with inserting !NL! -->
+    <BuildChangeLog>Improved handling of connection to the rabbit server</BuildChangeLog> 
+    <ComputedAssemblyVersion>$(MajorVersion).$(MinorVersion).$(BuildNumber).$(Revision)</ComputedAssemblyVersion>
+  </PropertyGroup>
+
+  <UsingTask TaskName="MSBuild.ExtensionPack.Framework.Assembly" AssemblyFile="tools\MSBuildExtension\MSBuild.ExtensionPack.dll" />
+  <UsingTask TaskName="MSBuild.ExtensionPack.Framework.AssemblyInfo" AssemblyFile="tools\MSBuildExtension\MSBuild.ExtensionPack.dll" />
+  <UsingTask TaskName="MSBuild.ExtensionPack.Compression.Zip" AssemblyFile="tools\MSBuildExtension\MSBuild.ExtensionPack.dll" />
+  <UsingTask TaskName="MSBuild.ExtensionPack.FileSystem" AssemblyFile="tools\MSBuildExtension\MSBuild.ExtensionPack.dll" />
+
+  <Target Name="BuildAll">
+    <CallTarget Targets="PrebuildVerification" />
+    <CallTarget Targets="CreateDirs" />
+    <CallTarget Targets="BuildProjectRelease" />
+    <CallTarget Targets="ExecuteUnitTests" />
+    <CallTarget Targets="MergeDlls" />
+    <CallTarget Targets="CreateDocumentation" />
+    <CallTarget Targets="NugetBuild" />
+    <CallTarget Targets="CreateVersionChangeLog" />
+    <CallTarget Targets="CreateWebsiteVersionXml" />
+  </Target>
+
+  <Target Name="BuildFast">
+    <CallTarget Targets="PrebuildVerification" />
+    <CallTarget Targets="CreateDirs" />
+    <CallTarget Targets="BuildProjectRelease" />
+    <CallTarget Targets="MergeDlls" />
+    <CallTarget Targets="NugetBuild" />
+    <CallTarget Targets="CreateVersionChangeLog" />
+    <CallTarget Targets="CreateWebsiteVersionXml" />
+  </Target>
+    
+  <Target Name="BuildExample">
+    <CallTarget Targets="ExportDemoProject" />
+    <CallTarget Targets="CreateBundleZip" />
+  </Target>
+
+  <Target Name="PrebuildVerification">
+    <Message Importance="High" Text="Prebuild file verification ..." />
+    <Error Condition="!Exists('ChangeLog-Template.txt')" Text="File 'ChangeLog-Template.txt' does not exists!" />
+    <Error Condition="!Exists('DoNotInternalize.txt')" Text="File 'DoNotInternalize.txt' does not exists!" />
+    <Error Condition="!Exists('merge.bat')" Text="File 'merge.bat' does not exists!" />
+    <Error Condition="!Exists('MtsSdk.shfbproj')" Text="File 'MtsSdk.shfbproj' does not exists!" />
+    <Error Condition="!Exists('NugetPackage.nuspec')" Text="File 'NugetPackage.nuspec' does not exists!" />
+    <Error Condition="!Exists('Readme.txt')" Text="File 'Readme.txt' does not exists!" />
+    <Error Condition="!Exists('website-version-template.xml')" Text="File 'website-version-template.xml' does not exists!" />
+    <Message Importance="High" Text="... verification finished." />
+  </Target>
+
+  <Target Name="BuildProjectRelease">
+    <ItemGroup>
+      <AssemblyInfoProjectFile Include="$(ProjectRootDir)\Properties\AssemblyInfo.cs" />
+    </ItemGroup>
+    <Message Importance="High" Text="Building version $(ComputedAssemblyVersion):" />
+    <Error Condition="!Exists(@(AssemblyInfoProjectFile))" Text="File '@(AssemblyInfoProjectFile)' does not exists!" />
+    <MSBuild.ExtensionPack.Framework.AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)" AssemblyVersion="$(ComputedAssemblyVersion)" AssemblyFileVersion="$(ComputedAssemblyVersion)" />
+    <MSBuild Projects="$(ProjectRootDir)\Sportradar.MTS.SDK.csproj" Properties="Configuration=$(ReleaseMode)" Targets="Clean" />
+    <MSBuild Projects="$(ProjectRootDir)\Sportradar.MTS.SDK.csproj" Properties="Configuration=$(ReleaseMode)" Targets="Build" />
+  </Target>
+
+  <Target Name="BuildProjectDebug">
+    <ItemGroup>
+      <AssemblyInfoProjectFile2 Include="$(ProjectRootDir)\Properties\AssemblyInfo.cs" />
+    </ItemGroup> 
+    <Message Importance="High" Text="Building version $(ComputedAssemblyVersion):" />
+    <Error Condition="!Exists(@(AssemblyInfoProjectFile2))" Text="File '@(AssemblyInfoProjectFile2)' does not exists!" />
+    <MSBuild.ExtensionPack.Framework.AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)" AssemblyVersion="$(ComputedAssemblyVersion)" AssemblyFileVersion="$(ComputedAssemblyVersion)" />
+    <MSBuild Projects="$(ProjectRootDir)\Sportradar.MTS.SDK.csproj" Properties="Configuration=Debug" Targets="Build"/>
+  </Target>
+
+  <Target Name="ExecuteUnitTests">
+    <ItemGroup>
+      <TestAssemblyInfoFiles Include="$(ProjectRootDir).Test\Properties\AssemblyInfo.cs" />
+    </ItemGroup>
+    <Message Importance="High" Text="Building Test project version $(ComputedAssemblyVersion):" />
+    <Error Condition="!Exists(@(TestAssemblyInfoFiles))" Text="File '@(TestAssemblyInfoFiles)' does not exists!" />
+    <MSBuild.ExtensionPack.Framework.AssemblyInfo AssemblyInfoFiles="@(TestAssemblyInfoFiles)" AssemblyVersion="$(ComputedAssemblyVersion)" AssemblyFileVersion="$(ComputedAssemblyVersion)" />
+    <MSBuild Projects="$(ProjectRootDir).Test\Sportradar.MTS.SDK.Test.csproj" Properties="Configuration=Debug" Targets="Build"/>
+    <Exec Command="mstest.exe /testcontainer:$(ProjectRootDir).Test\bin\Debug\Sportradar.MTS.SDK.Test.dll /detail:errormessage /detail:errorstacktrace" >
+      <Output TaskParameter="ExitCode" PropertyName="TestSuccessOrNot"/>
+    </Exec>
+    <RemoveDir Directories="TestResults" />
+  </Target>
+
+  <Target Name="CreateDirs">
+    <RemoveDir Directories="export" />
+    <MakeDir Directories="export" />
+    <MakeDir Condition="!Exists('lib\net40')" Directories="lib\net40" />
+    <MakeDir Condition="!Exists('lib\net45')" Directories="lib\net45" />
+  </Target>
+
+  <Target Name="MergeDlls">
+    <Exec Command="merge.bat $(ComputedAssemblyVersion)" />
+  </Target>
+
+  <Target Name="NugetBuild">
+    <PropertyGroup>
+      <ComputedResultFile>export\$(ProjectName).$(ComputedAssemblyVersion).nupkg</ComputedResultFile>
+    </PropertyGroup>
+    <Exec Command="tools\nuGet.exe pack NugetPackage.nuspec -Version $(ComputedAssemblyVersion) -OutputDirectory export -Properties Configuration=$(ReleaseMode)" />
+    <Error Condition="!Exists($(ComputedResultFile))" Text="File '$(ComputedResultFile)' does not exists!" />
+  </Target>
+
+  <Target Name="CreateDocumentation">
+    <ItemGroup>
+      <DocFolder Include="doc" />
+      <DocsZipFile Include="export\MtsSdkDocs.zip" />
+    </ItemGroup>
+    <Delete Files="@(DocsZipFile)" Condition="Exists(@(DocsZipFile))" />
+    <RemoveDir Directories="@(DocFolder)" Condition="Exists(@(DocFolder))" />
+    <CallTarget Targets="BuildProjectDebug" /> 
+    <MSBuild Projects="MtsSdk.shfbproj" Properties="Configuration=Debug"/>
+    <Move SourceFiles="doc\MTS SDK Documentation.chm" DestinationFolder="export" />
+    <Zip TaskAction="Create" CompressPath="@(DocFolder)" ZipFileName="@(DocsZipFile)" CompressionLevel="9" />
+    <RemoveDir Directories="@(DocFolder)" Condition="Exists(@(DocFolder))" />
+    <RemoveDir Directories="Help" />
+  </Target>
+
+  <Target Name="CreateVersionChangeLog">
+    <PropertyGroup>
+      <TemplateFile>ChangeLog-Template.txt</TemplateFile>
+      <ComputedResultFile>export\versions\$(ComputedAssemblyVersion).txt</ComputedResultFile>
+      <ComputedExportDir>$(MSBuildProjectDirectory)\export\versions</ComputedExportDir>
+    </PropertyGroup>
+    <Copy SourceFiles="$(TemplateFile)" DestinationFiles="$(ComputedResultFile)" />
+    <Error Condition="!Exists($(ComputedResultFile))" Text="File '$(ComputedResultFile)' does not exists!" />
+    <Exec Command="$(MSBuildProjectDirectory)\tools\fnr.exe --cl --dir &quot;$(ComputedExportDir)&quot; --fileMask &quot;*.txt&quot; --find &quot;!changelog!&quot; --replace &quot;$(BuildChangeLog)&quot;" />
+    <Exec Command="$(MSBuildProjectDirectory)\tools\fnr.exe --cl --dir &quot;$(ComputedExportDir)&quot; --fileMask &quot;*.txt&quot; --find &quot;!NL!&quot; --replace &quot;\n&quot;" />
+  </Target>
+
+  <Target Name="CreateWebsiteVersionXml">
+    <PropertyGroup>
+      <TemplateFile>website-version-template.xml</TemplateFile>
+      <ComputedResultFile>export\versions\$(ComputedAssemblyVersion).xml</ComputedResultFile>
+      <ComputedExportDir>$(MSBuildProjectDirectory)\export\versions</ComputedExportDir>
+    </PropertyGroup>
+    <Delete Files="$(ComputedResultFile)" Condition="Exists($(ComputedResultFile))" />
+    <Copy SourceFiles="$(TemplateFile)" DestinationFiles="$(ComputedResultFile)" />
+    <Error Condition="!Exists($(ComputedResultFile))" Text="File '$(ComputedResultFile)' does not exists!" />
+    <Exec Command="$(MSBuildProjectDirectory)\tools\fnr.exe --cl --dir &quot;$(ComputedExportDir)&quot; --fileMask &quot;*.xml&quot; --find &quot;!version!&quot; --replace &quot;$(ComputedAssemblyVersion)&quot;" />
+    <Exec Command="$(MSBuildProjectDirectory)\tools\fnr.exe --cl --dir &quot;$(ComputedExportDir)&quot; --fileMask &quot;*.xml&quot; --find &quot;!date!&quot; --replace &quot;$(Timestamp)&quot;" />
+  </Target>
+  
+  <Target Name="ExportDemoProject">
+    <PropertyGroup>
+      <DemoProjectRootDir>..\src\Sportradar.MTS.SDK.DemoProject</DemoProjectRootDir>
+    </PropertyGroup>
+  
+    <ItemGroup>
+      <AssemblyInfoFiles Include="$(DemoProjectRootDir)\Properties\AssemblyInfo.cs" />
+      <DemoZipFile Include="MtsSdkDemoProject.zip" />
+    </ItemGroup>
+
+    <Error Condition="!Exists(@(AssemblyInfoFiles))" Text="File '@(AssemblyInfoFiles)' does not exists!" />
+
+    <MSBuild.ExtensionPack.Framework.AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)" AssemblyVersion="$(ComputedAssemblyVersion)" AssemblyFileVersion="$(ComputedAssemblyVersion)" />
+    <MSBuild Projects="$(DemoProjectRootDir)\Sportradar.MTS.SDK.DemoProject.csproj" Properties="Configuration=$(ReleaseMode)" Targets="Build"/>
+
+    <Exec Command="export-demo.bat" />
+    <Error Condition="!Exists(@(DemoZipFile))" Text="Demo zip file was not created." />
+    <Zip TaskAction="Extract" ZipFileName="@(DemoZipFile)" ExtractPath="export" />
+    <Exec Command="xcopy lib export\lib /e /i /y" />
+    <Delete Files="@(DemoZipFile)" Condition="Exists(@(DemoZipFile))" />
+  </Target>
+  
+  <Target Name="CreateBundleZip">
+    <ItemGroup>
+      <Files Include="export\lib\**\*.*" />
+      <Files Include="export\Sportradar.MTS.SDK.DemoProject\**\*.*" />
+      <Files Include="export\changelog.txt" />
+      <Files Include="export\MTS SDK Documentation.chm" />
+      <BundleZipFile Include="export\versions\MtsSdk-Bundle-$(ComputedAssemblyVersion).zip" />
+    </ItemGroup>
+    
+    <Copy SourceFiles="readme.txt" DestinationFiles="export\changelog.txt" />
+    <Message Text="@(Files)" />
+    <Zip TaskAction="Create" CompressFiles="@(Files)" ZipFileName="@(BundleZipFile)" CompressionLevel="9" RemoveRoot="\MTS\NetMtsSdk\build\export"  />
+    <Error Condition="!Exists(@(BundleZipFile))" Text="Bundle zip file was not created." />
+
+    <RemoveDir Directories="export\Sportradar.MTS.SDK.DemoProject" Condition="Exists('export\Sportradar.MTS.SDK.DemoProject')" />
+    <RemoveDir Directories="export\lib" Condition="Exists('export\lib')" />
+  </Target>
+</Project>

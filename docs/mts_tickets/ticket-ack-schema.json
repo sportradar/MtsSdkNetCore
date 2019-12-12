@@ -1,0 +1,50 @@
+{
+   "$schema":"http://json-schema.org/draft-04/schema#",
+   "type":"object",
+   "properties":{
+      "sender":{
+         "type":"object",
+         "properties":{
+            "bookmakerId":{
+               "type":"integer"
+            }
+         },
+         "required":[
+            "bookmakerId"
+         ]
+      },
+      "ticketId":{
+         "type":"string"
+      },
+      "ticketStatus":{
+         "type": "string",
+         "enum":[
+            "rejected",
+            "accepted"
+         ]
+      },
+      "code":{
+         "type":"integer"
+      },
+      "message":{
+         "type":"string"
+      },
+      "timestampUtc":{
+         "type":"number"
+      },
+      "version":{
+         "type":"string",
+         "description":"JSON format version (must be '2.3')",
+         "pattern":"^(2\\.3)$",
+         "minLength":3,
+         "maxLength":3
+      }
+   },
+   "required":[
+      "sender",
+      "ticketId",
+	  "ticketStatus",
+      "timestampUtc",
+      "version"
+   ]
+}

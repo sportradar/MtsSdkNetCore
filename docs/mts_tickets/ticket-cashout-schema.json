@@ -1,0 +1,96 @@
+{
+   "$schema":"http://json-schema.org/draft-04/schema#",
+   "type":"object",
+   "additionalProperties":false,
+   "description":"Ticket cashout version 2.3 schema",
+   "title":"Ticket cashout",
+   "required":[
+      "timestampUtc",
+      "ticketId",
+      "sender",
+      "version"
+   ],
+   "properties":{
+      "timestampUtc":{
+         "type":"number",
+         "description":"Timestamp of ticket cashout placement (in UNIX time millis)",
+         "minimum":1,
+         "maximum":9223372036854775807
+      },
+      "ticketId":{
+         "type":"string",
+         "description":"Ticket id to cashout",
+         "minLength":1,
+         "maxLength":128
+      },
+      "sender":{
+         "type":"object",
+         "additionalProperties":false,
+         "description":"Identification and settings of the cashout sender",
+         "required":[
+            "bookmakerId"
+         ],
+         "properties":{
+            "bookmakerId":{
+               "type":"integer",
+               "description":"Client's id (provided by Sportradar to the client)",
+               "maximum":2147483647,
+               "minimum":1
+            }
+         }
+      },
+      "cashoutStake":{
+         "type": ["number", "null"],
+         "description":"Cashout stake in same currency as original ticket. Quantity multiplied by 10_000 and rounded to a long value. Applicable only if performing full cashout.",
+         "maximum":1000000000000000000,
+         "minimum":1
+      },
+      "cashoutPercent": {
+         "type": ["integer", "null"],
+         "description":"Cashout percent. Quantity multiplied by 10_000 and rounded to a long value. Percent of ticket to cashout. Max 100%.",
+         "maximum":1000000,
+         "minimum":1
+      },
+      "betCashout": {
+         "type": "array",
+         "description": "Array of (betId, cashoutStake) pairs, if performing partial cashout. Applicable only if ticket-level cashout stake is null.",
+         "items": {
+            "type": "object",
+            "required": [
+               "betId",
+               "cashoutStake"
+            ],
+            "properties": {
+               "id": {
+                  "type": "string",
+                  "description": "Bet id",
+                  "pattern": "^[0-9A-Za-z:\\-_]{1,128}$",
+                  "minLength": 1,
+                  "maxLength": 128
+               },
+               "cashoutStake":{
+                  "type": "number",
+                  "description":"Cashout stake in same currency as original ticket. Quantity multiplied by 10_000 and rounded to a long value.",
+                  "maximum":1000000000000000000,
+                  "minimum":1
+               },
+               "cashoutPercent": {
+                  "type": ["integer", "null"],
+                  "description":"Cashout percent. Quantity multiplied by 10_000 and rounded to a long value. Percent of bet to cashout. Max 100%.",
+                  "maximum":1000000,
+                  "minimum":1
+               }
+            }
+         },
+         "minItems": 1,
+         "maxItems": 50
+      },
+      "version":{
+         "type":"string",
+         "description":"JSON format version (must be '2.3')",
+         "pattern":"^(2\\.3)$",
+         "minLength":3,
+         "maxLength":3
+      }
+   }
+}

@@ -1,0 +1,10 @@
+<SdkPlatformVersion>
+  <VersionId>-1</VersionId>
+  <PlatformId>6</PlatformId>
+  <Version>!version!</Version>
+  <ChangeLog>content:!version!.txt</ChangeLog>
+  <VersionDate>!date!</VersionDate>
+  <IsRecommended>true</IsRecommended>
+  <FilePath>MtsSdk-Bundle-!version!.zip</FilePath>
+  <SizeInBytes>0</SizeInBytes>
+</SdkPlatformVersion>

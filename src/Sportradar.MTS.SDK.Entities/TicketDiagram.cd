@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.ITicket">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Selections" Type="Sportradar.MTS.SDK.Entities.Interfaces.ISelection" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.75" Y="1.63" />
+        <Point X="9.125" Y="1.63" />
+        <Point X="9.125" Y="3.84" />
+        <Point X="9.5" Y="3.84" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAACAQAAAAIAAAAAAEAAAIAAQ=</HashCode>
+      <FileName>Interfaces\ITicket.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Sender" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Bets" />
+      <Property Name="Selections" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.IBet">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAAAAAAAAAAAAAAACAAAgAAAACAgAQAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IBet.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Bonus" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Selections" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.ISelection">
+    <Position X="9.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAgAAAAAAAAAAAAQAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ISelection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.ISender">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAEAAgAIAAAAAAAAAEAAAACAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ISender.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EndCustomer" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.IEndCustomer">
+    <Position X="5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAoAAAAAAEAAAAAAAIAA=</HashCode>
+      <FileName>Interfaces\IEndCustomer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.IBetBonus">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAQAgAAAAAAA=</HashCode>
+      <FileName>Interfaces\IBetBonus.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.ISdkTicket" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAACAAAAAAAACAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ISdkTicket.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

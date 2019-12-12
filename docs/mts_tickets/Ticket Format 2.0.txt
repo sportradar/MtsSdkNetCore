@@ -1,0 +1,15 @@
+Ticket Format v2.0
+https://confluence.sportradar.ag/display/LA/Version+2.0
+
+
+Managed Trading Service (check docs on the right side)
+https://confluence.sportradar.ag/display/LA/Managed+Trading+Service
+
+
+TicketCancellation reason code (each one must be enabled in admin): 
+Customer triggered pre-match bet cancellation (101)	
+Timeout triggered bet cancellation (102)	
+Bookmaker backoffice triggered bet cancellation (103)
+Bookmaker technical issue bet cancellation (104)
+Exceptional bookmaker triggered bet cancellation (105)
+Bookmaker cashback promotion cancellation (106)

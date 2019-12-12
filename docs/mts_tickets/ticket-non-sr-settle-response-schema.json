@@ -1,0 +1,79 @@
+{
+  "$schema":"http://json-schema.org/draft-04/schema#",
+  "type":"object",
+  "additionalProperties":false,
+  "description":"Ticket non-Sportradar settle response v2 schema",
+  "title":"Non-Sportradar settle response",
+  "required":[
+    "version",
+    "signature",
+    "result"
+  ],
+  "definitions":{
+    "id":{
+      "type":"string",
+      "description":"Ticket id",
+      "minLength":8,
+      "maxLength":128
+    },
+    "reason":{
+      "type":"object",
+      "additionalProperties":false,
+      "description":"Object carrying information about settle response",
+      "required":[
+        "code"
+      ],
+      "properties":{
+        "code":{
+          "type":"integer",
+          "description":"Settle response code"
+        },
+        "message":{
+          "type":"string",
+          "description":"Settle rejection reason description"
+        }
+      }
+    },
+    "status":{
+      "type":"string",
+      "description":"Settle status - accepted, rejected",
+      "enum":[
+        "rejected",
+        "accepted"
+      ]
+    }
+  },
+  "properties":{
+    "result":{
+      "type":"object",
+      "additionalProperties":false,
+      "required":[
+        "status",
+        "reason"
+      ],
+      "properties":{
+        "ticketId":{
+          "description":"Ticket id",
+          "$ref":"#/definitions/id"
+        },
+        "status":{
+          "$ref":"#/definitions/status"
+        },
+        "reason":{
+          "$ref":"#/definitions/reason"
+        }
+      }
+    },
+    "signature":{
+      "type":"string",
+      "description":"Response signature"
+    },
+    "version":{
+      "type":"string",
+      "description":"JSON format version (must be '2.3')",
+      "pattern":"^(2\\.3)$",
+      "minLength":3,
+      "maxLength":3
+    }
+  }
+}

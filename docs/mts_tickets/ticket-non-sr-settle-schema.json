@@ -1,0 +1,57 @@
+{
+   "$schema":"http://json-schema.org/draft-04/schema#",
+   "type":"object",
+   "additionalProperties":false,
+   "description":"Non-Sportradar settle version 2.3 schema",
+   "title":"Non-Sportradar settle",
+   "required":[
+      "timestampUtc",
+      "ticketId",
+      "sender",
+      "nonSrSettleStake",
+      "version"
+   ],
+   "properties":{
+      "timestampUtc":{
+         "type":"number",
+         "description":"Timestamp of non-Sportradar settle placement (in UNIX time millis)",
+         "minimum":1,
+         "maximum":9223372036854775807
+      },
+      "ticketId":{
+         "type":"string",
+         "description":"Ticket id to settle",
+         "minLength":1,
+         "maxLength":50
+      },
+      "sender":{
+         "type":"object",
+         "additionalProperties":false,
+         "description":"Identification and settings of the settle sender",
+         "required":[
+            "bookmakerId"
+         ],
+         "properties":{
+            "bookmakerId":{
+               "type":"integer",
+               "description":"Client's id (provided by Sportradar to the client)",
+               "maximum":2147483647,
+               "minimum":1
+            }
+         }
+      },
+      "nonSrSettleStake":{
+         "type": ["number", "null"],
+         "description":"Non-Sportradar settle stake in same currency as original ticket. Quantity multiplied by 10_000 and rounded to a long value. Applicable only if performing full cashout.",
+         "maximum":1000000000000000000,
+         "minimum":0
+      },
+      "version":{
+         "type":"string",
+         "description":"JSON format version (must be '2.3')",
+         "pattern":"^(2\\.3)$",
+         "minLength":3,
+         "maxLength":3
+      }
+   }
+}

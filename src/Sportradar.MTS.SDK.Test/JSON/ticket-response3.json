@@ -1,0 +1,23 @@
+﻿{
+    "result": {
+        "ticketId": "MTS-Betomall-901-20170811-188",
+        "status": "rejected",
+        "reason": {
+            "code": -321,
+            "message": "Bet contains duplicate selections on same Match and Market. Selections: [(Selection: live:2/0/*/1, Match: 11002090)] + [Soccer, Japan, J.League 2, Tokushima Vortis vs Yokohama FC, 3way, N/A]"
+        },
+        "betDetails": [
+            {
+                "betId": "MTS-Betomall-901-20170811-188-0",
+                "reason": {
+                    "code": -321,
+                    "message": "Bet contains duplicate selections on same Match and Market. Selections: [(Selection: live:2/0/*/1, Match: 11002090)] + [Soccer, Japan, J.League 2, Tokushima Vortis vs Yokohama FC, 3way, N/A]"
+                },
+                "selectionDetails": []
+            }
+        ]
+    },
+    "version": "2.0",
+    "signature": "OS2Sy0DZaizJfeI1i7EQOtSwanSf1MJHGS4OfDlv0bQ=",
+    "exchangeRate": 10000
+}

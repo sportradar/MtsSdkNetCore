@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.ISdkTicket">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAACAAAAAAAACAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ISdkTicket.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.ITicket">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAACAQAAAAIAAAAAAEAAAIAAQ=</HashCode>
+      <FileName>Interfaces\ITicket.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.ITicketAck">
+    <Position X="10.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAgAAAAAAAAAAAAABAAIAAAAAA=</HashCode>
+      <FileName>Interfaces\ITicketAck.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.ITicketCancel">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ITicketCancel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.ITicketCancelAck">
+    <Position X="5.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAABAAIAAAAAI=</HashCode>
+      <FileName>Interfaces\ITicketCancelAck.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.ITicketCancelResponse">
+    <Position X="5.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Interfaces\ITicketCancelResponse.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.ITicketResponse">
+    <Position X="10.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gCAAAAAEAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Interfaces\ITicketResponse.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.ITicketReofferCancel">
+    <Position X="2" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ITicketReofferCancel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.ITicketCashout">
+    <Position X="2" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAQ=</HashCode>
+      <FileName>Interfaces\ITicketCashout.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sportradar.MTS.SDK.Entities.Interfaces.ITicketCashoutResponse">
+    <Position X="2" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Interfaces\ITicketCashoutResponse.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

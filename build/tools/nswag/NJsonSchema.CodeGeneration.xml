@@ -1,0 +1,320 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NJsonSchema.CodeGeneration</name>
+    </assembly>
+    <members>
+        <member name="T:NJsonSchema.CodeGeneration.ClassOrderUtilities">
+            <summary>Utility class to order classes.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.ClassOrderUtilities.Order(System.Collections.Generic.IEnumerable{NJsonSchema.CodeGeneration.TypeGeneratorResult})">
+            <summary>Reorders the results so that base classes are always before child classes.</summary>
+            <param name="results">The results.</param>
+            <returns>The reordered results.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.CodeGeneratorSettingsBase">
+            <summary>The code generator settings base.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.CodeGeneratorSettingsBase.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.CodeGeneratorSettingsBase"/> class.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CodeGeneratorSettingsBase.NullHandling">
+            <summary>Gets or sets the property nullability handling.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CodeGeneratorSettingsBase.GenerateDefaultValues">
+            <summary>Gets or sets a value indicating whether to generate default values for properties (when JSON Schema default is set, default: true).</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CodeGeneratorSettingsBase.ExcludedTypeNames">
+            <summary>Gets or sets the excluded type names (must be defined in an import or other namespace).</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CodeGeneratorSettingsBase.PropertyNameGenerator">
+            <summary>Gets or sets the property name generator.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CodeGeneratorSettingsBase.TypeNameGenerator">
+            <summary>Gets or sets the type name generator.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CodeGeneratorSettingsBase.EnumNameGenerator">
+            <summary>Gets or sets the enum name generator.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.CodeGeneratorSettingsBase.TemplateFactory">
+            <summary>Gets or sets the template factory.</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.DefaultEnumNameGenerator">
+            <summary>The default enumeration name generator.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.DefaultEnumNameGenerator.Generate(System.Int32,System.String,System.Object,NJsonSchema.JsonSchema4)">
+            <summary>Generates the enumeration name/key of the given enumeration entry.</summary>
+            <param name="index">The index of the enumeration value (check <see cref="P:NJsonSchema.JsonSchema4.Enumeration" /> and <see cref="P:NJsonSchema.JsonSchema4.EnumerationNames" />).</param>
+            <param name="name">The name/key.</param>
+            <param name="value">The value.</param>
+            <param name="schema">The schema.</param>
+            <returns>The enumeration name.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.IEnumNameGenerator">
+            <summary>Generates the name of an enumeration entry.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.IEnumNameGenerator.Generate(System.Int32,System.String,System.Object,NJsonSchema.JsonSchema4)">
+            <summary>Generates the enumeration name/key of the given enumeration entry.</summary>
+            <param name="index">The index of the enumeration value (check <see cref="P:NJsonSchema.JsonSchema4.Enumeration"/> and <see cref="P:NJsonSchema.JsonSchema4.EnumerationNames"/>).</param>
+            <param name="name">The name/key.</param>
+            <param name="value">The value.</param>
+            <param name="schema">The schema.</param>
+            <returns>The enumeration name.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.JsonSchemaGraphUtilities">
+            <summary>JSON Schema graph utilities.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.JsonSchemaGraphUtilities.GetDerivedSchemas(NJsonSchema.JsonSchema4,System.Object,NJsonSchema.CodeGeneration.ITypeResolver)">
+            <summary>Gets the derived schemas.</summary>
+            <param name="schema">The schema.</param>
+            <param name="rootObject">The root object.</param>
+            <param name="typeResolver">The type resolver.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.JsonSchemaGraphUtilities.FindAllSchemas(System.Object,NJsonSchema.CodeGeneration.ITypeResolver)">
+            <summary>Finds all schema object in the given object.</summary>
+            <param name="root">The root object.</param>
+            <param name="typeResolver">The type resolver.</param>
+            <returns>The schemas.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.Models.ClassTemplateModelBase">
+            <summary>The class template base class.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.Models.ClassTemplateModelBase.ActualClass">
+            <summary>Gets the class.</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.Models.PropertyModelBase">
+            <summary>The property template model base class.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.Models.PropertyModelBase.#ctor(NJsonSchema.JsonProperty,NJsonSchema.CodeGeneration.Models.ClassTemplateModelBase,NJsonSchema.CodeGeneration.DefaultValueGenerator,NJsonSchema.CodeGeneration.CodeGeneratorSettingsBase)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.Models.PropertyModelBase"/> class.</summary>
+            <param name="property">The property.</param>
+            <param name="classTemplateModel">The class template model.</param>
+            <param name="defaultValueGenerator">The default value generator.</param>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.Models.PropertyModelBase.HasDefaultValue">
+            <summary>Gets a value indicating whether the property has default value.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.Models.PropertyModelBase.Type">
+            <summary>Gets the type of the property.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.Models.PropertyModelBase.DefaultValue">
+            <summary>Gets the default value as string.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.Models.PropertyModelBase.PropertyName">
+            <summary>Gets the name of the property.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.Models.PropertyModelBase.IsStringEnumArray">
+            <summary>Gets a value indicating whether the property is a string enum array.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.Models.PropertyModelBase.GetTypeNameHint">
+            <summary>Gets the type name hint for the property.</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.Models.EnumerationItemModel">
+            <summary>Describes an enumeration entry.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.Models.EnumerationItemModel.Name">
+            <summary>Gets or sets the name.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.Models.EnumerationItemModel.Value">
+            <summary>Gets or sets the value.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.Models.EnumerationItemModel.InternalValue">
+            <summary>Gets or sets the internal value (e.g. the underlying/system value).</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.DefaultTemplateFactory">
+            <summary>The default template factory which loads templates from embedded resources.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.DefaultTemplateFactory.CreateTemplate(System.String,System.String,System.Object)">
+            <summary>Creates a template for the given language, template name and template model.</summary>
+            <remarks>Supports NJsonSchema and NSwag embedded templates.</remarks>
+            <param name="package">The package name (i.e. language).</param>
+            <param name="template">The template name.</param>
+            <param name="model">The template model.</param>
+            <returns>The template.</returns>
+            <exception cref="T:System.InvalidOperationException">Could not load template..</exception>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.IPropertyNameGenerator">
+            <summary>Generates the property name for a given <see cref="T:NJsonSchema.JsonProperty"/>.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.IPropertyNameGenerator.Generate(NJsonSchema.JsonProperty)">
+            <summary>Generates the property name.</summary>
+            <param name="property">The property.</param>
+            <returns>The new name.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.DefaultValueGenerator">
+            <summary>Converts the default value to a language specific identifier.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.DefaultValueGenerator.#ctor(NJsonSchema.CodeGeneration.ITypeResolver)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.DefaultValueGenerator" /> class.</summary>
+            <param name="typeResolver">The type typeResolver.</param>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.DefaultValueGenerator.GetDefaultValue(NJsonSchema.JsonSchema4,System.Boolean,System.String,System.String,System.Boolean)">
+            <summary>Gets the default value code.</summary>
+            <param name="schema">The schema.</param>
+            <param name="allowsNull">Specifies whether the default value assignment also allows null.</param>
+            <param name="targetType">The type of the target.</param>
+            <param name="typeNameHint">The type name hint to use when generating the type and the type name is missing.</param>
+            <param name="useSchemaDefault">if set to <c>true</c> uses the default value from the schema if available.</param>
+            <returns>The code.</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.DefaultValueGenerator.GetEnumDefaultValue(NJsonSchema.JsonSchema4,NJsonSchema.JsonSchema4,System.String)">
+            <summary>Gets the enum default value.</summary>
+            <param name="schema">The schema.</param>
+            <param name="actualSchema">The actual schema.</param>
+            <param name="typeNameHint">The type name hint.</param>
+            <returns>The enum default value.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.ITemplateFactory">
+            <summary>The interface of a code generator template factory.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.ITemplateFactory.CreateTemplate(System.String,System.String,System.Object)">
+            <summary>Creates a template for the given language, template name and template model.</summary>
+            <param name="package">The package name (i.e. the language, 'CSharp' or 'TypeScript').</param>
+            <param name="template">The template name.</param>
+            <param name="model">The template model.</param>
+            <returns>The template.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.ITypeResolver">
+            <summary>The type resolver interface.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.ITypeResolver.GetOrGenerateTypeName(NJsonSchema.JsonSchema4,System.String)">
+            <summary>Gets or generates the type name for the given schema.</summary>
+            <param name="schema">The schema.</param>
+            <param name="typeNameHint">The type name hint.</param>
+            <returns>The type name.</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.ITypeResolver.Resolve(NJsonSchema.JsonSchema4,System.Boolean,System.String)">
+            <summary>Resolves and possibly generates the specified schema.</summary>
+            <param name="schema">The schema.</param>
+            <param name="isNullable">Specifies whether the given type usage is nullable.</param>
+            <param name="typeNameHint">The type name hint to use when generating the type and the type name is missing.</param>
+            <returns>The type name.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.ITemplate">
+            <summary>Interface for a template.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.ITemplate.Render">
+            <summary>Renders the template.</summary>
+            <returns>The output.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeGeneratorBase">
+            <summary>Generates code for a type.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeGeneratorBase.GenerateType(System.String)">
+            <summary>Generates the type.</summary>
+            <param name="typeNameHint">The type name hint.</param>
+            <returns>The code.</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeGeneratorBase.#ctor(NJsonSchema.JsonSchema4)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.TypeGeneratorBase"/> class.</summary>
+            <param name="schema">The schema.</param>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeGeneratorResult">
+            <summary>The type generator result.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeGeneratorResult.TypeName">
+            <summary>Gets or sets the type name.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeGeneratorResult.BaseTypeName">
+            <summary>Gets or sets the name of the base type (i.e. the name of the inherited class).</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.TypeGeneratorResult.Code">
+            <summary>Gets or sets the generated code.</summary>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.TypeResolverBase`1">
+            <summary>The type resolver base.</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeResolverBase`1.#ctor(NJsonSchema.CodeGeneration.CodeGeneratorSettingsBase)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.TypeResolverBase`1" /> class.</summary>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeResolverBase`1.TryResolve(NJsonSchema.JsonSchema4,System.String)">
+            <summary>Tries to resolve the schema and returns null if there was a problem.</summary>
+            <param name="schema">The schema.</param>
+            <param name="typeNameHint">The type name hint.</param>
+            <returns>The type name.</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeResolverBase`1.GenerateTypes(NJsonSchema.CodeGeneration.ExtensionCode)">
+            <summary>Generates the code for all described types (e.g. interfaces, classes, enums, etc).</summary>
+            <returns>The code.</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeResolverBase`1.Resolve(NJsonSchema.JsonSchema4,System.Boolean,System.String)">
+            <summary>Resolves and possibly generates the specified schema.</summary>
+            <param name="schema">The schema.</param>
+            <param name="isNullable">Specifies whether the given type usage is nullable.</param>
+            <param name="typeNameHint">The type name hint to use when generating the type and the type name is missing.</param>
+            <returns>The type name.</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeResolverBase`1.AddGenerators(System.Collections.Generic.IDictionary{System.String,NJsonSchema.JsonSchema4})">
+            <summary>Adds all schemas to the resolver.</summary>
+            <param name="definitions">The schema definitions.</param>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeResolverBase`1.GetOrGenerateTypeName(NJsonSchema.JsonSchema4,System.String)">
+            <summary>Gets or generates the type name for the given schema.</summary>
+            <param name="schema">The schema.</param>
+            <param name="typeNameHint">The type name hint.</param>
+            <returns>The type name.</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeResolverBase`1.HasTypeGenerator(System.String)">
+            <summary>Determines whether the generator for a given type name is registered.</summary>
+            <param name="typeName">Name of the type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeResolverBase`1.CreateTypeGenerator(NJsonSchema.JsonSchema4)">
+            <summary>Creates a type generator.</summary>
+            <param name="schema">The schema.</param>
+            <returns>The generator.</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeResolverBase`1.AddOrReplaceTypeGenerator(System.String,`0)">
+            <summary>Adds the type generator for a given type name.</summary>
+            <param name="typeName">Name of the type.</param>
+            <param name="generator">The generator.</param>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeResolverBase`1.AddGenerator(NJsonSchema.JsonSchema4,System.String)">
+            <summary>Adds a generator for the given schema if necessary.</summary>
+            <param name="schema">The schema.</param>
+            <param name="typeNameHint">The type name hint.</param>
+            <returns>The type name of the created generator.</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.TypeResolverBase`1.ResolveDictionaryValueType(NJsonSchema.JsonSchema4,System.String,NJsonSchema.NullHandling)">
+            <summary>Resolves the type of the dictionary value of the given schema (must be a dictionary schema).</summary>
+            <param name="schema">The schema.</param>
+            <param name="fallbackType">The fallback type (e.g. 'object').</param>
+            <param name="nullHandling">The null handling.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.GeneratorBase">
+            <summary>The base class of the code generators</summary>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.GeneratorBase.#ctor(NJsonSchema.JsonSchema4)">
+            <summary>Initializes a new instance of the <see cref="T:NJsonSchema.CodeGeneration.GeneratorBase"/> class.</summary>
+            <param name="schema">The schema.</param>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.GeneratorBase.GenerateFile">
+            <summary>Generates the the whole file containing all needed types.</summary>
+            <returns>The code</returns>
+        </member>
+        <member name="M:NJsonSchema.CodeGeneration.GeneratorBase.GenerateFile(System.String)">
+            <summary>Generates the the whole file containing all needed types.</summary>
+            <param name="rootTypeNameHint">The root type name hint.</param>
+            <returns>The code</returns>
+        </member>
+        <member name="T:NJsonSchema.CodeGeneration.ExtensionCode">
+            <summary>Provides access to the extension code.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.ExtensionCode.ExtensionClasses">
+            <summary>Gets the code of the class extension.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.ExtensionCode.ImportCode">
+            <summary>Gets or sets the imports.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.ExtensionCode.TopCode">
+            <summary>Gets the extension code which is inserted at the start of the generated code.</summary>
+        </member>
+        <member name="P:NJsonSchema.CodeGeneration.ExtensionCode.BottomCode">
+            <summary>Gets the extension code which is appended at the end of the generated code.</summary>
+        </member>
+    </members>
+</doc>

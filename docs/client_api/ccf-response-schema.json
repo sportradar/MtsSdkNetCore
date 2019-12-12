@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "ccf": {
+      "type": "number",
+      "description": "Customer Confidence Factor (factor multiplied by 10000)"
+    },
+    "sportCcfDetails": {
+      "type": "array",
+      "description": "CCF values for sport and prematch/live (if set for customer)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sportId": {
+            "type": "string",
+            "description": "Sport ID"
+          },
+          "prematchCcf": {
+            "type": "number",
+            "description": "Customer Confidence Factor for the sport for prematch selections (factor multiplied by 10000)"
+          },
+          "liveCcf": {
+            "type": "number",
+            "description": "Customer Confidence Factor for the sport for live selections (factor multiplied by 10000)"
+          }
+        }
+      }
+    }
+  }
+}

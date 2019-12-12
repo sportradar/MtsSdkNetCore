@@ -1,0 +1,50 @@
+{
+   "$schema":"http://json-schema.org/draft-04/schema#",
+   "type":"object",
+   "additionalProperties":false,
+   "description":"Re-offer cancel version 2.3 schema",
+   "title":"Re-offer cancel container",
+   "required":[
+      "timestampUtc",
+      "ticketId",
+      "sender",
+      "version"
+   ],
+   "properties":{
+      "timestampUtc":{
+         "type":"number",
+         "description":"Timestamp of re-offer cancel placement (in UNIX time millis)",
+         "minimum":1,
+         "maximum":9223372036854775807
+      },
+      "ticketId":{
+         "type":"string",
+         "description":"Re-offer ticket id to cancel (in the client's system)",
+         "minLength":1,
+         "maxLength":50
+      },
+      "sender":{
+         "type":"object",
+         "additionalProperties":false,
+         "description":"Identification and settings of the re-offer cancel sender",
+         "required":[
+            "bookmakerId"
+         ],
+         "properties":{
+            "bookmakerId":{
+               "type":"integer",
+               "description":"Client's id (provided by Sportradar to the client)",
+               "maximum":2147483647,
+               "minimum":1
+            }
+         }
+      },
+      "version":{
+         "type":"string",
+         "description":"JSON format version (must be '2.3')",
+         "pattern":"^(2\\.3)$",
+         "minLength":3,
+         "maxLength":3
+      }
+   }
+}

@@ -1,0 +1,21 @@
+Some definitions are repeated, thus some manual changes are required for successful build.
+PreBuild: 
+In JSON schemas we must delete the following where there are 'definitions" (so far only in schemas for Responses):
+    "description": "Defines commonly used types",
+    "required": [
+      "code"
+    ],
+
+Note: in order to easier find/replace Properties that should be of type 'long', before generation change all apropriate fields in schemas to 'number'. Then they will be 'double' and you can just search/replace all.
+
+PostBuild:
+Problem:
+Some objects are defined in more then 1 schema.
+There are actually 2 different 'Sender' objects defined. One full sender object, second only with SenderId.
+
+Solution:
+Leave full one in MtsTicket.cs
+Rename 'small' object in MtsTicketAck.cs to 'SenderSummary'.
+Correct in the rest of the classes to use SenderSummary.
+Resolve the rest of duplicate definitions.
+Correct all parameters, which should be 'long' (by generator they are 'int')

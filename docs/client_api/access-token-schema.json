@@ -1,0 +1,31 @@
+{
+  "$schema":"http://json-schema.org/draft-04/schema#",
+  "type":"object",
+  "additionalProperties":false,
+  "properties":{
+    "access_token":{
+      "type":"string"
+    },
+    "expires_in":{
+      "type":"integer"
+    },
+    "not-before-policy":{
+      "type":"integer"
+    },
+    "refresh_expires_in":{
+      "type":"integer"
+    },
+    "refresh_token":{
+      "type":"string"
+    },
+    "session_state":{
+      "type":"string"
+    },
+    "token_type":{
+      "type":"string"
+    },
+    "scope":{
+      "type":"string"
+    }
+  }
+}

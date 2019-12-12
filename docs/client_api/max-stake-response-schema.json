@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "ticketId": {
+      "type": "string",
+      "description": "Ticket ID (from the original response)"
+    },
+    "maxStake": {
+      "type": "number",
+      "description": "Maximum reoffer stake (quantity multiplied by 10000 and rounded to a long value)"
+    },
+    "timestampUtc": {
+      "type": "number"
+    }
+  }
+}

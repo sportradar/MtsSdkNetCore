@@ -1,0 +1,21 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Sportradar.MTS.SDK</id>
+    <version>0.0.0.0</version>
+    <title>Sportradar MTS SDK</title>
+    <authors>Sportradar AG</authors>
+    <owners>Sportradar AG</owners>
+    <licenseUrl>http://sdk.sportradar.com/mts/net/eula</licenseUrl>
+    <projectUrl>http://sdk.sportradar.com/mts/net</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>The SDK simplifying the integration with Sportradar's MTS services</description>
+    <releaseNotes>Official version</releaseNotes>
+    <copyright>Copyright © Sportradar AG 2017</copyright>
+    <tags>SportRadar MTS SDK Ticket</tags>
+  </metadata>
+  <files>
+    <file src="Readme.txt" target="" />
+    <file src="lib\**" target="lib" />
+  </files>
+</package>  

@@ -1,0 +1,383 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "description": "Ticket version 2.3 schema",
+  "title": "Ticket container",
+  "required": [
+    "ticket"
+  ],
+  "properties": {
+    "ticket": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Actual ticket being sent to Sportradar",
+      "required": [
+        "timestampUtc",
+        "bets",
+        "ticketId",
+        "selections",
+        "sender",
+        "version"
+      ],
+      "properties": {
+        "timestampUtc": {
+          "type": "number",
+          "description": "Timestamp of ticket placement (in UNIX time millis)",
+          "minimum": 1,
+          "maximum": 9223372036854775807
+        },
+        "bets": {
+          "type": "array",
+          "description": "Collection of all bets",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "stake",
+              "selectedSystems"
+            ],
+            "properties": {
+              "bonus": {
+                "type": "object",
+                "additionalProperties": false,
+                "description": "Bonus of the bet (optional, default null)",
+                "required": [
+                  "value"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "number",
+                    "description": "Quantity multiplied by 10_000 and rounded to a long value",
+                    "maximum": 1000000000000000000,
+                    "minimum": 0
+                  },
+                  "type": {
+                    "type": ["string", "null"],
+                    "description": "Type (optional, default total)",
+                    "default": "total",
+                    "enum": [
+                      "total"
+                    ]
+                  },
+                  "mode": {
+                    "type": ["string", "null"],
+                    "description": "Payout mode (optional, default all). Relevant mostly for system bets. All: all bets must win for bonus to be paid out.",
+                    "default": "all",
+                    "enum": [
+                      "all"
+                    ]
+                  }
+                }
+              },
+              "customBet": {
+                "description": "Flag if bet is a custom bet (optional, default false)",
+                "type": ["boolean", "null"],
+                "default": false
+              },
+              "calculationOdds": {
+                "type": ["integer", "null"],
+                "description": "Odds calculated for custom bet multiplied by 10_000 and rounded to int value",
+                "maximum": 1000000000,
+                "minimum": 10000
+              },
+              "stake": {
+                "type": "object",
+                "additionalProperties": false,
+                "description": "Stake of the bet",
+                "required": [
+                  "value"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "number",
+                    "description": "Quantity multiplied by 10_000 and rounded to a long value",
+                    "maximum": 1000000000000000000,
+                    "minimum": 1
+                  },
+                  "type": {
+                    "type": ["string", "null"],
+                    "description": "Type of stake (optional, default total)",
+                    "default": "total",
+                    "enum": [
+                      "total",
+                      "unit"
+                    ]
+                  }
+                }
+              },
+              "entireStake": {
+                "type": "object",
+                "additionalProperties": false,
+                "description": "Entire stake of the bet",
+                "required": [
+                  "value"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "number",
+                    "description": "Quantity multiplied by 10_000 and rounded to a long value",
+                    "maximum": 1000000000000000000,
+                    "minimum": 1
+                  },
+                  "type": {
+                    "type": ["string", "null"],
+                    "description": "Type of stake (optional, default total)",
+                    "default": "total",
+                    "enum": [
+                      "total",
+                      "unit"
+                    ]
+                  }
+                }
+              },
+              "id": {
+                "type": ["string", "null"],
+                "description": "Bet id (optional)",
+                "pattern": "^[0-9A-Za-z:\\-_]{1,128}$",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "selectedSystems": {
+                "type": "array",
+                "default": "null",
+                "description": "Array of all the systems (mandatory, [0] is not allowed, use [fold] instead)",
+                "pattern":"(([1-9]|([1-5][0-9])|(6[0-3]))(\\ *,\\ *([1-9]|([1-5][0-9])|(6[0-3])))?)",
+                "items": {
+                  "type": "integer"
+                },
+                "uniqueItems": true,
+                "minItems": 1,
+                "maxItems": 63
+              },
+              "selectionRefs": {
+                "type": "array",
+                "default": "null",
+                "description": "Array of selection references which form the bet (optional, if missing then all selections are used)",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "description": "Array of selection references to form the bet (optional, if missing all selections are taken)",
+                  "required": [
+                    "selectionIndex"
+                  ],
+                  "properties": {
+                    "selectionIndex": {
+                      "type": "integer",
+                      "description": "Selection index from 'ticket.selections' array (zero based)",
+                      "maximum": 62,
+                      "minimum": 0
+                    },
+                    "banker": {
+                      "description": "Flag if selection is banker (optional, default false)",
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                },
+                "uniqueItems": true,
+                "minItems": 1,
+                "maxItems": 63
+              },
+              "reofferRefId": {
+                "type": ["string", "null"],
+                "description": "Reoffer reference bet id",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "sumOfWins": {
+                "type": ["number", "null"],
+                "description": "Sum of all wins for all generated combinations for this bet (in ticket currency, used in validation)",
+                "maximum": 9223372036854775807,
+                "minimum": 1
+              }
+            }
+          },
+          "minItems": 1,
+          "maxItems": 50
+        },
+        "ticketId": {
+          "type": "string",
+          "description": "Unique ticket id (in the client's system)",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "selections": {
+          "type": "array",
+          "description": "Array of all selections. Order is very important as they can be referenced by index in 'ticket.bets.selectionRefs'",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "eventId",
+              "id",
+              "odds"
+            ],
+            "properties": {
+              "eventId": {
+                "type": "string",
+                "description": "Betradar event (match or outright) id",
+                "minLength": 1,
+                "maxLength": 100
+              },
+              "id": {
+                "type": "string",
+                "description": "Selection id, should be composed according to specification",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "odds": {
+                "type": ["integer", "null"],
+                "description": "Odds multiplied by 10_000 and rounded to int value",
+                "maximum": 1000000000,
+                "minimum": 10000
+              }
+            }
+          },
+          "minItems": 1,
+          "maxItems": 63
+        },
+        "sender": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Identification and settings of the ticket sender",
+          "required": [
+            "currency",
+            "bookmakerId",
+            "limitId",
+            "channel"
+          ],
+          "properties": {
+            "currency": {
+              "type": "string",
+              "description": "3 or 4 letter currency code (4 letters only apply to mBTC)",
+              "minLength": 3,
+              "maxLength": 4
+            },
+            "terminalId": {
+              "type": ["string", "null"],
+              "description": "Terminal id (optional)",
+              "pattern": "^[0-9A-Za-z:\\-_]{1,36}$",
+              "minLength": 1,
+              "maxLength": 36
+            },
+            "channel": {
+              "type": "string",
+              "description": "Communication channel",
+              "enum": [
+                "internet",
+                "retail",
+                "terminal",
+                "mobile",
+                "phone",
+                "sms",
+                "callCentre",
+				"tvApp",
+				"agent"
+              ]
+            },
+            "shopId": {
+              "type": ["string", "null"],
+              "description": "Shop id (optional)",
+              "pattern": "^[0-9A-Za-z:\\-_]{1,36}$",
+              "minLength": 1,
+              "maxLength": 36
+            },
+            "bookmakerId": {
+              "type": "integer",
+              "description": "Client's id (provided by Sportradar to the client)",
+              "maximum": 2147483647,
+              "minimum": 1
+            },
+            "endCustomer": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Identification of the end user (customer)",
+              "properties": {
+                "ip": {
+                  "type": ["string", "null"],
+                  "description": "End user's ip",
+                  "pattern": "^(((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])))$"
+                },
+                "languageId": {
+                  "type": ["string", "null"],
+                  "description": "ISO 639-1 language code",
+                  "minLength": 2,
+                  "maxLength": 2
+                },
+                "deviceId": {
+                  "type": ["string", "null"],
+                  "description": "End user's device id",
+                  "pattern": "^[0-9A-Za-z:\\-_]{1,36}$",
+                  "minLength": 1,
+                  "maxLength": 36
+                },
+                "id": {
+                  "type": ["string", "null"],
+                  "description": "End user's unique id (in client's system)",
+                  "pattern": "^[0-9A-Za-z:\\-_]{1,36}$",
+                  "minLength": 1,
+                  "maxLength": 36
+                },
+                "confidence": {
+                  "type": ["number", "null"],
+                  "description": "Suggested CCF of the customer multiplied by 10_000 and rounded to a long value",
+                  "maximum": 9223372036854775807,
+                  "minimum": 1
+                }
+              }
+            },
+            "limitId": {
+              "type": "integer",
+              "description": "Client's limit id (provided by Sportradar to the client)",
+              "maximum": 2147483647,
+              "minimum": 1
+            }
+          }
+        },
+        "reofferRefId": {
+          "type": ["string", "null"],
+          "description": "Reoffer reference ticket id",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "altStakeRefId": {
+          "type": ["string", "null"],
+          "description": "Alternative stake reference ticket id",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "version": {
+          "type": "string",
+          "description": "JSON format version (must be '2.3')",
+          "pattern": "^(2\\.3)$",
+          "minLength": 3,
+          "maxLength": 3
+        },
+        "testSource": {
+          "type": "boolean"
+        },
+        "oddsChange": {
+          "type":["string", "null"],
+          "description":"Accept change in odds (optional, default none) none: default behaviour, any: any odds change accepted, higher: accept higher odds",
+          "default":"none",
+          "enum": [
+            "none",
+            "any",
+            "higher"
+          ]
+        },
+        "totalCombinations": {
+          "type": ["integer", "null"],
+          "description": "Expected total number of generated combinations on this ticket (optional, default null). If present is used to validate against actual number of generated combinations.",
+          "minimum": 1
+        },
+        "lastMatchEndTime": {
+          "type": ["number", "null"],
+          "description": "End time of last (non Sportradar) match on ticket.",
+          "minimum": 1
+        }
+      }
+    }
+  }
+}

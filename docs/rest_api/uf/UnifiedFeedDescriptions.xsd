@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="market_descriptions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="market" type="desc_market" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="response_code" type="response_code"/>
+			<xs:attribute name="location" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="desc_market">
+		<xs:sequence>
+			<xs:element name="outcomes" type="desc_outcomes" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="specifiers" type="desc_specifiers" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="mappings" type="mappings" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="attributes" type="attributes" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		
+		<xs:attribute name="id" type="xs:int" use="required"/>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="groups" type="xs:string" use="required"/>
+		<xs:attribute name="description" type="xs:string"/>
+		<xs:attribute name="includes_outcomes_of_type" type="xs:string"/>
+		<xs:attribute name="variant" type="xs:string"/>
+	</xs:complexType>
+	
+	<xs:complexType name="desc_outcomes">
+		<xs:sequence>
+			<xs:element name="outcome" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:attribute name="id" type="xs:string" use="required"/>
+					<xs:attribute name="name" type="xs:string" use="required"/>
+					<xs:attribute name="description" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="desc_specifiers">
+		<xs:sequence>
+			<xs:element name="specifier" minOccurs="1" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:attribute name="name" type="xs:string" use="required"/>
+					<xs:attribute name="type" type="xs:string" use="required"/>
+					<xs:attribute name="description" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="mappings">
+		<xs:sequence>
+			<xs:element name="mapping" minOccurs="1" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="mapping_outcome" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:attribute name="outcome_id" type="xs:string" use="required"/>
+								<xs:attribute name="product_outcome_id" type="xs:string" use="required"/>
+								<xs:attribute name="product_outcome_name" type="xs:string" use="optional"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="product_id" type="xs:int" use="required"/>
+					<xs:attribute name="sport_id" type="xs:string" use="required"/>
+					<xs:attribute name="market_id" type="xs:string" use="required"/>
+					<xs:attribute name="sov_template" type="xs:string" use="optional"/>
+					<xs:attribute name="valid_for" type="xs:string" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="attributes">
+		<xs:sequence>
+			<xs:element name="attribute" minOccurs="1" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:attribute name="name" type="xs:string" use="required"/>
+					<xs:attribute name="description" type="xs:string" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:simpleType name="response_code">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="OK" />
+			<xs:enumeration value="CREATED" />
+			<xs:enumeration value="ACCEPTED" />
+			<xs:enumeration value="FORBIDDEN" />
+			<xs:enumeration value="NOT_FOUND" />
+			<xs:enumeration value="CONFLICT" />
+			<xs:enumeration value="SERVICE_UNAVAILABLE" />
+			<xs:enumeration value="NOT_IMPLEMENTED" />
+			<xs:enumeration value="MOVED_PERMANENTLY" />
+			<xs:enumeration value="BAD_REQUEST" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

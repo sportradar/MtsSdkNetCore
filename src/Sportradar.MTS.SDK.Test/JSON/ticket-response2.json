@@ -1,0 +1,34 @@
+﻿{
+  "result": {
+    "ticketId": "ticket-830",
+    "status": "rejected",
+    "reason": {
+      "code": -422,
+      "message": "market uof:1/sr:sport:1/16/1715?hcp=3 not found on translation service",
+      "internalMessage": "market uof:1/sr:sport:1/16/1715?hcp=3 not found on translation service"
+    },
+    "betDetails": [
+      {
+        "betId": "bet-id-246",
+        "reason": {
+          "code": -422,
+          "message": "market uof:1/sr:sport:1/16/1715?hcp=3 not found on translation service",
+          "internalMessage": "market uof:1/sr:sport:1/16/1715?hcp=3 not found on translation service"
+        },
+        "selectionDetails": [
+          {
+            "selectionIndex": 0,
+            "reason": {
+              "code": -422,
+              "message": "market uof:1/sr:sport:1/16/1715?hcp=3 not found on translation service",
+              "internalMessage": "market uof:1/sr:sport:1/16/1715?hcp=3 not found on translation service"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "version": "2.0",
+  "signature": "I087RXwo93WGJnqUipMw4rzY+l4cfFMfvfuDwKyzwbU=",
+  "exchangeRate": 10000
+}

@@ -1,0 +1,58 @@
+﻿{
+  "timestampUtc": 1486981503235,
+  "bets": [
+    {
+      "bonus": {
+        "value": 10293,
+        "type": "total",
+        "mode": "all"
+      },
+      "stake": {
+        "value": 92343,
+        "type": "total"
+      },
+      "id": "bet-id-728",
+      "selectedSystems": [ 1 ],
+      "selectionRefs": [
+        {
+          "selectionIndex": 0,
+          "banker": true
+        }
+      ],
+      "sumOfWins": 0
+    }
+  ],
+  "ticketId": "ticket-7281",
+  "selections": [
+    {
+      "eventId": 9687059,
+      "id": "lcoo:55/1/0:1/1",
+      "odds": 27000
+    },
+    {
+      "eventId": 9687059,
+      "id": "lcoo:155/1/0:1/1",
+      "odds": 27000
+    },
+    {
+      "eventId": 9687059,
+      "id": "lcoo:255/1/0:1/1",
+      "odds": 27000
+    }
+  ],
+  "sender": {
+    "currency": "EUR",
+    "channel": "internet",
+    "bookmakerId": 9985,
+    "endCustomer": {
+      "ip": "127.0.0.1",
+      "languageId": "EN",
+      "id": "customer-client-747",
+      "confidence": 12039203
+    },
+    "limitId": 90
+  },
+  "version": "2.0",
+  "testSource": false,
+  "oddsChange": "any"
+}
