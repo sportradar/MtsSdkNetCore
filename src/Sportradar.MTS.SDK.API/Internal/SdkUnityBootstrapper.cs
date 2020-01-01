@@ -49,8 +49,8 @@ namespace Sportradar.MTS.SDK.API.Internal
 
         public static void RegisterTypes(this IUnityContainer container, ISdkConfiguration userConfig, ILoggerFactory loggerFactory, IMetricsRoot metricsRoot)
         {
-            Guard.Argument(container).NotNull();
-            Guard.Argument(userConfig).NotNull();
+            Guard.Argument(container, nameof(container)).NotNull();
+            Guard.Argument(userConfig, nameof(userConfig)).NotNull();
 
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 

@@ -89,8 +89,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         public TicketCashout(string ticketId, int bookmakerId, long? stake, int? percent, IReadOnlyCollection<IBetCashout> betCashouts)
         {
             Guard.Argument(ticketId).Require(TicketHelper.ValidateTicketId(ticketId));
-            Guard.Argument(bookmakerId).Positive();
-            Guard.Argument(stake).Require(stake > 0 || percent > 0 || (betCashouts != null && betCashouts.Any()));
+            Guard.Argument(bookmakerId, nameof(bookmakerId)).Positive();
+            Guard.Argument(stake, nameof(stake)).Require(stake > 0 || percent > 0 || (betCashouts != null && betCashouts.Any()));
 
             if (percent != null && stake == null)
             {

@@ -44,11 +44,11 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         [JsonConstructor]
         public Selection(string eventId, string id, int? odds, bool isBanker = false)
         {
-            Guard.Argument(eventId).NotNull().NotEmpty();
-            Guard.Argument(eventId.Length).InRange(1, 50);
-            Guard.Argument(id).NotNull().NotEmpty();
-            Guard.Argument(id.Length).InRange(1, 1000);
-            Guard.Argument(odds).Require(odds == null || (odds >= 10000 && odds <= 1000000000));
+            Guard.Argument(eventId, nameof(eventId)).NotNull().NotEmpty();
+            Guard.Argument(eventId.Length, nameof(eventId.Length)).InRange(1, 50);
+            Guard.Argument(id, nameof(id)).NotNull().NotEmpty();
+            Guard.Argument(id.Length, nameof(id.Length)).InRange(1, 1000);
+            Guard.Argument(odds, nameof(odds)).Require(odds == null || (odds >= 10000 && odds <= 1000000000));
 
 
             EventId = eventId;

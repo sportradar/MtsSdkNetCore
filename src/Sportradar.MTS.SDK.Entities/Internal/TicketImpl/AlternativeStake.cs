@@ -24,7 +24,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         /// <param name="stake">The stake</param>
         public AlternativeStake(long stake)
         {
-            Guard.Argument(stake).InRange(1, 1000000000000000000 - 1);
+            Guard.Argument(stake, nameof(stake)).InRange(1, 1000000000000000000 - 1);
 
             Stake = stake;
         }

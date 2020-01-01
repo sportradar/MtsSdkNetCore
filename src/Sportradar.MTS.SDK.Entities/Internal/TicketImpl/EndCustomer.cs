@@ -26,10 +26,10 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         [JsonConstructor]
         public EndCustomer(string ip, string languageId, string deviceId, string id, long confidence)
         {
-            Guard.Argument(languageId).Require(string.IsNullOrEmpty(languageId) || languageId.Length == 2 || languageId.Length == 3);
-            Guard.Argument(deviceId).Require(string.IsNullOrEmpty(deviceId) || TicketHelper.ValidateUserId(deviceId));
-            Guard.Argument(id).Require(string.IsNullOrEmpty(id) || TicketHelper.ValidateUserId(id));
-            Guard.Argument(confidence).NotNegative();
+            Guard.Argument(languageId, nameof(languageId)).Require(string.IsNullOrEmpty(languageId) || languageId.Length == 2 || languageId.Length == 3);
+            Guard.Argument(deviceId, nameof(deviceId)).Require(string.IsNullOrEmpty(deviceId) || TicketHelper.ValidateUserId(deviceId));
+            Guard.Argument(id, nameof(id)).Require(string.IsNullOrEmpty(id) || TicketHelper.ValidateUserId(id));
+            Guard.Argument(confidence, nameof(confidence)).NotNegative();
 
             if (!string.IsNullOrEmpty(ip))
             {
@@ -44,10 +44,10 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
 
         public EndCustomer(IPAddress ip, string languageId, string deviceId, string id, long confidence)
         {
-            Guard.Argument(languageId).Require(string.IsNullOrEmpty(languageId) || languageId.Length == 2);
-            Guard.Argument(deviceId).Require(string.IsNullOrEmpty(deviceId) || TicketHelper.ValidateUserId(deviceId));
-            Guard.Argument(id).Require(string.IsNullOrEmpty(id) || TicketHelper.ValidateUserId(id));
-            Guard.Argument(confidence).NotNegative();
+            Guard.Argument(languageId, nameof(languageId)).Require(string.IsNullOrEmpty(languageId) || languageId.Length == 2 || languageId.Length == 3);
+            Guard.Argument(deviceId, nameof(deviceId)).Require(string.IsNullOrEmpty(deviceId) || TicketHelper.ValidateUserId(deviceId));
+            Guard.Argument(id, nameof(id)).Require(string.IsNullOrEmpty(id) || TicketHelper.ValidateUserId(id));
+            Guard.Argument(confidence, nameof(confidence)).NotNegative();
 
             Ip = ip?.ToString();
             LanguageId = languageId;

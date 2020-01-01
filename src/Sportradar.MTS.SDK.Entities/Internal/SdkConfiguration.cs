@@ -213,9 +213,9 @@ namespace Sportradar.MTS.SDK.Entities.Internal
             int ticketCashoutResponseTimeout = SdkInfo.TicketCashoutResponseTimeoutDefault,
             int ticketNonSrSettleResponseTimeout = SdkInfo.TicketCashoutResponseTimeoutDefault)
         {
-            Guard.Argument(username).NotNull().NotEmpty();
-            Guard.Argument(password).NotNull().NotEmpty();
-            Guard.Argument(host).NotNull().NotEmpty();
+            Guard.Argument(username, nameof(username)).NotNull().NotEmpty();
+            Guard.Argument(password, nameof(password)).NotNull().NotEmpty();
+            Guard.Argument(host, nameof(host)).NotNull().NotEmpty();
 
             if (ticketResponseTimeoutLive < SdkInfo.TicketResponseTimeoutLiveMin)
             {
@@ -326,7 +326,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         /// <param name="section">A <see cref="SdkConfigurationSection"/> instance containing config values</param>
         public SdkConfiguration(ISdkConfigurationSection section)
         {
-            Guard.Argument(section).NotNull();
+            Guard.Argument(section, nameof(section)).NotNull();
 
             Username = section.Username;
             Password = section.Password;
@@ -393,26 +393,26 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         /// </summary>
         private void ObjectInvariant()
         {
-            Guard.Argument(Username).NotNull().NotEmpty();
-            Guard.Argument(Password).NotNull().NotEmpty();
-            Guard.Argument(Host).NotNull().NotEmpty();
-            Guard.Argument(VirtualHost).NotNull().NotEmpty();
-            Guard.Argument(Port).Positive();
-            Guard.Argument(NodeId).Positive();
-            Guard.Argument(BookmakerId).NotNegative();
-            Guard.Argument(LimitId).NotNegative();
-            Guard.Argument(Currency).Require(Currency == null || (Currency.Length >= 3 && Currency.Length <= 4));
-            Guard.Argument(Host).Require(!Host.Contains(":"), s => "Host can not contain port number. Only domain name or ip address. E.g. mtsgate-ci.betradar.com");
-            Guard.Argument(TicketResponseTimeoutLive).Require(TicketResponseTimeoutLive >= SdkInfo.TicketResponseTimeoutLiveMin, s => $"TicketResponseTimeoutLive must be more than {SdkInfo.TicketResponseTimeoutLiveMin}ms");
-            Guard.Argument(TicketResponseTimeoutLive).Require(TicketResponseTimeoutLive <= SdkInfo.TicketResponseTimeoutLiveMax, s => $"TicketResponseTimeoutLive must be less than {SdkInfo.TicketResponseTimeoutLiveMax}ms");
-            Guard.Argument(TicketResponseTimeoutPrematch).Require(TicketResponseTimeoutPrematch >= SdkInfo.TicketResponseTimeoutPrematchMin, s => $"TicketResponseTimeoutPrematch must be more than {SdkInfo.TicketResponseTimeoutPrematchMin}ms");
-            Guard.Argument(TicketResponseTimeoutPrematch).Require(TicketResponseTimeoutPrematch <= SdkInfo.TicketResponseTimeoutPrematchMax, s => $"TicketResponseTimeoutPrematch must be less than {SdkInfo.TicketResponseTimeoutPrematchMax}ms");
-            Guard.Argument(TicketCancellationResponseTimeout).Require(TicketCancellationResponseTimeout >= SdkInfo.TicketCancellationResponseTimeoutMin, s => $"TicketCancellationResponseTimeout must be more than {SdkInfo.TicketCancellationResponseTimeoutMin}ms");
-            Guard.Argument(TicketCancellationResponseTimeout).Require(TicketCancellationResponseTimeout <= SdkInfo.TicketCancellationResponseTimeoutMax, s => $"TicketCancellationResponseTimeout must be less than {SdkInfo.TicketCancellationResponseTimeoutMax}ms");
-            Guard.Argument(TicketCashoutResponseTimeout).Require(TicketCashoutResponseTimeout >= SdkInfo.TicketCashoutResponseTimeoutMin, s => $"TicketCashoutResponseTimeout must be more than {SdkInfo.TicketCashoutResponseTimeoutMin}ms");
-            Guard.Argument(TicketCashoutResponseTimeout).Require(TicketCashoutResponseTimeout <= SdkInfo.TicketCashoutResponseTimeoutMax, s => $"TicketCashoutResponseTimeout must be less than {SdkInfo.TicketCashoutResponseTimeoutMax}ms");
-            Guard.Argument(TicketNonSrSettleResponseTimeout).Require(TicketNonSrSettleResponseTimeout >= SdkInfo.TicketNonSrResponseTimeoutMin, s => $"TicketNonSrSettleResponseTimeout must be more than {SdkInfo.TicketNonSrResponseTimeoutMin}ms");
-            Guard.Argument(TicketNonSrSettleResponseTimeout).Require(TicketNonSrSettleResponseTimeout <= SdkInfo.TicketNonSrResponseTimeoutMax, s => $"TicketNonSrSettleResponseTimeout must be less than {SdkInfo.TicketNonSrResponseTimeoutMax}ms");
+            Guard.Argument(Username, nameof(Username)).NotNull().NotEmpty();
+            Guard.Argument(Password, nameof(Password)).NotNull().NotEmpty();
+            Guard.Argument(Host, nameof(Host)).NotNull().NotEmpty();
+            Guard.Argument(VirtualHost, nameof(VirtualHost)).NotNull().NotEmpty();
+            Guard.Argument(Port, nameof(Port)).Positive();
+            Guard.Argument(NodeId, nameof(NodeId)).Positive();
+            Guard.Argument(BookmakerId, nameof(BookmakerId)).NotNegative();
+            Guard.Argument(LimitId, nameof(LimitId)).NotNegative();
+            Guard.Argument(Currency, nameof(Currency)).Require(Currency == null || (Currency.Length >= 3 && Currency.Length <= 4));
+            Guard.Argument(Host, nameof(Host)).Require(!Host.Contains(":"), s => "Host can not contain port number. Only domain name or ip address. E.g. mtsgate-ci.betradar.com");
+            Guard.Argument(TicketResponseTimeoutLive, nameof(TicketResponseTimeoutLive)).Require(TicketResponseTimeoutLive >= SdkInfo.TicketResponseTimeoutLiveMin, s => $"TicketResponseTimeoutLive must be more than {SdkInfo.TicketResponseTimeoutLiveMin}ms");
+            Guard.Argument(TicketResponseTimeoutLive, nameof(TicketResponseTimeoutLive)).Require(TicketResponseTimeoutLive <= SdkInfo.TicketResponseTimeoutLiveMax, s => $"TicketResponseTimeoutLive must be less than {SdkInfo.TicketResponseTimeoutLiveMax}ms");
+            Guard.Argument(TicketResponseTimeoutPrematch, nameof(TicketResponseTimeoutPrematch)).Require(TicketResponseTimeoutPrematch >= SdkInfo.TicketResponseTimeoutPrematchMin, s => $"TicketResponseTimeoutPrematch must be more than {SdkInfo.TicketResponseTimeoutPrematchMin}ms");
+            Guard.Argument(TicketResponseTimeoutPrematch, nameof(TicketResponseTimeoutPrematch)).Require(TicketResponseTimeoutPrematch <= SdkInfo.TicketResponseTimeoutPrematchMax, s => $"TicketResponseTimeoutPrematch must be less than {SdkInfo.TicketResponseTimeoutPrematchMax}ms");
+            Guard.Argument(TicketCancellationResponseTimeout, nameof(TicketCancellationResponseTimeout)).Require(TicketCancellationResponseTimeout >= SdkInfo.TicketCancellationResponseTimeoutMin, s => $"TicketCancellationResponseTimeout must be more than {SdkInfo.TicketCancellationResponseTimeoutMin}ms");
+            Guard.Argument(TicketCancellationResponseTimeout, nameof(TicketCancellationResponseTimeout)).Require(TicketCancellationResponseTimeout <= SdkInfo.TicketCancellationResponseTimeoutMax, s => $"TicketCancellationResponseTimeout must be less than {SdkInfo.TicketCancellationResponseTimeoutMax}ms");
+            Guard.Argument(TicketCashoutResponseTimeout, nameof(TicketCashoutResponseTimeout)).Require(TicketCashoutResponseTimeout >= SdkInfo.TicketCashoutResponseTimeoutMin, s => $"TicketCashoutResponseTimeout must be more than {SdkInfo.TicketCashoutResponseTimeoutMin}ms");
+            Guard.Argument(TicketCashoutResponseTimeout, nameof(TicketCashoutResponseTimeout)).Require(TicketCashoutResponseTimeout <= SdkInfo.TicketCashoutResponseTimeoutMax, s => $"TicketCashoutResponseTimeout must be less than {SdkInfo.TicketCashoutResponseTimeoutMax}ms");
+            Guard.Argument(TicketNonSrSettleResponseTimeout, nameof(TicketNonSrSettleResponseTimeout)).Require(TicketNonSrSettleResponseTimeout >= SdkInfo.TicketNonSrResponseTimeoutMin, s => $"TicketNonSrSettleResponseTimeout must be more than {SdkInfo.TicketNonSrResponseTimeoutMin}ms");
+            Guard.Argument(TicketNonSrSettleResponseTimeout, nameof(TicketNonSrSettleResponseTimeout)).Require(TicketNonSrSettleResponseTimeout <= SdkInfo.TicketNonSrResponseTimeoutMax, s => $"TicketNonSrSettleResponseTimeout must be less than {SdkInfo.TicketNonSrResponseTimeoutMax}ms");
         }
     }
 }

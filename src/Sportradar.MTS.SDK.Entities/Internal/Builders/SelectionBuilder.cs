@@ -66,8 +66,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// </summary>
         public SelectionBuilder(IMarketDescriptionProvider marketDescriptionProvider, ISdkConfiguration config, bool isCustomBet)
         {
-            Guard.Argument(marketDescriptionProvider).NotNull();
-            Guard.Argument(config).NotNull();
+            Guard.Argument(marketDescriptionProvider, nameof(marketDescriptionProvider)).NotNull();
+            Guard.Argument(config, nameof(config)).NotNull();
 
             _marketDescriptionProvider = marketDescriptionProvider;
             _isBanker = false;
@@ -363,7 +363,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
                                                                             IReadOnlyDictionary<string, string> specifiers,
                                                                             IReadOnlyDictionary<string, object> sportEventStatus)
         {
-            Guard.Argument(marketId).Positive();
+            Guard.Argument(marketId, nameof(marketId)).Positive();
 
             if (!_config.ProvideAdditionalMarketSpecifiers)
             {

@@ -23,7 +23,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 
         public RabbitServer(ISdkConfigurationInternal config)
         {
-            Guard.Argument(config).NotNull();
+            Guard.Argument(config, nameof(config)).NotNull();
 
             Username = config.Username;
             Password = config.Password;

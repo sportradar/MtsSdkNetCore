@@ -80,20 +80,20 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         [JsonConstructor]
         public Bet(IBetBonus bonus, IStake stake, IStake entireStake, string id, IEnumerable<int> selectedSystems, IEnumerable<ISelection> selections, string reofferRefId, long sumOfWins, bool? customBet, int? calculationOdds)
         {
-            Guard.Argument(stake).NotNull();
-            Guard.Argument(id).Require(string.IsNullOrEmpty(id) || TicketHelper.ValidateTicketId(id));
+            Guard.Argument(stake, nameof(stake)).NotNull();
+            Guard.Argument(id, nameof(id)).Require(string.IsNullOrEmpty(id) || TicketHelper.ValidateTicketId(id));
             var systems = selectedSystems == null ? new List<int>() : selectedSystems.ToList();
-            Guard.Argument(systems).Require(selectedSystems == null
+            Guard.Argument(systems, nameof(systems)).Require(selectedSystems == null
                               || (systems.Any()
                               && systems.Count < 64
                               && systems.Count == systems.Distinct().Count()
                               && systems.All(a => a > 0)));
             var listSelections = selections.ToList();
-            Guard.Argument(listSelections).NotNull().NotEmpty().Require(listSelections.Count < 64 && listSelections.Count == listSelections.Distinct().Count());
-            Guard.Argument(string.IsNullOrEmpty(reofferRefId) || reofferRefId.Length <= 50);
-            Guard.Argument(sumOfWins).NotNegative();
+            Guard.Argument(listSelections, nameof(listSelections)).NotNull().NotEmpty().Require(listSelections.Count < 64 && listSelections.Count == listSelections.Distinct().Count());
+            Guard.Argument(reofferRefId, nameof(reofferRefId)).Require(string.IsNullOrEmpty(reofferRefId) || reofferRefId.Length <= 50);
+            Guard.Argument(sumOfWins, nameof(sumOfWins)).NotNegative();
             bool customBetBool = customBet ?? false;
-            Guard.Argument(customBet).Require((customBetBool && calculationOdds != null && calculationOdds >= 0) || (!customBetBool && calculationOdds == null));
+            Guard.Argument(customBet, nameof(customBet)).Require((customBetBool && calculationOdds != null && calculationOdds >= 0) || (!customBetBool && calculationOdds == null));
 
             Bonus = bonus;
             Stake = stake;

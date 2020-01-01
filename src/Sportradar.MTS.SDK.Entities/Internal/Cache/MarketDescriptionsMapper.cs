@@ -22,7 +22,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
         /// <param name="data">A <see cref="market_descriptions"/> instance containing data used to construct <see cref="IEnumerable{MarketDescriptionDTO}"/> instance</param>
         internal MarketDescriptionsMapper(market_descriptions data)
         {
-            Guard.Argument(data).NotNull();
+            Guard.Argument(data, nameof(data)).NotNull();
 
             _data = data;
         }

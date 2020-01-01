@@ -15,7 +15,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST.ClientApiImpl
 
         internal MaxStakeImpl(MaxStakeResponseDTO maxStakeResponseDto)
         {
-            Guard.Argument(maxStakeResponseDto).NotNull();
+            Guard.Argument(maxStakeResponseDto, nameof(maxStakeResponseDto)).NotNull();
 
             MaxStake = maxStakeResponseDto.MaxStake;
         }

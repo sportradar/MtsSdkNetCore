@@ -27,16 +27,16 @@ namespace Sportradar.MTS.SDK.Common.Internal.Rest
         /// Initializes a new instance of the <see cref="LogHttpDataFetcher"/> class
         /// </summary>
         /// <param name="client">A <see cref="HttpClient"/> used to invoke HTTP requests</param>
-        /// <param name="accessToken">A token used when making the http requests</param>
+        /// <param name="accessToken">A token used when making the HTTP requests</param>
         /// <param name="sequenceGenerator">A <see cref="ISequenceGenerator"/> used to identify requests</param>
         /// <param name="connectionFailureLimit">Indicates the limit of consecutive request failures, after which it goes in "blocking mode"</param>
         /// <param name="connectionFailureTimeout">indicates the timeout after which comes out of "blocking mode" (in seconds)</param>
         public LogHttpDataFetcher(HttpClient client, string accessToken, ISequenceGenerator sequenceGenerator, int connectionFailureLimit = 5, int connectionFailureTimeout = 15)
             : base(client, accessToken, connectionFailureLimit, connectionFailureTimeout)
         {
-            Guard.Argument(sequenceGenerator).NotNull();
-            Guard.Argument(connectionFailureLimit).Positive();
-            Guard.Argument(connectionFailureTimeout).Positive();
+            Guard.Argument(sequenceGenerator, nameof(sequenceGenerator)).NotNull();
+            Guard.Argument(connectionFailureLimit, nameof(connectionFailureLimit)).Positive();
+            Guard.Argument(connectionFailureTimeout, nameof(connectionFailureTimeout)).Positive();
 
             _sequenceGenerator = sequenceGenerator;
         }

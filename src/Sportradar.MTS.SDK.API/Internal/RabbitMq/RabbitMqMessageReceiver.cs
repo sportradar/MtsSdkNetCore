@@ -63,7 +63,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         /// <param name="expectedResponseType">The type of the message receiver is expecting</param>
         public RabbitMqMessageReceiver(IRabbitMqConsumerChannel channel, TicketResponseType expectedResponseType)
         {
-            Guard.Argument(channel).NotNull();
+            Guard.Argument(channel, nameof(channel)).NotNull();
 
             _consumerChannel = channel;
             _expectedTicketResponseType = expectedResponseType;
@@ -173,7 +173,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         /// <param name="additionalInfo">The additional information</param>
         private void RaiseMessageReceived(string body, string routingKey, string correlationId, IDictionary<string, string> additionalInfo)
         {
-            Guard.Argument(body).NotNull().NotEmpty();
+            Guard.Argument(body, nameof(body)).NotNull().NotEmpty();
 
             MqMessageReceived?.Invoke(this, new MessageReceivedEventArgs(body, routingKey, correlationId, _expectedTicketResponseType, additionalInfo));
         }

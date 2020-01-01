@@ -27,7 +27,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// <param name="builderFactory">A <see cref="SimpleBuilderFactory"/> used to construct entity builders</param>
         internal TicketAltStakeBuilder(ISimpleBuilderFactory builderFactory)
         {
-            Guard.Argument(builderFactory).NotNull();
+            Guard.Argument(builderFactory, nameof(builderFactory)).NotNull();
 
             _builderFactory = builderFactory;
         }

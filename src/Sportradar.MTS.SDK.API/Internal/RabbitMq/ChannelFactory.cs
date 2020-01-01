@@ -52,7 +52,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         /// <param name="connectionFactory">The connection factory</param>
         public ChannelFactory(IConnectionFactory connectionFactory)
         {
-            Guard.Argument(connectionFactory).NotNull();
+            Guard.Argument(connectionFactory, nameof(connectionFactory)).NotNull();
 
             _connectionFactory = connectionFactory;
         }

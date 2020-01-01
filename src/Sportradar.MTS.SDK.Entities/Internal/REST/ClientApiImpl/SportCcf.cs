@@ -20,8 +20,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST.ClientApiImpl
 
         internal SportCcf(Anonymous sportCcf)
         {
-            Guard.Argument(sportCcf).NotNull();
-            Guard.Argument(sportCcf.SportId).NotNull();
+            Guard.Argument(sportCcf, nameof(sportCcf)).NotNull();
+            Guard.Argument(sportCcf.SportId, nameof(sportCcf.SportId)).NotNull();
 
             SportId = sportCcf.SportId;
             PrematchCcf = sportCcf.PrematchCcf;

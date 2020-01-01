@@ -17,7 +17,7 @@ namespace Sportradar.MTS.SDK.API.Internal.Senders
 
         public TicketSenderFactory(IReadOnlyDictionary<SdkTicketType, ITicketSender> senders)
         {
-            Guard.Argument(senders).NotNull();
+            Guard.Argument(senders, nameof(senders)).NotNull();
 
             _ticketSenders = senders;
         }

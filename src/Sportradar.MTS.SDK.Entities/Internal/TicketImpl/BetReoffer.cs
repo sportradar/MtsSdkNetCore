@@ -15,7 +15,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
 
         public BetReoffer(long stake, BetReofferType type)
         {
-            Guard.Argument(stake).InRange(1, 1000000000000000000-1);
+            Guard.Argument(stake, nameof(stake)).InRange(1, 1000000000000000000-1);
 
             Stake = stake;
             Type = type;

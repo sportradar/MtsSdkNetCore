@@ -20,7 +20,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
 
         internal TicketCancelAckBuilder(ISdkConfiguration config)
         {
-            Guard.Argument(config).NotNull();
+            Guard.Argument(config, nameof(config)).NotNull();
 
             _bookmakerId = config.BookmakerId;
         }

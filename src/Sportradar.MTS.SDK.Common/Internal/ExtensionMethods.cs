@@ -19,7 +19,7 @@ namespace Sportradar.MTS.SDK.Common.Internal
         /// <returns>A <see cref="string"/> representation of the <see cref="Stream"/> content</returns>
         public static string GetData(this Stream stream)
         {
-            Guard.Argument(stream).NotNull();
+            Guard.Argument(stream, nameof(stream)).NotNull();
 
             using (var memoryStream = new MemoryStream())
             {

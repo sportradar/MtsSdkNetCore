@@ -88,9 +88,9 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Enums
         /// <param name="id">The numerical identifier of the resource associated with the URN</param>
         public URN(string prefix, string type, long id)
         {
-            Guard.Argument(prefix).NotNull().NotEmpty();
-            Guard.Argument(type).NotNull().NotEmpty();
-            Guard.Argument(id).Positive();
+            Guard.Argument(prefix, nameof(prefix)).NotNull().NotEmpty();
+            Guard.Argument(type, nameof(type)).NotNull().NotEmpty();
+            Guard.Argument(id, nameof(id)).Positive();
 
             var tuple = Types.FirstOrDefault(t => t.Item1 == type);
             if (tuple == null)
@@ -112,7 +112,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Enums
         /// <exception cref="System.FormatException">The format of the provided representation is not correct</exception>
         public static URN Parse(string urnString)
         {
-            Guard.Argument(urnString).NotNull().NotEmpty();
+            Guard.Argument(urnString, nameof(urnString)).NotNull().NotEmpty();
 
             var match = Regex.Match(urnString, RegexPattern);
             if (!match.Success)
@@ -140,7 +140,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Enums
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise</returns>
         public static bool TryParse(string urnString, out URN urn)
         {
-            Guard.Argument(urnString).NotNull().NotEmpty();
+            Guard.Argument(urnString, nameof(urnString)).NotNull().NotEmpty();
 
             var success = false;
 

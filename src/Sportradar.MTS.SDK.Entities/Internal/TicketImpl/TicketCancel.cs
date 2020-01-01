@@ -89,10 +89,10 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         /// <param name="betCancels">The list of <see cref="IBetCancel"/></param>
         public TicketCancel(string ticketId, int bookmakerId, TicketCancellationReason code, int? percent, IReadOnlyCollection<IBetCancel> betCancels)
         {
-            Guard.Argument(ticketId).Require(TicketHelper.ValidateTicketId(ticketId));
-            Guard.Argument(bookmakerId).Positive();
-            Guard.Argument(percent).Require(TicketHelper.ValidatePercent(percent));
-            Guard.Argument(betCancels).Require(betCancels == null || betCancels.Any());
+            Guard.Argument(ticketId, nameof(ticketId)).Require(TicketHelper.ValidateTicketId(ticketId));
+            Guard.Argument(bookmakerId, nameof(bookmakerId)).Positive();
+            Guard.Argument(percent, nameof(percent)).Require(TicketHelper.ValidatePercent(percent));
+            Guard.Argument(betCancels, nameof(betCancels)).Require(betCancels == null || betCancels.Any());
 
             if (percent != null && betCancels != null)
             {

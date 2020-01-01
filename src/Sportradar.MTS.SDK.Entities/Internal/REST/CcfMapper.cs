@@ -20,7 +20,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
         /// <param name="data">A <see cref="CcfResponseDTO"/> instance containing data used to construct <see cref="CcfImpl"/> instance</param>
         internal CcfMapper(CcfResponseDTO data)
         {
-            Guard.Argument(data).NotNull();
+            Guard.Argument(data, nameof(data)).NotNull();
 
             _data = data;
         }

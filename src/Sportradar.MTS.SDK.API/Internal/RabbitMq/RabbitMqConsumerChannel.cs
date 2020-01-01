@@ -90,8 +90,8 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                                        IMtsChannelSettings mtsChannelSettings,
                                        IRabbitMqChannelSettings channelSettings)
         {
-            Guard.Argument(channelFactory).NotNull();
-            Guard.Argument(mtsChannelSettings).NotNull();
+            Guard.Argument(channelFactory, nameof(channelFactory)).NotNull();
+            Guard.Argument(mtsChannelSettings, nameof(mtsChannelSettings)).NotNull();
 
             _channelFactory = channelFactory;
             _mtsChannelSettings = mtsChannelSettings;
@@ -197,15 +197,15 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 
         public void Open(IEnumerable<string> routingKeys)
         {
-            Guard.Argument(routingKeys).NotNull().NotEmpty();
+            Guard.Argument(routingKeys, nameof(routingKeys)).NotNull().NotEmpty();
 
             Open(_mtsChannelSettings.ChannelQueueName, routingKeys);
         }
 
         public void Open(string queueName, IEnumerable<string> routingKeys)
         {
-            Guard.Argument(queueName).NotNull().NotEmpty();
-            Guard.Argument(routingKeys).NotNull().NotEmpty();
+            Guard.Argument(queueName, nameof(queueName)).NotNull().NotEmpty();
+            Guard.Argument(routingKeys, nameof(routingKeys)).NotNull().NotEmpty();
 
             if (Interlocked.Read(ref _isOpened) == 1)
             {

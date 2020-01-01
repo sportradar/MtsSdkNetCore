@@ -20,7 +20,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         [JsonConstructor]
         public BetBonus(long value, BetBonusType type, BetBonusMode mode)
         {
-            Guard.Argument(value).InRange(1, 1000000000000000000 - 1);
+            Guard.Argument(value, nameof(value)).InRange(1, 1000000000000000000 - 1);
 
             Value = value;
             Type = type;

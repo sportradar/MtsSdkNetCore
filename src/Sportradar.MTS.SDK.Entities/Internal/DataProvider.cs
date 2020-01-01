@@ -57,11 +57,11 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         /// <param name="mapperFactory">A <see cref="ISingleTypeMapperFactory{T, T1}" /> used to construct instances of <see cref="ISingleTypeMapper{T}" /></param>
         public DataProvider(string uriFormat, IDataFetcher fetcher, IDataPoster poster, IDeserializer<TIn> deserializer, ISingleTypeMapperFactory<TIn, TOut> mapperFactory)
         {
-            Guard.Argument(uriFormat).NotNull().NotEmpty();
-            Guard.Argument(fetcher).NotNull();
-            Guard.Argument(poster).NotNull();
-            Guard.Argument(deserializer).NotNull();
-            Guard.Argument(mapperFactory).NotNull();
+            Guard.Argument(uriFormat, nameof(uriFormat)).NotNull().NotEmpty();
+            Guard.Argument(fetcher, nameof(fetcher)).NotNull();
+            Guard.Argument(poster, nameof(poster)).NotNull();
+            Guard.Argument(deserializer, nameof(deserializer)).NotNull();
+            Guard.Argument(mapperFactory, nameof(mapperFactory)).NotNull();
 
             _uriFormat = uriFormat;
             _fetcher = fetcher;
@@ -78,7 +78,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         /// <returns>A <see cref="Task{T}"/> representing the ongoing operation</returns>
         protected async Task<TOut> GetDataAsyncInternal(string authorization, Uri uri)
         {
-            Guard.Argument(uri).NotNull();
+            Guard.Argument(uri, nameof(uri)).NotNull();
 
             var stream = await _fetcher.GetDataAsync(authorization, uri).ConfigureAwait(false);
             var deserializedObject = _deserializer.Deserialize(stream);
@@ -94,7 +94,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         /// <returns>A <see cref="Task{TOut}"/> representing the ongoing operation</returns>
         protected async Task<TOut> PostDataAsyncInternal(string authorization, HttpContent content, Uri uri)
         {
-            Guard.Argument(uri).NotNull();
+            Guard.Argument(uri, nameof(uri)).NotNull();
 
             var responseMessage = await _poster.PostDataAsync(authorization, uri, content).ConfigureAwait(false);
             if (!responseMessage.IsSuccessStatusCode)
@@ -113,7 +113,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         /// <returns>an <see cref="Uri"/> instance used to retrieve resource with specified <code>identifiers</code></returns>
         protected virtual Uri GetRequestUri(params object[] identifiers)
         {
-            Guard.Argument(identifiers).NotNull().NotEmpty();
+            Guard.Argument(identifiers, nameof(identifiers)).NotNull().NotEmpty();
 
             // ReSharper disable once AssignNullToNotNullAttribute
             return new Uri(string.Format(_uriFormat, identifiers));

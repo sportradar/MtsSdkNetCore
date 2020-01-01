@@ -33,10 +33,10 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST.Dto
 
         internal MarketMappingDTO(mappingsMapping mapping)
         {
-            Guard.Argument(mapping).NotNull();
-            Guard.Argument(mapping.product_id).Positive();
-            Guard.Argument(mapping.sport_id).NotNull().NotEmpty();
-            Guard.Argument(mapping.market_id).NotNull().NotEmpty();
+            Guard.Argument(mapping, nameof(mapping)).NotNull();
+            Guard.Argument(mapping.product_id, nameof(mapping.product_id)).Positive();
+            Guard.Argument(mapping.sport_id, nameof(mapping.sport_id)).NotNull().NotEmpty();
+            Guard.Argument(mapping.market_id, nameof(mapping.market_id)).NotNull().NotEmpty();
 
             ProductId = mapping.product_id;
             SportId = mapping.sport_id == "all" ? null : URN.Parse(mapping.sport_id);

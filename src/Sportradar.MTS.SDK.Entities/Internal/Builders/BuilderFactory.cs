@@ -27,8 +27,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// <param name="marketDescriptionProvider">The <see cref="IMarketDescriptionProvider"/> used for UoF selections</param>
         public BuilderFactory(ISdkConfigurationInternal config, IMarketDescriptionProvider marketDescriptionProvider)
         {
-            Guard.Argument(config).NotNull();
-            Guard.Argument(marketDescriptionProvider).NotNull();
+            Guard.Argument(config, nameof(config)).NotNull();
+            Guard.Argument(marketDescriptionProvider, nameof(marketDescriptionProvider)).NotNull();
 
             _config = config;
             _marketDescriptionProvider = marketDescriptionProvider;

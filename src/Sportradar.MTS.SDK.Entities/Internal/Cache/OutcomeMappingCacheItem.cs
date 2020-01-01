@@ -16,7 +16,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
 
         public OutcomeMappingCacheItem(OutcomeMappingDTO dto)
         {
-            Guard.Argument(dto).NotNull();
+            Guard.Argument(dto, nameof(dto)).NotNull();
 
             OutcomeId = dto.OutcomeId;
             ProductOutcomeId = dto.ProductOutcomeId;

@@ -18,7 +18,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
 
         internal MarketOutcomeCacheItem(OutcomeDescriptionDTO dto, CultureInfo culture)
         {
-            Guard.Argument(dto).NotNull();
+            Guard.Argument(dto, nameof(dto)).NotNull();
 
             Id = dto.Id;
             _names = new Dictionary<CultureInfo, string> { { culture, dto.Name } };
@@ -29,7 +29,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
 
         internal string GetName(CultureInfo culture)
         {
-            Guard.Argument(culture).NotNull();
+            Guard.Argument(culture, nameof(culture)).NotNull();
 
             if (_names.TryGetValue(culture, out var name))
             {
@@ -40,7 +40,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
 
         internal string GetDescription(CultureInfo culture)
         {
-            Guard.Argument(culture).NotNull();
+            Guard.Argument(culture, nameof(culture)).NotNull();
 
             if (_descriptions.TryGetValue(culture, out var description))
             {
@@ -51,8 +51,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
 
         internal void Merge(OutcomeDescriptionDTO dto, CultureInfo culture)
         {
-            Guard.Argument(dto).NotNull();
-            Guard.Argument(culture).NotNull();
+            Guard.Argument(dto, nameof(dto)).NotNull();
+            Guard.Argument(culture, nameof(culture)).NotNull();
 
             _names[culture] = dto.Name;
             if (!string.IsNullOrEmpty(dto.Description))

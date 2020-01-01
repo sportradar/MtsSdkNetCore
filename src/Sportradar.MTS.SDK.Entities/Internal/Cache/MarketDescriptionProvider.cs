@@ -25,9 +25,9 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
 
         public MarketDescriptionProvider(IMarketDescriptionCache marketDescriptionCache, IEnumerable<CultureInfo> cultures)
         {
-            Guard.Argument(marketDescriptionCache).NotNull();
+            Guard.Argument(marketDescriptionCache, nameof(marketDescriptionCache)).NotNull();
             var cultureInfos = cultures.ToList();
-            Guard.Argument(cultureInfos).NotNull().NotEmpty();
+            Guard.Argument(cultureInfos, nameof(cultureInfos)).NotNull().NotEmpty();
 
             MarketDescriptionCache = marketDescriptionCache;
             _cultures = cultureInfos;

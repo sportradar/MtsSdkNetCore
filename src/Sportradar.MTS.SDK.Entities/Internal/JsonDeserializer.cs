@@ -21,7 +21,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         /// <returns>The <code>data</code> deserialized to <typeparamref name="T" /> instance</returns>
         public T Deserialize(Stream stream)
         {
-            Guard.Argument(stream).NotNull();
+            Guard.Argument(stream, nameof(stream)).NotNull();
 
             return Deserialize<T>(stream);
         }
@@ -34,7 +34,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         /// <returns>The <code>data</code> deserialized to <typeparamref name="T1" /> instance</returns>
         public T1 Deserialize<T1>(Stream stream) where T1 : T
         {
-            Guard.Argument(stream).NotNull();
+            Guard.Argument(stream, nameof(stream)).NotNull();
 
             using (var reader = new StreamReader(stream))
             {
@@ -50,7 +50,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         /// <returns>The <code>data</code> deserialized to <typeparamref name="T1" /> instance</returns>
         public T1 Deserialize<T1>(string input) where T1 : T
         {
-            Guard.Argument(input).NotNull().NotEmpty();
+            Guard.Argument(input, nameof(input)).NotNull().NotEmpty();
 
             return JsonConvert.DeserializeObject<T1>(input);
         }

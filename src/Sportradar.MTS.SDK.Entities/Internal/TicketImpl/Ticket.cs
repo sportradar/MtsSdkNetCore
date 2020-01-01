@@ -130,14 +130,14 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         /// <param name="lastMatchEndTime">End time of last (non Sportradar) match on ticket.</param>
         public Ticket(string ticketId, ISender sender, IEnumerable<IBet> bets, string reofferId, string altStakeRefId, bool isTestSource, OddsChangeType? oddsChangeType, int? totalCombinations, DateTime? lastMatchEndTime)
         {
-            Guard.Argument(ticketId).Require(TicketHelper.ValidateTicketId(ticketId));
-            Guard.Argument(sender).NotNull();
-            Guard.Argument(bets).NotNull().NotEmpty().MaxCount(50);
-            Guard.Argument(reofferId).Require(string.IsNullOrEmpty(reofferId) || TicketHelper.ValidateTicketId(reofferId));
-            Guard.Argument(altStakeRefId).Require(string.IsNullOrEmpty(altStakeRefId) || TicketHelper.ValidateTicketId(altStakeRefId));
-            Guard.Argument(reofferId).Require(!(!string.IsNullOrEmpty(reofferId) && !string.IsNullOrEmpty(altStakeRefId)));
-            Guard.Argument(totalCombinations).Require(totalCombinations == null || totalCombinations > 0);
-            Guard.Argument(lastMatchEndTime).Require(lastMatchEndTime == null || lastMatchEndTime > new DateTime(2000, 1, 1));
+            Guard.Argument(ticketId, nameof(ticketId)).Require(TicketHelper.ValidateTicketId(ticketId));
+            Guard.Argument(sender, nameof(sender)).NotNull();
+            Guard.Argument(bets, nameof(bets)).NotNull().NotEmpty().MaxCount(50);
+            Guard.Argument(reofferId, nameof(reofferId)).Require(string.IsNullOrEmpty(reofferId) || TicketHelper.ValidateTicketId(reofferId));
+            Guard.Argument(altStakeRefId, nameof(altStakeRefId)).Require(string.IsNullOrEmpty(altStakeRefId) || TicketHelper.ValidateTicketId(altStakeRefId));
+            Guard.Argument(reofferId, nameof(reofferId)).Require(!(!string.IsNullOrEmpty(reofferId) && !string.IsNullOrEmpty(altStakeRefId)));
+            Guard.Argument(totalCombinations, nameof(totalCombinations)).Require(totalCombinations == null || totalCombinations > 0);
+            Guard.Argument(lastMatchEndTime, nameof(lastMatchEndTime)).Require(lastMatchEndTime == null || lastMatchEndTime > new DateTime(2000, 1, 1));
 
             TicketId = ticketId;
             Sender = sender;
@@ -163,7 +163,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
                 {
                     selections.AddRange(bet.Selections);
                 }
-                Guard.Argument(selections).NotNull().NotEmpty().MaxCount(64);
+                Guard.Argument(selections, nameof(selections)).NotNull().NotEmpty().MaxCount(64);
                 Selections = selections.Distinct();
             }
             TotalCombinations = totalCombinations;

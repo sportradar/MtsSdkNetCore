@@ -18,9 +18,9 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST.ClientApiImpl
 
         internal KeycloakAuthorization(AccessTokenDTO authorization)
         {
-            Guard.Argument(authorization).NotNull();
-            Guard.Argument(authorization.Access_token).NotNull();
-            Guard.Argument(authorization.Expires_in).Positive();
+            Guard.Argument(authorization, nameof(authorization)).NotNull();
+            Guard.Argument(authorization.Access_token, nameof(authorization.Access_token)).NotNull();
+            Guard.Argument(authorization.Expires_in, nameof(authorization.Expires_in)).Positive();
 
             AccessToken = authorization.Access_token;
             Expires = DateTimeOffset.Now.AddSeconds(authorization.Expires_in);

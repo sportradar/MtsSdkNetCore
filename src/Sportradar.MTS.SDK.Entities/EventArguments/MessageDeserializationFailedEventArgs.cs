@@ -24,7 +24,7 @@ namespace Sportradar.MTS.SDK.Entities.EventArguments
         ///                         not be retrieved</param>
         public MessageDeserializationFailedEventArgs(IEnumerable<byte> rawData)
         {
-            Guard.Argument(rawData).NotNull().NotEmpty();
+            Guard.Argument(rawData, nameof(rawData)).NotNull().NotEmpty();
 
             RawData = rawData;
         }

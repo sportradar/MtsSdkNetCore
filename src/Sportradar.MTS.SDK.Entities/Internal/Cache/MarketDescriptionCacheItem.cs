@@ -48,9 +48,9 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
             CultureInfo culture)
         {
 
-            Guard.Argument(culture).NotNull();
-            Guard.Argument(names).NotNull();
-            Guard.Argument(descriptions).NotNull();
+            Guard.Argument(culture, nameof(culture)).NotNull();
+            Guard.Argument(names, nameof(names)).NotNull().NotEmpty();
+            Guard.Argument(descriptions, nameof(descriptions)).NotNull();
 
             Id = id;
             _names = names;
@@ -72,8 +72,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
         /// <exception cref="InvalidOperationException">The cache item could not be build from the provided DTO</exception>
         public static MarketDescriptionCacheItem Build(MarketDescriptionDTO dto, CultureInfo culture)
         {
-            Guard.Argument(dto).NotNull();
-            Guard.Argument(culture).NotNull();
+            Guard.Argument(dto, nameof(dto)).NotNull();
+            Guard.Argument(culture, nameof(culture)).NotNull();
 
             var names = new Dictionary<CultureInfo, string> { { culture, dto.Name } };
             var descriptions = string.IsNullOrEmpty(dto.Description)
@@ -101,14 +101,14 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
 
         internal string GetName(CultureInfo culture)
         {
-            Guard.Argument(culture).NotNull();
+            Guard.Argument(culture, nameof(culture)).NotNull();
 
             return _names.TryGetValue(culture, out var name) ? name : null;
         }
 
         internal string GetDescription(CultureInfo culture)
         {
-            Guard.Argument(culture).NotNull();
+            Guard.Argument(culture, nameof(culture)).NotNull();
 
             if (_descriptions.TryGetValue(culture, out var description))
             {
@@ -124,8 +124,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
 
         public void Merge(MarketDescriptionDTO dto, CultureInfo culture)
         {
-            Guard.Argument(dto).NotNull();
-            Guard.Argument(culture).NotNull();
+            Guard.Argument(dto, nameof(dto)).NotNull();
+            Guard.Argument(culture, nameof(culture)).NotNull();
 
             _names[culture] = dto.Name;
             if (!string.IsNullOrEmpty(dto.Description))

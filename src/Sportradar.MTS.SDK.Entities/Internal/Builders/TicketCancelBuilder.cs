@@ -49,7 +49,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// <param name="config">A <see cref="ISdkConfiguration"/> providing configuration for the associated sdk instance</param>
         internal TicketCancelBuilder(ISdkConfiguration config)
         {
-            Guard.Argument(config).NotNull();
+            Guard.Argument(config, nameof(config)).NotNull();
 
             _bookmakerId = config.BookmakerId;
             _percent = null;

@@ -36,7 +36,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         /// <param name="server">A <see cref="IRabbitServer"/> instance containing server information</param>
         public ConfiguredConnectionFactory(IRabbitServer server)
         {
-            Guard.Argument(server).NotNull();
+            Guard.Argument(server, nameof(server)).NotNull();
 
             _server = server;
         }

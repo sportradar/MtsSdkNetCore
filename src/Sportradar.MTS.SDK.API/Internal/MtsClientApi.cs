@@ -84,9 +84,9 @@ namespace Sportradar.MTS.SDK.API.Internal
                             string secret, 
                             IMetricsRoot metrics)
         {
-            Guard.Argument(maxStakeDataProvider).NotNull();
-            Guard.Argument(ccfDataProvider).NotNull();
-            Guard.Argument(authorizationDataProvider).NotNull();
+            Guard.Argument(maxStakeDataProvider, nameof(maxStakeDataProvider)).NotNull();
+            Guard.Argument(ccfDataProvider, nameof(ccfDataProvider)).NotNull();
+            Guard.Argument(authorizationDataProvider, nameof(authorizationDataProvider)).NotNull();
 
             _maxStakeDataProvider = maxStakeDataProvider;
             _ccfDataProvider = ccfDataProvider;
@@ -99,16 +99,16 @@ namespace Sportradar.MTS.SDK.API.Internal
 
         public async Task<long> GetMaxStakeAsync(ITicket ticket)
         {
-            Guard.Argument(ticket).NotNull();
+            Guard.Argument(ticket, nameof(ticket)).NotNull();
 
             return await GetMaxStakeAsync(ticket, _username, _password).ConfigureAwait(false);
         }
 
         public async Task<long> GetMaxStakeAsync(ITicket ticket, string username, string password)
         {
-            Guard.Argument(ticket).NotNull();
-            Guard.Argument(username).NotNull().NotEmpty();
-            Guard.Argument(password).NotNull().NotEmpty();
+            Guard.Argument(ticket, nameof(ticket)).NotNull();
+            Guard.Argument(username, nameof(username)).NotNull().NotEmpty();
+            Guard.Argument(password, nameof(password)).NotNull().NotEmpty();
 
             _metrics.Measure.Counter.Increment(new CounterOptions{ Context="MtsClientApi", Name="GetMaxStakeAsync", MeasurementUnit = Unit.Calls});
             InteractionLog.LogInformation($"Called GetMaxStakeAsync with ticketId={ticket.TicketId}.");
@@ -134,16 +134,16 @@ namespace Sportradar.MTS.SDK.API.Internal
 
         public async Task<ICcf> GetCcfAsync(string sourceId)
         {
-            Guard.Argument(sourceId).NotNull();
+            Guard.Argument(sourceId, nameof(sourceId)).NotNull();
 
             return await GetCcfAsync(sourceId, _username, _password).ConfigureAwait(false);
         }
 
         public async Task<ICcf> GetCcfAsync(string sourceId, string username, string password)
         {
-            Guard.Argument(sourceId).NotNull();
-            Guard.Argument(username).NotNull().NotEmpty();
-            Guard.Argument(password).NotNull().NotEmpty();
+            Guard.Argument(sourceId, nameof(sourceId)).NotNull();
+            Guard.Argument(username, nameof(username)).NotNull().NotEmpty();
+            Guard.Argument(password, nameof(password)).NotNull().NotEmpty();
 
             _metrics.Measure.Counter.Increment(new CounterOptions { Context = "MtsClientApi", Name = "GetCcfAsync", MeasurementUnit = Unit.Calls });
             InteractionLog.LogInformation($"Called GetCcfAsync with sourceId={sourceId}.");

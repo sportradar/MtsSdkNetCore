@@ -42,7 +42,7 @@ namespace Sportradar.MTS.SDK.Entities.EventArguments
         /// <param name="message">The description of the error</param>
         public MessagePublishFailedEventArgs(IEnumerable<byte> rawData, string correlationId, string routingKey, string message)
         {
-            Guard.Argument(rawData).NotNull().NotEmpty();
+            Guard.Argument(rawData, nameof(rawData)).NotNull().NotEmpty();
 
             RawData = rawData;
             CorrelationId = correlationId;

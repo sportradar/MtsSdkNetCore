@@ -11,8 +11,8 @@ namespace Sportradar.MTS.SDK.Test.Helpers
     {
         public static Stream OpenFile(string dirPath, string fileName)
         {
-            Guard.Argument(!string.IsNullOrWhiteSpace(dirPath));
-            Guard.Argument(!string.IsNullOrWhiteSpace(fileName));
+            Guard.Argument(dirPath, nameof(dirPath)).NotNull().NotEmpty();
+            Guard.Argument(fileName, nameof(File)).NotNull().NotEmpty();
 
             var filePath = dirPath.TrimEnd('/') + "/" + fileName.TrimStart('/');
             return OpenFile(filePath);
@@ -20,7 +20,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
 
         public static Stream OpenFile(string filePath)
         {
-            Guard.Argument(!string.IsNullOrWhiteSpace(filePath));
+            Guard.Argument(filePath, nameof(filePath)).NotNull().NotEmpty();
 
             filePath = FindFileInDir(filePath);
             return File.OpenRead(filePath);
@@ -28,15 +28,16 @@ namespace Sportradar.MTS.SDK.Test.Helpers
 
         public static Task<Stream> OpenFileAsync(string filePath)
         {
-            Guard.Argument(!string.IsNullOrWhiteSpace(filePath));
+            Guard.Argument(filePath, nameof(filePath)).NotNull().NotEmpty();
+
             filePath = FindFileInDir(filePath);
             return Task.Factory.StartNew(() => OpenFile(filePath));
         }
 
         public static string ReadFile(string dirPath, string fileName)
         {
-            Guard.Argument(!string.IsNullOrWhiteSpace(dirPath));
-            Guard.Argument(!string.IsNullOrWhiteSpace(fileName));
+            Guard.Argument(dirPath, nameof(dirPath)).NotNull().NotEmpty();
+            Guard.Argument(fileName, nameof(File)).NotNull().NotEmpty();
 
             var stream = OpenFile(dirPath, fileName);
             var reader = new StreamReader(stream);

@@ -111,8 +111,8 @@ namespace Sportradar.MTS.SDK.API.Internal.TicketImpl
                               IEnumerable<IAutoAcceptedOdds> autoAcceptedOdds = null,
                               string orgJson = null)
         {
-            Guard.Argument(ticketId).Require(TicketHelper.ValidateTicketId(ticketId));
-            Guard.Argument(version).NotNull().NotEmpty();
+            Guard.Argument(ticketId, nameof(ticketId)).Require(TicketHelper.ValidateTicketId(ticketId));
+            Guard.Argument(version, nameof(version)).NotNull().NotEmpty();
 
             TicketId = ticketId;
             Status = status;

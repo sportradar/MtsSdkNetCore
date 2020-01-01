@@ -32,9 +32,9 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
 
         public AutoAcceptedOdds(int index, int requestedOdds, int usedOdds)
         {
-            Guard.Argument(index).InRange(0, 62);
-            Guard.Argument(requestedOdds).InRange(10000, 1000000000);
-            Guard.Argument(usedOdds).InRange(10000, 1000000000);
+            Guard.Argument(index, nameof(index)).InRange(0, 62);
+            Guard.Argument(requestedOdds, nameof(requestedOdds)).InRange(10000, 1000000000);
+            Guard.Argument(usedOdds, nameof(usedOdds)).InRange(10000, 1000000000);
 
             SelectionIndex = index;
             RequestedOdds = requestedOdds;

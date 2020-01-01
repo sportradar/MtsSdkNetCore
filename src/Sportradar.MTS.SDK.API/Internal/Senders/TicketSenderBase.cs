@@ -74,10 +74,10 @@ namespace Sportradar.MTS.SDK.API.Internal.Senders
                               IMtsChannelSettings mtsChannelSettings,
                               IRabbitMqChannelSettings rabbitMqChannelSettings)
         {
-            Guard.Argument(publisherChannel).NotNull();
-            Guard.Argument(ticketCache).NotNull();
-            Guard.Argument(mtsChannelSettings).NotNull();
-            Guard.Argument(rabbitMqChannelSettings).NotNull();
+            Guard.Argument(publisherChannel, nameof(publisherChannel)).NotNull();
+            Guard.Argument(ticketCache, nameof(ticketCache)).NotNull();
+            Guard.Argument(mtsChannelSettings, nameof(mtsChannelSettings)).NotNull();
+            Guard.Argument(rabbitMqChannelSettings, nameof(rabbitMqChannelSettings)).NotNull();
 
             _publisherChannel = publisherChannel;
             _ticketCache = ticketCache;

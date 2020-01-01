@@ -88,8 +88,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         /// <param name="message">The message</param>
         public TicketAck(string ticketId, int bookmakerId, TicketAckStatus status, int code, string message)
         {
-            Guard.Argument(ticketId).Require(TicketHelper.ValidateTicketId(ticketId));
-            Guard.Argument(bookmakerId).Positive();
+            Guard.Argument(ticketId, nameof(ticketId)).Require(TicketHelper.ValidateTicketId(ticketId));
+            Guard.Argument(bookmakerId, nameof(bookmakerId)).Positive();
 
             TicketId = ticketId;
             BookmakerId = bookmakerId;
@@ -110,7 +110,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         /// <param name="message">The message</param>
         public TicketAck(ITicket ticket, TicketAckStatus status, int code, string message)
         {
-            Guard.Argument(ticket).NotNull();
+            Guard.Argument(ticket, nameof(ticket)).NotNull();
 
             TicketId = ticket.TicketId;
             BookmakerId = ticket.Sender.BookmakerId;

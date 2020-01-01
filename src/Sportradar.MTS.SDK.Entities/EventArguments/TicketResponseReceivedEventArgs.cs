@@ -30,7 +30,7 @@ namespace Sportradar.MTS.SDK.Entities.EventArguments
         /// <param name="response">a <see cref="ISdkTicket"/> representing the received response</param>
         public TicketResponseReceivedEventArgs(ISdkTicket response)
         {
-            Guard.Argument(response).NotNull();
+            Guard.Argument(response, nameof(response)).NotNull();
 
             Response = response;
             Type = MtsTicketHelper.Convert(response);

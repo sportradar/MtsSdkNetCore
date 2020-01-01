@@ -14,8 +14,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
 
         public SelectionDetail(int selectionIndex, IResponseReason reason, IRejectionInfo rejectionInfo)
         {
-            Guard.Argument(selectionIndex).InRange(0, 62);
-            Guard.Argument(reason).NotNull();
+            Guard.Argument(selectionIndex, nameof(selectionIndex)).InRange(0, 62);
+            Guard.Argument(reason, nameof(reason)).NotNull();
 
             SelectionIndex = selectionIndex;
             Reason = reason;

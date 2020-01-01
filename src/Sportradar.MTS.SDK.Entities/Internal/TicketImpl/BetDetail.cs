@@ -56,8 +56,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
                          IBetReoffer reoffer,
                          IEnumerable<ISelectionDetail> selectionDetails)
         {
-            Guard.Argument(betId).NotNull().NotEmpty().Require(betId.Length <= 128);
-            Guard.Argument(reason).NotNull();
+            Guard.Argument(betId, nameof(betId)).NotNull().NotEmpty().Require(betId.Length <= 128);
+            Guard.Argument(reason, nameof(reason)).NotNull();
 
             BetId = betId;
             Reason = reason;
@@ -72,7 +72,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         /// <param name="betDetail">The bet detail</param>
         public BetDetail(Anonymous2 betDetail)
         {
-            Guard.Argument(betDetail).NotNull();
+            Guard.Argument(betDetail, nameof(betDetail)).NotNull();
 
             BetId = betDetail.BetId;
             if (betDetail.Reason != null)

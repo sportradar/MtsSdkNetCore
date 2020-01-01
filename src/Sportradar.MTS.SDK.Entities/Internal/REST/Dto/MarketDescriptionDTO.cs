@@ -30,8 +30,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST.Dto
 
         internal MarketDescriptionDTO(desc_market description)
         {
-            Guard.Argument(description).NotNull();
-            Guard.Argument(description.name).NotNull().NotEmpty();
+            Guard.Argument(description, nameof(description)).NotNull();
+            Guard.Argument(description.name, nameof(description.name)).NotNull().NotEmpty();
 
             Id = description.id;
             Name = description.name;

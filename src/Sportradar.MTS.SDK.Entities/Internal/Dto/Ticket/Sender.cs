@@ -24,7 +24,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
 
         public Sender(ISender sender)
         {
-            Guard.Argument(sender).NotNull();
+            Guard.Argument(sender, nameof(sender)).NotNull();
 
             if (sender.EndCustomer != null)
             {

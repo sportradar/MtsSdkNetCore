@@ -22,7 +22,7 @@ namespace Sportradar.MTS.SDK.API.Internal.Senders
                               IRabbitMqChannelSettings rabbitMqChannelSettings)
             : base(publisherChannel, ticketCache, mtsChannelSettings, rabbitMqChannelSettings)
         {
-            Guard.Argument(ticketMapper).NotNull();
+            Guard.Argument(ticketMapper, nameof(ticketMapper)).NotNull();
 
             _ticketMapper = ticketMapper;
         }

@@ -50,7 +50,7 @@ namespace Sportradar.MTS.SDK.Entities.EventArguments
         /// <param name="additionalInfo">Additional information</param>
         public MessageReceivedEventArgs(string body, string routingKey, string correlationId, TicketResponseType expectedTicketResponseType, IDictionary<string, string> additionalInfo)
         {
-            Guard.Argument(body).NotNull().NotEmpty();
+            Guard.Argument(body, nameof(body)).NotNull().NotEmpty();
 
             JsonBody = body;
             RoutingKey = routingKey;

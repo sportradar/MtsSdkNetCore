@@ -20,7 +20,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
         /// <param name="data">A <see cref="AccessTokenDTO"/> instance containing data used to construct <see cref="KeycloakAuthorization"/> instance</param>
         internal KeycloakAuthorizationMapper(AccessTokenDTO data)
         {
-            Guard.Argument(data).NotNull();
+            Guard.Argument(data, nameof(data)).NotNull();
 
             _data = data;
         }

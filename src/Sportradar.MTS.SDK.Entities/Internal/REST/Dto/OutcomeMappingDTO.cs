@@ -18,7 +18,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST.Dto
 
         internal OutcomeMappingDTO(mappingsMappingMapping_outcome outcome)
         {
-            Guard.Argument(outcome).NotNull();
+            Guard.Argument(outcome, nameof(outcome)).NotNull();
 
             OutcomeId = outcome.outcome_id;
             ProductOutcomeId = outcome.product_outcome_id;

@@ -153,7 +153,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
 
         public static bool ValidateStringId(string input, bool checkIdPattern, bool useBetIdPattern = true, int minLength = -1, int maxLength = -1)
         {
-            Guard.Argument(input).NotNull().NotEmpty();
+            Guard.Argument(input, nameof(input)).NotNull().NotEmpty();
 
             var valid = true;
             if (checkIdPattern)
@@ -173,14 +173,14 @@ namespace Sportradar.MTS.SDK.Entities.Internal
 
         public static bool ValidateTicketId(string input)
         {
-            Guard.Argument(input).NotNull().NotEmpty();
+            Guard.Argument(input, nameof(input)).NotNull().NotEmpty();
 
             return ValidateStringId(input, true, true, 1, 128);
         }
 
         public static bool ValidateUserId(string input, int maxLength = 36)
         {
-            Guard.Argument(input).NotNull().NotEmpty();
+            Guard.Argument(input, nameof(input)).NotNull().NotEmpty();
 
             return ValidateStringId(input, true, false, 1, maxLength);
         }

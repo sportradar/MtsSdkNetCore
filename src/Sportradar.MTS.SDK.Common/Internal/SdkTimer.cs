@@ -44,8 +44,8 @@ namespace Sportradar.MTS.SDK.Common.Internal
         /// <param name="period">A <see cref="TimeSpan"/> specifying a period between subsequent raises of the <see cref="Elapsed"/> event</param>
         public SdkTimer(TimeSpan dueTime, TimeSpan period)
         {
-            Guard.Argument(dueTime >= TimeSpan.Zero).True();
-            Guard.Argument(period > TimeSpan.Zero).True();
+            Guard.Argument(dueTime, nameof(dueTime)).Require(dueTime >= TimeSpan.Zero);
+            Guard.Argument(period, nameof(period)).Require(period > TimeSpan.Zero);
 
             // Create the timer which is stopped - pass -1 for dueTime and period
 
@@ -123,7 +123,7 @@ namespace Sportradar.MTS.SDK.Common.Internal
         /// <param name="dueTime">The due time</param>
         public void FireOnce(TimeSpan dueTime)
         {
-            Guard.Argument(dueTime >= TimeSpan.Zero).True();
+            Guard.Argument(dueTime, nameof(dueTime)).Require(dueTime >= TimeSpan.Zero);
 
             _timer.Change(dueTime, TimeSpan.FromMilliseconds(-1));
         }

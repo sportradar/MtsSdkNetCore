@@ -153,7 +153,7 @@ namespace Sportradar.MTS.SDK.API
         /// <param name="metricsRoot">A <see cref="IMetricsRoot"/> used to provide metrics within sdk</param>
         public MtsSdk(ISdkConfiguration config, ILoggerFactory loggerFactory = null, IMetricsRoot metricsRoot = null)
         {
-            Guard.Argument(config).NotNull();
+            Guard.Argument(config, nameof(config)).NotNull();
 
             LogInit();
 
@@ -565,7 +565,7 @@ namespace Sportradar.MTS.SDK.API
         /// <param name="ticket">The <see cref="ISdkTicket"/> to be send</param>
         public void SendTicket(ISdkTicket ticket)
         {
-            Guard.Argument(ticket).NotNull();
+            Guard.Argument(ticket, nameof(ticket)).NotNull();
 
             _metricsRoot.Measure.Meter.Mark(new MeterOptions { Context = "MtsSdk", Name = "SendTicket", MeasurementUnit = Unit.Calls });
             _interactionLog.LogInformation($"Called SendTicket with ticketId={ticket.TicketId}.");
@@ -579,7 +579,7 @@ namespace Sportradar.MTS.SDK.API
         /// <returns>Returns a <see cref="ITicketResponse" /></returns>
         public ITicketResponse SendTicketBlocking(ITicket ticket)
         {
-            Guard.Argument(ticket).NotNull();
+            Guard.Argument(ticket, nameof(ticket)).NotNull();
 
             _metricsRoot.Measure.Meter.Mark(new MeterOptions { Context = "MtsSdk", Name = "SendTicketBlocking", MeasurementUnit = Unit.Calls });
             _interactionLog.LogInformation($"Called SendTicketBlocking with ticketId={ticket.TicketId}.");
@@ -593,7 +593,7 @@ namespace Sportradar.MTS.SDK.API
         /// <returns>Returns a <see cref="ITicketCancelResponse" /></returns>
         public ITicketCancelResponse SendTicketCancelBlocking(ITicketCancel ticket)
         {
-            Guard.Argument(ticket).NotNull();
+            Guard.Argument(ticket, nameof(ticket)).NotNull();
 
             _metricsRoot.Measure.Meter.Mark(new MeterOptions { Context = "MtsSdk", Name = "SendTicketCancelBlocking", MeasurementUnit = Unit.Calls });
             _interactionLog.LogInformation($"Called SendTicketCancelBlocking with ticketId={ticket.TicketId}.");
@@ -607,7 +607,7 @@ namespace Sportradar.MTS.SDK.API
         /// <returns>Returns a <see cref="ITicketCashoutResponse" /></returns>
         public ITicketCashoutResponse SendTicketCashoutBlocking(ITicketCashout ticket)
         {
-            Guard.Argument(ticket).NotNull();
+            Guard.Argument(ticket, nameof(ticket)).NotNull();
 
             _metricsRoot.Measure.Meter.Mark(new MeterOptions { Context = "MtsSdk", Name = "SendTicketCashoutBlocking", MeasurementUnit = Unit.Calls });
             _interactionLog.LogInformation($"Called SendTicketCashoutBlocking with ticketId={ticket.TicketId}.");
@@ -621,7 +621,7 @@ namespace Sportradar.MTS.SDK.API
         /// <returns>Returns a <see cref="ITicketNonSrSettleResponse" /></returns>
         public ITicketNonSrSettleResponse SendTicketNonSrSettleBlocking(ITicketNonSrSettle ticket)
         {
-            Guard.Argument(ticket).NotNull();
+            Guard.Argument(ticket, nameof(ticket)).NotNull();
 
             _metricsRoot.Measure.Meter.Mark(new MeterOptions { Context = "MtsSdk", Name = "SendTicketNonSrSettleBlocking", MeasurementUnit = Unit.Calls });
             _interactionLog.LogInformation($"Called SendTicketNonSrSettleBlocking with ticketId={ticket.TicketId}.");

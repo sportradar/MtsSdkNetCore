@@ -44,11 +44,11 @@ namespace Sportradar.MTS.SDK.Common.Internal.Rest
         /// <param name="connectionFailureTimeout">indicates the timeout after which comes out of "blocking mode" (in seconds)</param>
         public HttpDataFetcher(HttpClient client, string accessToken, int connectionFailureLimit = 5, int connectionFailureTimeout = 15)
         {
-            Guard.Argument(client).NotNull();
-            Guard.Argument(client.DefaultRequestHeaders).NotNull();
+            Guard.Argument(client, nameof(client)).NotNull();
+            Guard.Argument(client.DefaultRequestHeaders, nameof(client.DefaultRequestHeaders)).NotNull();
             //Guard.Argument(!string.IsNullOrWhiteSpace(accessToken));
-            Guard.Argument(connectionFailureLimit).Positive();
-            Guard.Argument(connectionFailureTimeout).Positive();
+            Guard.Argument(connectionFailureLimit, nameof(connectionFailureLimit)).Positive();
+            Guard.Argument(connectionFailureTimeout, nameof(connectionFailureTimeout)).Positive();
 
             _client = client;
             if (!string.IsNullOrEmpty(accessToken) && !_client.DefaultRequestHeaders.Contains("x-access-token"))

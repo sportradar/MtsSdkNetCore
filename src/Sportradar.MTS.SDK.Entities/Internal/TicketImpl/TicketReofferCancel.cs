@@ -65,8 +65,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         /// <param name="bookmakerId">The bookmaker identifier</param>
         public TicketReofferCancel(string ticketId, int bookmakerId)
         {
-            Guard.Argument(ticketId).Require(TicketHelper.ValidateTicketId(ticketId));
-            Guard.Argument(bookmakerId).Positive();
+            Guard.Argument(ticketId, nameof(ticketId)).Require(TicketHelper.ValidateTicketId(ticketId));
+            Guard.Argument(bookmakerId, nameof(bookmakerId)).Positive();
 
             TicketId = ticketId;
             BookmakerId = bookmakerId;

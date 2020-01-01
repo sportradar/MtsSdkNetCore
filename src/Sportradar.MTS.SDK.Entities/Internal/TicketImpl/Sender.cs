@@ -61,12 +61,12 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         [JsonConstructor]
         public Sender(int bookmakerId, string currency, string terminalId, SenderChannel channel, string shopId, IEndCustomer endCustomer, int limitId)
         {
-            Guard.Argument(bookmakerId).Positive();
-            Guard.Argument(currency).NotNull().NotEmpty();
-            Guard.Argument(currency.Length).InRange(3, 4);
-            Guard.Argument(terminalId).Require(string.IsNullOrEmpty(terminalId) || TicketHelper.ValidateUserId(terminalId));
-            Guard.Argument(shopId).Require(string.IsNullOrEmpty(shopId) || TicketHelper.ValidateUserId(shopId));
-            Guard.Argument(limitId).Positive();
+            Guard.Argument(bookmakerId, nameof(bookmakerId)).Positive();
+            Guard.Argument(currency, nameof(currency)).NotNull().NotEmpty();
+            Guard.Argument(currency.Length, nameof(currency.Length)).InRange(3, 4);
+            Guard.Argument(terminalId, nameof(terminalId)).Require(string.IsNullOrEmpty(terminalId) || TicketHelper.ValidateUserId(terminalId));
+            Guard.Argument(shopId, nameof(shopId)).Require(string.IsNullOrEmpty(shopId) || TicketHelper.ValidateUserId(shopId));
+            Guard.Argument(limitId, nameof(limitId)).Positive();
 
             BookmakerId = bookmakerId;
             Currency = currency.Length == 3 ? currency.ToUpper() : currency;

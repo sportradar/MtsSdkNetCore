@@ -97,11 +97,11 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
                                       CacheItemPolicy cacheItemPolicy,
                                       IMetricsRoot metrics = null)
         {
-            Guard.Argument(cache).NotNull();
-            Guard.Argument(dataProvider).NotNull();
+            Guard.Argument(cache, nameof(cache)).NotNull();
+            Guard.Argument(dataProvider, nameof(dataProvider)).NotNull();
             var cultureInfos = prefetchLanguages?.ToList();
-            Guard.Argument(cultureInfos).NotNull().NotEmpty();
-            Guard.Argument(fetchInterval).Require(fetchInterval != null);
+            Guard.Argument(cultureInfos, nameof(cultureInfos)).NotNull().NotEmpty();
+            Guard.Argument(fetchInterval, nameof(fetchInterval)).Require(fetchInterval != null);
 
             _fetchInterval = fetchInterval;
             _cacheItemPolicy = cacheItemPolicy;
@@ -139,7 +139,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
         private IEnumerable<CultureInfo> GetMissingTranslations(MarketDescriptionCacheItem item, IEnumerable<CultureInfo> requiredTranslations)
         {
             var requiredTranslationsList = requiredTranslations?.ToList();
-            Guard.Argument(requiredTranslationsList).NotNull().NotEmpty();
+            Guard.Argument(requiredTranslationsList, nameof(requiredTranslationsList)).NotNull().NotEmpty();
 
             if (item == null)
             {
@@ -171,8 +171,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
         private void Merge(CultureInfo culture, IEnumerable<MarketDescriptionDTO> descriptions)
         {
             var descriptionList = descriptions?.ToList();
-            Guard.Argument(culture).NotNull();
-            Guard.Argument(descriptionList).NotNull().NotEmpty();
+            Guard.Argument(culture, nameof(culture)).NotNull();
+            Guard.Argument(descriptionList, nameof(descriptionList)).NotNull().NotEmpty();
 
             if (descriptionList != null)
             {
@@ -221,7 +221,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
         private async Task<MarketDescriptionCacheItem> GetMarketInternalAsync(int id, IEnumerable<CultureInfo> cultures)
         { 
             var cultureList = cultures?.ToList();
-            Guard.Argument(cultureList).NotNull().NotEmpty();
+            Guard.Argument(cultureList, nameof(cultureList)).NotNull().NotEmpty();
 
             if (!_tokenProvided)
             {
@@ -251,7 +251,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
         private async Task FetchMarketDescriptionsAsync(IEnumerable<CultureInfo> cultures)
         {
             var cultureList = cultures?.ToList();
-            Guard.Argument(cultureList).NotNull().NotEmpty();
+            Guard.Argument(cultureList, nameof(cultureList)).NotNull().NotEmpty();
 
             if (!_tokenProvided)
             {
@@ -349,8 +349,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
         public async Task<MarketDescriptionCacheItem> GetMarketDescriptorAsync(int marketId, string variant, IEnumerable<CultureInfo> cultures)
         {
             var cultureList = cultures as List<CultureInfo> ?? cultures.ToList();
-            Guard.Argument(marketId).Positive();
-            Guard.Argument(cultureList).NotNull().NotEmpty();
+            Guard.Argument(marketId, nameof(marketId)).Positive();
+            Guard.Argument(cultureList, nameof(cultureList)).NotNull().NotEmpty();
 
             if (!_tokenProvided)
             {

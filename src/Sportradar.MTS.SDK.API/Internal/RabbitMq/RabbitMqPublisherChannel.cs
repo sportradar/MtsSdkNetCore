@@ -110,9 +110,9 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         /// <param name="channelSettings">The channel settings</param>
         public RabbitMqPublisherChannel(IChannelFactory channelFactory, IMtsChannelSettings mtsChannelSettings, IRabbitMqChannelSettings channelSettings)
         {
-            Guard.Argument(channelFactory).NotNull();
-            Guard.Argument(mtsChannelSettings).NotNull();
-            Guard.Argument(channelSettings).NotNull();
+            Guard.Argument(channelFactory, nameof(channelFactory)).NotNull();
+            Guard.Argument(mtsChannelSettings, nameof(mtsChannelSettings)).NotNull();
+            Guard.Argument(channelSettings, nameof(channelSettings)).NotNull();
 
             _channelFactory = channelFactory;
 
@@ -221,8 +221,8 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         /// <exception cref="System.InvalidOperationException">The instance is closed</exception>
         public IMqPublishResult Publish(byte[] msg, string routingKey, string correlationId, string replyRoutingKey)
         {
-            Guard.Argument(msg).NotNull();
-            Guard.Argument(routingKey).NotNull().NotEmpty();
+            Guard.Argument(msg, nameof(msg)).NotNull();
+            Guard.Argument(routingKey, nameof(routingKey)).NotNull().NotEmpty();
 
             if (_shouldBeOpened == 0)
             {
@@ -245,8 +245,8 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         /// <returns>A <see cref="IMqPublishResult" /></returns>
         public async Task<IMqPublishResult> PublishAsync(byte[] msg, string routingKey, string correlationId, string replyRoutingKey)
         {
-            Guard.Argument(msg).NotNull();
-            Guard.Argument(routingKey).NotNull().NotEmpty();
+            Guard.Argument(msg, nameof(msg)).NotNull();
+            Guard.Argument(routingKey, nameof(routingKey)).NotNull().NotEmpty();
 
             return await Task.Run(() => Publish(msg, routingKey, correlationId, replyRoutingKey)).ConfigureAwait(false);
         }

@@ -22,7 +22,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
 
         public EndCustomer(IEndCustomer customer)
         {
-            Guard.Argument(customer).NotNull();
+            Guard.Argument(customer, nameof(customer)).NotNull();
 
             Id = string.IsNullOrEmpty(customer.Id) ? null : customer.Id;
             Confidence = customer.Confidence > 0 ? customer.Confidence : (long?)null;

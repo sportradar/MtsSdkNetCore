@@ -13,7 +13,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
 
         public SelectionRef(int selectionIndex, bool isBanker)
         {
-            Guard.Argument(selectionIndex).InRange(0, 62);
+            Guard.Argument(selectionIndex, nameof(selectionIndex)).InRange(0, 62);
 
             SelectionIndex = selectionIndex;
             Banker = isBanker;

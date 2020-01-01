@@ -18,9 +18,9 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST.Dto
 
         internal OutcomeDescriptionDTO(desc_outcomesOutcome outcome)
         {
-            Guard.Argument(outcome).NotNull();
-            Guard.Argument(outcome.id).NotNull().NotEmpty();
-            Guard.Argument(outcome.name).NotNull().NotEmpty();
+            Guard.Argument(outcome, nameof(outcome)).NotNull();
+            Guard.Argument(outcome.id, nameof(outcome.id)).NotNull().NotEmpty();
+            Guard.Argument(outcome.name, nameof(outcome.name)).NotNull().NotEmpty();
 
             Id = outcome.id;
             Name = outcome.name;

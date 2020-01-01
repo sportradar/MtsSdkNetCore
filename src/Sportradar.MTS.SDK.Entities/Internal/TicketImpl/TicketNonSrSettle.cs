@@ -72,9 +72,9 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         /// <param name="stake">The non-sportradar settle stake</param>
         public TicketNonSrSettle(string ticketId, int bookmakerId, long stake)
         {
-            Guard.Argument(ticketId).Require(TicketHelper.ValidateTicketId(ticketId));
-            Guard.Argument(bookmakerId).Positive();
-            Guard.Argument(stake).NotNegative();
+            Guard.Argument(ticketId, nameof(ticketId)).Require(TicketHelper.ValidateTicketId(ticketId));
+            Guard.Argument(bookmakerId, nameof(bookmakerId)).Positive();
+            Guard.Argument(stake, nameof(stake)).NotNegative();
 
             TicketId = ticketId;
             BookmakerId = bookmakerId;

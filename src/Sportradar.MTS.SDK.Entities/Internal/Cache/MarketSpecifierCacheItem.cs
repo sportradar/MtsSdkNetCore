@@ -14,7 +14,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
 
         internal MarketSpecifierCacheItem(MarketSpecifierDTO dto)
         {
-            Guard.Argument(dto).NotNull();
+            Guard.Argument(dto, nameof(dto)).NotNull();
 
             Type = dto.Type;
             Name = dto.Name;
@@ -29,7 +29,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
 
         internal MarketAttributeCacheItem(MarketAttributeDTO dto)
         {
-            Guard.Argument(dto).NotNull();
+            Guard.Argument(dto, nameof(dto)).NotNull();
 
             Name = dto.Name;
             Description = dto.Description;

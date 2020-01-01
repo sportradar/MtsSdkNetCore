@@ -25,7 +25,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
 
         protected MarketMappingCacheItem(MarketMappingDTO dto)
         {
-            Guard.Argument(dto).NotNull();
+            Guard.Argument(dto, nameof(dto)).NotNull();
 
             ProductId = dto.ProductId;
             SportId = dto.SportId;
@@ -46,7 +46,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
         /// <returns>The constructed <see cref="MarketMappingCacheItem"/></returns>
         public static MarketMappingCacheItem Build(MarketMappingDTO dto)
         {
-            Guard.Argument(dto).NotNull();
+            Guard.Argument(dto, nameof(dto)).NotNull();
 
             return new MarketMappingCacheItem(dto);
         }
