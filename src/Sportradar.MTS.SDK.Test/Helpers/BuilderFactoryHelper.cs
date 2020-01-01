@@ -11,10 +11,11 @@ using Sportradar.MTS.SDK.Entities.Internal;
 using Sportradar.MTS.SDK.Entities.Internal.Cache;
 using Unity;
 using Unity.Lifetime;
+// ReSharper disable UnusedAutoPropertyAccessor.Global
 
 namespace Sportradar.MTS.SDK.Test.Helpers
 {
-    public class BuilderFactoryHelper
+    internal class BuilderFactoryHelper
     {
         public static readonly IEnumerable<Tuple<string, string>> UriReplacements = new List<Tuple<string, string>>
         {

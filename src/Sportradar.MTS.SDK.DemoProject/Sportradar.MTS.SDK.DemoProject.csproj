@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <AssemblyVersion>1.0.4.7284</AssemblyVersion>
     <FileVersion>1.0.4.7284</FileVersion>
   </PropertyGroup>

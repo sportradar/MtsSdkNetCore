@@ -2,13 +2,28 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyVersion>1.0.8.7305</AssemblyVersion>
-    <FileVersion>1.0.8.7305</FileVersion>
+    <AssemblyVersion>1.0.15.7305</AssemblyVersion>
+    <FileVersion>1.0.15.7305</FileVersion>
     <LangVersion>8</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <PackageReference Include="App.Metrics" Version="3.2.0" />
+    <PackageReference Include="App.Metrics.Abstractions" Version="3.2.0" />
+    <PackageReference Include="App.Metrics.AspNetCore.Abstractions" Version="3.2.0" />
+    <PackageReference Include="App.Metrics.Core" Version="3.2.0" />
+    <PackageReference Include="App.Metrics.Formatters.Json" Version="3.2.0" />
+    <PackageReference Include="App.Metrics.Health" Version="3.2.0" />
+    <PackageReference Include="App.Metrics.Health.Abstractions" Version="3.2.0" />
+    <PackageReference Include="Castle.Core" Version="4.4.0" />
+    <PackageReference Include="Dawn.Guard" Version="1.10.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="RabbitMQ.Client" Version="5.1.2" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.3.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.Runtime.Caching" Version="4.7.0" />
+    <PackageReference Include="Unity" Version="5.11.2" />
   </ItemGroup>
 
 </Project>

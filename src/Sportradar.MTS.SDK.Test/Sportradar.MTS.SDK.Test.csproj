@@ -5,9 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyVersion>1.0.18.7305</AssemblyVersion>
+    <AssemblyVersion>1.0.21.7305</AssemblyVersion>
 
-    <FileVersion>1.0.18.7305</FileVersion>
+    <FileVersion>1.0.21.7305</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sportradar.MTS.SDK.API\Sportradar.MTS.SDK.API.csproj" />
+    <ProjectReference Include="..\Sportradar.MTS.SDK\Sportradar.MTS.SDK.csproj" />
   </ItemGroup>
 
   <ItemGroup>
