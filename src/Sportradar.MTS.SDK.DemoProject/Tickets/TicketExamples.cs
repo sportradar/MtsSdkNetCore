@@ -3,6 +3,9 @@
  */
 using System;
 using System.Net;
+using Sportradar.MTS.SDK.Entities.Builders;
+using Sportradar.MTS.SDK.Entities.Enums;
+using Sportradar.MTS.SDK.Entities.Interfaces;
 
 namespace Sportradar.MTS.SDK.DemoProject.Tickets
 {

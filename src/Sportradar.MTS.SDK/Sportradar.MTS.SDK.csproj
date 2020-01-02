@@ -1,10 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyVersion>1.0.18.7306</AssemblyVersion>
-    <FileVersion>1.0.18.7306</FileVersion>
+    <AssemblyVersion>1.0.21.7306</AssemblyVersion>
+    <FileVersion>1.0.21.7306</FileVersion>
     <LangVersion>8</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageId>Sportradar.MTS.SDKCore</PackageId>
+    <Authors>Sportradar AG</Authors>
+    <Company>Sportradar AGSportradar AG</Company>
+    <Product>Sportradar.MTS.SDKCore</Product>
+    <Description>The SDK simplifying the integration with Sportradar's MTS services (.NET Standard 2.0)</Description>
+    <Copyright>Copyright © Sportradar AG 2020</Copyright>
+    <PackageProjectUrl>http://sdk.sportradar.com</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sportradar/MtsSdkNetCore</RepositoryUrl>
+    <PackageTags>SportRadar MTS SDK .NETCore</PackageTags>
+    <PackageReleaseNotes>initial version</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

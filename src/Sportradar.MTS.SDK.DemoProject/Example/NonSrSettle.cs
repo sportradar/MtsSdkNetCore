@@ -3,7 +3,12 @@
  */
 using System;
 using System.Net;
-using log4net;
+using Microsoft.Extensions.Logging;
+using Sportradar.MTS.SDK.API;
+using Sportradar.MTS.SDK.Entities.Builders;
+using Sportradar.MTS.SDK.Entities.Enums;
+using Sportradar.MTS.SDK.Entities.EventArguments;
+using Sportradar.MTS.SDK.Entities.Interfaces;
 
 namespace Sportradar.MTS.SDK.DemoProject.Example
 {
@@ -12,7 +17,7 @@ namespace Sportradar.MTS.SDK.DemoProject.Example
         /// <summary>
         /// The log
         /// </summary>
-        private readonly ILog _log;
+        private readonly ILogger _log;
 
         private ITicket _originalTicket;
 
@@ -22,25 +27,25 @@ namespace Sportradar.MTS.SDK.DemoProject.Example
         private IMtsSdk _mtsSdk;
         private IBuilderFactory _factory;
 
-        public NonSrSettle(ILog log)
+        public NonSrSettle(ILogger log)
         {
             _log = log;
         }
 
         public void Run()
         {
-            _log.Info("Running the MTS SDK non-sr settle example");
+            _log.LogInformation("Running the MTS SDK non-sr settle example");
 
-            _log.Info("Retrieving configuration from application configuration file");
+            _log.LogInformation("Retrieving configuration from application configuration file");
             var config = MtsSdk.GetConfiguration();
 
-            _log.Info("Creating root MTS SDK instance");
+            _log.LogInformation("Creating root MTS SDK instance");
             _mtsSdk = new MtsSdk(config);
 
-            _log.Info("Attaching to events");
+            _log.LogInformation("Attaching to events");
             AttachToFeedEvents(_mtsSdk);
 
-            _log.Info("Opening the sdk instance (creating and opening connection to the AMPQ broker)");
+            _log.LogInformation("Opening the sdk instance (creating and opening connection to the AMPQ broker)");
             _mtsSdk.Open();
             _factory = _mtsSdk.BuilderFactory;
 
@@ -73,20 +78,20 @@ namespace Sportradar.MTS.SDK.DemoProject.Example
                 .BuildTicket();
 
             // send ticket to the MTS. Since this is a non-blocking way of sending, the response will raise the event TicketResponseReceived
-            _log.Info("Send ticket to the MTS.");
+            _log.LogInformation("Send ticket to the MTS.");
             _mtsSdk.SendTicket(_originalTicket);
 
-            _log.Info("Example successfully executed. Hit <enter> to quit");
+            _log.LogInformation("Example successfully executed. Hit <enter> to quit");
             Console.WriteLine(string.Empty);
             Console.ReadLine();
 
-            _log.Info("Detaching from events");
+            _log.LogInformation("Detaching from events");
             DetachFromFeedEvents(_mtsSdk);
 
-            _log.Info("Closing the connection and disposing the instance");
+            _log.LogInformation("Closing the connection and disposing the instance");
             _mtsSdk.Close();
 
-            _log.Info("Example stopped");
+            _log.LogInformation("Example stopped");
         }
 
         /// <summary>
@@ -100,7 +105,7 @@ namespace Sportradar.MTS.SDK.DemoProject.Example
                 throw new ArgumentNullException(nameof(mtsSdk));
             }
 
-            _log.Info("Attaching to events");
+            _log.LogInformation("Attaching to events");
             mtsSdk.SendTicketFailed += OnSendTicketFailed;
             mtsSdk.TicketResponseReceived += OnTicketResponseReceived;
             mtsSdk.UnparsableTicketResponseReceived += OnUnparsableTicketResponseReceived;
@@ -117,7 +122,7 @@ namespace Sportradar.MTS.SDK.DemoProject.Example
                 throw new ArgumentNullException(nameof(mtsSdk));
             }
 
-            _log.Info("Detaching from events");
+            _log.LogInformation("Detaching from events");
             mtsSdk.SendTicketFailed -= OnSendTicketFailed;
             mtsSdk.TicketResponseReceived -= OnTicketResponseReceived;
             mtsSdk.UnparsableTicketResponseReceived -= OnUnparsableTicketResponseReceived;
@@ -125,7 +130,7 @@ namespace Sportradar.MTS.SDK.DemoProject.Example
 
         private void OnTicketResponseReceived(object sender, TicketResponseReceivedEventArgs e)
         {
-            _log.Info($"Received {e.Type}Response for ticket '{e.Response.TicketId}'.");
+            _log.LogInformation($"Received {e.Type}Response for ticket '{e.Response.TicketId}'.");
 
             if (e.Type == TicketResponseType.Ticket)
             {
@@ -143,17 +148,17 @@ namespace Sportradar.MTS.SDK.DemoProject.Example
 
         private void OnUnparsableTicketResponseReceived(object sender, UnparsableMessageEventArgs e)
         {
-            _log.Info($"Received unparsable ticket response: {e.Body}.");
+            _log.LogInformation($"Received unparsable ticket response: {e.Body}.");
         }
 
         private void OnSendTicketFailed(object sender, TicketSendFailedEventArgs e)
         {
-            _log.Info($"Sending ticket '{e.TicketId}' failed.");
+            _log.LogInformation($"Sending ticket '{e.TicketId}' failed.");
         }
 
         private void HandleTicketResponse(ITicketResponse ticketResponse)
         {
-            _log.Info($"Ticket '{ticketResponse.TicketId}' response is {ticketResponse.Status}. Reason={ticketResponse.Reason?.Message}");
+            _log.LogInformation($"Ticket '{ticketResponse.TicketId}' response is {ticketResponse.Status}. Reason={ticketResponse.Reason?.Message}");
             if (ticketResponse.Status == TicketAcceptance.Accepted)
             {
                 //required only if 'explicit acking' is enabled in MTS admin
@@ -169,7 +174,7 @@ namespace Sportradar.MTS.SDK.DemoProject.Example
 
         private void HandleTicketCancelResponse(ITicketCancelResponse ticket)
         {
-            _log.Info($"Ticket '{ticket.TicketId}' response is {ticket.Status}. Reason={ticket.Reason?.Message}");
+            _log.LogInformation($"Ticket '{ticket.TicketId}' response is {ticket.Status}. Reason={ticket.Reason?.Message}");
             if (ticket.Status == TicketCancelAcceptance.Cancelled)
             {
                 //required only if 'explicit acking' is enabled in MTS admin
@@ -179,7 +184,7 @@ namespace Sportradar.MTS.SDK.DemoProject.Example
 
         private void HandleTicketCashoutResponse(ITicketCashoutResponse ticketCashoutResponse)
         {
-            _log.Info($"Ticket '{ticketCashoutResponse.TicketId}' response is {ticketCashoutResponse.Status}. Reason={ticketCashoutResponse.Reason?.Message}");
+            _log.LogInformation($"Ticket '{ticketCashoutResponse.TicketId}' response is {ticketCashoutResponse.Status}. Reason={ticketCashoutResponse.Reason?.Message}");
             if (ticketCashoutResponse.Status == CashoutAcceptance.Accepted)
             {
                 ticketCashoutResponse.Acknowledge();

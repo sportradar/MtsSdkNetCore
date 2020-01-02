@@ -2,25 +2,23 @@
  * Copyright (C) Sportradar AG. See LICENSE for full license governing this code
  */
 using System;
-using System.IO;
-using log4net;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Sportradar.MTS.SDK.DemoProject.Example;
 
 namespace Sportradar.MTS.SDK.DemoProject
 {
     public class Start
     {
-        private static ILog _log;
+        private static ILogger _log;
 
         private static void Main()
         {
-            log4net.Config.XmlConfigurator.Configure(new FileInfo("log4net.config"));
-            SdkLoggerFactory.Configure(new FileInfo("log4net.sdk.config"));
-            _log = LogManager.GetLogger(typeof(Start));
-            if (!SdkLoggerFactory.CheckAllLoggersExists())
-            {
-                _log.Warn("Loggers are not set correctly!");
-            }
+            var services = new ServiceCollection();
+            services.AddLogging(configure => configure.AddLog4Net("log4net.config"));
+            var serviceProvider = services.BuildServiceProvider();
+            var loggerFactory = serviceProvider.GetService<ILoggerFactory>();
+            _log = loggerFactory.CreateLogger(typeof(Start));
 
             var key = 'y';
             while (key.Equals('y'))
@@ -42,7 +40,7 @@ namespace Sportradar.MTS.SDK.DemoProject
             Console.WriteLine(" 2 - Blocking \t\t\t(sending ticket and receiving response with blocking mode)");
             Console.WriteLine(" 3 - Reoffer \t\t\t(sending reoffer to the declined ticket and receiving response)");
             Console.WriteLine(" 4 - Cashout \t\t\t(creating and sending cashout ticket)");
-            Console.WriteLine(" 5 - NonSrSettle \t\t\t(creating and sending ticket fo settling non-sportradar ticket)");
+            Console.WriteLine(" 5 - NonSrSettle \t\t(creating and sending ticket for settling non-sportradar ticket)");
             Console.WriteLine(" 6 - Examples \t\t\t(creating and sending ticket examples from MTS integration guide)");
             Console.Write(" Enter number: ");
             var k = Console.ReadKey();
