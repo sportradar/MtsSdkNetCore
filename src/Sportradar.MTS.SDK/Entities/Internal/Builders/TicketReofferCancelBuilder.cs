@@ -36,56 +36,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             _bookmakerId = config.BookmakerId;
         }
 
-        #region Obsolete_members
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TicketReofferCancelBuilder"/> class
-        /// </summary>
-        /// <param name="bookmakerId">The bookmaker identifier</param>
-        internal TicketReofferCancelBuilder(int bookmakerId = 0)
-        {
-            _bookmakerId = bookmakerId;
-        }
-
-        /// <summary>
-        /// The <see cref="SdkConfigurationSection"/> loaded from app.config
-        /// </summary>
-        private static ISdkConfigurationSection _section;
-
-        /// <summary>
-        /// Value indicating whether an attempt to load the <see cref="_section"/> was already made
-        /// </summary>
-        private static bool _sectionLoaded;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TicketReofferCancelBuilder"/> class
-        /// </summary>
-        /// <param name="bookmakerId">The bookmaker identifier</param>
-        /// <returns>Returns an <see cref="ITicketReofferCancelBuilder"/></returns>
-        [Obsolete("Method Create(...) is obsolete. Please use the appropriate method on IBuilderFactory interface which can be obtained through MtsSdk instance")]
-        public static ITicketReofferCancelBuilder Create(int bookmakerId = 0)
-        {
-            if (!_sectionLoaded)
-            {
-                SdkConfigurationSection.TryGetSection(out _section);
-                _sectionLoaded = true;
-            }
-
-            if (_section != null && bookmakerId == 0)
-            {
-                try
-                {
-                    var config = SdkConfigurationSection.GetSection();
-                    bookmakerId = config.BookmakerId;
-                }
-                catch (Exception)
-                {
-                    // if exists, try to load, otherwise user must explicitly set it
-                }
-            }
-            return new TicketReofferCancelBuilder(bookmakerId);
-        }
-        #endregion
-
         /// <summary>
         /// Sets the reoffer ticket id to cancel
         /// </summary>

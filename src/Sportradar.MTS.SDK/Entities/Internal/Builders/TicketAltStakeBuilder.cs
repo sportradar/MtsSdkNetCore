@@ -32,24 +32,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             _builderFactory = builderFactory;
         }
 
-        #region Obsolete_members        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TicketAltStakeBuilder"/> class
-        /// </summary>
-        [Obsolete]
-        internal TicketAltStakeBuilder()
-        {
-            _builderFactory = new SimpleBuilderFactory();
-        }
-
-        /// <summary>
-        /// Creates new <see cref="ITicketAltStakeBuilder"/>
-        /// </summary>
-        /// <returns>Returns an <see cref="ITicketAltStakeBuilder"/></returns>
-        [Obsolete("Method Create(...) is obsolete. Please use the appropriate method on IBuilderFactory interface which can be obtained through MtsSdk instance")]
-        public static ITicketAltStakeBuilder Create() => new TicketAltStakeBuilder();
-        #endregion
-
         /// <summary>
         /// Sets the original ticket and the ticket response
         /// </summary>
@@ -57,7 +39,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// <param name="ticketResponse">The ticket response from which the stake info will be used</param>
         /// <param name="newTicketId">The new alternative stake ticket id</param>
         /// <returns>Returns the <see cref="ITicketAltStakeBuilder" /></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
+        /// <exception cref="NotImplementedException"></exception>
         /// <remarks>Only tickets with exactly 1 bet are supported</remarks>
         public ITicketAltStakeBuilder Set(ITicket ticket, ITicketResponse ticketResponse, string newTicketId = null)
         {
@@ -74,7 +56,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// <param name="newStake">The new stake value which will be used to set bet stake</param>
         /// <param name="newTicketId">The new alternative stake ticket id</param>
         /// <returns>Returns the <see cref="ITicketAltStakeBuilder" /></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
+        /// <exception cref="NotImplementedException"></exception>
         /// <remarks>Only tickets with exactly 1 bet are supported</remarks>
         public ITicketAltStakeBuilder Set(ITicket ticket, long newStake, string newTicketId = null)
         {

@@ -7,6 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sportradar.MTS.SDK.API.Internal.Mappers;
 using Sportradar.MTS.SDK.Entities.Internal;
 using Sportradar.MTS.SDK.Entities.Internal.Builders;
+using Sportradar.MTS.SDK.Test.Helpers;
 using SR = Sportradar.MTS.SDK.Test.Helpers.StaticRandom;
 
 namespace Sportradar.MTS.SDK.Test.Builders
@@ -17,7 +18,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [TestMethod]
         public void BuildBaseTicketTest()
         {
-            var tb = TicketCashoutBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCashoutBuilder();
             var ticket = tb.SetTicketId("ticket-" + SR.I1000P)
                            .SetBookmakerId(SR.I1000)
                            .SetCashoutStake(1000)
@@ -37,7 +38,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
         public void BuildTicketWithNoCodeTest()
         {
-            var tb = TicketCashoutBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCashoutBuilder();
             var ticket = tb.SetTicketId("ticket-" + SR.I1000P)
                            .SetBookmakerId(SR.I1000)
                            .BuildTicket();
@@ -49,7 +50,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
         public void BuildTicketWithNoBookmakerIdTest()
         {
-            var tb = TicketCashoutBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCashoutBuilder();
             var ticket = tb.SetTicketId("ticket-" + SR.I1000P)
                            .SetCashoutStake(1000)
                            .BuildTicket();
@@ -61,7 +62,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
         public void BuildTicketWithNoTicketIdTest()
         {
-            var tb = TicketCashoutBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCashoutBuilder();
             var ticket = tb.SetBookmakerId(SR.I1000)
                            .SetCashoutStake(1000)
                            .BuildTicket();
@@ -72,7 +73,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [TestMethod]
         public void BuildTicketPercentTest()
         {
-            var tb = TicketCashoutBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCashoutBuilder();
             var ticket = tb.SetTicketId("ticket-" + SR.I1000P)
                            .SetBookmakerId(SR.I1000)
                            .SetCashoutStake(1000)
@@ -95,7 +96,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [TestMethod]
         public void BuildTicketBetCashoutTest()
         {
-            var tb = TicketCashoutBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCashoutBuilder();
             var ticket = tb.SetTicketId("ticket-" + SR.I1000P)
                            .SetBookmakerId(SR.I1000)
                            .AddBetCashout("bet-id-01", 1000, 2132)
@@ -121,7 +122,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [TestMethod]
         public void BuildTicketValidPercentTest()
         {
-            var tb = TicketCashoutBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCashoutBuilder();
             tb.SetCashoutPercent(1)
               .SetCashoutPercent(1000000)
               .SetCashoutPercent(10101);
@@ -131,7 +132,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
         public void BuildTicketBetCashoutMissingBetIdTest()
         {
-            var tb = TicketCashoutBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCashoutBuilder();
             tb.AddBetCashout("", 1000, 1220);
         }
 
@@ -139,7 +140,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = true)]
         public void BuildTicketBetCashoutStakeLowTest()
         {
-            var tb = TicketCashoutBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCashoutBuilder();
             tb.AddBetCashout("bet-id-01", 0, 1220);
         }
 
@@ -147,7 +148,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = true)]
         public void BuildTicketBetCashoutPercentLowTest()
         {
-            var tb = TicketCashoutBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCashoutBuilder();
             tb.AddBetCashout("bet-id-01", 1000, 0);
         }
 
@@ -155,7 +156,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = true)]
         public void BuildTicketBetCashoutPercentHighTest()
         {
-            var tb = TicketCashoutBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCashoutBuilder();
             tb.AddBetCashout("bet-id-01", 1000, 1000001);
         }
 
@@ -163,7 +164,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = true)]
         public void BuildTicketTooLowPercentTest()
         {
-            var tb = TicketCashoutBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCashoutBuilder();
             tb.SetCashoutPercent(0);
         }
 
@@ -171,7 +172,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = true)]
         public void BuildTicketTooHighPercentTest()
         {
-            var tb = TicketCashoutBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCashoutBuilder();
             tb.SetCashoutPercent(1000001);
         }
 
@@ -179,7 +180,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = true)]
         public void BuildTicketBetCashoutAndStakePercentTest()
         {
-            var tb = TicketCashoutBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCashoutBuilder();
             tb.SetTicketId("ticket-" + SR.I1000P)
               .SetBookmakerId(SR.I1000)
               .SetCashoutStake(1000)
@@ -192,7 +193,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = true)]
         public void BuildTicketBetCashoutAndPercentTest()
         {
-            var tb = TicketCashoutBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCashoutBuilder();
             tb.SetTicketId("ticket-" + SR.I1000P)
               .SetBookmakerId(SR.I1000)
               .SetCashoutPercent(2132)

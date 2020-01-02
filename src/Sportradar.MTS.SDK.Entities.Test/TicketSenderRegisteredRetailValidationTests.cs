@@ -15,12 +15,12 @@ namespace Sportradar.MTS.SDK.Entities.Test
         [TestMethod]
         public void limit_is_required()
         {
-            var builder = SenderBuilder.Create()
+            var builder = new SenderBuilder(TestHelper.BuilderMinimalConfiguration())
                 .SetSenderChannel(SenderChannel.Retail)
                 .SetShopId("shop")
                 .SetBookmakerId(1)
                 .SetCurrency("eur")
-                .SetEndCustomer(EndCustomerBuilder.Create().SetId("id").SetLanguageId("en").Build());
+                .SetEndCustomer(new EndCustomerBuilder().SetId("id").SetLanguageId("en").Build());
 
             try
             {
@@ -36,13 +36,13 @@ namespace Sportradar.MTS.SDK.Entities.Test
         [TestMethod]
         public void end_customer_id_is_not_required_for_retail()
         {
-            var builder = SenderBuilder.Create()
+            var builder = new SenderBuilder(TestHelper.BuilderMinimalConfiguration())
                 .SetSenderChannel(SenderChannel.Retail)
                 .SetLimitId(1)
                 .SetBookmakerId(1)
                 .SetShopId("a")
                 .SetCurrency("eur")
-                .SetEndCustomer(EndCustomerBuilder.Create().SetLanguageId("en").Build());
+                .SetEndCustomer(new EndCustomerBuilder().SetLanguageId("en").Build());
 
             var sender = builder.Build();
             Assert.IsNotNull(sender);
@@ -51,13 +51,13 @@ namespace Sportradar.MTS.SDK.Entities.Test
         [TestMethod]
         public void end_customer_device_id_is_allowed()
         {
-            var builder = SenderBuilder.Create()
+            var builder = new SenderBuilder(TestHelper.BuilderMinimalConfiguration())
                 .SetSenderChannel(SenderChannel.Retail)
                 .SetLimitId(1)
                 .SetBookmakerId(1)
                 .SetShopId("a")
                 .SetCurrency("eur")
-                .SetEndCustomer(EndCustomerBuilder.Create().SetId("id").SetDeviceId("device").SetLanguageId("en").Build());
+                .SetEndCustomer(new EndCustomerBuilder().SetId("id").SetDeviceId("device").SetLanguageId("en").Build());
 
             var sender = builder.Build();
             Assert.IsNotNull(sender);
@@ -66,13 +66,13 @@ namespace Sportradar.MTS.SDK.Entities.Test
         [TestMethod]
         public void valid_sender_is_validated()
         {
-            var builder = SenderBuilder.Create()
+            var builder = new SenderBuilder(TestHelper.BuilderMinimalConfiguration())
                 .SetSenderChannel(SenderChannel.Retail)
                 .SetLimitId(1)
                 .SetBookmakerId(1)
                 .SetShopId("a")
                 .SetCurrency("eur")
-                .SetEndCustomer(EndCustomerBuilder.Create().SetId("id").SetLanguageId("en").Build());
+                .SetEndCustomer(new EndCustomerBuilder().SetId("id").SetLanguageId("en").Build());
 
             var sender = builder.Build();
             Assert.IsNotNull(sender);

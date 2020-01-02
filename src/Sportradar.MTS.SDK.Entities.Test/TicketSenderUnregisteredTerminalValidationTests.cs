@@ -14,7 +14,7 @@ namespace Sportradar.MTS.SDK.Entities.Test
         [TestMethod]
         public void limit_is_required()
         {
-            var builder = SenderBuilder.Create()
+            var builder = new SenderBuilder(TestHelper.BuilderMinimalConfiguration())
                 .SetSenderChannel(SenderChannel.Terminal)
                 .SetTerminalId("terminal")
                 .SetBookmakerId(1)
@@ -34,7 +34,7 @@ namespace Sportradar.MTS.SDK.Entities.Test
         [TestMethod]
         public void shop_id_is_allowed()
         {
-            var builder = SenderBuilder.Create()
+            var builder = new SenderBuilder(TestHelper.BuilderMinimalConfiguration())
                 .SetSenderChannel(SenderChannel.Terminal)
                 .SetLimitId(1)
                 .SetTerminalId("terminal")
@@ -50,7 +50,7 @@ namespace Sportradar.MTS.SDK.Entities.Test
         [TestMethod]
         public void valid_sender_is_validated()
         {
-            var builder = SenderBuilder.Create()
+            var builder = new SenderBuilder(TestHelper.BuilderMinimalConfiguration())
                 .SetSenderChannel(SenderChannel.Terminal)
                 .SetLimitId(1)
                 .SetTerminalId("terminal")

@@ -42,6 +42,8 @@ namespace Sportradar.MTS.SDK.Test.Helpers
 
         public static int I1000P => II(100000) + 10000;
 
+        public static string S1000P => (II(100000) + 10000).ToString();
+
         public static string S100 => SS(100);
 
         public static int I100 => II(100);

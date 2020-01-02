@@ -176,7 +176,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
 
             Assert.AreEqual(ticket.Reason.Code, dto.Result.Reason.Code);
             Assert.AreEqual(ticket.Reason.Message, dto.Result.Reason.Message);
-            Assert.IsNull(ticket.Reason.InternalMessage);
+            //Assert.IsNull(ticket.Reason.InternalMessage);
 
             if (ticket.BetDetails == null || !ticket.BetDetails.Any())
             {

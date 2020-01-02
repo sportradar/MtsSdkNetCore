@@ -125,7 +125,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         /// <param name="altStakeRefId">The alt stake reference identifier</param>
         /// <param name="isTestSource">if set to <c>true</c> [is test source]</param>
         /// <param name="oddsChangeType">Type of the odds change</param>
-        /// <exception cref="System.ArgumentException">Only ReofferId or AltStakeRefId can specified</exception>
+        /// <exception cref="ArgumentException">Only ReofferId or AltStakeRefId can specified</exception>
         /// <param name="totalCombinations">Expected total number of generated combinations on this ticket (optional, default null). If present is used to validate against actual number of generated combinations</param>
         /// <param name="lastMatchEndTime">End time of last (non Sportradar) match on ticket.</param>
         public Ticket(string ticketId, ISender sender, IEnumerable<IBet> bets, string reofferId, string altStakeRefId, bool isTestSource, OddsChangeType? oddsChangeType, int? totalCombinations, DateTime? lastMatchEndTime)

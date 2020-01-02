@@ -73,15 +73,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// <value>The array of selected systems</value>
         public IEnumerable<int> GetSelectedSystems => _selectedSystems;
 
-        #region Obsolete_members
-        /// <summary>
-        /// Creates new <see cref="IBetBuilder"/>
-        /// </summary>
-        /// <returns>Returns a <see cref="IBetBuilder"/></returns>
-        [Obsolete("Method Create() is obsolete. Please use the appropriate method on IBuilderFactory interface which can be obtained through MtsSdk instance")]
-        public static IBetBuilder Create() => new BetBuilder();
-        #endregion
-
         /// <summary>
         /// Sets the bet id
         /// </summary>
@@ -209,7 +200,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// </summary>
         /// <param name="selection">A <see cref="ISelection" /> to be added to this bet</param>
         /// <returns>Returns a <see cref="IBetBuilder" /></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
+        /// <exception cref="NotImplementedException"></exception>
         public IBetBuilder AddSelection(ISelection selection)
         {
             var selections = _selections ?? new List<ISelection>();

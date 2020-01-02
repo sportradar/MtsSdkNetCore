@@ -75,44 +75,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             _isCustomBet = isCustomBet;
         }
 
-        #region Obsolete_members
-
-        /// <summary>
-        /// Creates new <see cref="ISelectionBuilder"/>
-        /// </summary>
-        /// <returns>Returns an <see cref="ISelectionBuilder"/></returns>
-        [Obsolete("Method Create() is obsolete. Please use the appropriate method on IBuilderFactory interface which can be obtained through MtsSdk instance")]
-        public static ISelectionBuilder Create()
-        {
-            //TODO: prone to fail in web app
-            var configInternal = new SdkConfigurationInternal(new SdkConfiguration(SdkConfigurationSection.GetSection()), null);
-            var value = new Random((int)DateTime.Now.Ticks).Next();
-            var dataFetcher = new LogHttpDataFetcher(new HttpClient(),
-                                                     configInternal.AccessToken,
-                                                     new IncrementalSequenceGenerator(value, long.MaxValue),
-                                                     3,
-                                                     12);
-            var deserializer = new Deserializer<market_descriptions>();
-            var mapper = new MarketDescriptionsMapperFactory();
-
-            var dataProvider = new DataProvider<market_descriptions, IEnumerable<MarketDescriptionDTO>>(
-                configInternal.ApiHost + "/v1/descriptions/{0}/markets.xml?include_mappings=true",
-                dataFetcher,
-                dataFetcher,
-                deserializer,
-                mapper);
-
-            var marketDescriptionCache = new MarketDescriptionCache(new MemoryCache("InvariantMarketDescriptionCache"),
-                                                                 dataProvider,
-                                                                 new [] {new CultureInfo("en")},
-                                                                 configInternal.AccessToken,
-                                                                 TimeSpan.FromHours(4),
-                                                                 new CacheItemPolicy {SlidingExpiration = TimeSpan.FromDays(1)});
-            var marketDescriptionProvider = new MarketDescriptionProvider(marketDescriptionCache, new[] {new CultureInfo("en")});
-            return new SelectionBuilder(marketDescriptionProvider, configInternal, false);
-        }
-        #endregion
-
         /// <summary>
         /// Sets the Betradar event (match or outright) id
         /// </summary>
@@ -210,7 +172,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// <param name="specifiers">The UF array of specifiers represented as string separated with '|'</param>
         /// <param name="sportEventStatus">The UF sport event status properties</param>
         /// <returns>Returns a <see cref="ISelectionBuilder" /></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
+        /// <exception cref="NotImplementedException"></exception>
         /// <value>Should be composed according to specification</value>
         /// <example>
         /// SetIdUof(1, "sr:sport:1", 101, "10", "total=3.0|playerid=sr:player:10201");
@@ -240,7 +202,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// <param name="specifiers">The array of specifiers</param>
         /// <param name="sportEventStatus">The UF sport event status properties</param>
         /// <returns>Returns a <see cref="ISelectionBuilder" /></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
+        /// <exception cref="NotImplementedException"></exception>
         /// <value>Should be composed according to specification</value>
         public ISelectionBuilder SetIdUof(int product, string sportId, int marketId, string selectionId, IReadOnlyDictionary<string, string> specifiers, IReadOnlyDictionary<string, object> sportEventStatus)
         {

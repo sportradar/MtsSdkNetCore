@@ -109,7 +109,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Enums
         /// </summary>
         /// <param name="urnString">The string representation of the URN</param>
         /// <returns>A <see cref="URN"/> constructed by parsing the provided string representation</returns>
-        /// <exception cref="System.FormatException">The format of the provided representation is not correct</exception>
+        /// <exception cref="FormatException">The format of the provided representation is not correct</exception>
         public static URN Parse(string urnString)
         {
             Guard.Argument(urnString, nameof(urnString)).NotNull().NotEmpty();
@@ -157,19 +157,19 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Enums
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance
+        /// Returns a <see cref="string" /> that represents this instance
         /// </summary>
-        /// <returns>A <see cref="System.String" /> that represents this instance</returns>
+        /// <returns>A <see cref="string" /> that represents this instance</returns>
         public override string ToString()
         {
             return $"{Prefix}:{Type}:{Id}";
         }
 
         /// <summary>
-        /// Determines whether the specified <see cref="System.Object" /> is equal to this instance
+        /// Determines whether the specified <see cref="object" /> is equal to this instance
         /// </summary>
         /// <param name="obj">The object to compare with the current object</param>
-        /// <returns><c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c></returns>
+        /// <returns><c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c></returns>
         public override bool Equals(object obj)
         {
             if (obj == null)

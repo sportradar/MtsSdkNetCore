@@ -464,7 +464,7 @@ namespace Sportradar.MTS.SDK.Test
             var config = @"<mtsSdkSection username=""username"" password=""password"" host=""host"" port=""-1"" />"
                 .ToSdkConfiguration();
 
-            Assert.AreEqual<int>(5671, config.Port);
+            Assert.AreEqual(5671, config.Port);
         }
 
         [TestMethod]

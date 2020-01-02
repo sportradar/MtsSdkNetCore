@@ -345,7 +345,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         /// <summary>
         /// Closes the current channel
         /// </summary>
-        /// <exception cref="System.InvalidOperationException">The instance is already closed</exception>
+        /// <exception cref="InvalidOperationException">The instance is already closed</exception>
         public void Close()
         {
             if (Interlocked.CompareExchange(ref _isOpened, 0, 1) != 1)

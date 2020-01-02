@@ -49,8 +49,8 @@ namespace Sportradar.MTS.SDK.Test.Entities
                            .SetShopId(SR.S1000)
                            .SetTerminalId(SR.S1000)
                            .Build())
-                .AddBet(BetBuilder.Create().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
-                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(9691139).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
+                .AddBet(new BuilderFactoryHelper().BuilderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
+                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId("9691139").SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
                         .Build())
                 .BuildTicket();
 

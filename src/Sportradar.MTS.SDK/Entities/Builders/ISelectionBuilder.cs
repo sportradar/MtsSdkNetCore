@@ -17,14 +17,6 @@ namespace Sportradar.MTS.SDK.Entities.Builders
         /// </summary>
         /// <param name="eventId">The event identifier</param>
         /// <returns>Returns a <see cref="ISelectionBuilder"/></returns>
-        [Obsolete("Please use SetEventId method with the string input parameter (supports all LO, LCoO and UoF identifiers)")]
-        ISelectionBuilder SetEventId(long eventId);
-
-        /// <summary>
-        /// Sets the Betradar event (match or outright) id
-        /// </summary>
-        /// <param name="eventId">The event identifier</param>
-        /// <returns>Returns a <see cref="ISelectionBuilder"/></returns>
         ISelectionBuilder SetEventId(string eventId);
 
         /// <summary>

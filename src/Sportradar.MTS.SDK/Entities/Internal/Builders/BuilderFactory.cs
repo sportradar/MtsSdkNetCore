@@ -10,7 +10,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
     /// <summary>
     /// A class used to construct builder instances used when constructing tickets and it's associated entities
     /// </summary>
-    /// <seealso cref="Sportradar.MTS.SDK.Entities.Builders.IBuilderFactory" />
+    /// <seealso cref="IBuilderFactory" />
     internal class BuilderFactory : SimpleBuilderFactory, IBuilderFactory
     {
         /// <summary>

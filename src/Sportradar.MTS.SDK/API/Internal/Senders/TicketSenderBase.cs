@@ -170,7 +170,7 @@ namespace Sportradar.MTS.SDK.API.Internal.Senders
 
             var ticketCI = new TicketCacheItem(TicketHelper.GetTicketTypeFromTicket(sdkTicket), sdkTicket.TicketId, sdkTicket.CorrelationId, _mtsChannelSettings.ReplyToRoutingKey, null, sdkTicket);
 
-            // we clear cache, since already sent ticket with the same ticketId are obsolete (example: sending ticket, ticketAck, ticketCancel, ticketCancelAck)
+            // we clear cache, since already sent ticket with the same ticketId are not used (example: sending ticket, ticketAck, ticketCancel, ticketCancelAck)
             TicketCacheItem oldTicket;
             if (_ticketCache.TryRemove(sdkTicket.TicketId, out oldTicket))
             {

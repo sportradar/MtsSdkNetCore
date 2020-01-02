@@ -15,7 +15,7 @@ namespace Sportradar.MTS.SDK.Common.Internal.Rest
     /// <summary>
     /// A <see cref="IDataFetcher" /> which uses the HTTP requests to fetch the requested data
     /// </summary>
-    /// <seealso cref="System.MarshalByRefObject" />
+    /// <seealso cref="MarshalByRefObject" />
     /// <seealso cref="IDataFetcher" />
     /// <seealso cref="IDataPoster" />
     internal class HttpDataFetcher : MarshalByRefObject, IDataFetcher, IDataPoster

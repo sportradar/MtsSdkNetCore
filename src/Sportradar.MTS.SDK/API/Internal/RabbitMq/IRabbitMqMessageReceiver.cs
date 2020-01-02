@@ -11,7 +11,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
     /// <summary>
     /// Defines a contract for AMPQ message receiver
     /// </summary>
-    /// <seealso cref="Sportradar.MTS.SDK.Common.IOpenable" />
+    /// <seealso cref="IOpenable" />
     internal interface IRabbitMqMessageReceiver : IOpenable
     {
         /// <summary>

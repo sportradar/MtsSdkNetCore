@@ -32,24 +32,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             _builderFactory = builderFactory;
         }
 
-        #region Obsolete_members        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TicketReofferBuilder"/> class
-        /// </summary>
-        [Obsolete]
-        private TicketReofferBuilder()
-        {
-            _builderFactory = new SimpleBuilderFactory();
-        }
-
-        /// <summary>
-        /// Creates new <see cref="ITicketReofferBuilder"/>
-        /// </summary>
-        /// <returns>Returns an <see cref="ITicketReofferBuilder"/></returns>
-        [Obsolete("Method Create(...) is obsolete. Please use the appropriate method on IBuilderFactory interface which can be obtained through MtsSdk instance")]
-        public static ITicketReofferBuilder Create() => new TicketReofferBuilder();
-        #endregion
-
         /// <summary>
         /// Sets the original ticket and the ticket response
         /// </summary>

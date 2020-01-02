@@ -14,7 +14,7 @@ namespace Sportradar.MTS.SDK.Entities.Test
         [TestMethod]
         public void limit_is_required()
         {
-            var builder = SenderBuilder.Create()
+            var builder = new SenderBuilder(TestHelper.BuilderMinimalConfiguration())
                 .SetSenderChannel(SenderChannel.Retail)
                 .SetBookmakerId(23)
                 .SetCurrency("eur");

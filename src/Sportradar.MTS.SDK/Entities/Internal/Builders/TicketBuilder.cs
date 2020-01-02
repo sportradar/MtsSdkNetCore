@@ -69,18 +69,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             _totalCombinations = null;
         }
 
-        #region Obsolete_members
-        /// <summary>
-        /// Creates the <see cref="ITicketBuilder"/>
-        /// </summary>
-        /// <returns>Return a new instance of <see cref="ITicketBuilder"/></returns>
-        [Obsolete("Method Create(...) is obsolete. Please use the appropriate method on IBuilderFactory interface which can be obtained through MtsSdk instance")]
-        public static ITicketBuilder Create()
-        {
-            return new TicketBuilder();
-        }
-        #endregion
-
         /// <summary>
         /// Sets the ticket id
         /// </summary>

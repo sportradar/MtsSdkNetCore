@@ -137,7 +137,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var ticketBuilder = TicketBuilderHelper.GetTicketBuilder(_sender);
 
             var betBuilder = _builderFactory.CreateBetBuilder();
-            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
+            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
 
             var bet = betBuilder.AddSelectedSystem(1).SetStake(SR.I1000P, StakeType.Total).SetBetId("bet-id-" + SR.I1000).Build();
             ticketBuilder.AddBet(bet);
@@ -158,7 +158,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var ticketBuilder = TicketBuilderHelper.GetTicketBuilder(_sender);
 
             var betBuilder = _builderFactory.CreateBetBuilder();
-            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
+            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
 
             var bet = betBuilder.AddSelectedSystem(1).SetStake(SR.I1000P, StakeType.Unit).SetBetBonus(SR.I1000P).SetBetId("bet-id-" + SR.I1000).Build();
             ticketBuilder.AddBet(bet);
@@ -183,7 +183,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var ticketBuilder = TicketBuilderHelper.GetTicketBuilder(_sender);
 
             var betBuilder = _builderFactory.CreateBetBuilder();
-            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
+            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
 
             var bet = betBuilder.AddSelectedSystem(1).SetStake(SR.I1000P).SetBetId("bet-id-" + SR.I1000).Build();
             ticketBuilder.AddBet(bet);
@@ -206,7 +206,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var ticketBuilder = TicketBuilderHelper.GetTicketBuilder(_sender);
 
             var betBuilder = _builderFactory.CreateBetBuilder();
-            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
+            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
 
             var bet = betBuilder.AddSelectedSystem(1).SetStake(SR.I1000P, StakeType.Unit).SetBetId("bet-id-" + SR.I1000).Build();
             ticketBuilder.AddBet(bet);
@@ -229,7 +229,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var ticketBuilder = TicketBuilderHelper.GetTicketBuilder(_sender);
 
             var betBuilder = _builderFactory.CreateBetBuilder();
-            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
+            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
 
             var bet = betBuilder.AddSelectedSystem(1).SetStake(SR.I1000P, StakeType.Total).Build();
             ticketBuilder.AddBet(bet);
@@ -257,7 +257,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var ticketBuilder = TicketBuilderHelper.GetTicketBuilder(_sender);
 
             var betBuilder = _builderFactory.CreateBetBuilder();
-            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
+            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
 
             var bet = betBuilder.AddSelectedSystem(1).SetStake(SR.I1000P, StakeType.Total).SetBetId("bet-id-" + SR.I1000).Build();
             ticketBuilder.AddBet(bet);
@@ -388,7 +388,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var ticketBuilder = TicketBuilderHelper.GetTicketBuilder(_sender);
 
             var betBuilder = _builderFactory.CreateBetBuilder();
-            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
+            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
 
             var bet = betBuilder.AddSelectedSystem(1).SetStake(SR.I1000P, StakeType.Total).SetBetId("bet-id-" + SR.I1000).Build();
             ticketBuilder.AddBet(bet);
@@ -408,7 +408,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var ticketBuilder = TicketBuilderHelper.GetTicketBuilder(_sender);
 
             var betBuilder = _builderFactory.CreateBetBuilder();
-            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).Build());
+            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).Build());
 
             var bet = betBuilder.AddSelectedSystem(1).SetStake(SR.I1000P, StakeType.Total).SetSumOfWins(123456).SetBetId("bet-id-" + SR.I1000).Build();
             ticketBuilder.AddBet(bet);
@@ -430,7 +430,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var ticketBuilder = TicketBuilderHelper.GetTicketBuilder(_sender);
 
             var betBuilder = _builderFactory.CreateBetBuilder();
-            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(true).Build());
+            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(true).Build());
 
             var bet = betBuilder.AddSelectedSystem(1).SetStake(SR.I1000P, StakeType.Total).SetSumOfWins(123456).SetBetId("bet-id-" + SR.I1000).Build();
             ticketBuilder.AddBet(bet);

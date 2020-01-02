@@ -218,7 +218,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         /// <param name="correlationId">The correlation identifier</param>
         /// <param name="replyRoutingKey">The reply routing key</param>
         /// <returns>A <see cref="IMqPublishResult" /></returns>
-        /// <exception cref="System.InvalidOperationException">The instance is closed</exception>
+        /// <exception cref="InvalidOperationException">The instance is closed</exception>
         public IMqPublishResult Publish(byte[] msg, string routingKey, string correlationId, string replyRoutingKey)
         {
             Guard.Argument(msg, nameof(msg)).NotNull();
@@ -287,7 +287,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         /// <param name="correlationId">The correlation identifier</param>
         /// <param name="replyRoutingKey">The reply routing key</param>
         /// <returns>IMqPublishResult</returns>
-        /// <exception cref="System.InvalidOperationException">The instance is closed</exception>
+        /// <exception cref="InvalidOperationException">The instance is closed</exception>
         private IMqPublishResult PublishMsg(byte[] msg, string routingKey, string correlationId, string replyRoutingKey)
         {
             try
@@ -416,7 +416,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         /// <summary>
         /// Opens the current channel and binds the created queue to provided routing keys
         /// </summary>
-        /// <exception cref="System.InvalidOperationException">The instance is already opened</exception>
+        /// <exception cref="InvalidOperationException">The instance is already opened</exception>
         public void Open()
         {
             if (Interlocked.Read(ref _isOpened) != 0)
@@ -432,7 +432,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         /// <summary>
         /// Closes the current channel
         /// </summary>
-        /// <exception cref="System.InvalidOperationException">The instance is already closed</exception>
+        /// <exception cref="InvalidOperationException">The instance is already closed</exception>
         public void Close()
         {
             if (Interlocked.CompareExchange(ref _isOpened, 0, 1) != 1)

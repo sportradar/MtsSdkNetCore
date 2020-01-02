@@ -242,27 +242,6 @@ namespace Sportradar.MTS.SDK.API
         }
 
         /// <summary>
-        /// Constructs a <see cref="ISdkConfiguration" /> instance from provided information
-        /// </summary>
-        /// <param name="username">The username used when establishing connection to the AMQP broker</param>
-        /// <param name="password">The password used when establishing connection to the AMQP broker</param>
-        /// <param name="host">A value specifying the host name of the AMQP broker</param>
-        /// <param name="vhost">A value specifying the virtual host name of the AMQP broker</param>
-        /// <param name="useSsl">A value specifying whether the connection to AMQP broker should use SSL encryption</param>
-        /// <param name="accessToken">Gets the access token for the UF feed (only necessary if UF selections will be build)</param>
-        /// <returns>A <see cref="ISdkConfiguration" /> instance created from provided information</returns>
-        [Obsolete("Instead use SdkConfigurationBuilder")]
-        public static ISdkConfiguration CreateConfiguration(string username,
-                                                            string password,
-                                                            string host,
-                                                            string vhost = null,
-                                                            bool useSsl = true,
-                                                            string accessToken = null)
-        {
-            return new SdkConfiguration(username, password, host, vhost, useSsl, 1, 0, 0, null, null, accessToken);
-        }
-
-        /// <summary>
         /// Creates the <see cref="ISdkConfigurationBuilder"/> for building the <see cref="ISdkConfiguration"/>
         /// </summary>
         /// <returns>A <see cref="ISdkConfigurationBuilder"/> to be used to create <see cref="ISdkConfiguration"/></returns>
@@ -338,8 +317,8 @@ namespace Sportradar.MTS.SDK.API
         /// <summary>
         /// Opens the current feed
         /// </summary>
-        /// <exception cref="System.ObjectDisposedException">The feed is already disposed</exception>
-        /// <exception cref="System.InvalidOperationException">The feed is already opened</exception>
+        /// <exception cref="ObjectDisposedException">The feed is already disposed</exception>
+        /// <exception cref="InvalidOperationException">The feed is already opened</exception>
         /// <exception cref="CommunicationException"> Connection to the message broker failed, Probable Reason={Invalid or expired token}</exception>
         public void Open()
         {

@@ -67,7 +67,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
                 var betBuilder = BuilderFactory.CreateBetBuilder();
                 for (var j = 0; j < selectionCount; j++)
                 {
-                    betBuilder.AddSelection(BuilderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
+                    betBuilder.AddSelection(BuilderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
                 }
 
                 var bet = betBuilder
@@ -106,7 +106,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
                 var betBuilder = BuilderFactory.CreateBetBuilder();
                 for (var j = 0; j < selectionCount; j++)
                 {
-                    betBuilder.AddSelection(BuilderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
+                    betBuilder.AddSelection(BuilderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
                 }
 
                 var bet = betBuilder

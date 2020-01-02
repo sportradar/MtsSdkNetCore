@@ -19,11 +19,5 @@ namespace Sportradar.MTS.SDK.Entities.Interfaces
         /// Gets the reason message
         /// </summary>
         string Message { get; }
-
-        /// <summary>
-        /// Gets the additional information about the error (internal exception message)
-        /// </summary>
-        [Obsolete("Check rejection info on selection details")]
-        string InternalMessage { get; }
     }
 }

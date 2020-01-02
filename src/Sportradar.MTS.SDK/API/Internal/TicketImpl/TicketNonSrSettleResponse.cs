@@ -119,7 +119,7 @@ namespace Sportradar.MTS.SDK.API.Internal.TicketImpl
         /// Send acknowledgment back to MTS
         /// </summary>
         /// <param name="markAccepted">if set to <c>true</c> [mark accepted]</param>
-        /// <exception cref="System.Exception">missing ticket in cache</exception>
+        /// <exception cref="Exception">missing ticket in cache</exception>
         public void Acknowledge(bool markAccepted = true)
         {
             // acking is not supported

@@ -8,6 +8,7 @@ using Sportradar.MTS.SDK.API.Internal.Mappers;
 using Sportradar.MTS.SDK.Entities.Enums;
 using Sportradar.MTS.SDK.Entities.Internal;
 using Sportradar.MTS.SDK.Entities.Internal.Builders;
+using Sportradar.MTS.SDK.Test.Helpers;
 using SR = Sportradar.MTS.SDK.Test.Helpers.StaticRandom;
 
 namespace Sportradar.MTS.SDK.Test.Builders
@@ -18,7 +19,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [TestMethod]
         public void BuildBaseTicketTest()
         {
-            var tb = TicketCancelBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCancelBuilder();
             var ticket = tb.SetTicketId("ticket-" + SR.I1000P)
                            .SetBookmakerId(SR.I1000)
                            .SetCode(TicketCancellationReason.BookmakerBackofficeTriggered)
@@ -34,7 +35,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
         public void BuildTicketWithNoCodeTest()
         {
-            var tb = TicketCancelBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCancelBuilder();
             var ticket = tb.SetTicketId("ticket-" + SR.I1000P)
                            .SetBookmakerId(SR.I1000)
                            .BuildTicket();
@@ -46,7 +47,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
         public void BuildTicketWithNoBookmakerIdTest()
         {
-            var tb = TicketCancelBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCancelBuilder();
             var ticket = tb.SetTicketId("ticket-" + SR.I1000P)
                            .SetCode(TicketCancellationReason.BookmakerBackofficeTriggered)
                            .BuildTicket();
@@ -58,7 +59,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
         public void BuildTicketWithNoTicketIdTest()
         {
-            var tb = TicketCancelBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCancelBuilder();
             var ticket = tb.SetBookmakerId(SR.I1000)
                            .SetCode(TicketCancellationReason.BookmakerBackofficeTriggered)
                            .BuildTicket();
@@ -69,7 +70,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [TestMethod]
         public void BuildTicketPercentTest()
         {
-            var tb = TicketCancelBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCancelBuilder();
             var ticket = tb.SetTicketId("ticket-" + SR.I1000P)
                            .SetBookmakerId(SR.I1000)
                            .SetCode(TicketCancellationReason.BookmakerBackofficeTriggered)
@@ -89,7 +90,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [TestMethod]
         public void BuildTicketBetCancelTest()
         {
-            var tb = TicketCancelBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCancelBuilder();
             var ticket = tb.SetTicketId("ticket-" + SR.I1000P)
                            .SetBookmakerId(SR.I1000)
                            .SetCode(TicketCancellationReason.BookmakerBackofficeTriggered)
@@ -114,7 +115,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [TestMethod]
         public void BuildTicketValidPercentTest()
         {
-            var tb = TicketCancelBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCancelBuilder();
             tb.SetCancelPercent(1)
               .SetCancelPercent(1000000)
               .SetCancelPercent(10101);
@@ -124,7 +125,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
         public void BuildTicketBetCancelMissingBetIdTest()
         {
-            var tb = TicketCancelBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCancelBuilder();
             tb.AddBetCancel("", 1220);
         }
 
@@ -132,7 +133,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = true)]
         public void BuildTicketTooLowPercentTest()
         {
-            var tb = TicketCancelBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCancelBuilder();
             tb.SetCancelPercent(0);
         }
 
@@ -140,7 +141,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = true)]
         public void BuildTicketTooHighPercentTest()
         {
-            var tb = TicketCancelBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCancelBuilder();
             tb.SetCancelPercent(1000001);
         }
 
@@ -148,7 +149,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = true)]
         public void BuildTicketBetCancelAndPercentTest()
         {
-            var tb = TicketCancelBuilder.Create();
+            var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCancelBuilder();
             tb.SetTicketId("ticket-" + SR.I1000P)
               .SetBookmakerId(SR.I1000)
               .SetCode(TicketCancellationReason.BookmakerBackofficeTriggered)

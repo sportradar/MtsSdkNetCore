@@ -18,7 +18,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
     /// Represents a factory used to construct <see cref="IModel"/> instances representing channels to the broker
     /// </summary>
     /// <seealso cref="IChannelFactory" />
-    /// <seealso cref="System.IDisposable" />
+    /// <seealso cref="IDisposable" />
     internal class ChannelFactory : IChannelFactory, IDisposable
     {
         private static readonly ILogger ExecutionLog = SdkLoggerFactory.GetLogger(typeof(ChannelFactory));

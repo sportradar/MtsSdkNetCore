@@ -7,6 +7,7 @@ using Sportradar.MTS.SDK.Entities.Enums;
 using Sportradar.MTS.SDK.Entities.Internal;
 using Sportradar.MTS.SDK.Entities.Internal.Builders;
 using Sportradar.MTS.SDK.Entities.Internal.TicketImpl;
+using Sportradar.MTS.SDK.Test.Helpers;
 using SR = Sportradar.MTS.SDK.Test.Helpers.StaticRandom;
 
 namespace Sportradar.MTS.SDK.Test.Entities
@@ -28,7 +29,7 @@ namespace Sportradar.MTS.SDK.Test.Entities
         [TestMethod]
         public void BuildTicketAckFromTicketTest()
         {
-            var ticket = TicketCancelBuilder.Create().SetTicketId("ticket-" + SR.I1000P).SetBookmakerId(SR.I1000).SetCode(TicketCancellationReason.BookmakerBackofficeTriggered).BuildTicket();
+            var ticket = new BuilderFactoryHelper().BuilderFactory.CreateTicketCancelBuilder().SetTicketId("ticket-" + SR.I1000P).SetBookmakerId(SR.I1000).SetCode(TicketCancellationReason.BookmakerBackofficeTriggered).BuildTicket();
 
             var ticketAck = new TicketCancelAck(ticket, TicketCancelAckStatus.Cancelled, 100, "message");
 

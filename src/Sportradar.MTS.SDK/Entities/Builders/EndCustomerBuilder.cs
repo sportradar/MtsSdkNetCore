@@ -12,7 +12,7 @@ namespace Sportradar.MTS.SDK.Entities.Builders
     /// <summary>
     /// Implementation of the <see cref="IEndCustomerBuilder"/>
     /// </summary>
-    /// <seealso cref="Sportradar.MTS.SDK.Entities.Builders.IEndCustomerBuilder" />
+    /// <seealso cref="IEndCustomerBuilder" />
     public class EndCustomerBuilder : IEndCustomerBuilder
     {
         /// <summary>
@@ -39,15 +39,6 @@ namespace Sportradar.MTS.SDK.Entities.Builders
         /// The confidence
         /// </summary>
         private long _confidence;
-
-        #region Obsolete_members
-        /// <summary>
-        /// Creates new <see cref="IBetBuilder"/>
-        /// </summary>
-        /// <returns>Returns a <see cref="IBetBuilder"/></returns>
-        [Obsolete("Method Create() is obsolete. Please use the appropriate method on IBuilderFactory interface which can be obtained through MtsSdk instance")]
-        public static IEndCustomerBuilder Create() => new EndCustomerBuilder();
-        #endregion
 
         /// <summary>
         /// Sets the end user's ip

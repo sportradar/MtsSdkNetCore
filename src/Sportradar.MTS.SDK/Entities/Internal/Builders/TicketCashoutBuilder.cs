@@ -56,59 +56,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             _betCashouts = null;
         }
 
-        #region Obsolete_members
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TicketCashoutBuilder"/> class
-        /// </summary>
-        /// <param name="bookmakerId">The bookmaker identifier</param>
-        [Obsolete]
-        internal TicketCashoutBuilder(int bookmakerId = 0)
-        {
-            _bookmakerId = bookmakerId;
-        }
-
-        /// <summary>
-        /// The <see cref="SdkConfigurationSection"/> loaded from app.config
-        /// </summary>
-        [Obsolete]
-        private static ISdkConfigurationSection _section;
-
-        /// <summary>
-        /// Value indicating whether an attempt to load the <see cref="SdkConfigurationSection"/> was already made
-        /// </summary>
-        [Obsolete]
-        private static bool _sectionLoaded;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TicketCashoutBuilder"/> class
-        /// </summary>
-        /// <param name="bookmakerId">The bookmaker identifier</param>
-        /// <returns>Returns an <see cref="ITicketCashoutBuilder"/></returns>
-        [Obsolete("Method Create(...) is obsolete. Please use the appropriate method on IBuilderFactory interface which can be obtained through MtsSdk instance")]
-        public static ITicketCashoutBuilder Create(int bookmakerId = 0)
-        {
-            if (!_sectionLoaded)
-            {
-                SdkConfigurationSection.TryGetSection(out _section);
-                _sectionLoaded = true;
-            }
-
-            if (_section != null && bookmakerId == 0)
-            {
-                try
-                {
-                    var config = SdkConfigurationSection.GetSection();
-                    bookmakerId = config.BookmakerId;
-                }
-                catch (Exception)
-                {
-                    // if exists, try to load, otherwise user must explicitly set it
-                }
-            }
-            return new TicketCashoutBuilder(bookmakerId);
-        }
-        #endregion
-
         /// <summary>
         /// Sets the ticket id to Cashout
         /// </summary>

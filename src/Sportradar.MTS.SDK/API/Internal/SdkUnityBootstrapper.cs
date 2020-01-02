@@ -77,7 +77,7 @@ namespace Sportradar.MTS.SDK.API.Internal
             {
                 _metricsRoot = metricsRoot;
             }
-            container.RegisterInstance<IMetricsRoot>(_metricsRoot, new ContainerControlledLifetimeManager());
+            container.RegisterInstance(_metricsRoot, new ContainerControlledLifetimeManager());
             
             RegisterBaseClasses(container, userConfig);
 
@@ -187,18 +187,18 @@ namespace Sportradar.MTS.SDK.API.Internal
             var mtsTicketCashoutResponseChannelSettings = MtsChannelSettings.GetTicketCashoutResponseChannelSettings(rootExchangeName, config.Username, config.NodeId, environment);
             var mtsTicketNonSrSettleResponseChannelSettings = MtsChannelSettings.GetTicketNonSrSettleResponseChannelSettings(rootExchangeName, config.Username, config.NodeId, environment);
 
-            container.RegisterInstance<IMtsChannelSettings>("TicketChannelSettings", mtsTicketChannelSettings);
-            container.RegisterInstance<IMtsChannelSettings>("TicketCancelChannelSettings", mtsTicketCancelChannelSettings);
-            container.RegisterInstance<IMtsChannelSettings>("TicketAckChannelSettings", mtsTicketAckChannelSettings);
-            container.RegisterInstance<IMtsChannelSettings>("TicketCancelAckChannelSettings", mtsTicketCancelAckChannelSettings);
-            container.RegisterInstance<IMtsChannelSettings>("TicketReofferCancelChannelSettings", mtsTicketReofferCancelChannelSettings);
-            container.RegisterInstance<IMtsChannelSettings>("TicketCashoutChannelSettings", mtsTicketCashoutChannelSettings);
-            container.RegisterInstance<IMtsChannelSettings>("TicketNonSrSettleChannelSettings", mtsTicketNonSrSettleChannelSettings);
+            container.RegisterInstance("TicketChannelSettings", mtsTicketChannelSettings);
+            container.RegisterInstance("TicketCancelChannelSettings", mtsTicketCancelChannelSettings);
+            container.RegisterInstance("TicketAckChannelSettings", mtsTicketAckChannelSettings);
+            container.RegisterInstance("TicketCancelAckChannelSettings", mtsTicketCancelAckChannelSettings);
+            container.RegisterInstance("TicketReofferCancelChannelSettings", mtsTicketReofferCancelChannelSettings);
+            container.RegisterInstance("TicketCashoutChannelSettings", mtsTicketCashoutChannelSettings);
+            container.RegisterInstance("TicketNonSrSettleChannelSettings", mtsTicketNonSrSettleChannelSettings);
 
-            container.RegisterInstance<IMtsChannelSettings>("TicketResponseChannelSettings", mtsTicketResponseChannelSettings);
-            container.RegisterInstance<IMtsChannelSettings>("TicketCancelResponseChannelSettings", mtsTicketCancelResponseChannelSettings);
-            container.RegisterInstance<IMtsChannelSettings>("TicketCashoutResponseChannelSettings", mtsTicketCashoutResponseChannelSettings);
-            container.RegisterInstance<IMtsChannelSettings>("TicketNonSrSettleResponseChannelSettings", mtsTicketNonSrSettleResponseChannelSettings);
+            container.RegisterInstance("TicketResponseChannelSettings", mtsTicketResponseChannelSettings);
+            container.RegisterInstance("TicketCancelResponseChannelSettings", mtsTicketCancelResponseChannelSettings);
+            container.RegisterInstance("TicketCashoutResponseChannelSettings", mtsTicketCashoutResponseChannelSettings);
+            container.RegisterInstance("TicketNonSrSettleResponseChannelSettings", mtsTicketNonSrSettleResponseChannelSettings);
 
             //container.RegisterType<IRabbitMqConsumerChannel, RabbitMqConsumerChannel>(new HierarchicalLifetimeManager());
             var ticketResponseConsumerChannel = new RabbitMqConsumerChannel(container.Resolve<IChannelFactory>(),

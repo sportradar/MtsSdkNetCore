@@ -49,7 +49,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
                         .AddBet(_builderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000).SetBetBonus(SR.I1000)
                                                .SetStake(92343, StakeType.Total)
                                                .AddSelection(_builderFactory
-                                                            .CreateSelectionBuilder().SetEventId(9691139).SetIdLcoo(324, 1, "", "1").SetOdds(16000)
+                                                            .CreateSelectionBuilder().SetEventId("9691139").SetIdLcoo(324, 1, "", "1").SetOdds(16000)
                                                             .SetBanker(true).Build())
                                                .Build())
                         .BuildTicket();
@@ -94,7 +94,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
                 .SetTicketId("ticket-" + SR.S1000)
                 .SetOddsChange(OddsChangeType.Any)
                 .AddBet(_builderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
-                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(9691139).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
+                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId("9691139").SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
                         .Build())
                 .BuildTicket();
 
@@ -109,19 +109,19 @@ namespace Sportradar.MTS.SDK.Test.Builders
                 .SetOddsChange(OddsChangeType.Any)
                 .SetSender(_sender)
                 .AddBet(_builderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000P).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
-                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
+                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
                         .Build())
                 .AddBet(_builderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000P).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
-                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(false).Build())
+                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(false).Build())
                         .Build())
                 .AddBet(_builderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000P).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
-                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
+                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
                         .Build())
                 .AddBet(_builderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000P).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
-                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
+                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
                         .Build())
                 .AddBet(_builderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000P).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
-                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
+                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
                         .Build())
                 .BuildTicket();
 
@@ -151,11 +151,11 @@ namespace Sportradar.MTS.SDK.Test.Builders
                 .SetOddsChange(OddsChangeType.Any)
                 .SetSender(_sender)
                 .AddBet(_builderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
-                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(false).Build())
-                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(false).Build())
-                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(false).Build())
-                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(false).Build())
-                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(false).Build())
+                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(false).Build())
+                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(false).Build())
+                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(false).Build())
+                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(false).Build())
+                        .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(false).Build())
                         .Build())
                 .BuildTicket();
 
@@ -191,8 +191,8 @@ namespace Sportradar.MTS.SDK.Test.Builders
                 .SetOddsChange(OddsChangeType.Any)
                 .SetSender(_sender)
                 .AddBet(_builderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
-                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(9691139).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(false).Build())
-                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(9691139).SetIdLcoo(324, 1, "", "1").SetOdds(26000).SetBanker(false).Build())
+                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId("9691139").SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(false).Build())
+                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId("9691139").SetIdLcoo(324, 1, "", "1").SetOdds(26000).SetBanker(false).Build())
                     .Build())
                 .BuildTicket();
 
@@ -208,8 +208,8 @@ namespace Sportradar.MTS.SDK.Test.Builders
                 .SetOddsChange(OddsChangeType.Any)
                 .SetSender(_sender)
                 .AddBet(_builderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
-                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(9691139).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
-                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(9691139).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(false).Build())
+                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId("9691139").SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
+                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId("9691139").SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(false).Build())
                     .Build())
                 .BuildTicket();
 
@@ -224,10 +224,10 @@ namespace Sportradar.MTS.SDK.Test.Builders
                 .SetOddsChange(OddsChangeType.Any)
                 .SetSender(_sender)
                 .AddBet(_builderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
-                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(9691139).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(false).Build())
+                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId("9691139").SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(false).Build())
                     .Build())
                 .AddBet(_builderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
-                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(9691139).SetIdLcoo(324, 1, "", "1").SetOdds(26000).SetBanker(false).Build())
+                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId("9691139").SetIdLcoo(324, 1, "", "1").SetOdds(26000).SetBanker(false).Build())
                     .Build())
                 .BuildTicket();
 
@@ -242,10 +242,10 @@ namespace Sportradar.MTS.SDK.Test.Builders
                 .SetOddsChange(OddsChangeType.Any)
                 .SetSender(_sender)
                 .AddBet(_builderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
-                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(9691139).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
+                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId("9691139").SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
                     .Build())
                 .AddBet(_builderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
-                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(9691139).SetIdLcoo(324, 1, "", "1").SetOdds(26000).SetBanker(true).Build())
+                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId("9691139").SetIdLcoo(324, 1, "", "1").SetOdds(26000).SetBanker(true).Build())
                     .Build())
                 .BuildTicket();
 
@@ -260,10 +260,10 @@ namespace Sportradar.MTS.SDK.Test.Builders
                 .SetOddsChange(OddsChangeType.Any)
                 .SetSender(_sender)
                 .AddBet(_builderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
-                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(9691139).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
+                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId("9691139").SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(true).Build())
                     .Build())
                 .AddBet(_builderFactory.CreateBetBuilder().AddSelectedSystem(1).SetBetId("bet-id-" + SR.I1000).SetBetBonus(SR.I1000).SetStake(92343, StakeType.Total)
-                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(9691139).SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(false).Build())
+                    .AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId("9691139").SetIdLcoo(324, 1, "", "1").SetOdds(16000).SetBanker(false).Build())
                     .Build())
                 .BuildTicket();
 
