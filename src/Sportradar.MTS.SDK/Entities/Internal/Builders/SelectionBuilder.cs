@@ -6,22 +6,15 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Dawn;
-using System.Globalization;
 using System.Linq;
-using System.Net.Http;
-using System.Runtime.Caching;
 using Microsoft.Extensions.Logging;
 using Sportradar.MTS.SDK.Common;
 using Sportradar.MTS.SDK.Common.Exceptions;
-using Sportradar.MTS.SDK.Common.Internal;
-using Sportradar.MTS.SDK.Common.Internal.Rest;
 using Sportradar.MTS.SDK.Entities.Builders;
 using Sportradar.MTS.SDK.Entities.Enums;
 using Sportradar.MTS.SDK.Entities.Interfaces;
 using Sportradar.MTS.SDK.Entities.Internal.Cache;
 using Sportradar.MTS.SDK.Entities.Internal.Enums;
-using Sportradar.MTS.SDK.Entities.Internal.REST;
-using Sportradar.MTS.SDK.Entities.Internal.REST.Dto;
 using Sportradar.MTS.SDK.Entities.Internal.TicketImpl;
 
 namespace Sportradar.MTS.SDK.Entities.Internal.Builders

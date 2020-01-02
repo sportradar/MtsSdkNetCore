@@ -4,7 +4,6 @@
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sportradar.MTS.SDK.API.Internal.Mappers;
-using Sportradar.MTS.SDK.Entities.Internal.Builders;
 using Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse;
 using Sportradar.MTS.SDK.Test.Helpers;
 using static Sportradar.MTS.SDK.Test.Helpers.StaticRandom;

@@ -6,7 +6,6 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sportradar.MTS.SDK.API.Internal.Mappers;
 using Sportradar.MTS.SDK.Entities.Internal;
-using Sportradar.MTS.SDK.Entities.Internal.Builders;
 using Sportradar.MTS.SDK.Test.Helpers;
 using SR = Sportradar.MTS.SDK.Test.Helpers.StaticRandom;
 
