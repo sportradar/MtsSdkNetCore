@@ -1,14 +1,16 @@
 ﻿/*
  * Copyright (C) Sportradar AG. See LICENSE for full license governing this code
  */
+
 using System;
 using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sportradar.MTS.SDK.Entities.Builders;
 using Sportradar.MTS.SDK.Entities.Enums;
 using Sportradar.MTS.SDK.Entities.Internal.Builders;
+using Sportradar.MTS.SDK.Test.Helpers;
 
-namespace Sportradar.MTS.SDK.Entities.Test
+namespace Sportradar.MTS.SDK.Test.Entities
 {
     [TestClass]
     public class TicketSenderCallCenterChannelValidationTests
@@ -16,7 +18,7 @@ namespace Sportradar.MTS.SDK.Entities.Test
         [TestMethod]
         public void limit_is_required()
         {
-            var builder = new SenderBuilder(TestHelper.BuilderMinimalConfiguration())
+            var builder = new SenderBuilder(ConfigurationHelper.BuilderMinimalConfiguration())
                 .SetSenderChannel(SenderChannel.CallCentre)
                 .SetBookmakerId(1)
                 .SetCurrency("eur")
@@ -29,14 +31,14 @@ namespace Sportradar.MTS.SDK.Entities.Test
             }
             catch (ArgumentException ex)
             {
-                Assert.AreEqual(TestHelper.ChannelParamName, ex.ParamName, "Argument exception for wrong argument was thrown");
+                Assert.AreEqual(ConfigurationHelper.ChannelParamName, ex.ParamName, "Argument exception for wrong argument was thrown");
             }
         }
 
         [TestMethod]
         public void shop_id_is_allowed()
         {
-            var builder = new SenderBuilder(TestHelper.BuilderMinimalConfiguration())
+            var builder = new SenderBuilder(ConfigurationHelper.BuilderMinimalConfiguration())
                 .SetSenderChannel(SenderChannel.CallCentre)
                 .SetLimitId(1)
                 .SetBookmakerId(1)
@@ -50,7 +52,7 @@ namespace Sportradar.MTS.SDK.Entities.Test
         [TestMethod]
         public void terminal_id_is_allowed()
         {
-            var builder = new SenderBuilder(TestHelper.BuilderMinimalConfiguration())
+            var builder = new SenderBuilder(ConfigurationHelper.BuilderMinimalConfiguration())
                 .SetSenderChannel(SenderChannel.CallCentre)
                 .SetLimitId(1)
                 .SetBookmakerId(1)
@@ -64,7 +66,7 @@ namespace Sportradar.MTS.SDK.Entities.Test
         [TestMethod]
         public void end_customer_ip_is_allowed()
         {
-            var builder = new SenderBuilder(TestHelper.BuilderMinimalConfiguration())
+            var builder = new SenderBuilder(ConfigurationHelper.BuilderMinimalConfiguration())
                 .SetSenderChannel(SenderChannel.CallCentre)
                 .SetLimitId(1)
                 .SetBookmakerId(1)
@@ -77,7 +79,7 @@ namespace Sportradar.MTS.SDK.Entities.Test
         [TestMethod]
         public void end_customer_language_is_allowed()
         {
-            var builder = new SenderBuilder(TestHelper.BuilderMinimalConfiguration())
+            var builder = new SenderBuilder(ConfigurationHelper.BuilderMinimalConfiguration())
                                        .SetSenderChannel(SenderChannel.CallCentre)
                                        .SetLimitId(1)
                                        .SetBookmakerId(1)
@@ -92,7 +94,7 @@ namespace Sportradar.MTS.SDK.Entities.Test
         [TestMethod]
         public void end_customer_device_id_is_allowed()
         {
-            var builder = new SenderBuilder(TestHelper.BuilderMinimalConfiguration())
+            var builder = new SenderBuilder(ConfigurationHelper.BuilderMinimalConfiguration())
                                        .SetSenderChannel(SenderChannel.CallCentre)
                                        .SetLimitId(1)
                                        .SetBookmakerId(1)
@@ -106,7 +108,7 @@ namespace Sportradar.MTS.SDK.Entities.Test
         [TestMethod]
         public void valid_sender_is_validated()
         {
-            var builder = new SenderBuilder(TestHelper.BuilderMinimalConfiguration())
+            var builder = new SenderBuilder(ConfigurationHelper.BuilderMinimalConfiguration())
                 .SetSenderChannel(SenderChannel.CallCentre)
                 .SetLimitId(1)
                 .SetBookmakerId(1)

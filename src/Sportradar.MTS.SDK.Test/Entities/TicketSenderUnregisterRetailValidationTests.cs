@@ -1,12 +1,14 @@
 ﻿/*
  * Copyright (C) Sportradar AG. See LICENSE for full license governing this code
  */
+
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sportradar.MTS.SDK.Entities.Enums;
 using Sportradar.MTS.SDK.Entities.Internal.Builders;
+using Sportradar.MTS.SDK.Test.Helpers;
 
-namespace Sportradar.MTS.SDK.Entities.Test
+namespace Sportradar.MTS.SDK.Test.Entities
 {
     [TestClass]
     public class TicketSenderUnregisterRetailValidationTests
@@ -14,7 +16,7 @@ namespace Sportradar.MTS.SDK.Entities.Test
         [TestMethod]
         public void limit_is_required()
         {
-            var builder = new SenderBuilder(TestHelper.BuilderMinimalConfiguration())
+            var builder = new SenderBuilder(ConfigurationHelper.BuilderMinimalConfiguration())
                 .SetSenderChannel(SenderChannel.Retail)
                 .SetBookmakerId(23)
                 .SetCurrency("eur");
@@ -26,7 +28,7 @@ namespace Sportradar.MTS.SDK.Entities.Test
             }
             catch (ArgumentException ex)
             {
-                Assert.AreEqual(TestHelper.ChannelParamName, ex.ParamName, "Argument exception for wrong argument was thrown");
+                Assert.AreEqual(ConfigurationHelper.ChannelParamName, ex.ParamName, "Argument exception for wrong argument was thrown");
             }
         }
     }

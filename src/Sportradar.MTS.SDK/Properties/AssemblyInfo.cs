@@ -4,4 +4,3 @@
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Sportradar.MTS.SDK.Test")]
-[assembly: InternalsVisibleTo("Sportradar.MTS.SDK.Entities.Test")]

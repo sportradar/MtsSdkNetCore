@@ -1,12 +1,14 @@
 ﻿/*
  * Copyright (C) Sportradar AG. See LICENSE for full license governing this code
  */
+
 using Sportradar.MTS.SDK.API;
+using Sportradar.MTS.SDK.Entities;
 using Sportradar.MTS.SDK.Entities.Enums;
 
-namespace Sportradar.MTS.SDK.Entities.Test
+namespace Sportradar.MTS.SDK.Test.Helpers
 {
-    public static class TestHelper
+    public static class ConfigurationHelper
     {
         public const string ChannelParamName = "limitId";
 

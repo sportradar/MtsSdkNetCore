@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyVersion>1.0.21.7306</AssemblyVersion>
-    <FileVersion>1.0.21.7306</FileVersion>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyVersion>1.0.23.7310</AssemblyVersion>
+    <FileVersion>1.0.23.7310</FileVersion>
     <LangVersion>8</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -11,7 +11,7 @@
     <Authors>Sportradar AG</Authors>
     <Company>Sportradar AGSportradar AG</Company>
     <Product>Sportradar.MTS.SDKCore</Product>
-    <Description>The SDK simplifying the integration with Sportradar's MTS services (.NET Standard 2.0)</Description>
+    <Description>The SDK simplifying the integration with Sportradar's MTS services (.NET Standard 2.1)</Description>
     <Copyright>Copyright © Sportradar AG 2020</Copyright>
     <PackageProjectUrl>http://sdk.sportradar.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/sportradar/MtsSdkNetCore</RepositoryUrl>
@@ -32,10 +32,10 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="RabbitMQ.Client" Version="5.1.2" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.3.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
     <PackageReference Include="System.Runtime.Caching" Version="4.7.0" />
-    <PackageReference Include="Unity" Version="5.11.2" />
+    <PackageReference Include="Unity" Version="5.11.3" />
   </ItemGroup>
 
 </Project>
