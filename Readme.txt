@@ -22,7 +22,7 @@ The package contains:
  - Resources containing the log4net configuration needed by the MTS SDK
 
 CHANGE LOG:
-2020-01-06 1.0.0
+2020-01-06 2.3.0
 Port of MTS SDK to .NET Standard 2.1
 Replaced Metrics.NET with App.Metrics
 Replaced Code.Contracts with Dawn.Guard conditions

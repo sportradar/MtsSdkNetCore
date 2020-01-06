@@ -18,9 +18,6 @@
     <HtmlHelpName>MTS SDK Documentation</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\src\Sportradar.MTS.SDK.API\Sportradar.MTS.SDK.API.csproj" />
-      <DocumentationSource sourceFile="..\src\Sportradar.MTS.SDK.Common\Sportradar.MTS.SDK.Common.csproj" />
-      <DocumentationSource sourceFile="..\src\Sportradar.MTS.SDK.Entities\Sportradar.MTS.SDK.Entities.csproj" />
       <DocumentationSource sourceFile="..\src\Sportradar.MTS.SDK\Sportradar.MTS.SDK.csproj" />
     </DocumentationSources>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
@@ -30,7 +27,7 @@
     <KeepLogFile>True</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <CleanIntermediates>True</CleanIntermediates>
-    <HelpFileVersion>2.3.3.2</HelpFileVersion>
+    <HelpFileVersion>2.3.0</HelpFileVersion>
     <MaximumGroupParts>2</MaximumGroupParts>
     <NamespaceGrouping>False</NamespaceGrouping>
     <SyntaxFilters>C#</SyntaxFilters>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shfbBuild product="Sandcastle Help File Builder and Tools" version="2019.11.17.0" projectFile="C:\Github\MtsSdkNetCore\build\MtsSdkCore.shfbproj" started="06/01/2020 12:09:56">
+<buildStep step="Initializing">
+Finding tools...
+The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
+Searching for HTML Help 1 compiler...
+Found HTML Help 1 compiler in &#39;C:\Program Files (x86)\HTML Help Workshop\&#39;
+Locating components in the following folder(s):
+    C:\Github\MtsSdkNetCore\build
+    C:\ProgramData\EWSoftware\Sandcastle Help File Builder\Components and Plug-Ins\
+    C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\
+Using framework reflection data for &#39;.NET Framework 4.6&#39; located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\Data\.NETFramework&#39;
+Using presentation style &#39;VS2013&#39; located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013&#39;
+Loading and initializing plug-ins...
+Lightweight Website Style Version 2019.11.17.0
+Copyright &#169; 2006-2019, Eric Woodruff, All Rights Reserved
+Portions Copyright &#169; 2014, Sam Harwell, All Rights Reserved
+-------------------------------
+Clearing any prior web/markdown output...
+</buildStep>
+<buildStep step="ValidatingDocumentationSources">
+Validating and copying documentation source information
+Source: C:\Github\MtsSdkNetCore\src\Sportradar.MTS.SDK\Sportradar.MTS.SDK.csproj
+    Found project &#39;C:\Github\MtsSdkNetCore\src\Sportradar.MTS.SDK\Sportradar.MTS.SDK.csproj&#39;
+    Last step completed in 00:00:00,0530
+</buildStep>
+<buildStep step="Failed">
+
+SHFB: Error BE0065: BUILD FAILED: Incompatible Visual Studio project file format.  See the error code help topic for more information.
+This project may be for a newer version of MSBuild and cannot be loaded.  Error message:
+   at SandcastleBuilder.Utils.MSBuild.MSBuildProject..ctor(String projectFile)
+   at SandcastleBuilder.Utils.BuildEngine.BuildProcess.ValidateDocumentationSources()
+   at SandcastleBuilder.Utils.BuildEngine.BuildProcess.Build()
+
+The default XML namespace of the project must be the MSBuild XML namespace. If the project is authored in the MSBuild 2003 format, please add xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot; to the &lt;Project&gt; element. If the project has been authored in the old 1.0 or 1.2 format, please convert it to MSBuild 2003 format.  C:\Github\MtsSdkNetCore\src\Sportradar.MTS.SDK\Sportradar.MTS.SDK.csproj
+   at Microsoft.Build.Shared.ProjectErrorUtilities.ThrowInvalidProject(String errorSubCategoryResourceName, IElementLocation elementLocation, String resourceName, Object[] args)
+   at Microsoft.Build.Construction.ProjectParser.Parse()
+   at Microsoft.Build.Construction.ProjectParser.Parse(XmlDocumentWithLocation document, ProjectRootElement projectRootElement)
+   at Microsoft.Build.Construction.ProjectRootElement..ctor(String path, ProjectRootElementCache projectRootElementCache, BuildEventContext buildEventContext)
+   at Microsoft.Build.Construction.ProjectRootElement.CreateProjectFromPath(String projectFile, IDictionary`2 globalProperties, String toolsVersion, ILoggingService loggingService, ProjectRootElementCache projectRootElementCache, BuildEventContext buildEventContext)
+   at Microsoft.Build.Construction.ProjectRootElement.&lt;&gt;c__DisplayClass170_0.&lt;OpenProjectOrSolution&gt;b__0(String path, ProjectRootElementCache cache)
+   at Microsoft.Build.Evaluation.ProjectRootElementCache.Get(String projectFile, OpenProjectRootElement openProjectRootElement, Boolean isExplicitlyLoaded)
+   at Microsoft.Build.Evaluation.Project..ctor(String projectFile, IDictionary`2 globalProperties, String toolsVersion, String subToolsetVersion, ProjectCollection projectCollection, ProjectLoadSettings loadSettings)
+   at SandcastleBuilder.Utils.MSBuild.MSBuildProject..ctor(String projectFile)
+
+</buildStep>
+</shfbBuild>
