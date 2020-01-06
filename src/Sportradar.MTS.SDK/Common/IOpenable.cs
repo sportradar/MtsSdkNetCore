@@ -6,7 +6,6 @@ namespace Sportradar.MTS.SDK.Common
     /// <summary>
     /// Defines a contract implemented by classes which can be opened and closed
     /// </summary>
-
     public interface IOpenable
     {
         /// <summary>

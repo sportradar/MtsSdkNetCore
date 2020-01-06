@@ -66,10 +66,10 @@ namespace Sportradar.MTS.SDK.DemoProject
                         break;
                     }
                 case '4':
-                {
-                    new Cashout(_log).Run();
-                    break;
-                }
+                    {
+                        new Cashout(_log).Run();
+                        break;
+                    }
                 case '5':
                     {
                         new NonSrSettle(_log).Run();
