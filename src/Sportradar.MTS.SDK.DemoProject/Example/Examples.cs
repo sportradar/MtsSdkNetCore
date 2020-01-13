@@ -4,6 +4,7 @@
 using System;
 using System.Linq;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Sportradar.MTS.SDK.API;
 using Sportradar.MTS.SDK.DemoProject.Tickets;
 using Sportradar.MTS.SDK.Entities.Builders;
@@ -18,21 +19,17 @@ namespace Sportradar.MTS.SDK.DemoProject.Example
     /// </summary>
     public class Examples
     {
-        /// <summary>
-        /// The log
-        /// </summary>
-        private readonly ILogger _log;
-
-        /// <summary>
-        /// The MTS SDK instance
-        /// </summary>
         private IMtsSdk _mtsSdk;
 
         private IBuilderFactory _factory;
 
-        public Examples(ILogger log)
+        private readonly ILogger _log;
+        private readonly ILoggerFactory _loggerFactory;
+
+        public Examples(ILoggerFactory loggerFactory = null)
         {
-            _log = log;
+            _loggerFactory = loggerFactory;
+            _log = _loggerFactory?.CreateLogger(typeof(Basic)) ?? new NullLogger<Basic>();
         }
 
         public void Run()
@@ -43,7 +40,7 @@ namespace Sportradar.MTS.SDK.DemoProject.Example
             var config = MtsSdk.GetConfiguration();
 
             _log.LogInformation("Creating root MTS SDK instance");
-            _mtsSdk = new MtsSdk(config);
+            _mtsSdk = new MtsSdk(config, _loggerFactory);
 
             _log.LogInformation("Attaching to events");
             AttachToFeedEvents(_mtsSdk);

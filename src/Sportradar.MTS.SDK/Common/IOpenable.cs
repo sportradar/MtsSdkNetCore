@@ -14,7 +14,7 @@ namespace Sportradar.MTS.SDK.Common
         bool IsOpened { get; }
 
         /// <summary>
-        /// Opens the current instance.
+        /// Opens the current instance
         /// </summary>
         void Open();
 

@@ -11,14 +11,16 @@ namespace Sportradar.MTS.SDK.DemoProject
     public class Start
     {
         private static ILogger _log;
+        private static ILoggerFactory _loggerFactory;
 
         private static void Main()
         {
             var services = new ServiceCollection();
             services.AddLogging(configure => configure.AddLog4Net("log4net.config"));
             var serviceProvider = services.BuildServiceProvider();
-            var loggerFactory = serviceProvider.GetService<ILoggerFactory>();
-            _log = loggerFactory.CreateLogger(typeof(Start));
+            _loggerFactory = serviceProvider.GetService<ILoggerFactory>();
+            _log = _loggerFactory.CreateLogger(typeof(Start));
+            _log.LogInformation("MTS DemoProject started");
 
             var key = 'y';
             while (key.Equals('y'))
@@ -35,14 +37,14 @@ namespace Sportradar.MTS.SDK.DemoProject
         private static void DoExampleSelection()
         {
             Console.WriteLine(string.Empty);
-            Console.WriteLine(" Select which example you want to run:");
+            Console.WriteLine("Select which example you want to run:");
             Console.WriteLine(" 1 - Basic \t\t\t(normal sending ticket and receiving response via event handler)");
             Console.WriteLine(" 2 - Blocking \t\t\t(sending ticket and receiving response with blocking mode)");
             Console.WriteLine(" 3 - Reoffer \t\t\t(sending reoffer to the declined ticket and receiving response)");
             Console.WriteLine(" 4 - Cashout \t\t\t(creating and sending cashout ticket)");
             Console.WriteLine(" 5 - NonSrSettle \t\t(creating and sending ticket for settling non-sportradar ticket)");
             Console.WriteLine(" 6 - Examples \t\t\t(creating and sending ticket examples from MTS integration guide)");
-            Console.Write(" Enter number: ");
+            Console.Write("Enter number: ");
             var k = Console.ReadKey();
 
             Console.WriteLine(string.Empty);
@@ -52,32 +54,32 @@ namespace Sportradar.MTS.SDK.DemoProject
             {
                 case '1':
                     {
-                        new Basic(_log).Run();
+                        new Basic(_loggerFactory).Run();
                         break;
                     }
                 case '2':
                     {
-                        new Blocking(_log).Run();
+                        new Blocking(_loggerFactory).Run();
                         break;
                     }
                 case '3':
                     {
-                        new Reoffer(_log).Run();
+                        new Reoffer(_loggerFactory).Run();
                         break;
                     }
                 case '4':
                     {
-                        new Cashout(_log).Run();
+                        new Cashout(_loggerFactory).Run();
                         break;
                     }
                 case '5':
                     {
-                        new NonSrSettle(_log).Run();
+                        new NonSrSettle(_loggerFactory).Run();
                         break;
                     }
                 case '6':
                     {
-                        new Examples(_log).Run();
+                        new Examples(_loggerFactory).Run();
                         break;
                     }
                 default:
