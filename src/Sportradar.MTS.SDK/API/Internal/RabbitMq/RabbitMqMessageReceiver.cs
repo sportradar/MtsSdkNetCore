@@ -54,7 +54,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 
         private readonly TicketResponseType _expectedTicketResponseType;
 
-        private IMetricsRoot _metrics;
+        private readonly IMetricsRoot _metrics;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RabbitMqMessageReceiver" /> class

@@ -32,7 +32,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         /// </summary>
         /// <value>Order is very important as they can be referenced by index</value>
         public IEnumerable<ISelection> Selections { get; }
-
         /// <summary>
         /// Gets the identification and settings of the ticket sender
         /// </summary>

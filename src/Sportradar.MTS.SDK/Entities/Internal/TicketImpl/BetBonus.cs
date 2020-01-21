@@ -16,7 +16,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         public BetBonusType Type { get; }
         public BetBonusMode Mode { get; }
 
-
         [JsonConstructor]
         public BetBonus(long value, BetBonusType type, BetBonusMode mode)
         {
