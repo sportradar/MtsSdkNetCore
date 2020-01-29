@@ -187,7 +187,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
 
         public static bool ValidatePercent(int? percent)
         {
-            return percent == null || percent > 0 && percent <= 1000000;
+            return percent == null || percent >= 0 && percent <= 1000000;
         }
     }
 }

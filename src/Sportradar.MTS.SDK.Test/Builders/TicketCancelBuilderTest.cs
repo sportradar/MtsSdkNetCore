@@ -129,7 +129,6 @@ namespace Sportradar.MTS.SDK.Test.Builders
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException), AllowDerivedTypes = true)]
         public void BuildTicketTooLowPercentTest()
         {
             var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCancelBuilder();

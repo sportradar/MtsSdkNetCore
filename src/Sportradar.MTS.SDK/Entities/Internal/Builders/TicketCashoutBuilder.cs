@@ -94,7 +94,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// <returns>Returns a <see cref="ITicketCashoutBuilder" /></returns>
         public ITicketCashoutBuilder SetCashoutStake(long stake)
         {
-            if (stake < 1)
+            if (stake < 0)
             {
                 throw new ArgumentException("Stake not valid.");
             }
