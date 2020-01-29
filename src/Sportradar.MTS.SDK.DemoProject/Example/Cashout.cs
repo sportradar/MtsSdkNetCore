@@ -72,7 +72,7 @@ namespace Sportradar.MTS.SDK.DemoProject.Example
                         .AddSelectedSystem(1)
                         .AddSelection(_factory.CreateSelectionBuilder()
                             .SetEventId("1")
-                            .SetId("live:409/1/*/YES")
+                            .SetIdUof(1, $"sr:match:{r.Next()}", 1, "1", string.Empty, null)
                             .SetOdds(11000)
                             .Build())
                         .Build())
