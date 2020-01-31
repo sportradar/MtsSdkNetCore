@@ -14,7 +14,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketNonSrSettleResponse
 
     /// <summary>Object carrying information about settle response</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Reason : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Reason : System.ComponentModel.INotifyPropertyChanged
     {
         private int _code;
         private string _message;
@@ -71,7 +71,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketNonSrSettleResponse
     
     /// <summary>Settle status - accepted, rejected</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public enum Status
+    internal enum Status
     {
         [System.Runtime.Serialization.EnumMember(Value = "rejected")]
         Rejected = 0,
@@ -83,7 +83,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketNonSrSettleResponse
     
     /// <summary>Ticket non-Sportradar settle response v2 schema</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class TicketNonSrSettleResponseDTO : System.ComponentModel.INotifyPropertyChanged
+    internal partial class TicketNonSrSettleResponseDTO : System.ComponentModel.INotifyPropertyChanged
     {
         private Result _result = new Result();
         private string _signature;
@@ -159,7 +159,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketNonSrSettleResponse
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Result : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Result : System.ComponentModel.INotifyPropertyChanged
     {
         private string _ticketId;
         private Status _status;

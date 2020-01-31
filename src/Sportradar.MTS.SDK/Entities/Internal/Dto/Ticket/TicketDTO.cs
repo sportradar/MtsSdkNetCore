@@ -17,7 +17,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
 
     /// <summary>Ticket version 2.3 schema</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class TicketDTO : System.ComponentModel.INotifyPropertyChanged
+    internal partial class TicketDTO : System.ComponentModel.INotifyPropertyChanged
     {
         private Ticket _ticket = new Ticket();
     
@@ -58,7 +58,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Ticket : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Ticket : System.ComponentModel.INotifyPropertyChanged
     {
         private long _timestampUtc;
         private IEnumerable<Anonymous> _bets = new Collection<Anonymous>();
@@ -287,7 +287,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Anonymous : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Anonymous : System.ComponentModel.INotifyPropertyChanged
     {
         private Bonus _bonus = new Bonus();
         private bool? _customBet = false;
@@ -478,7 +478,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Anonymous2 : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Anonymous2 : System.ComponentModel.INotifyPropertyChanged
     {
         private string _eventId;
         private string _id;
@@ -555,7 +555,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Sender : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Sender : System.ComponentModel.INotifyPropertyChanged
     {
         private string _currency;
         private string _terminalId;
@@ -701,7 +701,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public enum TicketOddsChange
+    internal enum TicketOddsChange
     {
         [System.Runtime.Serialization.EnumMember(Value = "none")]
         None = 0,
@@ -715,7 +715,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Bonus : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Bonus : System.ComponentModel.INotifyPropertyChanged
     {
         private long _value;
         private BonusType? _type = Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.BonusType.Total;
@@ -790,7 +790,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Stake : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Stake : System.ComponentModel.INotifyPropertyChanged
     {
         private long _value;
         private StakeType? _type = Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.StakeType.Total;
@@ -848,7 +848,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class EntireStake : System.ComponentModel.INotifyPropertyChanged
+    internal partial class EntireStake : System.ComponentModel.INotifyPropertyChanged
     {
         private long _value;
         private EntireStakeType? _type = Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.EntireStakeType.Total;
@@ -907,7 +907,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     
     /// <summary>Array of selection references to form the bet (optional, if missing all selections are taken)</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Anonymous3 : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Anonymous3 : System.ComponentModel.INotifyPropertyChanged
     {
         private int _selectionIndex;
         private bool _banker = false;
@@ -964,7 +964,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public enum SenderChannel
+    internal enum SenderChannel
     {
         [System.Runtime.Serialization.EnumMember(Value = "internet")]
         Internet = 0,
@@ -996,7 +996,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class EndCustomer : System.ComponentModel.INotifyPropertyChanged
+    internal partial class EndCustomer : System.ComponentModel.INotifyPropertyChanged
     {
         private string _ip;
         private string _languageId;
@@ -1107,7 +1107,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public enum BonusType
+    internal enum BonusType
     {
         [System.Runtime.Serialization.EnumMember(Value = "total")]
         Total = 0,
@@ -1115,7 +1115,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public enum BonusMode
+    internal enum BonusMode
     {
         [System.Runtime.Serialization.EnumMember(Value = "all")]
         All = 0,
@@ -1123,7 +1123,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public enum StakeType
+    internal enum StakeType
     {
         [System.Runtime.Serialization.EnumMember(Value = "total")]
         Total = 0,
@@ -1134,7 +1134,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public enum EntireStakeType
+    internal enum EntireStakeType
     {
         [System.Runtime.Serialization.EnumMember(Value = "total")]
         Total = 0,

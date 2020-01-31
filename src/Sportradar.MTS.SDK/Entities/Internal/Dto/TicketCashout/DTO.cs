@@ -6,7 +6,7 @@ using Sportradar.MTS.SDK.Entities.Interfaces;
 
 namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCashout
 {
-    public partial class TicketCashoutDTO
+    internal partial class TicketCashoutDTO
     {
         public TicketCashoutDTO()
         { }

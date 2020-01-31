@@ -20,7 +20,7 @@ namespace Sportradar.MTS.SDK.API.Internal.Senders
     /// Base implementation of the <see cref="ITicketSender"/>
     /// </summary>
     /// <seealso cref="ITicketSender" />
-    public abstract class TicketSenderBase : ITicketSender
+    internal abstract class TicketSenderBase : ITicketSender
     {
         /// <summary>
         /// The execution log

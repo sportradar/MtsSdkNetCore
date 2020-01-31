@@ -16,7 +16,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.ClientApi
 #pragma warning disable // Disable all warnings
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class CcfResponseDTO : System.ComponentModel.INotifyPropertyChanged
+    internal partial class CcfResponseDTO : System.ComponentModel.INotifyPropertyChanged
     {
         private long _ccf;
         private IEnumerable<Anonymous> _sportCcfDetails = new Collection<Anonymous>();
@@ -72,7 +72,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.ClientApi
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Anonymous : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Anonymous : System.ComponentModel.INotifyPropertyChanged
     {
         private string _sportId;
         private long _prematchCcf;

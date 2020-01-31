@@ -10,7 +10,7 @@ namespace Sportradar.MTS.SDK.Common.Internal
     /// <summary>
     /// Defines extension methods used by the SDK
     /// </summary>
-    public static class ExtensionMethods
+    internal static class ExtensionMethods
     {
         /// <summary>
         /// Gets a <see cref="string"/> representation of the provided <see cref="Stream"/>

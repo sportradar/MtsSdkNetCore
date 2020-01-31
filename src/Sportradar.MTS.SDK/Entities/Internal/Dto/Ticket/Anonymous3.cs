@@ -9,7 +9,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     /// Class for Ticket SelectionRef
     /// </summary>
     /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
-    public partial class Anonymous3
+    internal partial class Anonymous3
     {
         public Anonymous3()
         { }

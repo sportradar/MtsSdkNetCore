@@ -9,7 +9,7 @@ namespace Sportradar.MTS.SDK.Common.Internal
     /// <summary>
     /// Defines static methods used for manipulate with enums
     /// </summary>
-    public static class EnumHelper
+    internal static class EnumHelper
     {
         /// <summary>
         /// Determines whether the provided value is member of the specified enumeration

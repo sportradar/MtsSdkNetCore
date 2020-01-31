@@ -3,7 +3,7 @@
  */
 namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancelResponse
 {
-    public partial class Reason
+    internal partial class Reason
     {
         public Reason()
         { }

@@ -17,7 +17,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCashout
 
     /// <summary>Ticket cashout version 2.3 schema</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class TicketCashoutDTO : System.ComponentModel.INotifyPropertyChanged
+    internal partial class TicketCashoutDTO : System.ComponentModel.INotifyPropertyChanged
     {
         private long _timestampUtc;
         private string _ticketId;
@@ -162,7 +162,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCashout
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Sender : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Sender : System.ComponentModel.INotifyPropertyChanged
     {
         private int _bookmakerId;
     
@@ -203,7 +203,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCashout
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Anonymous : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Anonymous : System.ComponentModel.INotifyPropertyChanged
     {
         private string _id;
         private long _cashoutStake;

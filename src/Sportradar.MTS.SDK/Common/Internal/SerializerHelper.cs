@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace Sportradar.MTS.SDK.Common.Internal
 {
-    public static class SerializerHelper
+    internal static class SerializerHelper
     {
         public static T Deserialize<T>(this string toDeserialize)
         {

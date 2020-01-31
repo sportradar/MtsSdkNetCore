@@ -19,6 +19,7 @@ obj/
 *.GhostDoc.user.dic
 src/packages/*
 src/TestResults/*
+src/Help/*
 sandcastle/Help/*
 DemoProject/packages/*
 XsdSchemaFetcher/SchemaFetcher/packages/*

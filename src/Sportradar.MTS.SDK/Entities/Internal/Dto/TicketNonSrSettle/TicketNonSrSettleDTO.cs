@@ -14,7 +14,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketNonSrSettle
 
     /// <summary>Non-Sportradar settle version 2.3 schema</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class TicketNonSrSettleDTO : System.ComponentModel.INotifyPropertyChanged
+    internal partial class TicketNonSrSettleDTO : System.ComponentModel.INotifyPropertyChanged
     {
         private long _timestampUtc;
         private string _ticketId;
@@ -126,7 +126,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketNonSrSettle
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Sender : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Sender : System.ComponentModel.INotifyPropertyChanged
     {
         private int _bookmakerId;
     

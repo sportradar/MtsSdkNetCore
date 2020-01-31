@@ -14,7 +14,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     /// Class Ticket
     /// </summary>
     /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
-    public partial class Ticket
+    internal partial class Ticket
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Ticket"/> class

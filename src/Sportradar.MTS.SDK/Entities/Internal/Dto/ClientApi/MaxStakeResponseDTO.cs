@@ -13,7 +13,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.ClientApi
 #pragma warning disable // Disable all warnings
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class MaxStakeResponseDTO : System.ComponentModel.INotifyPropertyChanged
+    internal partial class MaxStakeResponseDTO : System.ComponentModel.INotifyPropertyChanged
     {
         private string _ticketId;
         private long _maxStake;

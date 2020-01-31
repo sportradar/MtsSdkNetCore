@@ -9,7 +9,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCashout
     /// Class Anonymous for BetCashout
     /// </summary>
     /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
-    public partial class Anonymous
+    internal partial class Anonymous
     {
         public Anonymous()
         { }

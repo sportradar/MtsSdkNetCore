@@ -14,7 +14,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancelResponse
 
     /// <summary>Object carrying information about cancellation response</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Reason : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Reason : System.ComponentModel.INotifyPropertyChanged
     {
         private int _code;
         private string _message;
@@ -71,7 +71,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancelResponse
     
     /// <summary>Cancellation status - cancelled, not_cancelled</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public enum Status
+    internal enum Status
     {
         [System.Runtime.Serialization.EnumMember(Value = "not_cancelled")]
         Not_cancelled = 0,
@@ -83,7 +83,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancelResponse
     
     /// <summary>Ticket cancel response 2.3 schema</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class TicketCancelResponseDTO : System.ComponentModel.INotifyPropertyChanged
+    internal partial class TicketCancelResponseDTO : System.ComponentModel.INotifyPropertyChanged
     {
         private Result _result = new Result();
         private string _signature;
@@ -159,7 +159,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancelResponse
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Result : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Result : System.ComponentModel.INotifyPropertyChanged
     {
         private string _ticketId;
         private Status _status;

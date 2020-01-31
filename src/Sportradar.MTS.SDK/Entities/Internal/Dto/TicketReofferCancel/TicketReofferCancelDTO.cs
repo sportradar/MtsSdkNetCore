@@ -14,7 +14,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketReofferCancel
 
     /// <summary>Re-offer cancel version 2.3 schema</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class TicketReofferCancelDTO : System.ComponentModel.INotifyPropertyChanged
+    internal partial class TicketReofferCancelDTO : System.ComponentModel.INotifyPropertyChanged
     {
         private long _timestampUtc;
         private string _ticketId;
@@ -109,7 +109,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketReofferCancel
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Sender : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Sender : System.ComponentModel.INotifyPropertyChanged
     {
         private int _bookmakerId;
     

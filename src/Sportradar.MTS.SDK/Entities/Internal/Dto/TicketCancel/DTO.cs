@@ -5,7 +5,7 @@ using Sportradar.MTS.SDK.Entities.Interfaces;
 
 namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancel
 {
-    public partial class TicketCancelDTO
+    internal partial class TicketCancelDTO
     {
         public TicketCancelDTO()
         { }

@@ -6,7 +6,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Enums
     /// <summary>
     /// Enumerates groups of resources represented by the <see cref="URN"/>
     /// </summary>
-    public enum ResourceTypeGroup
+    internal enum ResourceTypeGroup
     {
         /// <summary>
         /// The resource represents a sport event of match type

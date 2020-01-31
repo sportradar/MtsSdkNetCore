@@ -13,7 +13,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketAck
     #pragma warning disable // Disable all warnings
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class TicketAckDTO : System.ComponentModel.INotifyPropertyChanged
+    internal partial class TicketAckDTO : System.ComponentModel.INotifyPropertyChanged
     {
         private Sender _sender = new Sender();
         private string _ticketId;
@@ -150,7 +150,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketAck
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Sender : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Sender : System.ComponentModel.INotifyPropertyChanged
     {
         private int _bookmakerId;
     
@@ -189,7 +189,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketAck
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public enum TicketAckDTOTicketStatus
+    internal enum TicketAckDTOTicketStatus
     {
         [System.Runtime.Serialization.EnumMember(Value = "rejected")]
         Rejected = 0,

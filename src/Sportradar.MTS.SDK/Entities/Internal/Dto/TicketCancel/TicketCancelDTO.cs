@@ -17,7 +17,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancel
 
     /// <summary>Ticket cancel version 2.3 schema</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class TicketCancelDTO : System.ComponentModel.INotifyPropertyChanged
+    internal partial class TicketCancelDTO : System.ComponentModel.INotifyPropertyChanged
     {
         private Cancel _cancel = new Cancel();
     
@@ -58,7 +58,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancel
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Cancel : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Cancel : System.ComponentModel.INotifyPropertyChanged
     {
         private long _timestampUtc;
         private string _ticketId;
@@ -202,7 +202,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancel
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Sender : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Sender : System.ComponentModel.INotifyPropertyChanged
     {
         private int _bookmakerId;
     
@@ -243,7 +243,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancel
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Anonymous : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Anonymous : System.ComponentModel.INotifyPropertyChanged
     {
         private string _id;
         private int? _cancelPercent;

@@ -17,7 +17,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse
 
     /// <summary>Object carrying information about rejection cause</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Reason : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Reason : System.ComponentModel.INotifyPropertyChanged
     {
         private int _code;
         private string _message;
@@ -74,7 +74,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse
     
     /// <summary>Acceptance status - accepted, rejected</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public enum Status
+    internal enum Status
     {
         [System.Runtime.Serialization.EnumMember(Value = "rejected")]
         Rejected = 0,
@@ -86,7 +86,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse
     
     /// <summary>Ticket response 2.3 schema</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class TicketResponseDTO : System.ComponentModel.INotifyPropertyChanged
+    internal partial class TicketResponseDTO : System.ComponentModel.INotifyPropertyChanged
     {
         private Result _result = new Result();
         private IEnumerable<Anonymous> _autoAcceptedOdds = new Collection<Anonymous>();
@@ -195,7 +195,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Result : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Result : System.ComponentModel.INotifyPropertyChanged
     {
         private string _ticketId;
         private Status _status;
@@ -285,7 +285,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse
     
     /// <summary>Odds auto-acceptance selection information</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Anonymous : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Anonymous : System.ComponentModel.INotifyPropertyChanged
     {
         private int _selectionIndex;
         private int _requestedOdds;
@@ -359,7 +359,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse
     
     /// <summary>Reason on bet level</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Anonymous2 : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Anonymous2 : System.ComponentModel.INotifyPropertyChanged
     {
         private string _betId;
         private Reason _reason = new Reason();
@@ -465,7 +465,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse
     
     /// <summary>Reason on selection level</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Anonymous3 : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Anonymous3 : System.ComponentModel.INotifyPropertyChanged
     {
         private int _selectionIndex;
         private Reason _reason = new Reason();
@@ -535,7 +535,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class Reoffer : System.ComponentModel.INotifyPropertyChanged
+    internal partial class Reoffer : System.ComponentModel.INotifyPropertyChanged
     {
         private long _stake;
         private ReofferType _type;
@@ -594,7 +594,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class AlternativeStake : System.ComponentModel.INotifyPropertyChanged
+    internal partial class AlternativeStake : System.ComponentModel.INotifyPropertyChanged
     {
         private long _stake;
     
@@ -635,7 +635,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public partial class RejectionInfo : System.ComponentModel.INotifyPropertyChanged
+    internal partial class RejectionInfo : System.ComponentModel.INotifyPropertyChanged
     {
         private string _eventId;
         private string _id;
@@ -710,7 +710,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
-    public enum ReofferType
+    internal enum ReofferType
     {
         [System.Runtime.Serialization.EnumMember(Value = "auto")]
         Auto = 0,

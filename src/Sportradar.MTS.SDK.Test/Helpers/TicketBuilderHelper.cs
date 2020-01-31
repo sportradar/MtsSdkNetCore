@@ -154,7 +154,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
                         .BuildTicket();
         }
 
-        public static TicketResponseDTO GetTicketResponse()
+        internal static TicketResponseDTO GetTicketResponse()
         {
             return new TicketResponseDTO
             {
@@ -178,7 +178,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             };
         }
 
-        public static TicketResponseDTO GetTicketResponse(ITicket ticket, Status status, bool addReoffer, bool addAlt)
+        internal static TicketResponseDTO GetTicketResponse(ITicket ticket, Status status, bool addReoffer, bool addAlt)
         {
             var betDetails = ticket.Bets.Select(ticketBet => GetResponseBetDetail(ticketBet.Id, addAlt, addReoffer)).ToList();
 
@@ -201,7 +201,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             };
         }
 
-        public static TicketCancelResponseDTO GetTicketCancelResponse()
+        internal static TicketCancelResponseDTO GetTicketCancelResponse()
         {
             return new TicketCancelResponseDTO
             {
@@ -238,7 +238,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             return BuilderFactory.CreateTicketCashoutBuilder().SetTicketId(ticketId).SetBookmakerId(SR.I1000).SetCashoutStake(SR.I1000P).BuildTicket();
         }
 
-        public static TicketCashoutResponseDTO GetTicketCashoutResponse(string ticketId, SDK.Entities.Internal.Dto.TicketCashoutResponse.Status status)
+        internal static TicketCashoutResponseDTO GetTicketCashoutResponse(string ticketId, SDK.Entities.Internal.Dto.TicketCashoutResponse.Status status)
         {
             if (string.IsNullOrEmpty(ticketId))
             {
@@ -270,7 +270,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             return BuilderFactory.CreateTicketNonSrSettleBuilder().SetTicketId(ticketId).SetBookmakerId(SR.I1000).SetNonSrSettleStake(SR.I1000P).BuildTicket();
         }
 
-        public static TicketNonSrSettleResponseDTO GetTicketNonSrSettleResponse(string ticketId, SDK.Entities.Internal.Dto.TicketNonSrSettleResponse.Status status)
+        internal static TicketNonSrSettleResponseDTO GetTicketNonSrSettleResponse(string ticketId, SDK.Entities.Internal.Dto.TicketNonSrSettleResponse.Status status)
         {
             if (string.IsNullOrEmpty(ticketId))
             {

@@ -3,7 +3,7 @@
  */
 namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 {
-    public enum ExchangeType
+    internal enum ExchangeType
     {
         Direct = 0,
 

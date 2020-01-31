@@ -38,7 +38,7 @@ using Unity.Lifetime;
 
 namespace Sportradar.MTS.SDK.API.Internal
 {
-    public static class SdkUnityBootstrapper
+    internal static class SdkUnityBootstrapper
     {
         private static ILogger _log;
         private static IMetricsRoot _metricsRoot;

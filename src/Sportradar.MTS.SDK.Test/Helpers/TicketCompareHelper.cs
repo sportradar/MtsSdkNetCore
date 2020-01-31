@@ -20,9 +20,9 @@ using Anonymous2 = Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.Anonymous2;
 
 namespace Sportradar.MTS.SDK.Test.Helpers
 {
-    public static class TicketCompareHelper
+    internal static class TicketCompareHelper
     {
-        public static void Compare(ITicket ticket, TicketDTO dto)
+        internal static void Compare(ITicket ticket, TicketDTO dto)
         {
             Assert.IsTrue(ticket != null);
             Assert.IsTrue(dto != null);
@@ -63,7 +63,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             Assert.AreEqual(ticket.TotalCombinations, dto.Ticket.TotalCombinations);
         }
 
-        public static void Compare(IBet bet, Anonymous dto)
+        internal static void Compare(IBet bet, Anonymous dto)
         {
             Assert.IsTrue(bet != null);
             Assert.IsTrue(dto != null);
@@ -107,7 +107,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             //}
         }
 
-        public static void Compare(ISelection sel, Anonymous2 dto)
+        internal static void Compare(ISelection sel, Anonymous2 dto)
         {
             Assert.IsTrue(sel != null);
             Assert.IsTrue(dto != null);
@@ -117,7 +117,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             Assert.AreEqual(sel.Odds, dto.Odds);
         }
 
-        public static void Compare(ITicketCancel ticket, TicketCancelDTO dto)
+        internal static void Compare(ITicketCancel ticket, TicketCancelDTO dto)
         {
             Assert.IsTrue(ticket != null);
             Assert.IsTrue(dto != null);
@@ -131,7 +131,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             Assert.IsFalse(string.IsNullOrEmpty(ticket.CorrelationId));
         }
 
-        public static void Compare(ITicketAck ticket, TicketAckDTO dto)
+        internal static void Compare(ITicketAck ticket, TicketAckDTO dto)
         {
             Assert.IsTrue(ticket != null);
             Assert.IsTrue(dto != null);
@@ -147,7 +147,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             Assert.IsFalse(string.IsNullOrEmpty(ticket.CorrelationId));
         }
 
-        public static void Compare(ITicketCancelAck ticket, TicketCancelAckDTO dto)
+        internal static void Compare(ITicketCancelAck ticket, TicketCancelAckDTO dto)
         {
             Assert.IsTrue(ticket != null);
             Assert.IsTrue(dto != null);
@@ -163,7 +163,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             Assert.IsFalse(string.IsNullOrEmpty(ticket.CorrelationId));
         }
 
-        public static void Compare(ITicketResponse ticket, TicketResponseDTO dto)
+        internal static void Compare(ITicketResponse ticket, TicketResponseDTO dto)
         {
             Assert.IsTrue(ticket != null);
             Assert.IsTrue(dto != null);
@@ -214,7 +214,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             Assert.IsFalse(string.IsNullOrEmpty(ticket.CorrelationId));
         }
 
-        public static void Compare(ITicketCancelResponse ticket, TicketCancelResponseDTO dto)
+        internal static void Compare(ITicketCancelResponse ticket, TicketCancelResponseDTO dto)
         {
             Assert.IsTrue(ticket != null);
             Assert.IsTrue(dto != null);
@@ -229,7 +229,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             Assert.IsFalse(string.IsNullOrEmpty(ticket.CorrelationId));
         }
 
-        public static void Compare(ITicketReofferCancel ticket, TicketReofferCancelDTO dto)
+        internal static void Compare(ITicketReofferCancel ticket, TicketReofferCancelDTO dto)
         {
             Assert.IsTrue(ticket != null);
             Assert.IsTrue(dto != null);
@@ -241,7 +241,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             Assert.IsFalse(string.IsNullOrEmpty(ticket.CorrelationId));
         }
 
-        public static void Compare(ITicketCashout ticket, TicketCashoutDTO dto)
+        internal static void Compare(ITicketCashout ticket, TicketCashoutDTO dto)
         {
             Assert.IsTrue(ticket != null);
             Assert.IsTrue(dto != null);
@@ -254,7 +254,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             Assert.IsFalse(string.IsNullOrEmpty(ticket.CorrelationId));
         }
 
-        public static void Compare(ITicketCashoutResponse ticket, TicketCashoutResponseDTO dto)
+        internal static void Compare(ITicketCashoutResponse ticket, TicketCashoutResponseDTO dto)
         {
             Assert.IsTrue(ticket != null);
             Assert.IsTrue(dto != null);
@@ -269,7 +269,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             Assert.IsFalse(string.IsNullOrEmpty(ticket.CorrelationId));
         }
 
-        public static void Compare(ITicketNonSrSettleResponse ticket, TicketNonSrSettleResponseDTO dto)
+        internal static void Compare(ITicketNonSrSettleResponse ticket, TicketNonSrSettleResponseDTO dto)
         {
             Assert.IsTrue(ticket != null);
             Assert.IsTrue(dto != null);
@@ -297,7 +297,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             Assert.AreEqual(rejection.Odds, dto.Odds);
         }
 
-        public static void Compare(ITicket orgTicket, ITicket newTicket, bool isReoffer, bool isAlt)
+        internal static void Compare(ITicket orgTicket, ITicket newTicket, bool isReoffer, bool isAlt)
         {
             Assert.IsNotNull(orgTicket);
             Assert.IsNotNull(newTicket);
@@ -347,7 +347,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             Assert.AreNotEqual(orgTicket.CorrelationId, newTicket.CorrelationId);
         }
 
-        public static void Compare(IBet bet, IBet newBet, bool isReoffer)
+        internal static void Compare(IBet bet, IBet newBet, bool isReoffer)
         {
             Assert.IsNotNull(bet);
             Assert.IsNotNull(newBet);

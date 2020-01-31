@@ -3,7 +3,7 @@
  */
 namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancelAck
 {
-    public partial class Sender
+    internal partial class Sender
     {
         public Sender()
         {

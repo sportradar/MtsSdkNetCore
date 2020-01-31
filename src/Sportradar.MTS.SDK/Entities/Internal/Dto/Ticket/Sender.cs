@@ -6,7 +6,7 @@ using Sportradar.MTS.SDK.Entities.Interfaces;
 
 namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
 {
-    public partial class Sender
+    internal partial class Sender
     {
         public Sender()
         { }

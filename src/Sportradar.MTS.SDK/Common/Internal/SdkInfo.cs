@@ -8,7 +8,7 @@ namespace Sportradar.MTS.SDK.Common.Internal
     /// <summary>
     /// Class provides information about current executing assembly
     /// </summary>
-    public static class SdkInfo
+    internal static class SdkInfo
     {
         public const int TicketResponseTimeoutLiveDefault = 17000;
         public const int TicketResponseTimeoutPrematchDefault = 5000;

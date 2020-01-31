@@ -3,7 +3,7 @@
  */
 namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketNonSrSettle
 {
-    public partial class Sender
+    internal partial class Sender
     {
         public Sender()
         {

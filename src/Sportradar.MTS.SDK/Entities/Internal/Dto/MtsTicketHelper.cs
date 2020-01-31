@@ -14,7 +14,7 @@ using StakeType = Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.StakeType;
 
 namespace Sportradar.MTS.SDK.Entities.Internal.Dto
 {
-    public static class MtsTicketHelper
+    internal static class MtsTicketHelper
     {
         public static TicketAckDTOTicketStatus Convert(TicketAckStatus status)
         {

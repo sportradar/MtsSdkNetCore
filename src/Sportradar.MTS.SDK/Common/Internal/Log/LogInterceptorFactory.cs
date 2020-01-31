@@ -10,7 +10,7 @@ namespace Sportradar.MTS.SDK.Common.Internal.Log
     /// <summary>
     /// Factory for the <see cref="LogInterceptor" />
     /// </summary>
-    public static class LogInterceptorFactory
+    internal static class LogInterceptorFactory
     {
         /// <summary>
         /// Creates the specified arguments

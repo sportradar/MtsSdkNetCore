@@ -11,7 +11,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     /// Class for BET
     /// </summary>
     /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
-    public partial class Anonymous
+    internal partial class Anonymous
     {
         public Anonymous()
         { }
