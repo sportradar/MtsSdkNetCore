@@ -390,6 +390,25 @@ namespace Sportradar.MTS.SDK.API.Internal
                     new CacheItemPolicy { SlidingExpiration = TimeSpan.FromDays(1) },
                     new ResolvedParameter<IMetricsRoot>()));
 
+
+
+            //var mdDeserializer = new Deserializer<market_descriptions>();
+            //var mdMaperFactory = new MarketDescriptionsMapperFactory();
+            //var mdProvider = new DataProvider<market_descriptions, IEnumerable<MarketDescriptionDTO>>(configInternal.ApiHost + "/v1/descriptions/{0}/markets.xml?include_mappings=true",
+            //    container.Resolve<IDataFetcher>("Base"),
+            //    container.Resolve<IDataPoster>("Base"),
+            //    mdDeserializer,
+            //    mdMaperFactory);
+
+            //var provider = container.Resolve<IDataProvider<IEnumerable<MarketDescriptionDTO>>>();
+            //var memoryCache = container.Resolve<MemoryCache>("InvariantMarketDescriptionCache_Cache");
+            //var timer = container.Resolve<ITimer>();
+            //var cache = container.Resolve<IMarketDescriptionCache>();
+
+
+
+
+
             container.RegisterType<IMarketDescriptionProvider, MarketDescriptionProvider>(
                 new ContainerControlledLifetimeManager(),
                 new InjectionConstructor(

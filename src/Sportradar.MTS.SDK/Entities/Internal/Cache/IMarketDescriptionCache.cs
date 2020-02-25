@@ -10,7 +10,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
     /// <summary>
     /// Defines a contract implemented by classes used to cache market descriptions
     /// </summary>
-
     internal interface IMarketDescriptionCache
     {
         /// <summary>

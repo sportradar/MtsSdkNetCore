@@ -165,9 +165,9 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
             }
         }
 
-        private void OnConsumerCancelled(object sender, ConsumerEventArgs e)
+        private void OnConsumerCanceled(object sender, ConsumerEventArgs e)
         {
-            ExecutionLog.LogInformation($"Cancelled consumer channel with channelNumber: {UniqueId} and queueName: {_queueName}.");
+            ExecutionLog.LogInformation($"Canceled consumer channel with channelNumber: {UniqueId} and queueName: {_queueName}.");
         }
 
         private void OnRegistered(object sender, ConsumerEventArgs e)
@@ -288,9 +288,11 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                             }
                         }
 
+                        var arguments = new Dictionary<string, object> { { "x-queue-master-locator", "min-masters" } };
+
                         var declareResult = _channelSettings.QueueIsDurable
-                            ? channelWrapper.Channel.QueueDeclare(_queueName, true, false, false, null)
-                            : channelWrapper.Channel.QueueDeclare(_queueName, false, false, false, null);
+                            ? channelWrapper.Channel.QueueDeclare(_queueName, true, false, false, arguments)
+                            : channelWrapper.Channel.QueueDeclare(_queueName, false, false, false, arguments);
 
                         if (!string.IsNullOrEmpty(_mtsChannelSettings.ExchangeName) && _routingKeys != null)
                         {
@@ -309,7 +311,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                         consumer.Registered += OnRegistered;
                         consumer.Unregistered += OnUnregistered;
                         consumer.Shutdown += OnShutdown;
-                        consumer.ConsumerCancelled += OnConsumerCancelled;
+                        consumer.ConsumerCancelled += OnConsumerCanceled;
                         channelWrapper.Channel.BasicConsume(queue: declareResult.QueueName, 
                             autoAck: true,
                             consumerTag: $"{_mtsChannelSettings.ConsumerTag}",
@@ -365,7 +367,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                 channelWrapper.Consumer.Registered -= OnRegistered;
                 channelWrapper.Consumer.Unregistered -= OnUnregistered;
                 channelWrapper.Consumer.Shutdown -= OnShutdown;
-                channelWrapper.Consumer.ConsumerCancelled -= OnConsumerCancelled;
+                channelWrapper.Consumer.ConsumerCancelled -= OnConsumerCanceled;
                 channelWrapper.Consumer = null;
             }
         }

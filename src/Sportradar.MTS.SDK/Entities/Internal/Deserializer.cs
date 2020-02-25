@@ -28,9 +28,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         /// of the specified types can be deserialized by the deserializer
         /// </summary>
         // ReSharper disable StaticFieldInGenericType
-        private static readonly Type[] BaseTypes = {
-            typeof(XmlRestMessage)
-        };
+        private static readonly Type[] BaseTypes = { typeof(XmlRestMessage) };
         // ReSharper restore StaticFieldInGenericType
 
         /// <summary>

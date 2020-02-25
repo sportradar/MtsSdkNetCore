@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyVersion>2.3.0.2</AssemblyVersion>
-    <FileVersion>2.3.0.2</FileVersion>
+    <AssemblyVersion>2.3.0.11</AssemblyVersion>
+    <FileVersion>2.3.0.11</FileVersion>
     <LangVersion>8</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
