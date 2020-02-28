@@ -29,7 +29,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
-    internal partial class market_descriptions {
+    public partial class market_descriptions {
         
         private desc_market[] marketField;
         
@@ -89,7 +89,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    internal partial class desc_market {
+    public partial class desc_market {
         
         private desc_outcomesOutcome[] outcomesField;
         
@@ -228,7 +228,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-    internal partial class desc_outcomesOutcome {
+    public partial class desc_outcomesOutcome {
         
         private string idField;
         
@@ -276,7 +276,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-    internal partial class desc_specifiersSpecifier {
+    public partial class desc_specifiersSpecifier {
         
         private string nameField;
         
@@ -324,7 +324,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-    internal partial class mappingsMapping {
+    public partial class mappingsMapping {
         
         private mappingsMappingMapping_outcome[] mapping_outcomeField;
         
@@ -411,7 +411,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-    internal partial class mappingsMappingMapping_outcome {
+    public partial class mappingsMappingMapping_outcome {
         
         private string outcome_idField;
         
@@ -459,7 +459,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-    internal partial class attributesAttribute {
+    public partial class attributesAttribute {
         
         private string nameField;
         
@@ -491,7 +491,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    internal enum response_code {
+    public enum response_code {
         
         /// <remarks/>
         OK,
@@ -531,7 +531,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
     [System.Xml.Serialization.XmlRootAttribute("available_selections", Namespace="http://schemas.sportradar.com/custombet/v1/endpoints", IsNullable=false)]
-    internal partial class AvailableSelectionsType {
+    public partial class AvailableSelectionsType {
         
         private EventType eventField;
         
@@ -565,7 +565,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
-    internal partial class EventType {
+    public partial class EventType {
         
         private MarketType[] marketsField;
         
@@ -600,7 +600,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
-    internal partial class MarketType {
+    public partial class MarketType {
         
         private OutcomeType[] outcomeField;
         
@@ -648,7 +648,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
-    internal partial class OutcomeType {
+    public partial class OutcomeType {
         
         private string idField;
         
@@ -671,7 +671,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
     [System.Xml.Serialization.XmlRootAttribute("calculation_response", Namespace="http://schemas.sportradar.com/custombet/v1/endpoints", IsNullable=false)]
-    internal partial class CalculationResponseType {
+    public partial class CalculationResponseType {
         
         private CalculationResultType calculationField;
         
@@ -718,7 +718,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
-    internal partial class CalculationResultType {
+    public partial class CalculationResultType {
         
         private double oddsField;
         
@@ -754,7 +754,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
     [System.Xml.Serialization.XmlRootAttribute("response", Namespace="http://schemas.sportradar.com/custombet/v1/endpoints", IsNullable=false)]
-    internal partial class ResponseType {
+    public partial class ResponseType {
         
         private string messageField;
         
@@ -814,7 +814,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
     [System.Xml.Serialization.XmlRootAttribute("selections", Namespace="http://schemas.sportradar.com/custombet/v1/endpoints", IsNullable=false)]
-    internal partial class SelectionsType {
+    public partial class SelectionsType {
         
         private SelectionType[] selectionField;
         
@@ -836,7 +836,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
-    internal partial class SelectionType {
+    public partial class SelectionType {
         
         private string idField;
         

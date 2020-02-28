@@ -11,7 +11,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     /// <summary>
     /// Represents all messages (entities) received from the REST API
     /// </summary>
-    internal abstract class RestMessage
+    public abstract class RestMessage
     {
 
     }
@@ -19,31 +19,31 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     /// <summary>
     /// Represents all XML messages (entities) received from the REST API 
     /// </summary>
-    internal abstract class XmlRestMessage : RestMessage
+    public abstract class XmlRestMessage : RestMessage
     {
 
     }
 
     [OverrideXmlNamespace(RootElementName = "market_descriptions", IgnoreNamespace = false)]
-    internal partial class market_descriptions : XmlRestMessage
+    public partial class market_descriptions : XmlRestMessage
     {
 
     }
 
     [OverrideXmlNamespace(RootElementName = "available_selections", IgnoreNamespace = false)]
-    internal partial class AvailableSelectionsType : XmlRestMessage
+    public partial class AvailableSelectionsType : XmlRestMessage
     {
 
     }
 
     [OverrideXmlNamespace(RootElementName = "calculation_response", IgnoreNamespace = false)]
-    internal partial class CalculationResponseType : XmlRestMessage
+    public partial class CalculationResponseType : XmlRestMessage
     {
 
     }
 
     [OverrideXmlNamespace(RootElementName = "selections", IgnoreNamespace = false)]
-    internal partial class SelectionsType : XmlRestMessage
+    public partial class SelectionsType : XmlRestMessage
     {
 
     }
