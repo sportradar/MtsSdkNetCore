@@ -34,7 +34,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 
             ClientProperties = new Dictionary<string, object>
             {
-                {"SrMtsSdkType", ".net"},
+                {"SrMtsSdkType", ".netstd"},
                 {"SrMtsSdkVersion", SdkInfo.GetVersion()},
                 {"SrMtsSdkInit", $"{DateTime.Now:yyyyMMddHHmm}"},
                 {"connection_name", "RabbitMQ / Net"}

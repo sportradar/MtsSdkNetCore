@@ -43,7 +43,7 @@ namespace Sportradar.MTS.SDK.API.Internal
             HeaderProperties = headerProperties;
             ReplyToRoutingKey = replyToRoutingKey;
             var systemStartTime = DateTime.Now.AddMilliseconds(-Environment.TickCount);
-            ConsumerTag = $"tag_{environment}|NET|{SdkInfo.GetVersion()}|{DateTime.Now:yyyyMMddHHmm}|{TicketHelper.DateTimeToUnixTime(systemStartTime)}|{Process.GetCurrentProcess().Id}";
+            ConsumerTag = $"tag_{environment}|NETStd|{SdkInfo.GetVersion()}|{DateTime.Now:yyyyMMddHHmm}|{TicketHelper.DateTimeToUnixTime(systemStartTime)}|{Process.GetCurrentProcess().Id}";
         }
 
         internal MtsChannelSettings(string queueName, string exchangeName, ExchangeType exchangeType, IEnumerable<string> routingKeys, IReadOnlyDictionary<string, object> headerProperties, string environment)
