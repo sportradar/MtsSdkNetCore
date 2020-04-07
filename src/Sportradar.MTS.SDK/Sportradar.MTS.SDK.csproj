@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyVersion>2.3.0.11</AssemblyVersion>
-    <FileVersion>2.3.0.11</FileVersion>
+    <AssemblyVersion>2.3.1.0</AssemblyVersion>
+    <FileVersion>2.3.1.0</FileVersion>
     <LangVersion>8</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -16,9 +16,9 @@
     <PackageProjectUrl>http://sdk.sportradar.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/sportradar/MtsSdkNetCore</RepositoryUrl>
     <PackageTags>SportRadar MTS SDK .NETCore</PackageTags>
-    <PackageReleaseNotes>initial version</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
-    <Version>2.3.0</Version>
+    <Version>2.3.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

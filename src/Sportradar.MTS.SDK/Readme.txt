@@ -22,7 +22,17 @@ The package contains:
  - Resources containing the log4net configuration needed by the MTS SDK
 
 CHANGE LOG:
-2020-01-06 1.0.0
+2020-04-07 2.3.1
+Allow 0 cashout stake when building TicketCashout
+Added bookmakerId to the client_properties
+Added argument to rabbit queue declare: queue-master-locator
+Updated rabbit client properties and consumerTag for Standard
+Updated DemoProject to use logger factory
+Examples updated to use UOF markets
+Internalize internal classes and interfaces
+Fix: XmlSerializer now properly initializes during DI container creation
+
+2020-01-06 2.3.0
 Port of MTS SDK to .NET Standard 2.1
 Replaced Metrics.NET with App.Metrics
 Replaced Code.Contracts with Dawn.Guard conditions
