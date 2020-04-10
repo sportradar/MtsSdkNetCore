@@ -16,7 +16,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         public const string BetIdPattern = "^[0-9A-Za-z:_-]*";
 
         // ReSharper disable once MemberCanBePrivate.Global
-        public const string UserIdPattern = "^[0-9A-Za-z_-]*";
+        public const string UserIdPattern = "^[0-9A-Za-z#_-]*";
 
         public const string MtsTicketVersion = "2.3";
 
