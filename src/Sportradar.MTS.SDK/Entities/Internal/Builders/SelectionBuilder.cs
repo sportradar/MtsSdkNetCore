@@ -203,7 +203,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             {
                 throw new ArgumentException("SportId is not valid.");
             }
-            if (!Enum.IsDefined(typeof(Product), product))
+            if (product < 1)
             {
                 throw new ArgumentException("Product is not valid.");
             }
