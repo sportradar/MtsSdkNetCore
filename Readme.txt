@@ -22,6 +22,10 @@ The package contains:
  - Resources containing the log4net configuration needed by the MTS SDK
 
 CHANGE LOG:
+2020-09-18 2.3.2
+Added # to the User ID pattern
+Fix: checking for invalid products
+
 2020-04-07 2.3.1
 Allow 0 cashout stake when building TicketCashout
 Added bookmakerId to the client_properties
