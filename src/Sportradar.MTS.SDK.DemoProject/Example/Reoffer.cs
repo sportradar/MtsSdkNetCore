@@ -191,7 +191,7 @@ namespace Sportradar.MTS.SDK.DemoProject.Example
             _log.LogInformation($"Ticket '{ticket.TicketId}' response is {ticket.Status}. Reason={ticket.Reason?.Message}");
             if (ticket.Status == TicketCancelAcceptance.Cancelled)
             {
-                //required only if 'explicit acking' is enabled in MTS admin
+                //mandatory for all cancellations, except for TimeOutTriggered cancellation
                 ticket.Acknowledge();
             }
         }
