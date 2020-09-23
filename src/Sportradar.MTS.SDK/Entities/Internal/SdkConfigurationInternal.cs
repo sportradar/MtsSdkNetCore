@@ -44,7 +44,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         /// Initializes a new instance of the <see cref="SdkConfiguration"/> class
         /// </summary>
         public SdkConfigurationInternal(ISdkConfiguration config, IDataFetcher dataFetcher)
-            : base(config.Username, config.Password, config.Host, config.VirtualHost, config.UseSsl, config.NodeId, config.BookmakerId, config.LimitId, config.Currency, config.Channel, config.AccessToken, config.UfEnvironment, config.ProvideAdditionalMarketSpecifiers, config.Port, config.ExclusiveConsumer)
+            : base(config.Username, config.Password, config.Host, config.VirtualHost, config.UseSsl, config.SslServerName, config.NodeId, config.BookmakerId, config.LimitId, config.Currency, config.Channel, config.AccessToken, config.UfEnvironment, config.ProvideAdditionalMarketSpecifiers, config.Port, config.ExclusiveConsumer)
         {
             Guard.Argument(config, nameof(config)).NotNull();
             ApiHost = null;

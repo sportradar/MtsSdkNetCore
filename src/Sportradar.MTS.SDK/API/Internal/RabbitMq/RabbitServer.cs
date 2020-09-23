@@ -14,6 +14,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         public string Username { get; }
         public string Password { get; }
         public bool UseSsl { get; }
+        public string SslServerName { get; }
         public string VirtualHost { get; }
         public int Port { get; }
         public string HostAddress { get; }
@@ -31,6 +32,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
             VirtualHost = config.VirtualHost;
             Port = config.Port;
             HostAddress = config.Host;
+            SslServerName = config.SslServerName ?? HostAddress;
 
             ClientProperties = new Dictionary<string, object>
             {

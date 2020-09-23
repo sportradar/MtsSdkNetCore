@@ -17,6 +17,7 @@ namespace Sportradar.MTS.SDK.API.Internal
         private string _vhost;
         private int _nodeId;
         private bool _useSsl;
+        private string _sslServerName;
         private int _bookmakerId;
         private int _limitId;
         private string _currency;
@@ -112,6 +113,12 @@ namespace Sportradar.MTS.SDK.API.Internal
         public ISdkConfigurationBuilder SetUseSsl(bool useSsl)
         {
             _useSsl = useSsl;
+            return this;
+        }
+
+        public ISdkConfigurationBuilder SetSslServerName(string sslServerName)
+        {
+            _sslServerName = sslServerName;
             return this;
         }
 
@@ -353,6 +360,7 @@ namespace Sportradar.MTS.SDK.API.Internal
                                         _host,
                                         _vhost,
                                         _useSsl,
+                                        _sslServerName,
                                         _nodeId,
                                         _bookmakerId,
                                         _limitId,

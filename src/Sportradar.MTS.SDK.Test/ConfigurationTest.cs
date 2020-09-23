@@ -52,6 +52,7 @@ namespace Sportradar.MTS.SDK.Test
                                .SetPort(1)
                                .SetVirtualHost("/virtualHost")
                                .SetUseSsl(false)
+                               .SetSslServerName("sslServerName")
                                .SetNode(2)
                                .SetBookmakerId(3)
                                .SetLimitId(4)
@@ -79,6 +80,7 @@ namespace Sportradar.MTS.SDK.Test
                              1,
                              "/virtualHost",
                              false,
+                             "sslServerName",
                              2,
                              3,
                              4,
@@ -140,6 +142,7 @@ namespace Sportradar.MTS.SDK.Test
                              1,
                              "/virtualHost",
                              false,
+                             null,
                              2,
                              3,
                              4,
@@ -173,6 +176,7 @@ namespace Sportradar.MTS.SDK.Test
                 port=""1""
                 vhost=""/virtualHost""
                 useSsl=""false""
+                sslServerName=""sslServerName""
                 node=""2""
                 bookmakerId=""3""
                 limitId=""4""
@@ -203,6 +207,7 @@ namespace Sportradar.MTS.SDK.Test
                              1,
                              "/virtualHost",
                              false,
+                             "sslServerName",
                              2,
                              3,
                              4,
@@ -267,6 +272,7 @@ namespace Sportradar.MTS.SDK.Test
                              1,
                              "/virtualHost",
                              false,
+                             null,
                              2,
                              3,
                              4,
@@ -943,6 +949,7 @@ namespace Sportradar.MTS.SDK.Test
             int port = 5671,
             string virtualHost = "/username",
             bool useSsl = true,
+            string sslServerName = null,
             int nodeId = 1,
             int bookmakerId = 0,
             int limitId = 0,
@@ -971,6 +978,7 @@ namespace Sportradar.MTS.SDK.Test
             Assert.AreEqual(port, config.Port);
             Assert.AreEqual(virtualHost, config.VirtualHost);
             Assert.AreEqual(useSsl, config.UseSsl);
+            Assert.AreEqual(sslServerName, config.SslServerName);
             Assert.AreEqual(nodeId, config.NodeId);
             Assert.AreEqual(bookmakerId, config.BookmakerId);
             Assert.AreEqual(limitId, config.LimitId);

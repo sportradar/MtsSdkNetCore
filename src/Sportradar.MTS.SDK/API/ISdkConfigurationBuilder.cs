@@ -62,6 +62,13 @@ namespace Sportradar.MTS.SDK.API
         ISdkConfigurationBuilder SetUseSsl(bool useSsl);
 
         /// <summary>
+        /// Sets the server name that will be used to check against SSL certificate
+        /// </summary>
+        /// <param name="sslServerName">The value to be set</param>
+        /// <returns>Returns a <see cref="ISdkConfigurationBuilder"/></returns>
+        ISdkConfigurationBuilder SetSslServerName(string sslServerName);
+
+        /// <summary>
         /// Sets the bookmakerId
         /// </summary>
         /// <param name="bookmakerId">The bookmakerId to be set</param>

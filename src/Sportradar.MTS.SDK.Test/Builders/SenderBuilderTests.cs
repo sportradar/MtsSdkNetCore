@@ -21,7 +21,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         [ClassInitialize]
         public static void Init(TestContext context)
         {
-            var configuration = new SdkConfigurationInternal(new SdkConfiguration("user", "pass", "host", "vhost", false, 5, 12, 17, "GBP", SenderChannel.Mobile), null);
+            var configuration = new SdkConfigurationInternal(new SdkConfiguration("user", "pass", "host", "vhost", false, "sslServerName", 5, 12, 17, "GBP", SenderChannel.Mobile), null);
             _builderFactory = new BuilderFactoryHelper(configuration).BuilderFactory;
             _endCustomer = _builderFactory.CreateEndCustomerBuilder().SetId("customerId").SetIp(IPAddress.Loopback).SetDeviceId("deviceId").SetLanguageId("si").Build();
         }

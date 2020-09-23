@@ -35,7 +35,7 @@ namespace Sportradar.MTS.SDK.Test
         [TestInitialize]
         public void Init()
         {
-            var configInternal = new SdkConfigurationInternal(new SdkConfiguration("username", "password", "host", null, true, 1, 0, 0, "EUR", null, "aaa"), null);
+            var configInternal = new SdkConfigurationInternal(new SdkConfiguration("username", "password", "host", null, true, "sslServerName",1, 0, 0, "EUR", null, "aaa"), null);
 
             _cultures = new List<CultureInfo> {new CultureInfo("en")};
 

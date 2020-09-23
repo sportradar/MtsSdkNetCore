@@ -47,6 +47,11 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         bool UseSsl { get; }
 
         /// <summary>
+        /// Gets the server name that will be used to check against SSL certificate
+        /// </summary>
+        string SslServerName { get; }
+
+        /// <summary>
         /// Gets the default sender bookmakerId
         /// </summary>
         int BookmakerId { get; }

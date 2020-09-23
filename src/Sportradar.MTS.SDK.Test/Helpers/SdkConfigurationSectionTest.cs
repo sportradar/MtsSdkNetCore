@@ -46,6 +46,11 @@ namespace Sportradar.MTS.SDK.Test.Helpers
         public bool UseSsl { get; }
 
         /// <summary>
+        /// Gets the server name that will be used to check against SSL certificate
+        /// </summary>
+        public string SslServerName { get; }
+
+        /// <summary>
         /// Gets the default sender bookmakerId
         /// </summary>
         public int BookmakerId { get; }
@@ -161,6 +166,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             string virtualHost,
             int nodeId,
             bool useSsl,
+            string sslServerName,
             int bookmakerId,
             int limitId,
             string currency,
@@ -191,6 +197,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             VirtualHost = virtualHost;
             NodeId = nodeId;
             UseSsl = useSsl;
+            SslServerName = sslServerName;
             BookmakerId = bookmakerId;
             LimitId = limitId;
             Currency = currency;
@@ -225,6 +232,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
                                                    virtualHost: "/test",
                                                    nodeId: 1,
                                                    useSsl: true,
+                                                   sslServerName: "sslServerName",
                                                    bookmakerId: 111,
                                                    limitId: 1,
                                                    currency: "EUR",

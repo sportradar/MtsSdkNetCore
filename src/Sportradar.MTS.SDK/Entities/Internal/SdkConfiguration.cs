@@ -45,6 +45,11 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         public bool UseSsl { get; }
 
         /// <summary>
+        /// Gets the server name that will be used to check against SSL certificate
+        /// </summary>
+        public string SslServerName { get; }
+
+        /// <summary>
         /// Gets a node id
         /// </summary>
         public int NodeId { get; }
@@ -166,6 +171,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         /// <param name="host">The host name of the AMQP broker</param>
         /// <param name="vhost">The virtual host defined on the AMQP broker</param>
         /// <param name="useSsl">Value indicating whether SSL should be used when connecting to AMQP</param>
+        /// <param name="sslServerName">The server name that will be used to check against SSL certificate</param>
         /// <param name="nodeId"> The value uniquely identifying the SDK instance associated with the current configuration</param>
         /// <param name="bookmakerId">The bookmaker id assigned to the customer by the MTS CI</param>
         /// <param name="limitId">The value specifying the limits of the placed tickets</param>
@@ -192,6 +198,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
             string host,
             string vhost = null,
             bool useSsl = true,
+            string sslServerName = null,
             int nodeId = 1,
             int bookmakerId = 0,
             int limitId = 0,
@@ -267,6 +274,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
                     ? vhost
                     : "/" + vhost;
             UseSsl = useSsl;
+            SslServerName = sslServerName;
             NodeId = nodeId > 0 ? nodeId : 1;
             BookmakerId = bookmakerId;
             LimitId = limitId;
@@ -337,6 +345,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
                     ? section.VirtualHost
                     : "/" + section.VirtualHost;
             UseSsl = section.UseSsl;
+            SslServerName = section.SslServerName;
             NodeId = section.NodeId;
             BookmakerId = section.BookmakerId;
             LimitId = section.LimitId;

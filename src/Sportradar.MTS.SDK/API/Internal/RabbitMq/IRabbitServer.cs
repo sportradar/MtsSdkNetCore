@@ -26,6 +26,11 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         bool UseSsl { get; }
 
         /// <summary>
+        /// Gets the server name that will be used to check against SSL certificate
+        /// </summary>
+        string SslServerName { get; }
+
+        /// <summary>
         /// Gets the virtual host on the connected server
         /// </summary>
         string VirtualHost { get; }

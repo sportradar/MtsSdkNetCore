@@ -42,6 +42,11 @@ namespace Sportradar.MTS.SDK.Entities
         bool UseSsl { get; }
 
         /// <summary>
+        /// Gets the server name that will be used to check against SSL certificate
+        /// </summary>
+        string SslServerName { get; }
+
+        /// <summary>
         /// Gets a nodeId
         /// </summary>
         int NodeId { get; }

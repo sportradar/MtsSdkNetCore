@@ -63,6 +63,12 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         public bool UseSsl => (bool)base["useSsl"];
 
         /// <summary>
+        /// Gets the server name that will be used to check against SSL certificate
+        /// </summary>
+        [ConfigurationProperty("sslServerName", IsRequired = false)]
+        public string SslServerName => GetNullableString("sslServerName");
+
+        /// <summary>
         /// Gets the default sender bookmakerId
         /// </summary>
         [ConfigurationProperty("bookmakerId", IsRequired = false, DefaultValue = 0)]
