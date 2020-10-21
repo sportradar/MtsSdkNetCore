@@ -4,7 +4,6 @@
 
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sportradar.MTS.SDK.Entities.Builders;
 using Sportradar.MTS.SDK.Entities.Enums;
 using Sportradar.MTS.SDK.Entities.Internal.Builders;
 using Sportradar.MTS.SDK.Test.Helpers;

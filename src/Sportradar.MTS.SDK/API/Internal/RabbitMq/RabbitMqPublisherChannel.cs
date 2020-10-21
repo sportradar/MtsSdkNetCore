@@ -244,12 +244,10 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
             {
                 throw new InvalidOperationException("The instance is closed");
             }
-
             if (!_connectionStatus.IsConnected)
             {
                 throw new InvalidOperationException("Sending ticket failed. Reason: disconnected from server.");
             }
-
             if (_useQueue)
             {
                 return AddToPublishingQueue(ticketId, msg, routingKey, correlationId, replyRoutingKey);

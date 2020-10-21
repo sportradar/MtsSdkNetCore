@@ -11,7 +11,6 @@ using Microsoft.Extensions.Logging;
 using Sportradar.MTS.SDK.Common;
 using Sportradar.MTS.SDK.Common.Exceptions;
 using Sportradar.MTS.SDK.Entities.Builders;
-using Sportradar.MTS.SDK.Entities.Enums;
 using Sportradar.MTS.SDK.Entities.Interfaces;
 using Sportradar.MTS.SDK.Entities.Internal.Cache;
 using Sportradar.MTS.SDK.Entities.Internal.Enums;

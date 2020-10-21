@@ -173,9 +173,9 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// <param name="orgTicket">The original ticket</param>
         /// <param name="newStake">The new stake value which will be used to set bet stake</param>
         /// <param name="newTicketId">The new reoffer ticket id</param>
-        /// <exception cref="ArgumentNullException">Ticket nad new stake are mandatory</exception>
         /// <returns>Returns the <see cref="ITicket"/> representing the reoffer</returns>
         /// <remarks>Only tickets with exactly 1 bet are supported</remarks>
+        /// <exception cref="ArgumentNullException">Ticket and new stake are mandatory</exception>
         /// <exception cref="ArgumentException">Only tickets with exactly 1 bet are supported</exception>
         private static ITicket BuildReofferTicket(ISimpleBuilderFactory builderFactory, ITicket orgTicket, long newStake, string newTicketId = null)
         {

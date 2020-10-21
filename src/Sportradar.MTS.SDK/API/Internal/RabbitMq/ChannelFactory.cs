@@ -157,6 +157,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
             var reason = _connection?.CloseReason?.Cause ?? $"{_connection?.CloseReason?.ReplyCode}-{_connection?.CloseReason?.ReplyText}";
             ExecutionLog.LogInformation($"Connection invoked ConnectionUnblocked. ClientName: {_connection?.ClientProvidedName} and close reason: {reason}.");
         }
+
         private void ConnectionOnRecoverySucceeded(object sender, EventArgs e)
         {
             ExecutionLog.LogInformation($"Connection invoked RecoverySucceeded. ClientName: {_connection?.ClientProvidedName}.");

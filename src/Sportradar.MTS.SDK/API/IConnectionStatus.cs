@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Sportradar.MTS.SDK.Entities.EventArguments;
 
 namespace Sportradar.MTS.SDK.API

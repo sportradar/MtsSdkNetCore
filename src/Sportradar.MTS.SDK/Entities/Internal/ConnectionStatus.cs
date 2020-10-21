@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.Extensions.Logging;
 using Sportradar.MTS.SDK.API;
-using Sportradar.MTS.SDK.Common;
 using Sportradar.MTS.SDK.Entities.EventArguments;
 
 namespace Sportradar.MTS.SDK.Entities.Internal
 {
     internal class ConnectionStatus : IConnectionStatus
     {
-        //private static readonly ILogger ExecutionLog = SdkLoggerFactory.GetLoggerForExecution(typeof(ConnectionStatus));
-
         private const int QueueLimit = 10;
         /// <summary>
         /// Occurs when connection status change
@@ -64,7 +60,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         {
             lock (_lock)
             {
-                //ExecutionLog.LogInformation($"Connecting. {message}");
                 if (!IsConnected)
                 {
                     ConnectionTime = DateTime.Now;
@@ -78,7 +73,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         {
             lock (_lock)
             {
-                //ExecutionLog.LogInformation($"Disconnecting. {message}");
                 if (IsConnected)
                 {
                     ConnectionTime = null;
@@ -92,7 +86,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         {
             lock (_lock)
             {
-                //ExecutionLog.LogInformation($"TicketSend[{_lastSendTicketIds.Count}]: {ticketId}");
                 LastSendTicketId = ticketId;
                 _lastSendTicketIds.Enqueue(ticketId);
                 if (_lastSendTicketIds.Count > QueueLimit)
@@ -106,7 +99,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         {
             lock (_lock)
             {
-                //ExecutionLog.LogInformation($"TicketReceived[{_lastReceivedTicketIds.Count}]: {ticketId}");
                 LastReceivedTicketId = ticketId;
                 _lastReceivedTicketIds.Enqueue(ticketId);
                 if (_lastReceivedTicketIds.Count > QueueLimit)
