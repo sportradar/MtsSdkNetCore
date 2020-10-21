@@ -133,6 +133,12 @@ namespace Sportradar.MTS.SDK.API
         public ICustomBetManager CustomBetManager { get; }
 
         /// <summary>
+        /// Gets the connection status.
+        /// </summary>
+        /// <value>The connection status.</value>
+        public IConnectionStatus ConnectionStatus { get; }
+
+        /// <summary>
         /// A <see cref="IMetricsRoot"/> used to provide metrics within sdk
         /// </summary>
         private readonly IMetricsRoot _metricsRoot;
@@ -190,6 +196,7 @@ namespace Sportradar.MTS.SDK.API
 
             ClientApi = _unityContainer.Resolve<IMtsClientApi>();
             CustomBetManager = _unityContainer.Resolve<ICustomBetManager>();
+            ConnectionStatus = _unityContainer.Resolve<IConnectionStatus>();
 
             _autoResetEventsForBlockingRequests = new ConcurrentDictionary<string, AutoResetEvent>();
             _responsesFromBlockingRequests = new ConcurrentDictionary<string, ISdkTicket>();
@@ -413,6 +420,7 @@ namespace Sportradar.MTS.SDK.API
             try
             {
                 ticket = _entitiesMapper.GetTicketResponseFromJson(eventArgs.JsonBody, eventArgs.RoutingKey, eventArgs.ResponseType, eventArgs.CorrelationId, eventArgs.AdditionalInfo);
+                ((ConnectionStatus)ConnectionStatus).TicketReceived(ticket.TicketId);
             }
             catch (Exception e)
             {
@@ -466,8 +474,27 @@ namespace Sportradar.MTS.SDK.API
             UnparsableTicketResponseReceived?.Invoke(this, dispatchEventArgs);
         }
 
+        /// <summary>
+        /// Sends the ticket to the MTS server. The response will raise TicketResponseReceived event
+        /// </summary>
+        /// <param name="ticket">The <see cref="ISdkTicket"/> to be send</param>
+        public void SendTicket(ISdkTicket ticket)
+        {
+            Guard.Argument(ticket, nameof(ticket)).NotNull();
+
+            _metricsRoot.Measure.Meter.Mark(new MeterOptions { Context = "MtsSdk", Name = "SendTicket", MeasurementUnit = Unit.Calls });
+            _interactionLog.LogInformation($"Called SendTicket with ticketId={ticket.TicketId}.");
+            SendTicketBase(ticket, false);
+        }
+
         private int SendTicketBase(ISdkTicket ticket, bool waitForResponse)
         {
+            if (!ConnectionStatus.IsConnected)
+            {
+                var msg = $"Sending {ticket.GetType().Name} with ticketId: {ticket.TicketId} failed. Reason: disconnected from server.";
+                _executionLog.LogWarning(msg);
+                throw new InvalidOperationException(msg);
+            }
             _executionLog.LogInformation($"Sending {ticket.GetType().Name} with ticketId: {ticket.TicketId}.");
             var ticketType = TicketHelper.GetTicketTypeFromTicket(ticket);
             var ticketSender = _ticketPublisherFactory.GetTicketSender(ticketType);
@@ -494,13 +521,18 @@ namespace Sportradar.MTS.SDK.API
             return -1;
         }
 
-        private void RemovedFromCacheForTicketsForNonBlockingRequestsCallback(CacheEntryRemovedArguments arguments)
+        /// <summary>
+        /// Sends the ticket to the MTS server and wait for the response message on the feed
+        /// </summary>
+        /// <param name="ticket">The <see cref="ITicket"/> to be send</param>
+        /// <returns>Returns a <see cref="ITicketResponse" /></returns>
+        public ITicketResponse SendTicketBlocking(ITicket ticket)
         {
-            if (arguments.RemovedReason == CacheEntryRemovedReason.Expired)
-            {
-                var sendTicket = (ISdkTicket) arguments.CacheItem.Value;
-                TicketResponseTimedOut?.Invoke(this, new TicketMessageEventArgs(sendTicket.TicketId, sendTicket, "Ticket response not received within timeout."));
-            }
+            Guard.Argument(ticket, nameof(ticket)).NotNull();
+
+            _metricsRoot.Measure.Meter.Mark(new MeterOptions { Context = "MtsSdk", Name = "SendTicketBlocking", MeasurementUnit = Unit.Calls });
+            _interactionLog.LogInformation($"Called SendTicketBlocking with ticketId={ticket.TicketId}.");
+            return (ITicketResponse)SendTicketBlockingBase(ticket);
         }
 
         private ISdkTicket SendTicketBlockingBase(ISdkTicket ticket)
@@ -529,6 +561,15 @@ namespace Sportradar.MTS.SDK.API
             throw new TimeoutException(msg);
         }
 
+        private void RemovedFromCacheForTicketsForNonBlockingRequestsCallback(CacheEntryRemovedArguments arguments)
+        {
+            if (arguments.RemovedReason == CacheEntryRemovedReason.Expired)
+            {
+                var sendTicket = (ISdkTicket)arguments.CacheItem.Value;
+                TicketResponseTimedOut?.Invoke(this, new TicketMessageEventArgs(sendTicket.TicketId, sendTicket, "Ticket response not received within timeout."));
+            }
+        }
+
         private void ReleaseAutoResetEventFromDictionary(string ticketId)
         {
             if (_autoResetEventsForBlockingRequests.TryRemove(ticketId, out var autoResetEvent))
@@ -536,33 +577,6 @@ namespace Sportradar.MTS.SDK.API
                 autoResetEvent.Set();
                 autoResetEvent.Dispose();
             }
-        }
-
-        /// <summary>
-        /// Sends the ticket to the MTS server. The response will raise TicketResponseReceived event
-        /// </summary>
-        /// <param name="ticket">The <see cref="ISdkTicket"/> to be send</param>
-        public void SendTicket(ISdkTicket ticket)
-        {
-            Guard.Argument(ticket, nameof(ticket)).NotNull();
-
-            _metricsRoot.Measure.Meter.Mark(new MeterOptions { Context = "MtsSdk", Name = "SendTicket", MeasurementUnit = Unit.Calls });
-            _interactionLog.LogInformation($"Called SendTicket with ticketId={ticket.TicketId}.");
-            SendTicketBase(ticket, false);
-        }
-
-        /// <summary>
-        /// Sends the ticket to the MTS server and wait for the response message on the feed
-        /// </summary>
-        /// <param name="ticket">The <see cref="ITicket"/> to be send</param>
-        /// <returns>Returns a <see cref="ITicketResponse" /></returns>
-        public ITicketResponse SendTicketBlocking(ITicket ticket)
-        {
-            Guard.Argument(ticket, nameof(ticket)).NotNull();
-
-            _metricsRoot.Measure.Meter.Mark(new MeterOptions { Context = "MtsSdk", Name = "SendTicketBlocking", MeasurementUnit = Unit.Calls });
-            _interactionLog.LogInformation($"Called SendTicketBlocking with ticketId={ticket.TicketId}.");
-            return (ITicketResponse) SendTicketBlockingBase(ticket);
         }
 
         /// <summary>

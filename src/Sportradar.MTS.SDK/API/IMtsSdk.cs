@@ -12,7 +12,6 @@ namespace Sportradar.MTS.SDK.API
     /// <summary>
     /// Represents a root object of the MTS SDK (to create, send tickets and to handle responses)
     /// </summary>
-
     public interface IMtsSdk : IOpenable, IDisposable
     {
         /// <summary>
@@ -70,10 +69,9 @@ namespace Sportradar.MTS.SDK.API
         ITicketCashoutResponse SendTicketCashoutBlocking(ITicketCashout ticket);
 
         /// <summary>
-        /// Gets the <see cref="IMtsClientApi"/> instance used to send requests to MTS REST API
+        /// Gets the <see cref="IMtsClientApi" /> instance used to send requests to MTS REST API
         /// </summary>
         /// <value>The client api</value>
-
         IMtsClientApi ClientApi { get; }
 
         /// <summary>
@@ -88,5 +86,11 @@ namespace Sportradar.MTS.SDK.API
         /// </summary>
         /// <value>The custom bet manager</value>
         ICustomBetManager CustomBetManager { get; }
+
+        /// <summary>
+        /// Gets the connection status.
+        /// </summary>
+        /// <value>The connection status.</value>
+        IConnectionStatus ConnectionStatus => null;
     }
 }

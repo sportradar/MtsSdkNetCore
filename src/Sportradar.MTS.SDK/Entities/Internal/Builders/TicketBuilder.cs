@@ -178,6 +178,19 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         }
 
         /// <summary>
+        /// Adds the <see cref="IBet" />
+        /// </summary>
+        /// <param name="bet">A <see cref="IBet" /> to be added to this ticket</param>
+        /// <returns>Returns a <see cref="ITicketBuilder" /></returns>
+        public ITicketBuilder AddBet(IBet bet)
+        {
+            var bets = _bets as List<IBet> ?? new List<IBet>();
+            bets.Add(bet);
+            _bets = bets;
+            return this;
+        }
+
+        /// <summary>
         /// Gets the bets
         /// </summary>
         /// <returns>Returns all the bets</returns>
@@ -200,19 +213,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             _totalCombinations = null;
             _lastMatchEndTime = null;
             return ticket;
-        }
-
-        /// <summary>
-        /// Adds the <see cref="IBet" />
-        /// </summary>
-        /// <param name="bet">A <see cref="IBet" /> to be added to this ticket</param>
-        /// <returns>Returns a <see cref="ITicketBuilder" /></returns>
-        public ITicketBuilder AddBet(IBet bet)
-        {
-            var bets = _bets as List<IBet> ?? new List<IBet>();
-            bets.Add(bet);
-            _bets = bets;
-            return this;
         }
     }
 }

@@ -162,6 +162,8 @@ namespace Sportradar.MTS.SDK.API.Internal
             container.RegisterType<IChannelFactory, ChannelFactory>(new ContainerControlledLifetimeManager());
 
             container.RegisterInstance<ISequenceGenerator>(new IncrementalSequenceGenerator(), new ContainerControlledLifetimeManager());
+
+            container.RegisterInstance<IConnectionStatus>(new ConnectionStatus(), new ContainerControlledLifetimeManager());
         }
 
         private static void RegisterRabbitMqTypes(IUnityContainer container, ISdkConfiguration config, string environment)
@@ -227,25 +229,32 @@ namespace Sportradar.MTS.SDK.API.Internal
             container.RegisterType<IRabbitMqPublisherChannel, RabbitMqPublisherChannel>(new HierarchicalLifetimeManager());
             var ticketPC = new RabbitMqPublisherChannel(container.Resolve<IChannelFactory>(),
                                                         mtsTicketChannelSettings,
-                                                        container.Resolve<IRabbitMqChannelSettings>("TicketChannelSettings"));
+                                                        container.Resolve<IRabbitMqChannelSettings>("TicketChannelSettings"),
+                                                        container.Resolve<IConnectionStatus>());
             var ticketAckPC = new RabbitMqPublisherChannel(container.Resolve<IChannelFactory>(),
                                                         mtsTicketAckChannelSettings,
-                                                        container.Resolve<IRabbitMqChannelSettings>("TicketChannelSettings"));
+                                                        container.Resolve<IRabbitMqChannelSettings>("TicketChannelSettings"),
+                                                        container.Resolve<IConnectionStatus>());
             var ticketCancelPC = new RabbitMqPublisherChannel(container.Resolve<IChannelFactory>(),
                                                         mtsTicketCancelChannelSettings,
-                                                        container.Resolve<IRabbitMqChannelSettings>("TicketCancelChannelSettings"));
+                                                        container.Resolve<IRabbitMqChannelSettings>("TicketCancelChannelSettings"),
+                                                        container.Resolve<IConnectionStatus>());
             var ticketCancelAckPC = new RabbitMqPublisherChannel(container.Resolve<IChannelFactory>(),
                                                         mtsTicketCancelAckChannelSettings,
-                                                        container.Resolve<IRabbitMqChannelSettings>("TicketCancelChannelSettings"));
+                                                        container.Resolve<IRabbitMqChannelSettings>("TicketCancelChannelSettings"),
+                                                        container.Resolve<IConnectionStatus>());
             var ticketReofferCancelPC = new RabbitMqPublisherChannel(container.Resolve<IChannelFactory>(),
                                                         mtsTicketReofferCancelChannelSettings,
-                                                        container.Resolve<IRabbitMqChannelSettings>("TicketCancelChannelSettings"));
+                                                        container.Resolve<IRabbitMqChannelSettings>("TicketCancelChannelSettings"),
+                                                        container.Resolve<IConnectionStatus>());
             var ticketCashoutPC = new RabbitMqPublisherChannel(container.Resolve<IChannelFactory>(),
                                                         mtsTicketCashoutChannelSettings,
-                                                        container.Resolve<IRabbitMqChannelSettings>("TicketCashoutChannelSettings"));
+                                                        container.Resolve<IRabbitMqChannelSettings>("TicketCashoutChannelSettings"),
+                                                        container.Resolve<IConnectionStatus>());
             var ticketNonSrSettlePC = new RabbitMqPublisherChannel(container.Resolve<IChannelFactory>(),
                                                         mtsTicketNonSrSettleChannelSettings,
-                                                        container.Resolve<IRabbitMqChannelSettings>("TicketNonSrSettleChannelSettings"));
+                                                        container.Resolve<IRabbitMqChannelSettings>("TicketNonSrSettleChannelSettings"),
+                                                        container.Resolve<IConnectionStatus>());
             container.RegisterInstance<IRabbitMqPublisherChannel>("TicketPublisherChannel", ticketPC);
             container.RegisterInstance<IRabbitMqPublisherChannel>("TicketAckPublisherChannel", ticketAckPC);
             container.RegisterInstance<IRabbitMqPublisherChannel>("TicketCancelPublisherChannel", ticketCancelPC);
@@ -325,9 +334,9 @@ namespace Sportradar.MTS.SDK.API.Internal
 
         private static void RegisterSdkStatisticsWriter(IUnityContainer container)
         {
-            var x = container.ResolveAll<IRabbitMqMessageReceiver>();
+            var messageReceivers = container.ResolveAll<IRabbitMqMessageReceiver>();
             var statusProviders = new List<IHealthStatusProvider>();
-            foreach (var mqMessageReceiver in x)
+            foreach (var mqMessageReceiver in messageReceivers)
             {
                 statusProviders.Add((IHealthStatusProvider) mqMessageReceiver);
             }
@@ -389,25 +398,6 @@ namespace Sportradar.MTS.SDK.API.Internal
                     TimeSpan.FromHours(4),
                     new CacheItemPolicy { SlidingExpiration = TimeSpan.FromDays(1) },
                     new ResolvedParameter<IMetricsRoot>()));
-
-
-
-            //var mdDeserializer = new Deserializer<market_descriptions>();
-            //var mdMaperFactory = new MarketDescriptionsMapperFactory();
-            //var mdProvider = new DataProvider<market_descriptions, IEnumerable<MarketDescriptionDTO>>(configInternal.ApiHost + "/v1/descriptions/{0}/markets.xml?include_mappings=true",
-            //    container.Resolve<IDataFetcher>("Base"),
-            //    container.Resolve<IDataPoster>("Base"),
-            //    mdDeserializer,
-            //    mdMaperFactory);
-
-            //var provider = container.Resolve<IDataProvider<IEnumerable<MarketDescriptionDTO>>>();
-            //var memoryCache = container.Resolve<MemoryCache>("InvariantMarketDescriptionCache_Cache");
-            //var timer = container.Resolve<ITimer>();
-            //var cache = container.Resolve<IMarketDescriptionCache>();
-
-
-
-
 
             container.RegisterType<IMarketDescriptionProvider, MarketDescriptionProvider>(
                 new ContainerControlledLifetimeManager(),

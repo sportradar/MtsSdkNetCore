@@ -16,6 +16,7 @@ using RabbitMQ.Client.Exceptions;
 using Sportradar.MTS.SDK.Common;
 using Sportradar.MTS.SDK.Common.Internal;
 using Sportradar.MTS.SDK.Entities.EventArguments;
+using Sportradar.MTS.SDK.Entities.Internal;
 
 namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 {
@@ -103,16 +104,24 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         private readonly ITimer _queueTimer;
 
         /// <summary>
+        /// Gets the connection status.
+        /// </summary>
+        /// <value>The connection status.</value>
+        private readonly ConnectionStatus _connectionStatus;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="RabbitMqConsumerChannel" /> class
         /// </summary>
         /// <param name="channelFactory">A <see cref="IChannelFactory" /> used to construct the <see cref="IModel" /> representing Rabbit MQ channel</param>
         /// <param name="mtsChannelSettings">The mts channel settings</param>
         /// <param name="channelSettings">The channel settings</param>
-        public RabbitMqPublisherChannel(IChannelFactory channelFactory, IMtsChannelSettings mtsChannelSettings, IRabbitMqChannelSettings channelSettings)
+        /// <param name="connectionStatus">The connection status</param>
+        public RabbitMqPublisherChannel(IChannelFactory channelFactory, IMtsChannelSettings mtsChannelSettings, IRabbitMqChannelSettings channelSettings, IConnectionStatus connectionStatus)
         {
             Guard.Argument(channelFactory, nameof(channelFactory)).NotNull();
             Guard.Argument(mtsChannelSettings, nameof(mtsChannelSettings)).NotNull();
             Guard.Argument(channelSettings, nameof(channelSettings)).NotNull();
+            Guard.Argument(connectionStatus, nameof(connectionStatus)).NotNull();
 
             _channelFactory = channelFactory;
 
@@ -134,6 +143,8 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
             _shouldBeOpened = 0;
 
             UniqueId = _channelFactory.GetUniqueId();
+
+            _connectionStatus = (ConnectionStatus) connectionStatus;
         }
 
         /// <summary>
@@ -145,6 +156,10 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         {
             while (!_msgQueue.IsEmpty)
             {
+                if (!_connectionStatus.IsConnected)
+                {
+                    break;
+                }
                 PublishQueueItem pqi = null;
                 try
                 {
@@ -161,7 +176,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                         }
 
                         //publish
-                        var publishResult = PublishMsg((byte[]) pqi.Message, pqi.RoutingKey, pqi.CorrelationId, pqi.ReplyRoutingKey);
+                        var publishResult = PublishMsg(pqi.TicketId, (byte[]) pqi.Message, pqi.RoutingKey, pqi.CorrelationId, pqi.ReplyRoutingKey);
 
                         if (publishResult.IsSuccess)
                         {
@@ -193,7 +208,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 
             if (_useQueue)
             {
-                _queueTimer.FireOnce(TimeSpan.FromMilliseconds(250)); // recheck after X milliseconds
+                _queueTimer.FireOnce(TimeSpan.FromMilliseconds(200)); // recheck after X milliseconds
             }
         }
 
@@ -213,13 +228,14 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         /// <summary>
         /// Publishes the specified message
         /// </summary>
+        /// <param name="ticketId">Ticket Id</param>
         /// <param name="msg">The message to be published</param>
         /// <param name="routingKey">The routing key to be set while publishing</param>
         /// <param name="correlationId">The correlation identifier</param>
         /// <param name="replyRoutingKey">The reply routing key</param>
         /// <returns>A <see cref="IMqPublishResult" /></returns>
         /// <exception cref="InvalidOperationException">The instance is closed</exception>
-        public IMqPublishResult Publish(byte[] msg, string routingKey, string correlationId, string replyRoutingKey)
+        public IMqPublishResult Publish(string ticketId, byte[] msg, string routingKey, string correlationId, string replyRoutingKey)
         {
             Guard.Argument(msg, nameof(msg)).NotNull();
             Guard.Argument(routingKey, nameof(routingKey)).NotNull().NotEmpty();
@@ -228,40 +244,48 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
             {
                 throw new InvalidOperationException("The instance is closed");
             }
+
+            if (!_connectionStatus.IsConnected)
+            {
+                throw new InvalidOperationException("Sending ticket failed. Reason: disconnected from server.");
+            }
+
             if (_useQueue)
             {
-                return AddToPublishingQueue(msg, routingKey, correlationId, replyRoutingKey);
+                return AddToPublishingQueue(ticketId, msg, routingKey, correlationId, replyRoutingKey);
             }
-            return PublishMsg(msg, routingKey, correlationId, replyRoutingKey);
+            return PublishMsg(ticketId, msg, routingKey, correlationId, replyRoutingKey);
         }
 
         /// <summary>
         /// Publish message as an asynchronous operation
         /// </summary>
+        /// <param name="ticketId">Ticket Id</param>
         /// <param name="msg">The message to be published</param>
         /// <param name="routingKey">The routing key to be set while publishing</param>
         /// <param name="correlationId">The correlation identifier</param>
         /// <param name="replyRoutingKey">The reply routing key</param>
         /// <returns>A <see cref="IMqPublishResult" /></returns>
-        public async Task<IMqPublishResult> PublishAsync(byte[] msg, string routingKey, string correlationId, string replyRoutingKey)
+        public async Task<IMqPublishResult> PublishAsync(string ticketId, byte[] msg, string routingKey, string correlationId, string replyRoutingKey)
         {
             Guard.Argument(msg, nameof(msg)).NotNull();
             Guard.Argument(routingKey, nameof(routingKey)).NotNull().NotEmpty();
 
-            return await Task.Run(() => Publish(msg, routingKey, correlationId, replyRoutingKey)).ConfigureAwait(false);
+            return await Task.Run(() => Publish(ticketId, msg, routingKey, correlationId, replyRoutingKey)).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Adds to publishing queue
         /// </summary>
+        /// <param name="ticketId">Ticket Id</param>
         /// <param name="msg">The MSG</param>
         /// <param name="routingKey">The routing key</param>
         /// <param name="correlationId">The correlation identifier</param>
         /// <param name="replyRoutingKey">The reply routing key</param>
         /// <returns>IMqPublishResult</returns>
-        private IMqPublishResult AddToPublishingQueue(byte[] msg, string routingKey, string correlationId, string replyRoutingKey)
+        private IMqPublishResult AddToPublishingQueue(string ticketId, byte[] msg, string routingKey, string correlationId, string replyRoutingKey)
         {
-            var item = new PublishQueueItem(msg, routingKey, correlationId, replyRoutingKey);
+            var item = new PublishQueueItem(ticketId, msg, routingKey, correlationId, replyRoutingKey);
 
             if (_queueLimit > 0 && _msgQueue.Count >= _queueLimit)
             {
@@ -282,13 +306,14 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         /// <summary>
         /// Publishes the MSG
         /// </summary>
+        /// <param name="ticketId">Ticket Id</param>
         /// <param name="msg">The MSG</param>
         /// <param name="routingKey">The routing key</param>
         /// <param name="correlationId">The correlation identifier</param>
         /// <param name="replyRoutingKey">The reply routing key</param>
         /// <returns>IMqPublishResult</returns>
         /// <exception cref="InvalidOperationException">The instance is closed</exception>
-        private IMqPublishResult PublishMsg(byte[] msg, string routingKey, string correlationId, string replyRoutingKey)
+        private IMqPublishResult PublishMsg(string ticketId, byte[] msg, string routingKey, string correlationId, string replyRoutingKey)
         {
             try
             {
@@ -296,7 +321,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                 CreateAndOpenPublisherChannel();
                 if (channelWrapper.ChannelBasicProperties == null)
                 {
-                    throw new OperationCanceledException($"Channel {UniqueId} is not initiated.");
+                    throw new InvalidOperationException($"Channel {UniqueId} is not initiated.");
                 }
                 var channelBasicProperties = channelWrapper.ChannelBasicProperties;
                 if (channelBasicProperties.Headers == null)
@@ -314,6 +339,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                 }
                 channelWrapper.Channel.BasicPublish(_mtsChannelSettings.ExchangeName, routingKey, channelBasicProperties, msg);
                 FeedLog.LogDebug($"Publish of message with correlationId:{correlationId} and routingKey:{routingKey} succeeded.");
+                _connectionStatus.TicketSend(ticketId);
                 return new MqPublishResult(correlationId);
             }
             catch (Exception e)

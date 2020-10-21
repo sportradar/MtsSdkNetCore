@@ -116,8 +116,7 @@ namespace Sportradar.MTS.SDK.API.Internal.Senders
             var expiredItems = _ticketCache.Where(t => t.Value.Timestamp < DateTime.Now.AddMilliseconds(-GetCacheTimeout(null)));
             foreach (var ei in expiredItems)
             {
-                TicketCacheItem ci;
-                _ticketCache.TryRemove(ei.Key, out ci);
+                _ticketCache.TryRemove(ei.Key, out _);
             }
         }
 
@@ -171,14 +170,13 @@ namespace Sportradar.MTS.SDK.API.Internal.Senders
             var ticketCI = new TicketCacheItem(TicketHelper.GetTicketTypeFromTicket(sdkTicket), sdkTicket.TicketId, sdkTicket.CorrelationId, _mtsChannelSettings.ReplyToRoutingKey, null, sdkTicket);
 
             // we clear cache, since already sent ticket with the same ticketId are not used (example: sending ticket, ticketAck, ticketCancel, ticketCancelAck)
-            TicketCacheItem oldTicket;
-            if (_ticketCache.TryRemove(sdkTicket.TicketId, out oldTicket))
+            if (_ticketCache.TryRemove(sdkTicket.TicketId, out _))
             {
                 _executionLog.LogDebug($"Removed already sent ticket from cache {sdkTicket.TicketId}");
             }
 
             _ticketCache.TryAdd(sdkTicket.TicketId, ticketCI);
-            _publisherChannel.Publish(msg: msg, routingKey: _mtsChannelSettings.PublishRoutingKey, correlationId: sdkTicket.CorrelationId, replyRoutingKey: _mtsChannelSettings.ReplyToRoutingKey);
+            _publisherChannel.Publish(sdkTicket.TicketId, msg: msg, routingKey: _mtsChannelSettings.PublishRoutingKey, correlationId: sdkTicket.CorrelationId, replyRoutingKey: _mtsChannelSettings.ReplyToRoutingKey);
         }
 
         /// <summary>
@@ -188,8 +186,7 @@ namespace Sportradar.MTS.SDK.API.Internal.Senders
         /// <returns>ISdkTicket</returns>
         public ISdkTicket GetSentTicket(string ticketId)
         {
-            TicketCacheItem ci;
-            if (_ticketCache.TryRemove(ticketId, out ci))
+            if (_ticketCache.TryRemove(ticketId, out var ci))
             {
                 return TicketHelper.GetTicketInSpecificType(ci);
             }
@@ -247,8 +244,7 @@ namespace Sportradar.MTS.SDK.API.Internal.Senders
                 return _rabbitMqChannelSettings.MaxPublishQueueTimeoutInMs;
             }
 
-            var t = ticket as ITicket;
-            if (t != null)
+            if (ticket is ITicket t)
             {
                 if (t.Selections.Any(a => a.Id.StartsWith("lcoo")))
                 {

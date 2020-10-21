@@ -8,6 +8,8 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 {
     internal class PublishQueueItem
     {
+        public string TicketId { get; }
+
         public IEnumerable<byte> Message { get; }
 
         public string RoutingKey { get; }
@@ -20,8 +22,9 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 
         public DateTime Timestamp { get; }
 
-        public PublishQueueItem(byte[] msg, string routingKey, string correlationId, string replyRoutingKey, object custom = null)
+        public PublishQueueItem(string ticketId, byte[] msg, string routingKey, string correlationId, string replyRoutingKey, object custom = null)
         {
+            TicketId = ticketId;
             Message = msg;
             RoutingKey = routingKey;
             CorrelationId = correlationId;

@@ -27,7 +27,7 @@ namespace Sportradar.MTS.SDK.API.Internal
         /// <summary>
         /// A log4net.ILog instance used for logging execution logs
         /// </summary>
-        private static readonly ILogger ExecutionLog = SdkLoggerFactory.GetLoggerForRestTraffic(typeof(MtsClientApi));
+        private static readonly ILogger ExecutionLog = SdkLoggerFactory.GetLoggerForExecution(typeof(MtsClientApi));
 
         /// <summary>
         /// A log4net.ILog instance used for logging client iteration logs
