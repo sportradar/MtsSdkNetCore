@@ -162,7 +162,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
                 {
                     selections.AddRange(bet.Selections);
                 }
-                Guard.Argument(selections, nameof(selections)).NotNull().NotEmpty().MaxCount(64);
+                Guard.Argument(selections, nameof(selections)).NotNull().NotEmpty(); //.MaxCount(64);
                 Selections = selections.Distinct();
             }
             TotalCombinations = totalCombinations;

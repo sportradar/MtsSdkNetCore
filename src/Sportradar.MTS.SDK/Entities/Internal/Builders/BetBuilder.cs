@@ -281,7 +281,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             {
                 if (!(_selectedSystems == null
                     || (_selectedSystems.Any()
-                        && _selectedSystems.Count() < 64
+                        //&& _selectedSystems.Count() < 64
                         && _selectedSystems.Count() == _selectedSystems.Distinct().Count()
                         && _selectedSystems.All(a => a > 0))))
                 {
@@ -292,7 +292,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             {
                 if (!(_selections != null
                       && _selections.Any()
-                      && _selections.Count < 64
+                      //&& _selections.Count < 64
                       && _selections.Count == _selections.Distinct().Count()))
                 {
                     throw new ArgumentException("Selections not valid.");
