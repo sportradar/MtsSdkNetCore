@@ -14,7 +14,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
     /// Implementation of the <see cref="IEndCustomerBuilder"/>
     /// </summary>
     /// <seealso cref="IEndCustomerBuilder" />
-    public class EndCustomerBuilder : IEndCustomerBuilder
+    internal class EndCustomerBuilder : IEndCustomerBuilder
     {
         /// <summary>
         /// The ip
