@@ -89,7 +89,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 
         private void CreateConnection()
         {
-            ExecutionLog.LogDebug("Creating connection ...");
+            ExecutionLog.LogInformation("Creating connection ...");
             var connection = _connectionFactory.CreateConnection();
             connection.CallbackException += ConnectionOnCallbackException;
             connection.ConnectionBlocked += ConnectionOnConnectionBlocked;
@@ -247,6 +247,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                 }
 
                 var model = _connection.CreateModel();
+                //ExecutionLog.LogDebug($"Channel created with internal number: {model?.ChannelNumber}.");
                 wrapper = new ChannelWrapper(id, model);
                 if (_models.ContainsKey(id))
                 {

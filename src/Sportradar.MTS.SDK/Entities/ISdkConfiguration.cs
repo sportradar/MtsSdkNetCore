@@ -8,7 +8,6 @@ namespace Sportradar.MTS.SDK.Entities
     /// <summary>
     /// Defines a contract implemented by classes representing configuration
     /// </summary>
-
     public interface ISdkConfiguration
     {
         /// <summary>

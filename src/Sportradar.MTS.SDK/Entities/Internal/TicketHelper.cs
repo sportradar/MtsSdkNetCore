@@ -24,7 +24,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal
 
         public static SdkTicketType GetTicketTypeFromTicket(ISdkTicket ticket)
         {
-            //TODO why some ticket types are missing
             if (ticket is ITicket)
             {
                 return SdkTicketType.Ticket;
@@ -70,7 +69,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
                 return SdkTicketType.TicketNonSrSettle;
             }
 
-            throw new ArgumentOutOfRangeException();
+            throw new ArgumentOutOfRangeException(nameof(ticket), "Unknown ticket type");
         }
 
         public static SdkTicketType GetTicketAckTypeFromTicket(ISdkTicket ticket)
@@ -97,7 +96,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         /// <summary>
         /// Convert Unix time to DateTime
         /// </summary>
-        /// <param name="unixTime">The unix time.</param>
+        /// <param name="unixTime">The Unix time</param>
         /// <returns>DateTime.</returns>
         public static DateTime UnixTimeToDateTime(long unixTime)
         {
@@ -110,7 +109,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         {
             switch (ci.TicketType)
             {
-                //TODO why some ticket types are missing
                 case SdkTicketType.Ticket:
                     return (ITicket) ci.Custom;
                 case SdkTicketType.TicketAck:

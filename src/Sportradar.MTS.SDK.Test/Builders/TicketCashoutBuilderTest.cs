@@ -125,6 +125,11 @@ namespace Sportradar.MTS.SDK.Test.Builders
             tb.SetCashoutPercent(1)
               .SetCashoutPercent(1000000)
               .SetCashoutPercent(10101);
+
+            var ticket = tb.SetBookmakerId(1).SetTicketId("ticket-01").SetCashoutStake(1000).BuildTicket();
+            Assert.IsNotNull(ticket);
+            Assert.IsNotNull(ticket.CashoutPercent);
+            Assert.AreEqual(10101, ticket.CashoutPercent);
         }
 
         [TestMethod]
@@ -148,6 +153,17 @@ namespace Sportradar.MTS.SDK.Test.Builders
         {
             var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCashoutBuilder();
             tb.AddBetCashout("bet-id-01", 1000, 0);
+
+            var ticket = tb.SetBookmakerId(1).SetTicketId("ticket-01").BuildTicket();
+            Assert.IsNotNull(ticket);
+            Assert.IsNull(ticket.CashoutPercent);
+            Assert.IsNull(ticket.CashoutStake);
+            Assert.IsNotNull(ticket.BetCashouts);
+            Assert.AreEqual(1, ticket.BetCashouts.Count());
+            Assert.IsNotNull(ticket.BetCashouts.First().CashoutPercent);
+            Assert.IsNotNull(ticket.BetCashouts.First().CashoutStake);
+            Assert.AreEqual(0, ticket.BetCashouts.First().CashoutPercent);
+            Assert.AreEqual(1000, ticket.BetCashouts.First().CashoutStake);
         }
 
         [TestMethod]

@@ -92,27 +92,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
                 }
                 return refs;
             }
-            return null;
-        }
-
-        /// <summary>
-        /// Finds the index of the selection
-        /// </summary>
-        /// <param name="allSelections">All selections</param>
-        /// <param name="specific">The specific</param>
-        /// <returns>The index of the selection</returns>
-        // ReSharper disable once UnusedMember.Local
-        private static int FindSelectionIndex(IReadOnlyList<Anonymous2> allSelections, Anonymous2 specific)
-        {
-            for (var i = 0; i < allSelections.Count; i++)
-            {
-                var sel = allSelections[i];
-                if (sel.EventId == specific.EventId && sel.Id == specific.Id && sel.Odds == specific.Odds)
-                {
-                    return i;
-                }
-            }
-            return -1;
+            return new List<ISelectionRef>();
         }
 
         /// <summary>

@@ -73,7 +73,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
         private int? _totalCombinations;
         private long? _lastMatchEndTime;
     
-        /// <summary>Timestamp of ticket placement (in UNIX time millis)</summary>
+        /// <summary>Timestamp of ticket placement (in UNIX time milliseconds)</summary>
         [Newtonsoft.Json.JsonProperty("timestampUtc", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Range(1.0, 9223372036854775807.0)]
         public long TimestampUtc
