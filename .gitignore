@@ -24,6 +24,8 @@ sandcastle/Help/*
 DemoProject/packages/*
 XsdSchemaFetcher/SchemaFetcher/packages/*
 
+**/Documentation/*
+**/Help/*
 build/Help/*
 export
 

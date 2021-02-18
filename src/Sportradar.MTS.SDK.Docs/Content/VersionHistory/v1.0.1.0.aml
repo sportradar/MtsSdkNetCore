@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="1892df55-5aa4-416d-b731-9d180a0b091d" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    
+
+    <introduction>
+      <!-- Uncomment this to generate an outline of the section and sub-section
+           titles.  Specify a numeric value as the inner text to limit it to
+           a specific number of sub-topics when creating the outline.  Specify
+           zero (0) to limit it to top-level sections only.  -->
+      <!-- <autoOutline /> -->
+
+      <para>Required introduction</para>
+    </introduction>
+
+    <!-- Add one or more top-level section elements.  These are collapsible.
+         If using <autoOutline />, add an address attribute to identify it
+         and specify a title so that it can be jumped to with a hyper-link. -->
+    <section address="Section1">
+      <title>Optional section title</title>
+      <content>
+        <!-- Uncomment this to create a sub-section outline
+        <autoOutline /> -->
+        <para>Add one or more sections with content</para>
+      </content>
+      <!-- If a section contains a sections element, its content creates
+           sub-sections.  These are not collapsible. -->
+      <sections>
+          <section address="SubSection1">
+              <title>Sub-section 1</title>
+              <content>
+                  <para>Sub-section content.</para>
+                <para>Media file from main project: <mediaLinkInline><image xlink:href="TicketDiagram"/></mediaLinkInline>
+                </para>
+                <para>
+                  Media file from doc project: <mediaLinkInline><image xlink:href="SdkTicketsDiagram"/></mediaLinkInline>
+                </para>
+                <para>
+                  Media file from doc project (ref Help): <mediaLinkInline>
+                    <image xlink:href="Help"/>
+                  </mediaLinkInline>
+                </para>
+              </content>
+          </section>
+          <section address="SubSection2">
+              <title>Sub-section 2</title>
+              <content>
+                  <para>Sub-section content. <link xlink:href="573a7d4c-6c02-4d55-8b6d-5fcdfd2bb4a4" />
+                </para>
+                <codeReference>ClassDefinition#Define</codeReference>
+              </content>
+          </section>
+      </sections>
+    </section>
+
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+      -->
+      <link xlink:href="f487c66f-77c1-47db-918a-7aa105fd4d67"/>
+      <link xlink:href="f487c66f-77c1-47db-918a-7aa105fd4d67">Link inner text</link>
+
+      <externalLink>
+          <linkText>External link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>https://GitHub.com/EWSoftware/SHFB</linkUri>
+      </externalLink>
+
+      <codeEntityReference>Sportradar.MTS.SDK.API.IMtsSdk</codeEntityReference>
+
+      <!--Examples:-->
+
+      <link xlink:href="f487c66f-77c1-47db-918a-7aa105fd4d67" />
+      <link xlink:href="44579599-744c-4ef5-abb8-021cbe6646d5">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on GitHub</linkText>
+          <linkAlternateText>Go to GitHub</linkAlternateText>
+          <linkUri>https://GitHub.com/EWSoftware/SHFB</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:Sportradar.MTS.SDK.API.IMtsSdk</codeEntityReference> 
+      <codeEntityReference>P:Sportradar.MTS.SDK.API.MtsSdk.ConnectionStatus</codeEntityReference>
+      <codeEntityReference>M:Sportradar.MTS.SDK.API.MtsSdk.#ctor</codeEntityReference>
+      <codeEntityReference>T:Sportradar.MTS.SDK.API.MtsSdk.#ctor</codeEntityReference>
+      <codeEntityReference>M:Sportradar.MTS.SDK.Common.SdkLoggerFactory.GetLogger</codeEntityReference>
+      <codeEntityReference>T:Sportradar.MTS.SDK.Common.LoggerType</codeEntityReference>
+      <codeEntityReference>P:Sportradar.MTS.SDK.Common.SdkMetricsFactory.MetricsRoot</codeEntityReference>
+
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

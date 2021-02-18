@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Topics>
+  <Topic id="44579599-744c-4ef5-abb8-021cbe6646d5" visible="True" isDefault="true" title="Welcome to the Sportradar MTS SDK">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="Welcome" />
+    </HelpKeywords>
+  </Topic>
+  <Topic id="f487c66f-77c1-47db-918a-7aa105fd4d67" visible="True" isExpanded="true" title="Version History">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="version, history, changelog" />
+    </HelpKeywords>
+    <Topic id="2654cbaf-81ef-4983-a1a6-51b010f082d1" visible="True" title="Version 1.1.0.0" />
+    <Topic id="1892df55-5aa4-416d-b731-9d180a0b091d" visible="True" title="Version 1.0.1.0">
+      <HelpKeywords>
+        <HelpKeyword index="K" term="version, 1.0.1.0" />
+      </HelpKeywords>
+    </Topic>
+    <Topic id="573a7d4c-6c02-4d55-8b6d-5fcdfd2bb4a4" visible="True" title="Version 1.0.0.0">
+      <HelpKeywords>
+        <HelpKeyword index="K" term="version, 1.0.0.0" />
+      </HelpKeywords>
+    </Topic>
+  </Topic>
+  <Topic id="24b7b343-04b9-4b4c-8e5a-ac36b51ca4f4" visible="True" />
+  <Topic id="f4cfeeb4-3eea-480c-8c22-1b630cce742a" visible="True" isSelected="true" title="Glossary" />
+</Topics>
