@@ -27,12 +27,12 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
                 _bonus = bonus;
             }
             _selectedSystems = null;
-            if (selectedSystems != null)
+            if (selectedSystems != null && selectedSystems.Any())
             {
                 _selectedSystems = selectedSystems as IReadOnlyCollection<int>;
             }
             _selectionRefs = null;
-            if (selectionRefs != null)
+            if (selectionRefs != null && selectionRefs.Any())
             {
                 _selectionRefs = selectionRefs as IReadOnlyCollection<Anonymous3>;
             }
@@ -55,12 +55,12 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
                 _bonus = new Bonus(bet.Bonus);
             }
             _selectedSystems = null;
-            if (bet.SelectedSystems != null)
+            if (bet.SelectedSystems != null && bet.SelectedSystems.Any())
             {
                 _selectedSystems = bet.SelectedSystems as IReadOnlyCollection<int>;
             }
             _selectionRefs = null;
-            if (selectionRefs != null)
+            if (selectionRefs != null && selectionRefs.Any())
             {
                 _selectionRefs = selectionRefs.ToList().ConvertAll(b => new Anonymous3(b));
             }

@@ -14,7 +14,7 @@
     <Name>Sportradar.MTS.SDK.Docs</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>Cross-platform (.NET Core/.NET Standard)</FrameworkVersion>
-    <OutputPath>Documentation\</OutputPath>
+    <OutputPath>Help\</OutputPath>
     <HtmlHelpName>MTS SDK Core Documentation</HtmlHelpName>
     <Language>en-US</Language>
     <TransformComponentArguments>
