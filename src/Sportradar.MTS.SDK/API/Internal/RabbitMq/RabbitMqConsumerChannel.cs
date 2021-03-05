@@ -138,8 +138,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
             var correlationId = basicDeliverEventArgs?.BasicProperties?.CorrelationId ?? string.Empty;
             FeedLog.LogInformation($"Received message from MTS with correlationId: {correlationId}.");
             ChannelMessageReceived?.Invoke(this, basicDeliverEventArgs);
-
-            // TODO: ??? should this be in any way depended on user action (only acknowledged that message was received)
+            
             if (_channelSettings.UserAcknowledgmentEnabled)
             {
                 var i = 0;
@@ -235,8 +234,6 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                 {
                     try
                     {
-
-                        //ExecutionLog.LogDebug($"Opening the consumer channel with channelNumber: {UniqueId} and queueName: {_queueName} started ...");
                         var channelWrapper = _channelFactory.GetChannel(UniqueId);
                         if (channelWrapper == null)
                         {
@@ -321,7 +318,6 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                         channelWrapper.Consumer = consumer;
 
                         Interlocked.CompareExchange(ref _isOpened, 1, 0);
-                        //ExecutionLog.LogDebug($"Opening the consumer channel with channelNumber: {UniqueId} and queueName: {_queueName} finished.");
                         return;
                     }
                     catch (Exception e)

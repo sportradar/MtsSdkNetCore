@@ -499,9 +499,10 @@ namespace Sportradar.MTS.SDK.API
             var ticketType = TicketHelper.GetTicketTypeFromTicket(ticket);
             var ticketSender = _ticketPublisherFactory.GetTicketSender(ticketType);
             ticketSender.SendTicket(ticket);
+            var ticketCacheTimeout = ticketSender.GetCacheTimeout(ticket);
             if (waitForResponse)
             {
-                return ticketSender.GetCacheTimeout(ticket);
+                return ticketCacheTimeout;
             }
             else
             {
@@ -511,7 +512,7 @@ namespace Sportradar.MTS.SDK.API
                     {
                         _cacheItemPolicyForTicketsForNonBlockingRequestsCache = new CacheItemPolicy
                                                                                 {
-                                                                                    AbsoluteExpiration = new DateTimeOffset(DateTime.Now.AddMilliseconds(ticketSender.GetCacheTimeout(ticket))),
+                                                                                    AbsoluteExpiration = new DateTimeOffset(DateTime.Now.AddMilliseconds(ticketCacheTimeout)),
                                                                                     RemovedCallback = RemovedFromCacheForTicketsForNonBlockingRequestsCallback
                                                                                 };
                         _ticketsForNonBlockingRequests.Add(ticket.TicketId, ticket, _cacheItemPolicyForTicketsForNonBlockingRequestsCache);

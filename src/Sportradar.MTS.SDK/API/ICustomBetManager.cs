@@ -17,14 +17,14 @@ namespace Sportradar.MTS.SDK.API
         /// Returns an <see cref="IAvailableSelections"/> instance providing the available selections for the event associated with the provided <see cref="string"/> identifier
         /// </summary>
         /// <param name="eventId">The <see cref="string"/> identifier of the event for which the available selections should be returned</param>
-        /// <returns>An <see cref="IAvailableSelections"/> providing the the available selections of the associated event</returns>
+        /// <returns>An <see cref="IAvailableSelections"/> providing the available selections of the associated event</returns>
         Task<IAvailableSelections> GetAvailableSelectionsAsync(string eventId);
 
         /// <summary>
         /// Returns an <see cref="ICalculation"/> instance providing the probability for the specified selections
         /// </summary>
         /// <param name="selections">The <see cref="IEnumerable{ISelection}"/> containing selections for which the probability should be calculated</param>
-        /// <returns>An <see cref="ICalculation"/> providing the the probability for the specified selections</returns>
+        /// <returns>An <see cref="ICalculation"/> providing the probability for the specified selections</returns>
         Task<ICalculation> CalculateProbabilityAsync(IEnumerable<ISelection> selections);
 
         /// <summary>
