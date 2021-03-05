@@ -22,7 +22,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 
         public RabbitMqChannelSettings(bool queueDurable = false,
                                        bool exclusiveConsumer = true,
-                                       bool enableUserAqs = true,
+                                       bool enableUserAqs = false,
                                        bool deleteQueueOnClose = true,
                                        int heartBeat = 0,
                                        int ackBatchLimit = 1,

@@ -138,8 +138,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
             var correlationId = basicDeliverEventArgs?.BasicProperties?.CorrelationId ?? string.Empty;
             FeedLog.LogInformation($"Received message from MTS with correlationId: {correlationId}.");
             ChannelMessageReceived?.Invoke(this, basicDeliverEventArgs);
-
-            // TODO: ??? should this be in any way depended on user action (only acknowledged that message was received)
+            
             if (_channelSettings.UserAcknowledgmentEnabled)
             {
                 var i = 0;

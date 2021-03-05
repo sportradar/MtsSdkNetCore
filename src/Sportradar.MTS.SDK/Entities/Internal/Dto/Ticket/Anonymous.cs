@@ -60,9 +60,10 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
                 _selectedSystems = bet.SelectedSystems as IReadOnlyCollection<int>;
             }
             _selectionRefs = null;
-            if (selectionRefs != null && selectionRefs.Any())
+            var selectionRefsList = selectionRefs.ToList();
+            if (selectionRefsList.Any())
             {
-                _selectionRefs = selectionRefs.ToList().ConvertAll(b => new Anonymous3(b));
+                _selectionRefs = selectionRefsList.ConvertAll(b => new Anonymous3(b));
             }
 
             _customBet = bet.CustomBet;
