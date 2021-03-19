@@ -55,7 +55,7 @@ namespace Sportradar.MTS.SDK.Common.Exceptions
         /// </summary>
         /// <param name="info">The <see cref="SerializationInfo" /> that holds the serialized object data about the exception being thrown</param>
         /// <param name="context">The <see cref="StreamingContext" /> that contains contextual information about the source or destination</param>
-        public MappingException(SerializationInfo info, StreamingContext context)
+        protected MappingException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
             PropertyName = info.GetString("sdkPropertyName");

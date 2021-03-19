@@ -44,7 +44,8 @@ namespace Sportradar.MTS.SDK.Common.Exceptions
         /// </summary>
         /// <param name="info">The <see cref="SerializationInfo" /> that holds the serialized object data about the exception being thrown</param>
         /// <param name="context">The <see cref="StreamingContext" /> that contains contextual information about the source or destination</param>
-        public CacheItemNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected CacheItemNotFoundException(SerializationInfo info, StreamingContext context) 
+            : base(info, context)
         {
             Key = info.GetString("sdkKey");
         }

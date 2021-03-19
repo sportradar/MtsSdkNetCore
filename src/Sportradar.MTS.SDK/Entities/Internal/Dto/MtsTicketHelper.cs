@@ -276,5 +276,48 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto
             }
             throw new InvalidEnumArgumentException($"Invalid ticket type. Ticket type: {ticket.GetType()}.");
         }
+
+        public static SourceType ConvertSourceType(string sourceType)
+        {
+            if(string.IsNullOrEmpty(sourceType))
+            {
+                throw new ArgumentNullException(nameof(sourceType), "Missing source type");
+            }
+            sourceType = sourceType.ToLower().Trim();
+            switch (sourceType)
+            {
+                case "shop":
+                    return SourceType.Shop;
+                case "terminal":
+                    return SourceType.Terminal;
+                case "customer":
+                    return SourceType.Customer;
+                case "bookmaker":
+                    return SourceType.Bookmaker;
+                case "sub_bookmaker":
+                case "subbookmaker":
+                    return SourceType.SubBookmaker;
+                case "distribution_channel":
+                case "distributionchannel":
+                    return SourceType.DistributionChannel;
+            }
+
+            throw new InvalidEnumArgumentException($"Invalid source type. Source type: {sourceType}.");
+        }
+
+        public static bool TryConvertSourceType(string sourceTypeString, out SourceType sourceType)
+        { 
+            sourceType = SourceType.Customer;
+            try
+            {
+                sourceType = ConvertSourceType(sourceTypeString);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

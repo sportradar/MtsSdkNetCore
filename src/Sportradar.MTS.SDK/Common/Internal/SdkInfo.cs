@@ -1,6 +1,8 @@
 ﻿/*
  * Copyright (C) Sportradar AG. See LICENSE for full license governing this code
  */
+
+using System.Linq;
 using System.Reflection;
 
 namespace Sportradar.MTS.SDK.Common.Internal
@@ -84,6 +86,37 @@ namespace Sportradar.MTS.SDK.Common.Internal
                 value = maxValue;
             }
             return value;
+        }
+
+        public static string Obfuscate(string input, bool checkDash = false)
+        {
+            if(string.IsNullOrEmpty(input))
+            {
+                return input;
+            }
+
+            if(checkDash)
+            {
+                var inputSplit = input.Split('-');
+                if (input.Split('-').Length > 1)
+                {
+                    return $"{inputSplit.First()}-***-{inputSplit.Last()}";
+                }
+            }
+
+            if (input.Length > 6)
+            {
+                var first3 = input.Substring(0, 3);
+                var last3 = input.Substring(input.Length - 3);
+                return $"{first3}***{last3}";
+            }
+
+            if (input.Length > 2)
+            {
+                return $"{input.First()}***{input.Last()}";
+            }
+
+            return "***";
         }
     }
 }

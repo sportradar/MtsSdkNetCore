@@ -118,8 +118,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
                 }
 
                 var localName = reader.LocalName;
-                SerializerWithInfo serializerWithInfo; // = new SerializerWithInfo(new XmlSerializer(typeof(T1)),);
-                if (!Serializers.TryGetValue(reader.LocalName, out serializerWithInfo))
+                if (!Serializers.TryGetValue(reader.LocalName, out var serializerWithInfo))
                 {
                     throw new DeserializationException("Specified root element is not supported", stream.GetData(), localName, null);
                 }

@@ -69,12 +69,6 @@ namespace Sportradar.MTS.SDK.API
         ITicketCashoutResponse SendTicketCashoutBlocking(ITicketCashout ticket);
 
         /// <summary>
-        /// Gets the <see cref="IMtsClientApi" /> instance used to send requests to MTS REST API
-        /// </summary>
-        /// <value>The client api</value>
-        IMtsClientApi ClientApi { get; }
-
-        /// <summary>
         /// Sends the non-sr ticket to the MTS server and wait for the response message on the feed
         /// </summary>
         /// <param name="ticket">A <see cref="ITicketNonSrSettle"/> to be send</param>
@@ -82,10 +76,22 @@ namespace Sportradar.MTS.SDK.API
         ITicketNonSrSettleResponse SendTicketNonSrSettleBlocking(ITicketNonSrSettle ticket);
 
         /// <summary>
+        /// Gets the <see cref="IMtsClientApi" /> instance used to send requests to MTS REST API
+        /// </summary>
+        /// <value>The client api</value>
+        IMtsClientApi ClientApi { get; }
+
+        /// <summary>
         /// Gets a <see cref="ICustomBetManager" /> instance used to perform various custom bet operations
         /// </summary>
         /// <value>The custom bet manager</value>
         ICustomBetManager CustomBetManager { get; }
+
+        /// <summary>
+        /// Gets a <see cref="IReportManager" /> instance used to get various reports
+        /// </summary>
+        /// <value>The report manager</value>
+        IReportManager ReportManager => null;
 
         /// <summary>
         /// Gets the connection status.

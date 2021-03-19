@@ -72,9 +72,16 @@
     <None Update="JSON\ticket-response4.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="TESTDATA\ccf_history_change_client_api-report.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="XML\market_descriptions.en.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TESTDATA\" />
   </ItemGroup>
 
 </Project>

@@ -1,34 +1,34 @@
-﻿/*
- * Copyright (C) Sportradar AG. See LICENSE for full license governing this code
- */
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Text;
+using Sportradar.MTS.SDK.API;
 
 namespace Sportradar.MTS.SDK.Common.Exceptions
 {
     /// <summary>
-    /// An exception thrown by the SDK when there is a problem with communication with rabbit mq
+    /// An exception thrown by the SDK when there is a problem with communication via <see cref="IReportManager"/>
     /// </summary>
     /// <seealso cref="FeedSdkException" />
     [Serializable]
-    public class RabbitMqException : FeedSdkException
+    public class MtsReportException : FeedSdkException
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RabbitMqException"/> class
+        /// Initializes a new instance of the <see cref="MtsReportException"/> class
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception</param>
         /// <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified</param>
-        public RabbitMqException(string message, Exception innerException)
+        public MtsReportException(string message, Exception innerException)
             : base(message, innerException)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RabbitMqException"/> class
+        /// Initializes a new instance of the <see cref="MtsReportException"/> class
         /// </summary>
         /// <param name="info">The <see cref="SerializationInfo" /> that holds the serialized object data about the exception being thrown</param>
         /// <param name="context">The <see cref="StreamingContext" /> that contains contextual information about the source or destination</param>
-        protected RabbitMqException(SerializationInfo info, StreamingContext context) 
+        protected MtsReportException(SerializationInfo info, StreamingContext context) 
             : base(info, context)
         {
         }

@@ -26,7 +26,6 @@ namespace Sportradar.MTS.SDK.Common.Exceptions
         /// <value>The name of the root element</value>
         public string RootElementName { get; }
 
-
         /// <summary>
         /// Initializes a new instance of the <see cref="DeserializationException"/> class
         /// </summary>
@@ -63,7 +62,7 @@ namespace Sportradar.MTS.SDK.Common.Exceptions
         /// </summary>
         /// <param name="info">The <see cref="SerializationInfo" /> that holds the serialized object data about the exception being thrown</param>
         /// <param name="context">The <see cref="StreamingContext" /> that contains contextual information about the source or destination</param>
-        public DeserializationException(SerializationInfo info, StreamingContext context)
+        protected DeserializationException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
             Xml = info.GetString("sdkXml");

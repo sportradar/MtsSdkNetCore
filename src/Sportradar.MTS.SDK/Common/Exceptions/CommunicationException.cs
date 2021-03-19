@@ -60,20 +60,17 @@ namespace Sportradar.MTS.SDK.Common.Exceptions
             ResponseCode = responseCode;
         }
 
-
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CommunicationException"/> class
         /// </summary>
         /// <param name="info">The <see cref="SerializationInfo" /> that holds the serialized object data about the exception being thrown</param>
         /// <param name="context">The <see cref="StreamingContext" /> that contains contextual information about the source or destination</param>
-        public CommunicationException(SerializationInfo info, StreamingContext context)
+        protected CommunicationException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
             Url = info.GetString("sdkUrl");
             ResponseCode = (HttpStatusCode) info.GetValue("sdkResponseCode", typeof(HttpStatusCode));
         }
-
 
         /// <summary>
         /// When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with information about the exception.

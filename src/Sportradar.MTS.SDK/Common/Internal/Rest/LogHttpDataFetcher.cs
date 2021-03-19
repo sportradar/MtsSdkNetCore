@@ -82,8 +82,6 @@ namespace Sportradar.MTS.SDK.Common.Internal.Rest
 
             var responseContent = new StreamReader(responseStream).ReadToEnd();
 
-            responseContent = responseContent.Replace("\n", string.Empty);
-            //A nasty hack needed to fix the 'stage' in the namespace for the race_summary element
             var memoryStream = new MemoryStream();
             var writer = new StreamWriter(memoryStream);
             writer.Write(responseContent);
