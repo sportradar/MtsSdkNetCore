@@ -1,10 +1,10 @@
-﻿using System;
+﻿/*
+ * Copyright (C) Sportradar AG. See LICENSE for full license governing this code
+ */
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Net.Http;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using App.Metrics;
@@ -14,15 +14,11 @@ using Dawn;
 using Microsoft.Extensions.Logging;
 using Sportradar.MTS.SDK.API.Internal.MtsAuth;
 using Sportradar.MTS.SDK.Common;
-using Sportradar.MTS.SDK.Common.Exceptions;
 using Sportradar.MTS.SDK.Common.Internal.Rest;
 using Sportradar.MTS.SDK.Entities;
 using Sportradar.MTS.SDK.Entities.Enums;
 using Sportradar.MTS.SDK.Entities.Interfaces;
 using Sportradar.MTS.SDK.Entities.Internal;
-using Sportradar.MTS.SDK.Entities.Internal.Dto;
-using Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket;
-using Sportradar.MTS.SDK.Entities.Internal.REST.ClientApiImpl;
 using Sportradar.MTS.SDK.Entities.Internal.REST.ReportApiImpl;
 using TinyCsvParser;
 using TinyCsvParser.Mapping;

@@ -2,17 +2,14 @@
  * Copyright (C) Sportradar AG. See LICENSE for full license governing this code
  */
 using System;
-using System.Collections.Generic;
 using Dawn;
 using System.Net.Http;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Sportradar.MTS.SDK.Entities.Interfaces;
 using Sportradar.MTS.SDK.Entities.Internal;
 using Sportradar.MTS.SDK.Entities.Internal.REST.ClientApiImpl;
-using System.Runtime.Caching;
 using App.Metrics;
 using App.Metrics.Counter;
 using Sportradar.MTS.SDK.API.Internal.MtsAuth;

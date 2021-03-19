@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿/*
+ * Copyright (C) Sportradar AG. See LICENSE for full license governing this code
+ */
 namespace Sportradar.MTS.SDK.Entities.Enums
 {
     /// <summary>

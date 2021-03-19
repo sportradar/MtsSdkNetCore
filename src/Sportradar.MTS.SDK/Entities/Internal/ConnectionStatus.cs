@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*
+ * Copyright (C) Sportradar AG. See LICENSE for full license governing this code
+ */
+using System;
 using System.Collections.Generic;
 using Sportradar.MTS.SDK.API;
 using Sportradar.MTS.SDK.Entities.EventArguments;
