@@ -22,6 +22,11 @@ The package contains:
  - Resources containing the log4net configuration needed by the MTS SDK
 
 CHANGE LOG:
+2021-03-22 2.3.4
+Added IMtskSdk.ReportManager for getting HistoryCcfChanges
+Fix: removed double acking error
+Fix: Removed ambiguity with setting enableUserAqs (internal)
+
 2020-11-06 2.3.3
 Added sslServerName to the configuration
 IMtsSdk extended with Connectiontatus; provides also event ConnectionChange

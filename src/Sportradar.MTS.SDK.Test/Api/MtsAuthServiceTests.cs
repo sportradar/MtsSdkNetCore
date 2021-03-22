@@ -1,27 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Runtime.Caching;
-using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Sportradar.MTS.SDK.API;
-using Sportradar.MTS.SDK.API.Internal;
 using Sportradar.MTS.SDK.API.Internal.MtsAuth;
 using Sportradar.MTS.SDK.Common.Internal;
-using Sportradar.MTS.SDK.Entities.Interfaces;
 using Sportradar.MTS.SDK.Entities.Internal;
-using Sportradar.MTS.SDK.Entities.Internal.Cache;
 using Sportradar.MTS.SDK.Entities.Internal.Dto.ClientApi;
 using Sportradar.MTS.SDK.Entities.Internal.REST;
 using Sportradar.MTS.SDK.Entities.Internal.REST.ClientApiImpl;
-using Sportradar.MTS.SDK.Entities.Internal.REST.Dto;
-using Sportradar.MTS.SDK.Entities.Internal.REST.ReportApiImpl;
 using Sportradar.MTS.SDK.Test.Helpers;
-using TinyCsvParser;
 
 namespace Sportradar.MTS.SDK.Test.Api
 {

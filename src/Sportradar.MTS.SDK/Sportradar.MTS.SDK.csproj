@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyVersion>2.3.3.6</AssemblyVersion>
-    <FileVersion>2.3.3.6</FileVersion>
+    <AssemblyVersion>2.3.4.0</AssemblyVersion>
+    <FileVersion>2.3.4.0</FileVersion>
     <LangVersion>8</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -18,7 +18,7 @@
     <PackageTags>SportRadar MTS SDK .NETCore</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
-    <Version>2.3.3.1</Version>
+    <Version>2.3.4.0</Version>
     <CodeAnalysisRuleSet>..\.sonarlint\mts_sdk_net_corecsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 

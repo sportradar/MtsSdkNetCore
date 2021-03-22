@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Topics>
-  <Topic id="44579599-744c-4ef5-abb8-021cbe6646d5" visible="True" isDefault="true" title="Welcome to the Sportradar MTS SDK">
+  <Topic id="44579599-744c-4ef5-abb8-021cbe6646d5" visible="False" isSelected="true" title="Welcome to the Sportradar MTS SDK">
     <HelpKeywords>
       <HelpKeyword index="K" term="Welcome" />
     </HelpKeywords>
   </Topic>
-  <Topic id="f487c66f-77c1-47db-918a-7aa105fd4d67" visible="True" isExpanded="true" title="Version History">
+  <Topic id="f487c66f-77c1-47db-918a-7aa105fd4d67" visible="False" isExpanded="true" title="Version History">
     <HelpKeywords>
       <HelpKeyword index="K" term="version, history, changelog" />
     </HelpKeywords>
@@ -21,6 +21,6 @@
       </HelpKeywords>
     </Topic>
   </Topic>
-  <Topic id="24b7b343-04b9-4b4c-8e5a-ac36b51ca4f4" visible="True" />
-  <Topic id="f4cfeeb4-3eea-480c-8c22-1b630cce742a" visible="True" isSelected="true" title="Glossary" />
+  <Topic id="24b7b343-04b9-4b4c-8e5a-ac36b51ca4f4" visible="False" />
+  <Topic id="f4cfeeb4-3eea-480c-8c22-1b630cce742a" visible="False" title="Glossary" />
 </Topics>
