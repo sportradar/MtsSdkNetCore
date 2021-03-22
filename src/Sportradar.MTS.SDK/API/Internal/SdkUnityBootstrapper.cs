@@ -432,8 +432,7 @@ namespace Sportradar.MTS.SDK.API.Internal
 
             container.RegisterType<IDeserializer<AccessTokenDTO>, Entities.Internal.JsonDeserializer<AccessTokenDTO>>(new ContainerControlledLifetimeManager());
             container.RegisterType<ISingleTypeMapperFactory<AccessTokenDTO, KeycloakAuthorization>, KeycloakAuthorizationMapperFactory>(new ContainerControlledLifetimeManager());
-            container.RegisterType<IDataProvider<KeycloakAuthorization>,
-                DataProvider<AccessTokenDTO, KeycloakAuthorization>>(
+            container.RegisterType<IDataProvider<KeycloakAuthorization>, DataProvider<AccessTokenDTO, KeycloakAuthorization>>(
                 new ContainerControlledLifetimeManager(),
                 new InjectionConstructor(
                     userConfig.KeycloakHost + "/auth/realms/mts/protocol/openid-connect/token",
@@ -446,9 +445,7 @@ namespace Sportradar.MTS.SDK.API.Internal
                 new ContainerControlledLifetimeManager(),
                 new InjectionConstructor(
                     new ResolvedParameter<IDataProvider<KeycloakAuthorization>>(),
-                    new InjectionParameter<string>(userConfig.KeycloakUsername),
-                    new InjectionParameter<string>(userConfig.KeycloakPassword),
-                    new InjectionParameter<string>(userConfig.KeycloakSecret),
+                    userConfig,
                     new ResolvedParameter<IMetricsRoot>()
                 ));
         }

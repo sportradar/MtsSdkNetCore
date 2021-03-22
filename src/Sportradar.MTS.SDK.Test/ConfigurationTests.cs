@@ -13,7 +13,7 @@ using Sportradar.MTS.SDK.Test.Helpers;
 namespace Sportradar.MTS.SDK.Test
 {
     [TestClass]
-    public class ConfigurationTest
+    public class ConfigurationTests
     {
         #region Minimal configuration
 

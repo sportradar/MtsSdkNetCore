@@ -13,6 +13,7 @@ using Dawn;
 using Microsoft.Extensions.Logging;
 using Sportradar.MTS.SDK.Common;
 using Sportradar.MTS.SDK.Common.Internal;
+using Sportradar.MTS.SDK.Entities;
 using Sportradar.MTS.SDK.Entities.Internal;
 using Sportradar.MTS.SDK.Entities.Internal.REST.ClientApiImpl;
 
@@ -66,17 +67,16 @@ namespace Sportradar.MTS.SDK.API.Internal.MtsAuth
         private readonly IMetricsRoot _metrics;
 
         public MtsAuthService(IDataProvider<KeycloakAuthorization> authorizationDataProvider, 
-                              string keycloackUsername, 
-                              string keycloackPassword, 
-                              string keycloackSecret, 
+                              ISdkConfiguration config,
                               IMetricsRoot metrics)
         {
             Guard.Argument(authorizationDataProvider, nameof(authorizationDataProvider)).NotNull();
+            Guard.Argument(config, nameof(config)).NotNull();
             
             _authorizationDataProvider = authorizationDataProvider;
-            _keycloackUsername = keycloackUsername;
-            _keycloackPassword = keycloackPassword;
-            _keycloackSecret = keycloackSecret;
+            _keycloackUsername = config.KeycloakUsername;
+            _keycloackPassword = config.KeycloakPassword;
+            _keycloackSecret = config.KeycloakSecret;
             _metrics = metrics ?? SdkMetricsFactory.MetricsRoot;
 
             if (string.IsNullOrEmpty(_keycloackSecret))
@@ -86,6 +86,7 @@ namespace Sportradar.MTS.SDK.API.Internal.MtsAuth
         }
 
         /// <inheritdoc />
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S4457:Parameter validation in \"async\"/\"await\" methods should be wrapped", Justification = "Actually done")]
         public async Task<string> GetTokenAsync(string keycloackUsername = null, string keycloackPassword = null)
         {
             if(string.IsNullOrEmpty(keycloackUsername) && !string.IsNullOrEmpty(_keycloackUsername))

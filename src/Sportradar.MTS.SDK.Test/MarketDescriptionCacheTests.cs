@@ -22,7 +22,7 @@ namespace Sportradar.MTS.SDK.Test
 {
     [TestClass]
     [DeploymentItem("XML/market_descriptions.en.xml", "XML")]
-    public class MarketDescriptionCacheTest
+    public class MarketDescriptionCacheTests
     {
         private const string FileName = "market_descriptions.en.xml";
         private IDeserializer<market_descriptions> _deserializer;

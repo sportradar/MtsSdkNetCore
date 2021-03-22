@@ -19,7 +19,9 @@ namespace Sportradar.MTS.SDK.Test.Helpers
     {
         public static readonly IEnumerable<Tuple<string, string>> UriReplacements = new List<Tuple<string, string>>
         {
-            new Tuple<string, string>("/v1/descriptions/en/markets.xml?include_mappings=true", "market_descriptions.en.xml")
+            new Tuple<string, string>("/v1/descriptions/en/markets.xml?include_mappings=true", "market_descriptions.en.xml"),
+            new Tuple<string, string>("/ReportingCcf/external/api/report/export/history/ccf/changes/client/api", "ccf_history_change_client_api-report.csv"),
+            new Tuple<string, string>("/auth/realms/mts/protocol/openid-connect/token", "TESTDATA\\auth-token.json")
         };
 
         public BuilderFactoryHelper(ISdkConfigurationInternal configInternal = null)

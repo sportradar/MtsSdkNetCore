@@ -14,7 +14,7 @@ using Unity;
 namespace Sportradar.MTS.SDK.Test
 {
     [TestClass]
-    public class UnityBootstrapperTest
+    public class UnityBootstrapperTests
     {
         private static IUnityContainer _childContainer1;
         private static IUnityContainer _childContainer2;
