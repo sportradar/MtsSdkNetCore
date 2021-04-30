@@ -17,20 +17,6 @@ namespace Sportradar.MTS.SDK.API.Internal.Mappers
     internal class TicketCashoutResponseMapper : ITicketResponseMapper<TicketCashoutResponseDTO, ITicketCashoutResponse>
     {
         /// <summary>
-        /// The ticket ack sender
-        /// </summary>
-        private readonly ITicketSender _ticketSender;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TicketCashoutResponseMapper"/> class
-        /// </summary>
-        /// <param name="ticketSender">The ticket cashout ack sender (null)</param>
-        public TicketCashoutResponseMapper(ITicketSender ticketSender)
-        {
-            _ticketSender = ticketSender;
-        }
-
-        /// <summary>
         /// Maps the specified source
         /// </summary>
         /// <param name="source">The source</param>
@@ -40,8 +26,7 @@ namespace Sportradar.MTS.SDK.API.Internal.Mappers
         /// <returns>A <see cref="ITicketCashoutResponse"/></returns>
         public ITicketCashoutResponse Map(TicketCashoutResponseDTO source, string correlationId, IDictionary<string, string> additionalInfo, string orgJson)
         {
-            return new TicketCashoutResponse(_ticketSender,
-                                             source.Result.TicketId,
+            return new TicketCashoutResponse(source.Result.TicketId,
                                              MtsTicketHelper.Convert(source.Result.Status),
                                              new ResponseReason(source.Result.Reason.Code, source.Result.Reason.Message),
                                              correlationId,

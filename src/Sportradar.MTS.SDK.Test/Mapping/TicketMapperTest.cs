@@ -160,7 +160,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         public void BuildTicketCashoutResponseDtoFromTicketCashoutResponseTest()
         {
             var dto = TicketBuilderHelper.GetTicketCashoutResponse(null, SDK.Entities.Internal.Dto.TicketCashoutResponse.Status.Rejected);
-            var ticket = new TicketCashoutResponseMapper(null).Map(dto, SR.S1000, null, dto.ToJson());
+            var ticket = new TicketCashoutResponseMapper().Map(dto, SR.S1000, null, dto.ToJson());
             Assert.IsNotNull(ticket);
             TicketCompareHelper.Compare(ticket, dto);
         }

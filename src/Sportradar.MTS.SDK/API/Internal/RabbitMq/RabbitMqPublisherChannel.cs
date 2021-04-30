@@ -291,8 +291,6 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                 FeedLog.LogError(errorMessage);
                 ExecutionLog.LogError(errorMessage);
                 //since user called Publish, we just return result and no need to call event handler
-                //var args = new MessagePublishFailedEventArgs(msg, correlationId, routingKey, errorMessage);
-                //MqMessagePublishFailed?.Invoke(this, args);
                 return new MqPublishResult(correlationId, false, errorMessage);
             }
 

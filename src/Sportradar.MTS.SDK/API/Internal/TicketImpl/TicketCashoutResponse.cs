@@ -18,11 +18,6 @@ namespace Sportradar.MTS.SDK.API.Internal.TicketImpl
     internal class TicketCashoutResponse : ITicketCashoutResponse
     {
         /// <summary>
-        /// The ticket Cashout sender
-        /// </summary>
-        // ReSharper disable once NotAccessedField.Local
-        private readonly ITicketSender _ticketCashoutSender;
-        /// <summary>
         /// Gets the ticket id
         /// </summary>
         /// <value>Unique ticket id (in the client's system)</value>
@@ -64,13 +59,14 @@ namespace Sportradar.MTS.SDK.API.Internal.TicketImpl
         /// </summary>
         /// <value>The status</value>
         public CashoutAcceptance Status { get; }
-
+        /// <summary>
+        /// The original json
+        /// </summary>
         private readonly string _originalJson;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TicketCashoutResponse"/> class
         /// </summary>
-        /// <param name="ticketCashoutSender">The ticket cashout sender</param>
         /// <param name="ticketId">The ticket identifier</param>
         /// <param name="status">The status</param>
         /// <param name="reason">The reason</param>
@@ -79,8 +75,8 @@ namespace Sportradar.MTS.SDK.API.Internal.TicketImpl
         /// <param name="version">The version</param>
         /// <param name="additionalInfo">The additional information</param>
         /// <param name="orgJson">The original json string received from the mts</param>
-        public TicketCashoutResponse(ITicketSender ticketCashoutSender,
-                                     string ticketId,
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Approved")]
+        public TicketCashoutResponse(string ticketId,
                                      CashoutAcceptance status,
                                      IResponseReason reason,
                                      string correlationId,
@@ -98,8 +94,6 @@ namespace Sportradar.MTS.SDK.API.Internal.TicketImpl
             CorrelationId = correlationId;
             AdditionalInfo = additionalInfo;
             _originalJson = orgJson;
-
-            _ticketCashoutSender = ticketCashoutSender;
         }
 
         /// <summary>

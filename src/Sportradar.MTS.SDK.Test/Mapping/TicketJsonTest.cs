@@ -648,7 +648,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         public void TicketCashoutResponseToJsonTest()
         {
             var dto = TicketBuilderHelper.GetTicketCashoutResponse(SR.S1000, Status.Accepted);
-            var ticket = new TicketCashoutResponseMapper(null).Map(dto, "c1", null, dto.ToJson());
+            var ticket = new TicketCashoutResponseMapper().Map(dto, "c1", null, dto.ToJson());
             var ticketJson = ticket.ToJson();
             var dtoJson = dto.ToJson();
 
