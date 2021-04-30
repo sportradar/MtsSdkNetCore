@@ -17,7 +17,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
     internal class ConfiguredConnectionFactory : ConnectionFactory
     {
         // ReSharper disable once InconsistentNaming
-        private static readonly ISet<string> TLS_VERIFICATION_IGNORE_LIST = new HashSet<string> { "91.201.213.134", "91.201.212.86", "mtsgate-ci.betradar.com", "mtsgate-t1.betradar.com" };
+        //private static readonly ISet<string> TLS_VERIFICATION_IGNORE_LIST = new HashSet<string> { "91.201.213.134", "91.201.212.86", "mtsgate-ci.betradar.com", "mtsgate-t1.betradar.com" };
 
         /// <summary>
         /// A <see cref="IRabbitServer"/> instance containing server information
@@ -95,10 +95,10 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                 return true;
             }
 
-            if (TLS_VERIFICATION_IGNORE_LIST.Contains(hostName))
-            {
-                return false;
-            }
+            //if (TLS_VERIFICATION_IGNORE_LIST.Contains(hostName))
+            //{
+            //    return false;
+            //}
 
             return true;
         }
