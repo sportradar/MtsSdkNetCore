@@ -66,7 +66,6 @@ namespace Sportradar.MTS.SDK.API
         private readonly ConcurrentDictionary<string, ISdkTicket> _responsesFromBlockingRequests;
         private readonly MemoryCache _ticketsForNonBlockingRequests;
         private readonly object _lockForTicketsForNonBlockingRequestsCache;
-        private CacheItemPolicy _cacheItemPolicyForTicketsForNonBlockingRequestsCache;
 
         /// <summary>
         /// A <see cref="IUnityContainer"/> used to resolve
@@ -504,12 +503,12 @@ namespace Sportradar.MTS.SDK.API
             {
                 if (TicketResponseTimedOut != null)
                 {
-                    _cacheItemPolicyForTicketsForNonBlockingRequestsCache = new CacheItemPolicy
+                    var cacheItemPolicyForTicketsForNonBlockingRequestsCache = new CacheItemPolicy
                     {
                         AbsoluteExpiration = new DateTimeOffset(DateTime.Now.AddMilliseconds(ticketCacheTimeout)),
                         RemovedCallback = RemovedFromCacheForTicketsForNonBlockingRequestsCallback
                     };
-                    _ticketsForNonBlockingRequests.Add(ticket.TicketId, ticket, _cacheItemPolicyForTicketsForNonBlockingRequestsCache);
+                    _ticketsForNonBlockingRequests.Add(ticket.TicketId, ticket, cacheItemPolicyForTicketsForNonBlockingRequestsCache);
                 }
             }
             return -1;

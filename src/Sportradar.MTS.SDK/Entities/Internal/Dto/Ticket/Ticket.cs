@@ -22,7 +22,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
         public Ticket()
         { }
 
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Ticket"/> class
         /// </summary>

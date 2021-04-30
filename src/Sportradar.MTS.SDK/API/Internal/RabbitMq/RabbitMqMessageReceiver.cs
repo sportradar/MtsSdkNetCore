@@ -131,7 +131,8 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
             }
             if (basicProperties.Headers.ContainsKey("__uid__") && basicProperties.Headers.TryGetValue("__uid__", out obj) && obj is byte[] b1)
             {
-                var unused = Encoding.UTF8.GetString(b1);
+                var uid = Encoding.UTF8.GetString(b1);
+                additionalInfo.Add("__uid__", uid);
             }
             if (basicProperties.Headers.ContainsKey("Content-Type"))
             {

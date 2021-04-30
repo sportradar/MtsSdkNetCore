@@ -176,6 +176,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             return new Sender(_bookmakerId, _currency, _terminalId, _channel, _shopId, _customer, _limitId);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Critical Code Smell", "S3776:Cognitive Complexity of methods should not be too high", Justification = "Approved")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S1066:Collapsible \"if\" statements should be merged", Justification = "Approved for readability")]
         private void ValidateData(bool all = false, bool bookmakerId = false, bool currency = false, bool terminalId = false, bool shopId = false, bool limitId = false)
         {
             if (all || bookmakerId)

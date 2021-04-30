@@ -38,9 +38,11 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
             _server = server;
         }
 
+
         /// <summary>
         /// Configures the current <see cref="ConfiguredConnectionFactory"/> based on server options read from <code>_server</code> field
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Vulnerability", "S4423:Weak SSL/TLS protocols should not be used", Justification = "Need to support older for some clients")]
         private void Configure()
         {
             HostName = _server.HostAddress;

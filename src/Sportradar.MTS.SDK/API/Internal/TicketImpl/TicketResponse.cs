@@ -80,7 +80,9 @@ namespace Sportradar.MTS.SDK.API.Internal.TicketImpl
         /// </summary>
         /// <value>The timestamp</value>
         public DateTime Timestamp { get; }
-
+        /// <summary>
+        /// The original json
+        /// </summary>
         private readonly string _originalJson;
 
         /// <summary>
@@ -98,6 +100,7 @@ namespace Sportradar.MTS.SDK.API.Internal.TicketImpl
         /// <param name="additionalInfo">The additional information</param>
         /// <param name="autoAcceptedOdds">Auto accepted odds</param>
         /// <param name="orgJson">The original json string received from the mts</param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Approved")]
         public TicketResponse(ITicketSender ticketSender,
                               string ticketId,
                               TicketAcceptance status,
@@ -147,7 +150,7 @@ namespace Sportradar.MTS.SDK.API.Internal.TicketImpl
         {
             if (_ticketSender == null)
             {
-                throw new NullReferenceException("Missing TicketSender. Can not be null.");
+                throw new InvalidOperationException("Missing TicketSender. Can not be null.");
             }
             var ticketAck = new TicketAck(TicketId,
                                           bookmakerId,
@@ -167,10 +170,11 @@ namespace Sportradar.MTS.SDK.API.Internal.TicketImpl
             var sentTicket = (ITicket) _ticketSender.GetSentTicket(TicketId);
             if (sentTicket == null)
             {
-                throw new Exception("missing ticket in cache");
+                throw new InvalidOperationException("Missing ticket in cache");
             }
             Acknowledge(markAccepted, sentTicket.Sender.BookmakerId, Reason.Code, Reason.Message);
         }
+
         public string ToJson()
         {
             return _originalJson;

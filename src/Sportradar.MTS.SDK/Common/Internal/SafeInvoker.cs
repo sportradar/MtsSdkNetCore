@@ -151,6 +151,7 @@ namespace Sportradar.MTS.SDK.Common.Internal
         /// <param name="log">The log4net.ILog where potential exceptions should be logged</param>
         /// <param name="errorMessage">The error message to be written along with the exception</param>
         /// <returns>A <see cref="Task"/> representing the asynchronous operation</returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S2436:Types and methods should not have too many generic parameters", Justification = "Approved")]
         public static async Task<TResult> SafeInvokeAsync<T1, T2, T3, TResult>(this Func<T1, T2, T3, Task<TResult>>  method, T1 arg1, T2 arg2, T3 arg3, ILogger log, string errorMessage)
         {
             Guard.Argument(method, nameof(method)).NotNull();

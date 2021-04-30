@@ -394,10 +394,10 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         }
 
         /// <summary>
-        /// Checks the channel wrapper.
+        /// Checks the channel wrapper
         /// </summary>
-        /// <param name="channelWrapper">The channel wrapper.</param>
-        /// <returns><c>true</c> if should return, <c>false</c> otherwise.</returns>
+        /// <param name="channelWrapper">The channel wrapper</param>
+        /// <returns><c>true</c> if should return from method, <c>false</c> otherwise.</returns>
         private bool CheckChannelWrapper(ChannelWrapper channelWrapper)
         {
             if (channelWrapper == null)
@@ -461,6 +461,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         /// Closes the current channel
         /// </summary>
         /// <exception cref="InvalidOperationException">The instance is already closed</exception>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S1066:Collapsible \"if\" statements should be merged", Justification = "Approved for readability")]
         public void Close()
         {
             if (Interlocked.CompareExchange(ref _isOpened, 0, 1) != 1)

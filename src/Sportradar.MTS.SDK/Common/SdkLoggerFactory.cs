@@ -10,7 +10,7 @@ namespace Sportradar.MTS.SDK.Common
     /// <summary>
     /// Provides methods to get logger for specific <see cref="LoggerType"/>
     /// </summary>
-    public class SdkLoggerFactory
+    public static class SdkLoggerFactory
     {
         /// <summary>
         /// Default repository name for the SDK
@@ -18,13 +18,13 @@ namespace Sportradar.MTS.SDK.Common
         internal const string SdkLogRepositoryName = "Sportradar.OddsFeed.SDK";
 
         private static ILoggerFactory _factory;
-
-        //set by dependency injection        
+        
         /// <summary>
-        /// Initializes a new instance of the <see cref="SdkLoggerFactory"/> class.
+        /// Set a new instance of the <see cref="SdkLoggerFactory"/> class
         /// </summary>
         /// <param name="factory">The factory.</param>
-        public SdkLoggerFactory(ILoggerFactory factory)
+        /// <remarks>Used within bootstrapper</remarks>
+        internal static void SetLoggerFactory(ILoggerFactory factory)
         {
             _factory = factory;
         }

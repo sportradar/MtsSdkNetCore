@@ -48,6 +48,7 @@ namespace Sportradar.MTS.SDK.API.Internal
         private static string _environment;
         private static readonly CultureInfo DefaultCulture = new CultureInfo("en");
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Vulnerability", "S4423:Weak SSL/TLS protocols should not be used", Justification = "Need to support older for some clients")]
         public static void RegisterTypes(this IUnityContainer container, ISdkConfiguration userConfig, ILoggerFactory loggerFactory, IMetricsRoot metricsRoot)
         {
             Guard.Argument(container, nameof(container)).NotNull();
@@ -57,7 +58,7 @@ namespace Sportradar.MTS.SDK.API.Internal
 
             if (loggerFactory != null)
             {
-                var _ = new SdkLoggerFactory(loggerFactory);
+                SdkLoggerFactory.SetLoggerFactory(loggerFactory);
             }
             _log = SdkLoggerFactory.GetLogger(typeof(SdkUnityBootstrapper));
 
@@ -78,6 +79,8 @@ namespace Sportradar.MTS.SDK.API.Internal
             {
                 _metricsRoot = metricsRoot;
             }
+            SdkMetricsFactory.SetMetricsFactory(_metricsRoot);
+
             container.RegisterInstance(_metricsRoot, new ContainerControlledLifetimeManager());
             
             RegisterBaseClasses(container, userConfig);

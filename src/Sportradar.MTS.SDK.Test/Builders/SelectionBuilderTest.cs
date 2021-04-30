@@ -170,7 +170,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
         }
 
         [TestMethod]
-        [ExpectedException(typeof(KeyNotFoundException))]
+        [ExpectedException(typeof(ArgumentException))]
         public void SelectionBuilderGetMarketDescriptionForMarket215WithNoServerTest()
         {
             var properties = new Dictionary<string, object> { { "HomeScore", "1" }, { "AwayScore", "1" } };
