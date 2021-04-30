@@ -8,8 +8,13 @@ using Dawn;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Xml;
 using System.Xml.Serialization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Sportradar.MTS.SDK.API.Internal.RabbitMq;
+using Sportradar.MTS.SDK.Common;
 using Sportradar.MTS.SDK.Common.Exceptions;
 using Sportradar.MTS.SDK.Common.Internal;
 using Sportradar.MTS.SDK.Entities.Internal.REST;
@@ -23,6 +28,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
     /// <typeparam name="T">Specifies the type that can be deserialized</typeparam>
     internal class Deserializer<T> : IDeserializer<T> where T : class
     {
+        private static readonly ILogger Logger = SdkLoggerFactory.GetLogger(typeof(Deserializer<T>));
         /// <summary>
         /// A list of <see cref="Type"/> specifying base types which are supported by the deserializer. All subclasses
         /// of the specified types can be deserialized by the deserializer
@@ -53,18 +59,18 @@ namespace Sportradar.MTS.SDK.Entities.Internal
                     var ignoreNamespaceAttribute = feedMessagesType.GetCustomAttribute<OverrideXmlNamespaceAttribute>(false);
 
                     var rootElementName = xmlRootAttribute == null || string.IsNullOrWhiteSpace(xmlRootAttribute.ElementName)
-                        ? ignoreNamespaceAttribute == null
-                            ? null
-                            : ignoreNamespaceAttribute.RootElementName
+                        ? ignoreNamespaceAttribute?.RootElementName
                         : xmlRootAttribute.ElementName;
 
                     if (string.IsNullOrWhiteSpace(rootElementName))
                     {
-                        throw new InvalidOperationException($"Type {feedMessagesType.FullName} cannot be deserialized with {typeof(Deserializer<>).FullName} because the name of RootXmlElement is not specified");
+                        Logger.LogError($"Type {feedMessagesType.FullName} cannot be deserialized with {typeof(Deserializer<>).FullName} because the name of RootXmlElement is not specified");
+                        continue;
                     }
                     if (serializers.ContainsKey(rootElementName))
                     {
-                        throw new InvalidOperationException($"Deserializer associated with name {rootElementName} already exists");
+                        Logger.LogWarning($"Deserializer associated with name {rootElementName} already exists");
+                        continue;
                     }
 
                     var ignoreNamespace = ignoreNamespaceAttribute?.IgnoreNamespace ?? false;

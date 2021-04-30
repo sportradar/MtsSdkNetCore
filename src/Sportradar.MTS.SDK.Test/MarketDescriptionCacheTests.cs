@@ -56,7 +56,6 @@ namespace Sportradar.MTS.SDK.Test
 
             _marketDescriptionCache = new MarketDescriptionCache(new MemoryCache("InvariantMarketDescriptionCache"),
                 _dataProvider,
-                _cultures,
                 configInternal.AccessToken,
                 TimeSpan.FromHours(4),
                 new CacheItemPolicy {SlidingExpiration = TimeSpan.FromDays(1)});

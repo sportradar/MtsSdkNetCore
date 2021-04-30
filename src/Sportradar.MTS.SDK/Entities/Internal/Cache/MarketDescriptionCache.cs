@@ -54,12 +54,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
         private readonly IDataProvider<IEnumerable<MarketDescriptionDTO>> _dataProvider;
 
         /// <summary>
-        /// A <see cref="IReadOnlyCollection{CultureInfo}"/> specifying the languages for which the data should be pre-fetched
-        /// </summary>
-        // ReSharper disable once NotAccessedField.Local
-        private readonly IReadOnlyCollection<CultureInfo> _prefetchLanguages;
-
-        /// <summary>
         /// A <see cref="ISet{CultureInfo}"/> used to store languages for which the data was already fetched (at least once)
         /// </summary>
         private readonly ISet<CultureInfo> _fetchedLanguages = new HashSet<CultureInfo>();
@@ -83,14 +77,12 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
         /// </summary>
         /// <param name="cache">A <see cref="ObjectCache"/> used to store market descriptors</param>
         /// <param name="dataProvider">A <see cref="IDataProvider{T}"/> used to fetch market descriptors</param>
-        /// <param name="prefetchLanguages">A <see cref="IReadOnlyCollection{CultureInfo}"/> specifying the languages for which the data should be pre-fetched</param>
         /// <param name="accessToken">The <see cref="ISdkConfigurationSection.AccessToken"/> used to access UF REST API</param>
         /// <param name="fetchInterval">The fetch interval</param>
         /// <param name="cacheItemPolicy">The cache item policy</param>
         /// <param name="metrics">A <see cref="IMetricsRoot"/> used to record sdk metrics</param>
         public MarketDescriptionCache(ObjectCache cache,
                                       IDataProvider<IEnumerable<MarketDescriptionDTO>> dataProvider,
-                                      IEnumerable<CultureInfo> prefetchLanguages,
                                       string accessToken,
                                       TimeSpan fetchInterval,
                                       CacheItemPolicy cacheItemPolicy,
@@ -98,8 +90,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
         {
             Guard.Argument(cache, nameof(cache)).NotNull();
             Guard.Argument(dataProvider, nameof(dataProvider)).NotNull();
-            var cultureInfos = prefetchLanguages?.ToList();
-            Guard.Argument(cultureInfos, nameof(cultureInfos)).NotNull().NotEmpty();
             Guard.Argument(fetchInterval, nameof(fetchInterval)).Require(fetchInterval.TotalSeconds > 0);
             
             _fetchInterval = fetchInterval;
@@ -107,7 +97,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
             TimeOfLastFetch = DateTime.MinValue;
             Cache = cache;
             _dataProvider = dataProvider;
-            _prefetchLanguages = new ReadOnlyCollection<CultureInfo>(cultureInfos ?? throw new InvalidOperationException());
 
             _tokenProvided = !string.IsNullOrEmpty(accessToken);
             var isProvided = _tokenProvided ? string.Empty : " not";
@@ -277,8 +266,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
             }
             catch (Exception ex)
             {
-                var disposedException = ex as ObjectDisposedException;
-                if (disposedException != null)
+                if (ex is ObjectDisposedException disposedException)
                 {
                     CacheLog.LogWarning($"An error occurred while fetching market descriptions because the object graph is being disposed. Object causing the exception: {disposedException.ObjectName}.");
                 }

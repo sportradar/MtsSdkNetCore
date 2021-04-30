@@ -407,7 +407,6 @@ namespace Sportradar.MTS.SDK.API.Internal
                 new InjectionConstructor(
                     new ResolvedParameter<MemoryCache>("InvariantMarketDescriptionCache_Cache"),
                     new ResolvedParameter<IDataProvider<IEnumerable<MarketDescriptionDTO>>>(),
-                    new List<CultureInfo> { DefaultCulture },
                     config.AccessToken ?? string.Empty,
                     TimeSpan.FromHours(4),
                     new CacheItemPolicy { SlidingExpiration = TimeSpan.FromDays(1) },
