@@ -244,12 +244,9 @@ namespace Sportradar.MTS.SDK.API.Internal.Senders
                 return _rabbitMqChannelSettings.MaxPublishQueueTimeoutInMs;
             }
 
-            if (ticket is ITicket t)
+            if (ticket is ITicket t && t.Selections.Any(a => a.Id.StartsWith("lcoo")))
             {
-                if (t.Selections.Any(a => a.Id.StartsWith("lcoo")))
-                {
-                    return _rabbitMqChannelSettings.PublishQueueTimeoutInMs2;
-                }
+                return _rabbitMqChannelSettings.PublishQueueTimeoutInMs2;
             }
             return _rabbitMqChannelSettings.PublishQueueTimeoutInMs1;
         }

@@ -225,46 +225,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
             Guard.Argument(password, nameof(password)).NotNull().NotEmpty();
             Guard.Argument(host, nameof(host)).NotNull().NotEmpty();
 
-            if (ticketResponseTimeoutLive < SdkInfo.TicketResponseTimeoutLiveMin)
-            {
-                throw new ArgumentException($"TicketResponseTimeoutLive must be more than {SdkInfo.TicketResponseTimeoutLiveMin}ms");
-            }
-            if (ticketResponseTimeoutLive > SdkInfo.TicketResponseTimeoutLiveMax)
-            {
-                throw new ArgumentException($"TicketResponseTimeoutLive must be less than {SdkInfo.TicketResponseTimeoutLiveMax}ms");
-            }
-            if (ticketResponseTimeoutPrematch < SdkInfo.TicketResponseTimeoutPrematchMin)
-            {
-                throw new ArgumentException($"TicketResponseTimeoutPrematch must be more than {SdkInfo.TicketResponseTimeoutPrematchMin}ms");
-            }
-            if (ticketResponseTimeoutPrematch > SdkInfo.TicketResponseTimeoutPrematchMax)
-            {
-                throw new ArgumentException($"TicketResponseTimeoutPrematch must be less than {SdkInfo.TicketResponseTimeoutPrematchMax}ms");
-            }
-            if (ticketCancellationResponseTimeout < SdkInfo.TicketCancellationResponseTimeoutMin)
-            {
-                throw new ArgumentException($"TicketCancellationResponseTimeout must be more than {SdkInfo.TicketCancellationResponseTimeoutMin}ms");
-            }
-            if (ticketCancellationResponseTimeout > SdkInfo.TicketCancellationResponseTimeoutMax)
-            {
-                throw new ArgumentException($"TicketCancellationResponseTimeout must be less than {SdkInfo.TicketCancellationResponseTimeoutMax}ms");
-            }
-            if (ticketCashoutResponseTimeout < SdkInfo.TicketCashoutResponseTimeoutMin)
-            {
-                throw new ArgumentException($"TicketCashoutResponseTimeout must be more than {SdkInfo.TicketCashoutResponseTimeoutMin}ms");
-            }
-            if (ticketCashoutResponseTimeout > SdkInfo.TicketCashoutResponseTimeoutMax)
-            {
-                throw new ArgumentException($"TicketCashoutResponseTimeout must be less than {SdkInfo.TicketCashoutResponseTimeoutMax}ms");
-            }
-            if (ticketNonSrSettleResponseTimeout < SdkInfo.TicketNonSrResponseTimeoutMin)
-            {
-                throw new ArgumentException($"TicketNonSrResponseTimeout must be more than {SdkInfo.TicketNonSrResponseTimeoutMin}ms");
-            }
-            if (ticketNonSrSettleResponseTimeout > SdkInfo.TicketNonSrResponseTimeoutMax)
-            {
-                throw new ArgumentException($"TicketNonSrResponseTimeout must be less than {SdkInfo.TicketNonSrResponseTimeoutMax}ms");
-            }
+            CheckParameters(ticketResponseTimeoutLive, ticketResponseTimeoutPrematch, ticketCancellationResponseTimeout, ticketCashoutResponseTimeout, ticketNonSrSettleResponseTimeout);
 
             Username = username;
             Password = password;
@@ -327,6 +288,54 @@ namespace Sportradar.MTS.SDK.Entities.Internal
             TicketNonSrSettleResponseTimeout = ticketNonSrSettleResponseTimeout;
 
             ObjectInvariant();
+        }
+
+        private void CheckParameters(int ticketResponseTimeoutLive,
+                                     int ticketResponseTimeoutPrematch,
+                                     int ticketCancellationResponseTimeout,
+                                     int ticketCashoutResponseTimeout,
+                                     int ticketNonSrSettleResponseTimeout)
+        {
+            if (ticketResponseTimeoutLive < SdkInfo.TicketResponseTimeoutLiveMin)
+            {
+                throw new ArgumentException($"TicketResponseTimeoutLive must be more than {SdkInfo.TicketResponseTimeoutLiveMin}ms");
+            }
+            if (ticketResponseTimeoutLive > SdkInfo.TicketResponseTimeoutLiveMax)
+            {
+                throw new ArgumentException($"TicketResponseTimeoutLive must be less than {SdkInfo.TicketResponseTimeoutLiveMax}ms");
+            }
+            if (ticketResponseTimeoutPrematch < SdkInfo.TicketResponseTimeoutPrematchMin)
+            {
+                throw new ArgumentException($"TicketResponseTimeoutPrematch must be more than {SdkInfo.TicketResponseTimeoutPrematchMin}ms");
+            }
+            if (ticketResponseTimeoutPrematch > SdkInfo.TicketResponseTimeoutPrematchMax)
+            {
+                throw new ArgumentException($"TicketResponseTimeoutPrematch must be less than {SdkInfo.TicketResponseTimeoutPrematchMax}ms");
+            }
+            if (ticketCancellationResponseTimeout < SdkInfo.TicketCancellationResponseTimeoutMin)
+            {
+                throw new ArgumentException($"TicketCancellationResponseTimeout must be more than {SdkInfo.TicketCancellationResponseTimeoutMin}ms");
+            }
+            if (ticketCancellationResponseTimeout > SdkInfo.TicketCancellationResponseTimeoutMax)
+            {
+                throw new ArgumentException($"TicketCancellationResponseTimeout must be less than {SdkInfo.TicketCancellationResponseTimeoutMax}ms");
+            }
+            if (ticketCashoutResponseTimeout < SdkInfo.TicketCashoutResponseTimeoutMin)
+            {
+                throw new ArgumentException($"TicketCashoutResponseTimeout must be more than {SdkInfo.TicketCashoutResponseTimeoutMin}ms");
+            }
+            if (ticketCashoutResponseTimeout > SdkInfo.TicketCashoutResponseTimeoutMax)
+            {
+                throw new ArgumentException($"TicketCashoutResponseTimeout must be less than {SdkInfo.TicketCashoutResponseTimeoutMax}ms");
+            }
+            if (ticketNonSrSettleResponseTimeout < SdkInfo.TicketNonSrResponseTimeoutMin)
+            {
+                throw new ArgumentException($"TicketNonSrResponseTimeout must be more than {SdkInfo.TicketNonSrResponseTimeoutMin}ms");
+            }
+            if (ticketNonSrSettleResponseTimeout > SdkInfo.TicketNonSrResponseTimeoutMax)
+            {
+                throw new ArgumentException($"TicketNonSrResponseTimeout must be less than {SdkInfo.TicketNonSrResponseTimeoutMax}ms");
+            }
         }
 
         /// <summary>

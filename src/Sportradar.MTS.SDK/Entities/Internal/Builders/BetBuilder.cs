@@ -260,6 +260,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             return new Bet(_betBonus, _stake, _entireStake, _betId, _selectedSystems, _selections, _reofferRefId, _sum, _customBet, _calculationOdds);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Critical Code Smell", "S3776:Cognitive Complexity of methods should not be too high", Justification = "Approved")]
         private void ValidateData(bool all = false, bool betId = false, bool stake = false, bool selectedSystems = false, bool selections = false, bool reofferRefId = false, bool sumOfWins = false)
         {
             if ((all || betId) && !string.IsNullOrEmpty(_betId) && !TicketHelper.ValidateTicketId(_betId))

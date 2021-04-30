@@ -3,7 +3,6 @@
  */
 using System;
 using System.Collections.Generic;
-using Sportradar.MTS.SDK.API.Internal.Senders;
 using Sportradar.MTS.SDK.Entities.Enums;
 using Sportradar.MTS.SDK.Entities.Interfaces;
 using Sportradar.MTS.SDK.Entities.Internal;

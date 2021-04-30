@@ -178,22 +178,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                         //publish
                         var publishResult = PublishMsg(pqi.TicketId, (byte[]) pqi.Message, pqi.RoutingKey, pqi.CorrelationId, pqi.ReplyRoutingKey);
 
-                        if (publishResult.IsSuccess)
-                        {
-                            if (FeedLog.IsEnabled(LogLevel.Debug))
-                            {
-                                FeedLog.LogDebug($"Publish succeeded. CorrelationId={pqi.CorrelationId}, RoutingKey={pqi.RoutingKey}, ReplyRoutingKey={pqi.ReplyRoutingKey}, Added={pqi.Timestamp}.");
-                            }
-                            else
-                            {
-                                FeedLog.LogInformation($"Publish succeeded. CorrelationId={pqi.CorrelationId}, RoutingKey={pqi.RoutingKey}, Added={pqi.Timestamp}.");
-                            }
-                        }
-                        else
-                        {
-                            FeedLog.LogWarning($"Publish failed. CorrelationId={pqi.CorrelationId}, RoutingKey={pqi.RoutingKey}, Added={pqi.Timestamp}. Reason={publishResult.Message}");
-                            RaiseMessagePublishFailedEvent(pqi.Message, pqi.CorrelationId, pqi.RoutingKey, publishResult.Message);
-                        }
+                        HandlePublishResult(publishResult, pqi);
                     }
                 }
                 catch (Exception exception)
@@ -209,6 +194,26 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
             if (_useQueue)
             {
                 _queueTimer.FireOnce(TimeSpan.FromMilliseconds(200)); // recheck after X milliseconds
+            }
+        }
+
+        private void HandlePublishResult(IMqPublishResult publishResult, PublishQueueItem pqi)
+        {
+            if (publishResult.IsSuccess)
+            {
+                if (FeedLog.IsEnabled(LogLevel.Debug))
+                {
+                    FeedLog.LogDebug($"Publish succeeded. CorrelationId={pqi.CorrelationId}, RoutingKey={pqi.RoutingKey}, ReplyRoutingKey={pqi.ReplyRoutingKey}, Added={pqi.Timestamp}.");
+                }
+                else
+                {
+                    FeedLog.LogInformation($"Publish succeeded. CorrelationId={pqi.CorrelationId}, RoutingKey={pqi.RoutingKey}, Added={pqi.Timestamp}.");
+                }
+            }
+            else
+            {
+                FeedLog.LogWarning($"Publish failed. CorrelationId={pqi.CorrelationId}, RoutingKey={pqi.RoutingKey}, Added={pqi.Timestamp}. Reason={publishResult.Message}");
+                RaiseMessagePublishFailedEvent(pqi.Message, pqi.CorrelationId, pqi.RoutingKey, publishResult.Message);
             }
         }
 
@@ -352,18 +357,11 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                 try
                 {
                     var channelWrapper = _channelFactory.GetChannel(UniqueId);
-                    if (channelWrapper == null)
-                    {
-                        throw new OperationCanceledException("Missing publisher channel wrapper.");
-                    }
-                    if (channelWrapper.MarkedForDeletion)
-                    {
-                        throw new OperationCanceledException("Publisher channel marked for deletion.");
-                    }
-                    if (channelWrapper.Channel.IsOpen && channelWrapper.ChannelBasicProperties != null)
+                    if (CheckChannelWrapper(channelWrapper))
                     {
                         return;
                     }
+
                     channelWrapper.Channel.ModelShutdown += ChannelOnModelShutdown;
                     ExecutionLog.LogInformation($"Opening the publisher channel with channelNumber: {UniqueId} and exchangeName: {_mtsChannelSettings.ExchangeName}.");
 
@@ -373,21 +371,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                         MtsChannelSettings.TryDeclareExchange(channelWrapper.Channel, _mtsChannelSettings, _channelSettings.QueueIsDurable, ExecutionLog);
                     }
 
-                    var channelBasicProperties = channelWrapper.Channel.CreateBasicProperties();
-                    channelBasicProperties.ContentType = "application/json";
-                    channelBasicProperties.DeliveryMode = _channelSettings.UsePersistentDeliveryMode ? (byte)2 : (byte)1;
-
-                    //headerProperties like replyRoutingKey
-                    channelBasicProperties.Headers = new Dictionary<string, object>();
-                    if (_mtsChannelSettings.HeaderProperties != null && _mtsChannelSettings.HeaderProperties.Any())
-                    {
-                        foreach (var h in _mtsChannelSettings.HeaderProperties)
-                        {
-                            channelBasicProperties.Headers.Add(h.Key, h.Value);
-                        }
-                    }
-
-                    channelWrapper.ChannelBasicProperties = channelBasicProperties;
+                    channelWrapper.ChannelBasicProperties = CreateBasicProperties(channelWrapper.Channel);
 
                     Interlocked.CompareExchange(ref _isOpened, 1, 0);
                     return;
@@ -407,6 +391,48 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                     Thread.Sleep(sleepTime);
                 }
             }
+        }
+
+        /// <summary>
+        /// Checks the channel wrapper.
+        /// </summary>
+        /// <param name="channelWrapper">The channel wrapper.</param>
+        /// <returns><c>true</c> if should return, <c>false</c> otherwise.</returns>
+        private bool CheckChannelWrapper(ChannelWrapper channelWrapper)
+        {
+            if (channelWrapper == null)
+            {
+                throw new OperationCanceledException("Missing publisher channel wrapper.");
+            }
+            if (channelWrapper.MarkedForDeletion)
+            {
+                throw new OperationCanceledException("Publisher channel marked for deletion.");
+            }
+            if (channelWrapper.Channel.IsOpen && channelWrapper.ChannelBasicProperties != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private IBasicProperties CreateBasicProperties(IModel channel)
+        {
+            var channelBasicProperties = channel.CreateBasicProperties();
+            channelBasicProperties.ContentType = "application/json";
+            channelBasicProperties.DeliveryMode = _channelSettings.UsePersistentDeliveryMode ? (byte)2 : (byte)1;
+
+            //headerProperties like replyRoutingKey
+            channelBasicProperties.Headers = new Dictionary<string, object>();
+            if (_mtsChannelSettings.HeaderProperties != null && _mtsChannelSettings.HeaderProperties.Any())
+            {
+                foreach (var h in _mtsChannelSettings.HeaderProperties)
+                {
+                    channelBasicProperties.Headers.Add(h.Key, h.Value);
+                }
+            }
+
+            return channelBasicProperties;
         }
 
         private void ChannelOnModelShutdown(object sender, ShutdownEventArgs e)

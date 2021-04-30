@@ -322,27 +322,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             }
             catch (Exception ex)
             {
-                var baseEx = ex.GetBaseException();
-                if (baseEx.InnerException != null)
-                {
-                    baseEx = baseEx.InnerException;
-                    if (baseEx.InnerException != null)
-                    {
-                        baseEx = baseEx.InnerException;
-                    }
-                }
-                if (baseEx is CacheItemNotFoundException)
-                {
-                    ExecutionLog.LogWarning($"No market description found for marketId={marketId}, sportId={sportId}, productId={productId}. Ex: {baseEx.Message}");
-                }
-                else if (baseEx is CommunicationException)
-                {
-                    ExecutionLog.LogWarning($"Exception during fetching market descriptions. Ex: {baseEx.Message}");
-                }
-                else
-                {
-                    ExecutionLog.LogWarning("Exception during fetching market descriptions.", baseEx);
-                }
+                HandleProviderException(ex, productId, sportId, marketId);
             }
 
             if (marketDescription == null)
@@ -354,21 +334,62 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             //handle market 215
             if (marketId == 215)
             {
-                var newSpecifiers = specifiers == null
-                    ? new Dictionary<string, string>()
-                    : specifiers.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-
-                if (sportEventStatus == null)
-                {
-                    throw new ArgumentException("SportEventStatus is missing.");
-                }
-
-                newSpecifiers.Add("$server", sportEventStatus["CurrentServer"].ToString());
-
-                return new ReadOnlyDictionary<string, string>(newSpecifiers);
+                return HandleMarket215(specifiers, sportEventStatus);
             }
 
             //handle $score sov_template
+            return HandleScoreSovTemplate(marketDescription, productId, sportId, specifiers, sportEventStatus);
+        }
+
+        private void HandleProviderException(Exception ex, int productId, string sportId, int marketId)
+        {
+            var baseEx = ex.GetBaseException();
+            if (baseEx.InnerException != null)
+            {
+                baseEx = baseEx.InnerException;
+                if (baseEx.InnerException != null)
+                {
+                    baseEx = baseEx.InnerException;
+                }
+            }
+            if (baseEx is CacheItemNotFoundException)
+            {
+                ExecutionLog.LogWarning($"No market description found for marketId={marketId}, sportId={sportId}, productId={productId}. Ex: {baseEx.Message}");
+            }
+            else if (baseEx is CommunicationException)
+            {
+                ExecutionLog.LogWarning($"Exception during fetching market descriptions. Ex: {baseEx.Message}");
+            }
+            else
+            {
+                ExecutionLog.LogWarning("Exception during fetching market descriptions.", baseEx);
+            }
+        }
+
+        private IReadOnlyDictionary<string, string> HandleMarket215(IReadOnlyDictionary<string, string> specifiers, IReadOnlyDictionary<string, object> sportEventStatus)
+        {
+            var newSpecifiers = specifiers == null
+                ? new Dictionary<string, string>()
+                : specifiers.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+
+            if (sportEventStatus == null)
+            {
+                throw new ArgumentException("SportEventStatus is missing.");
+            }
+
+            if (!sportEventStatus.ContainsKey("CurrentServer"))
+            {
+                throw new ArgumentException("SportEventStatus is missing CurrentServer.");
+            }
+
+            newSpecifiers.Add("$server", sportEventStatus["CurrentServer"].ToString());
+
+            return new ReadOnlyDictionary<string, string>(newSpecifiers);
+        }
+
+        private IReadOnlyDictionary<string, string> HandleScoreSovTemplate(MarketDescriptionCacheItem marketDescription, int productId, string sportId, IReadOnlyDictionary<string, string> specifiers,
+            IReadOnlyDictionary<string, object> sportEventStatus)
+        {
             if (marketDescription.Mappings == null)
             {
                 ExecutionLog.LogInformation($"Market description {marketDescription.Id} has no mapping.");
@@ -381,32 +402,34 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
                 return specifiers;
             }
 
-            if (!string.IsNullOrEmpty(marketMapping.SovTemplate) && marketMapping.SovTemplate.Contains("{$score}"))
+            if (string.IsNullOrEmpty(marketMapping.SovTemplate) || !marketMapping.SovTemplate.Contains("{$score}"))
             {
-                if (sportEventStatus == null)
-                {
-                    throw new ArgumentException("SportEventStatus is missing.");
-                }
-                if (!sportEventStatus.ContainsKey("HomeScore"))
-                {
-                    throw new ArgumentException("SportEventStatus is missing HomeScore property.");
-                }
-                if (!sportEventStatus.ContainsKey("AwayScore"))
-                {
-                    throw new ArgumentException("SportEventStatus is missing AwayScore property.");
-                }
-
-                var newSpecifiers = specifiers == null
-                        ? new Dictionary<string, string>()
-                        : specifiers.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-
-                Debug.Assert(newSpecifiers != null, "newSpecifiers != null");
-                newSpecifiers.Add("$score", $"{sportEventStatus["HomeScore"]}:{sportEventStatus["AwayScore"]}");
-
-                return new ReadOnlyDictionary<string, string>(newSpecifiers);
+                return specifiers;
             }
 
-            return specifiers;
+            if (sportEventStatus == null)
+            {
+                throw new ArgumentException("SportEventStatus is missing.");
+            }
+
+            if (!sportEventStatus.ContainsKey("HomeScore"))
+            {
+                throw new ArgumentException("SportEventStatus is missing HomeScore property.");
+            }
+
+            if (!sportEventStatus.ContainsKey("AwayScore"))
+            {
+                throw new ArgumentException("SportEventStatus is missing AwayScore property.");
+            }
+
+            var newSpecifiers = specifiers == null
+                ? new Dictionary<string, string>()
+                : specifiers.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+
+            Debug.Assert(newSpecifiers != null, "newSpecifiers != null");
+            newSpecifiers.Add("$score", $"{sportEventStatus["HomeScore"]}:{sportEventStatus["AwayScore"]}");
+
+            return new ReadOnlyDictionary<string, string>(newSpecifiers);
         }
     }
 }

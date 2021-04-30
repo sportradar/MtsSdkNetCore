@@ -72,14 +72,7 @@ namespace Sportradar.MTS.SDK.Common.Internal.Log
                 var exceptionMsg = "EXCEPTION: ";
                 if (task.Exception != null)
                 {
-                    if (task.Exception.InnerExceptions != null)
-                    {
-                        exceptionMsg += task.Exception.InnerExceptions[0].ToString();
-                    }
-                    else
-                    {
-                        exceptionMsg += task.Exception.ToString();
-                    }
+                    exceptionMsg += task.Exception.InnerExceptions[0].ToString();
                 }
                 FinishExecution(logEnabled: perm.LogEnabled,
                                 methodInfo: perm.MethodInfo,
@@ -158,31 +151,37 @@ namespace Sportradar.MTS.SDK.Common.Internal.Log
 
             if (!logEnabled || _canOverrideLoggerType)
             {
-                var attributes = methodInfo.GetCustomAttributes(true).ToList();
-                if (methodInfo.DeclaringType != null)
-                {
-                    attributes.AddRange(methodInfo.DeclaringType.GetCustomAttributes(true));
-                }
-
-                if (attributes.Count > 0)
-                {
-                    foreach (var t in attributes)
-                    {
-                        if (!(t is LogAttribute attribute))
-                        {
-                            continue;
-                        }
-                        logEnabled = true;
-                        if (_canOverrideLoggerType)
-                        {
-                            logger = SdkLoggerFactory.GetLogger(methodInfo.ReflectedType, SdkLoggerFactory.SdkLogRepositoryName, attribute.LoggerType);
-                        }
-                        break;
-                    }
-                }
+                logEnabled = ChangeLoggerBasedOnAttributes(methodInfo, ref logger, logEnabled);
             }
 
             ExecuteMethod(invocation, logger, logEnabled);
+        }
+
+        private bool ChangeLoggerBasedOnAttributes(MethodInfo methodInfo, ref ILogger logger, bool logEnabled)
+        {
+            var attributes = methodInfo.GetCustomAttributes(true).ToList();
+            if (methodInfo.DeclaringType != null)
+            {
+                attributes.AddRange(methodInfo.DeclaringType.GetCustomAttributes(true));
+            }
+
+            if (attributes.Count > 0)
+            {
+                foreach (var t in attributes)
+                {
+                    if (!(t is LogAttribute attribute))
+                    {
+                        continue;
+                    }
+                    logEnabled = true;
+                    if (_canOverrideLoggerType)
+                    {
+                        logger = SdkLoggerFactory.GetLogger(methodInfo.ReflectedType, SdkLoggerFactory.SdkLogRepositoryName, attribute.LoggerType);
+                    }
+                    break;
+                }
+            }
+            return logEnabled;
         }
 
         private void ExecuteMethod(IInvocation invocation, ILogger logger, bool logEnabled)
