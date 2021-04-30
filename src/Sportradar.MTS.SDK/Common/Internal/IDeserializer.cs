@@ -9,6 +9,7 @@ namespace Sportradar.MTS.SDK.Common.Internal
     /// Defines a contract implemented by classes used to deserialize feed messages to
     /// <typeparam name="T">Defines the base that can be deserialized using the <see cref="IDeserializer{T}"/></typeparam>
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S3246:Generic type parameters should be co/contravariant when possible", Justification = "Cant be in this case")]
     internal interface IDeserializer<T> where T : class
     {
         /// <summary>

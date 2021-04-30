@@ -5,6 +5,11 @@ using Sportradar.MTS.SDK.Entities.Interfaces.CustomBet;
 
 namespace Sportradar.MTS.SDK.Entities.Builders
 {
+    /// <summary>
+    /// Defines a contract for classes building a <see cref="ICustomBetSelectionBuilder" />
+    /// Implements the <see cref="ISdkTicketBuilder" />
+    /// </summary>
+    /// <seealso cref="ISdkTicketBuilder" />
     public interface ICustomBetSelectionBuilder
     {
         /// <summary>

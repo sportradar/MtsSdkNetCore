@@ -31,13 +31,9 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
 
         public override bool Equals(object obj)
         {
-            var sel = obj as Anonymous2;
-            if (sel != null)
+            if (obj is Anonymous2 sel && string.Equals(sel.Id, Id) && sel.EventId == EventId && sel.Odds == Odds)
             {
-                if (string.Equals(sel.Id, Id) && sel.EventId == EventId && sel.Odds == Odds)
-                {
-                    return true;
-                }
+                return true;
             }
 
             return false;

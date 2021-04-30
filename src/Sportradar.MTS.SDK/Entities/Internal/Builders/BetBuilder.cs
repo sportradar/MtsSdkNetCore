@@ -260,65 +260,43 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             return new Bet(_betBonus, _stake, _entireStake, _betId, _selectedSystems, _selections, _reofferRefId, _sum, _customBet, _calculationOdds);
         }
 
-
         private void ValidateData(bool all = false, bool betId = false, bool stake = false, bool selectedSystems = false, bool selections = false, bool reofferRefId = false, bool sumOfWins = false)
         {
-            if (all || betId)
+            if ((all || betId) && !string.IsNullOrEmpty(_betId) && !TicketHelper.ValidateTicketId(_betId))
             {
-                if (!string.IsNullOrEmpty(_betId) && !TicketHelper.ValidateTicketId(_betId))
-                {
-                    throw new ArgumentException("BetId not valid.");
-                }
+                throw new ArgumentException("BetId not valid.");
             }
-            if (all || stake)
+            if ((all || stake) && _stake == null)
             {
-                if (_stake == null)
-                {
-                    throw new ArgumentException("Stake not valid.");
-                }
+                throw new ArgumentException("Stake not valid.");
             }
-            if (all || selectedSystems)
+            if ((all || selectedSystems) && !(_selectedSystems == null
+                                              || (_selectedSystems.Any()
+                                                  //&& _selectedSystems.Count() < 64
+                                                  && _selectedSystems.Count() == _selectedSystems.Distinct().Count()
+                                                  && _selectedSystems.All(a => a > 0))))
             {
-                if (!(_selectedSystems == null
-                    || (_selectedSystems.Any()
-                        //&& _selectedSystems.Count() < 64
-                        && _selectedSystems.Count() == _selectedSystems.Distinct().Count()
-                        && _selectedSystems.All(a => a > 0))))
-                {
-                    throw new ArgumentException("SelectedSystems not valid.");
-                }
+                throw new ArgumentException("SelectedSystems not valid.");
             }
-            if (all || selections)
+            if ((all || selections) && !(_selections != null
+                                         && _selections.Any()
+                                         //&& _selections.Count < 64
+                                         && _selections.Count == _selections.Distinct().Count()))
             {
-                if (!(_selections != null
-                      && _selections.Any()
-                      //&& _selections.Count < 64
-                      && _selections.Count == _selections.Distinct().Count()))
-                {
-                    throw new ArgumentException("Selections not valid.");
-                }
+                throw new ArgumentException("Selections not valid.");
             }
-            if (all || reofferRefId)
+            if ((all || reofferRefId) && !(string.IsNullOrEmpty(_reofferRefId) || _reofferRefId.Length <= 50))
             {
-                if (!(string.IsNullOrEmpty(_reofferRefId) || _reofferRefId.Length <= 50))
-                {
-                    throw new ArgumentException("ReofferRefId not valid.");
-                }
+                throw new ArgumentException("ReofferRefId not valid.");
             }
-            if (all || sumOfWins)
+            if ((all || sumOfWins) && _sum < 0)
             {
-                if (_sum < 0)
-                {
-                    throw new ArgumentException("SumOfWins not valid.");
-                }
+                throw new ArgumentException("SumOfWins not valid.");
             }
 
-            if (all)
+            if (all && _selectedSystems != null && (_selectedSystems.Count() > _selections.Count || _selectedSystems.Any(a => a > _selections.Count)))
             {
-                if (_selectedSystems != null && (_selectedSystems.Count() > _selections.Count || _selectedSystems.Any(a => a > _selections.Count)))
-                {
-                    throw new ArgumentException("SelectionSystem are not valid.");
-                }
+                throw new ArgumentException("SelectionSystem are not valid.");
             }
         }
     }

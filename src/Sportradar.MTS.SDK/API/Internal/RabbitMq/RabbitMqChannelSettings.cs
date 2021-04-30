@@ -20,6 +20,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                                                      : PublishQueueTimeoutInMs2;
         public bool ExclusiveConsumer { get; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
         public RabbitMqChannelSettings(bool queueDurable = false,
                                        bool exclusiveConsumer = true,
                                        bool enableUserAqs = false,

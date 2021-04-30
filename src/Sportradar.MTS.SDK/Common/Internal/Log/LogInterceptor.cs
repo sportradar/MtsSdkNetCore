@@ -44,7 +44,7 @@ namespace Sportradar.MTS.SDK.Common.Internal.Log
         private readonly IDictionary<int, LogProxyPerm> _proxyPerms;
 
         /// <summary>
-        /// Initializes new instance of the <see cref="LogProxy{T}"/>
+        /// Initializes new instance of the <see cref="LogInterceptor"/>
         /// </summary>
         /// <param name="loggerType">A <see cref="LoggerType"/> to be used within the proxy</param>
         /// <param name="canOverrideLoggerType">A value indicating if the <see cref="LoggerType"/> can be overridden with <see cref="LogAttribute"/> on a method or class</param>
@@ -60,8 +60,7 @@ namespace Sportradar.MTS.SDK.Common.Internal.Log
 
         private void TaskExecutionFinished(Task task)
         {
-            LogProxyPerm perm;
-            if (!_proxyPerms.TryGetValue(task.Id, out perm))
+            if (!_proxyPerms.TryGetValue(task.Id, out var perm))
             {
                 Debug.WriteLine($"No perm for task. Id: {task.Id}");
                 return;
@@ -120,8 +119,7 @@ namespace Sportradar.MTS.SDK.Common.Internal.Log
 
             if (logEnabled && !string.Equals(methodInfo.ReturnType.FullName, "System.Void"))
             {
-                var responseMessage = result as HttpResponseMessage;
-                if (responseMessage != null)
+                if (result is HttpResponseMessage responseMessage)
                 {
                     logger.LogDebug($"{taskId}{methodInfo.Name} result: {resultTypeName}={WriteHttpResponseMessage(responseMessage)}");
                 }
@@ -170,20 +168,26 @@ namespace Sportradar.MTS.SDK.Common.Internal.Log
                 {
                     foreach (var t in attributes)
                     {
-                        if (!(t is LogAttribute))
+                        if (!(t is LogAttribute attribute))
                         {
                             continue;
                         }
                         logEnabled = true;
                         if (_canOverrideLoggerType)
                         {
-                            logger = SdkLoggerFactory.GetLogger(methodInfo.ReflectedType, SdkLoggerFactory.SdkLogRepositoryName, ((LogAttribute)t).LoggerType);
+                            logger = SdkLoggerFactory.GetLogger(methodInfo.ReflectedType, SdkLoggerFactory.SdkLogRepositoryName, attribute.LoggerType);
                         }
                         break;
                     }
                 }
             }
 
+            ExecuteMethod(invocation, logger, logEnabled);
+        }
+
+        private void ExecuteMethod(IInvocation invocation, ILogger logger, bool logEnabled)
+        {
+            var methodInfo = invocation.Method;
             var watch = new Stopwatch();
             watch.Start();
 
@@ -244,5 +248,4 @@ namespace Sportradar.MTS.SDK.Common.Internal.Log
             }
         }
     }
-
 }

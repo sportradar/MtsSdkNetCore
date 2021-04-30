@@ -100,8 +100,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
             Guard.Argument(dataProvider, nameof(dataProvider)).NotNull();
             var cultureInfos = prefetchLanguages?.ToList();
             Guard.Argument(cultureInfos, nameof(cultureInfos)).NotNull().NotEmpty();
-            Guard.Argument(fetchInterval, nameof(fetchInterval)).Require(fetchInterval != null);
-
+            Guard.Argument(fetchInterval, nameof(fetchInterval)).Require(fetchInterval.TotalSeconds > 0);
+            
             _fetchInterval = fetchInterval;
             _cacheItemPolicy = cacheItemPolicy;
             TimeOfLastFetch = DateTime.MinValue;
@@ -140,14 +140,10 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
             var requiredTranslationsList = requiredTranslations?.ToList();
             Guard.Argument(requiredTranslationsList, nameof(requiredTranslationsList)).NotNull().NotEmpty();
 
-            if (item == null)
+            if (item == null && requiredTranslationsList != null)
             {
-                //return requiredTranslations;
                 //we get only those which was not yet fetched
-                if (requiredTranslationsList != null)
-                {
-                    return requiredTranslationsList.Where(c => !_fetchedLanguages.Contains(c));
-                }
+                return requiredTranslationsList.Where(c => !_fetchedLanguages.Contains(c));
             }
 
             if (requiredTranslationsList != null)
@@ -159,7 +155,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
                     : null;
             }
 
-            return null;
+            return new List<CultureInfo>();
         }
 
         /// <summary>
@@ -173,38 +169,38 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
             Guard.Argument(culture, nameof(culture)).NotNull();
             Guard.Argument(descriptionList, nameof(descriptionList)).NotNull().NotEmpty();
 
-            if (descriptionList != null)
+            if (descriptionList == null)
             {
-                foreach (var marketDescription in descriptionList)
-                {
-                    var cachedItem = Cache.GetCacheItem(marketDescription.Id.ToString());
-                    if (cachedItem == null)
-                    {
-                        try
-                        {
-                            cachedItem = new CacheItem(marketDescription.Id.ToString(),
-                                MarketDescriptionCacheItem.Build(marketDescription, /*_mappingValidatorFactory,*/
-                                    culture));
-                            Cache.Add(cachedItem, _cacheItemPolicy);
-                        }
-                        catch (Exception e)
-                        {
-                            if (!(e is InvalidOperationException))
-                            {
-                                throw;
-                            }
+                return;
+            }
 
-                            CacheLog.LogWarning("Mapping validation for MarketDescriptionCacheItem failed.", e);
-                        }
-                    }
-                    else
+            foreach (var marketDescription in descriptionList)
+            {
+                var cachedItem = Cache.GetCacheItem(marketDescription.Id.ToString());
+                if (cachedItem == null)
+                {
+                    try
                     {
-                        ((MarketDescriptionCacheItem) cachedItem.Value).Merge(marketDescription, culture);
+                        cachedItem = new CacheItem(marketDescription.Id.ToString(), MarketDescriptionCacheItem.Build(marketDescription, culture));
+                        Cache.Add(cachedItem, _cacheItemPolicy);
+                    }
+                    catch (Exception e)
+                    {
+                        if (!(e is InvalidOperationException))
+                        {
+                            throw;
+                        }
+
+                        CacheLog.LogWarning("Mapping validation for MarketDescriptionCacheItem failed.", e);
                     }
                 }
-
-                _fetchedLanguages.Add(culture);
+                else
+                {
+                    ((MarketDescriptionCacheItem) cachedItem.Value).Merge(marketDescription, culture);
+                }
             }
+
+            _fetchedLanguages.Add(culture);
         }
 
         /// <summary>
@@ -383,7 +379,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
         /// </summary>
         public void RegisterHealthCheck()
         {
-            //HealthChecks.RegisterHealthCheck("MarketDescriptorCache", new Func<HealthCheckResult>(StartHealthCheck));
+            //unused
         }
 
         /// <summary>

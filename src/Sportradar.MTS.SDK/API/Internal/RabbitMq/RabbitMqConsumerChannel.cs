@@ -218,8 +218,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
             }
 
             _routingKeys = routingKeys;
-
-            //Interlocked.CompareExchange(ref _isOpened, 1, 0);
+            
             Interlocked.CompareExchange(ref _shouldBeOpened, 1, 0);
             CreateAndOpenConsumerChannel();
             _healthTimer.FireOnce(new TimeSpan(0, 0, _timerInterval));
@@ -349,23 +348,23 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
             if (Interlocked.CompareExchange(ref _isOpened, 0, 1) != 1)
             {
                 ExecutionLog.LogError($"Cannot close the consumer channel on channelNumber: {UniqueId}, because this channel is already closed.");
-                //throw new InvalidOperationException("The instance is already closed");
             }
             Interlocked.CompareExchange(ref _shouldBeOpened, 0, 1);
         }
 
         private void DisposeCurrentConsumer(ChannelWrapper channelWrapper)
         {
-            if (channelWrapper?.Consumer != null)
+            if (channelWrapper?.Consumer == null)
             {
-                ExecutionLog.LogInformation($"Closing the consumer channel with channelNumber: {UniqueId} and queueName: {_queueName}.");
-                channelWrapper.Consumer.Received -= OnDataReceived;
-                channelWrapper.Consumer.Registered -= OnRegistered;
-                channelWrapper.Consumer.Unregistered -= OnUnregistered;
-                channelWrapper.Consumer.Shutdown -= OnShutdown;
-                channelWrapper.Consumer.ConsumerCancelled -= OnConsumerCanceled;
-                channelWrapper.Consumer = null;
+                return;
             }
+            ExecutionLog.LogInformation($"Closing the consumer channel with channelNumber: {UniqueId} and queueName: {_queueName}.");
+            channelWrapper.Consumer.Received -= OnDataReceived;
+            channelWrapper.Consumer.Registered -= OnRegistered;
+            channelWrapper.Consumer.Unregistered -= OnUnregistered;
+            channelWrapper.Consumer.Shutdown -= OnShutdown;
+            channelWrapper.Consumer.ConsumerCancelled -= OnConsumerCanceled;
+            channelWrapper.Consumer = null;
         }
     }
 }

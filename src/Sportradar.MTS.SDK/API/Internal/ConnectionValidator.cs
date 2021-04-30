@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Sockets;
 using System.Text;
+using Sportradar.MTS.SDK.Common.Internal;
 using Sportradar.MTS.SDK.Entities;
 using Sportradar.MTS.SDK.Entities.Internal;
 
@@ -40,26 +41,23 @@ namespace Sportradar.MTS.SDK.API.Internal
         /// <returns>A <see cref="ConnectionValidationResult"/> enum member specifying the result of validation</returns>
         public ConnectionValidationResult ValidateConnection()
         {
-            using (var client = new TcpClient())
+            using var client = new TcpClient();
+            try
             {
-                try
-                {
-                    var host = _config.Host.Replace(_config.UseSsl ? "http://" : "https://", string.Empty);
-                    //var port = _config.UseSsl ? 80 : 443;
-                    client.Connect(host, _config.Port);
-                }
-                catch (SocketException ex)
-                {
-                    if (ex.ErrorCode == 10060 || ex.ErrorCode == 10061)
-                    {
-                        return ConnectionValidationResult.ConnectionRefused;
-                    }
-                    return ex.ErrorCode >= 11001 && ex.ErrorCode <= 11004
-                        ? ConnectionValidationResult.NoInternetConnection
-                        : ConnectionValidationResult.Unknown;
-                }
-                return ConnectionValidationResult.Success;
+                var host = _config.Host.Replace(_config.UseSsl ? "http://" : "https://", string.Empty);
+                client.Connect(host, _config.Port);
             }
+            catch (SocketException ex)
+            {
+                if (ex.ErrorCode == 10060 || ex.ErrorCode == 10061)
+                {
+                    return ConnectionValidationResult.ConnectionRefused;
+                }
+                return ex.ErrorCode >= 11001 && ex.ErrorCode <= 11004
+                    ? ConnectionValidationResult.NoInternetConnection
+                    : ConnectionValidationResult.Unknown;
+            }
+            return ConnectionValidationResult.Success;
         }
 
         /// <summary>
@@ -73,20 +71,16 @@ namespace Sportradar.MTS.SDK.API.Internal
             try
             {
                 var client = new HttpClient();
-                var stream = client.GetStreamAsync(new Uri("http://ipecho.net/plain")).Result;
-                using (var reader = new StreamReader(stream, Encoding.UTF8))
-                {
-                    data = reader.ReadToEnd();
-                }
+                var stream = client.GetStreamAsync(new Uri(SdkInfo.PublicIpDomain)).Result;
+                using var reader = new StreamReader(stream, Encoding.UTF8);
+                data = reader.ReadToEnd();
             }
             catch (AggregateException)
             {
                 return null;
             }
 
-
-            IPAddress address;
-            return IPAddress.TryParse(data, out address)
+            return IPAddress.TryParse(data, out var address)
                 ? address
                 : null;
         }

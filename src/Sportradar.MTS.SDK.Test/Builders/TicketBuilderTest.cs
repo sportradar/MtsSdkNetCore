@@ -163,7 +163,7 @@ namespace Sportradar.MTS.SDK.Test.Builders
             var bet = ticket.Bets.First();
 
             Debug.Assert(bet != null, "bet != null");
-            Assert.AreEqual(bet.Selections.Count(), 5);
+            Assert.AreEqual(5, bet.Selections.Count());
 
             var selId = string.Empty;
             var eventId = "0";

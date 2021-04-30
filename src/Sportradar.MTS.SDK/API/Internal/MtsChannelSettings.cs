@@ -87,7 +87,6 @@ namespace Sportradar.MTS.SDK.API.Internal
 
         public static IMtsChannelSettings GetTicketAckChannelSettings(string rootExchangeName, string username, int nodeId, string environment)
         {
-            //var headers = new Dictionary<string, object> { { "routing-key", $"{username}-Confirm-node{nodeId}" } };
             return new MtsChannelSettings(queueName: null,
                                           exchangeName: $"{rootExchangeName}-Ack",
                                           exchangeType: ExchangeType.Topic,
@@ -122,7 +121,6 @@ namespace Sportradar.MTS.SDK.API.Internal
 
         public static IMtsChannelSettings GetTicketCancelAckChannelSettings(string rootExchangeName, string username, int nodeId, string environment)
         {
-            //var headers = new Dictionary<string, object> { { "routing-key", $"{username}-Reply-node{nodeId}" } };
             return new MtsChannelSettings(queueName: null,
                                           exchangeName: $"{rootExchangeName}-Ack",
                                           exchangeType: ExchangeType.Topic,
@@ -139,7 +137,6 @@ namespace Sportradar.MTS.SDK.API.Internal
 
         public static IMtsChannelSettings GetTicketReofferCancelChannelSettings(string rootExchangeName, string username, int nodeId, string environment)
         {
-            //var headers = new Dictionary<string, object> { { "routing-key", $"{username}-Reply-node{nodeId}" } };
             return new MtsChannelSettings(queueName: null,
                                           exchangeName: $"{rootExchangeName}-Control",
                                           exchangeType: ExchangeType.Topic,

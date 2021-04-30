@@ -19,12 +19,20 @@ namespace Sportradar.MTS.SDK.Common
 
         private static ILoggerFactory _factory;
 
-        //set by dependency injection
+        //set by dependency injection        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SdkLoggerFactory"/> class.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
         public SdkLoggerFactory(ILoggerFactory factory)
         {
             _factory = factory;
         }
 
+        /// <summary>
+        /// Gets the logger factory
+        /// </summary>
+        /// <value>The logger factory</value>
         public static ILoggerFactory LoggerFactory
         {
             get

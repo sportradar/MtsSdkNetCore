@@ -118,6 +118,8 @@ namespace Sportradar.MTS.SDK.Test.Builders
             tb.SetCancelPercent(1)
               .SetCancelPercent(1000000)
               .SetCancelPercent(10101);
+
+            Assert.IsNotNull(tb);
         }
 
         [TestMethod]
@@ -126,6 +128,8 @@ namespace Sportradar.MTS.SDK.Test.Builders
         {
             var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCancelBuilder();
             tb.AddBetCancel("", 1220);
+
+            Assert.IsNotNull(tb);
         }
 
         [TestMethod]
@@ -133,6 +137,8 @@ namespace Sportradar.MTS.SDK.Test.Builders
         {
             var tb = new BuilderFactoryHelper().BuilderFactory.CreateTicketCancelBuilder();
             tb.SetCancelPercent(0);
+
+            Assert.IsNotNull(tb);
         }
 
         [TestMethod]

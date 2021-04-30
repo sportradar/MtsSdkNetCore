@@ -4,6 +4,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
+using Sportradar.MTS.SDK.Common.Exceptions;
 
 namespace Sportradar.MTS.SDK.Entities.Internal.Cache
 {

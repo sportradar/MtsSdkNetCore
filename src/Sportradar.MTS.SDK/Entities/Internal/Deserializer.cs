@@ -100,38 +100,36 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         {
             Guard.Argument(stream, nameof(stream)).NotNull();
 
-            using (var reader = new NamespaceIgnorantXmlTextReader(stream))
+            using var reader = new NamespaceIgnorantXmlTextReader(stream);
+            bool startElementFound;
+            try
             {
-                bool startElementFound;
-                try
-                {
-                    startElementFound = reader.IsStartElement();
-                }
-                catch (XmlException ex)
-                {
-                    throw new DeserializationException("The format of the xml is not correct", stream.GetData(), null, ex);
-                }
+                startElementFound = reader.IsStartElement();
+            }
+            catch (XmlException ex)
+            {
+                throw new DeserializationException("The format of the xml is not correct", stream.GetData(), null, ex);
+            }
 
-                if (!startElementFound)
-                {
-                    throw new DeserializationException("Could not retrieve the name of the root element", stream.GetData(), null, null);
-                }
+            if (!startElementFound)
+            {
+                throw new DeserializationException("Could not retrieve the name of the root element", stream.GetData(), null, null);
+            }
 
-                var localName = reader.LocalName;
-                if (!Serializers.TryGetValue(reader.LocalName, out var serializerWithInfo))
-                {
-                    throw new DeserializationException("Specified root element is not supported", stream.GetData(), localName, null);
-                }
-                reader.IgnoreNamespace = serializerWithInfo.IgnoreNamespace;
+            var localName = reader.LocalName;
+            if (!Serializers.TryGetValue(reader.LocalName, out var serializerWithInfo))
+            {
+                throw new DeserializationException("Specified root element is not supported", stream.GetData(), localName, null);
+            }
+            reader.IgnoreNamespace = serializerWithInfo.IgnoreNamespace;
 
-                try
-                {
-                    return (T1)serializerWithInfo.Serializer.Deserialize(reader);
-                }
-                catch (InvalidOperationException ex)
-                {
-                    throw new DeserializationException("Deserialization failed", stream.GetData(), localName, ex.InnerException ?? ex);
-                }
+            try
+            {
+                return (T1)serializerWithInfo.Serializer.Deserialize(reader);
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw new DeserializationException("Deserialization failed", stream.GetData(), localName, ex.InnerException ?? ex);
             }
         }
 

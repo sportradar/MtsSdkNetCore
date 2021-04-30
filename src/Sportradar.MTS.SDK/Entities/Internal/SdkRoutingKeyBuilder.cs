@@ -11,7 +11,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
     /// <summary>
     /// Defines builder for routing keys and checks for feed sessions combo validation
     /// </summary>
-    internal class SdkRoutingKeyBuilder
+    internal static class SdkRoutingKeyBuilder
     {
         /// <summary>
         /// Validates input list of message interests and returns list of routing keys combination per interest

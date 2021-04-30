@@ -66,27 +66,6 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
             _connectionStatus = (ConnectionStatus) connectionStatus;
         }
 
-        /// <summary>
-        /// Releases unmanaged and - optionally - managed resources.
-        /// </summary>
-        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources;
-        /// <c>false</c> to release only unmanaged resources</param>
-        protected void Dispose(bool disposing)
-        {
-            if (_disposed || !disposing)
-            {
-                return;
-            }
-
-            lock (_lock)
-            {
-                _disposed = true;
-                RemoveChannels();
-                RemoveConnection();
-                _connection?.Dispose();
-            }
-        }
-
         private void CreateConnection()
         {
             ExecutionLog.LogInformation("Creating connection ...");
@@ -143,12 +122,9 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 
             _connectionStatus.Disconnect("Close reason: " + reason);
 
-            foreach (var model in _models)
+            foreach (var model in _models.Where(model => model.Value != null))
             {
-                if (model.Value != null)
-                {
-                    model.Value.MarkedForDeletion = true;
-                }
+                model.Value.MarkedForDeletion = true;
             }
         }
 
@@ -170,6 +146,27 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources;
+        /// <c>false</c> to release only unmanaged resources</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed || !disposing)
+            {
+                return;
+            }
+
+            lock (_lock)
+            {
+                _disposed = true;
+                RemoveChannels();
+                RemoveConnection();
+                _connection?.Dispose();
+            }
         }
 
         /// <summary>
@@ -238,26 +235,20 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                     throw new ConnectFailureException("Cannot create the channel because the connection is closed.", null);
                 }
 
-                if (_models.TryGetValue(id, out var wrapper))
+                if (_models.TryGetValue(id, out var wrapper) && wrapper != null)
                 {
-                    if (wrapper != null)
-                    {
-                        return wrapper;
-                    }
+                    return wrapper;
                 }
 
                 var model = _connection.CreateModel();
-                //ExecutionLog.LogDebug($"Channel created with internal number: {model?.ChannelNumber}.");
                 wrapper = new ChannelWrapper(id, model);
                 if (_models.ContainsKey(id))
                 {
                     _models.Remove(id);
                     _models.Add(id, wrapper);
-                    //_connection.AutoClose = true;
                     return wrapper;
                 }
                 _models.Add(id, wrapper);
-                //_connection.AutoClose = true;
                 return wrapper;
             }
         }
@@ -265,7 +256,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
         private void RemoveChannels()
         {
             var i = 100;
-            while (i > 0 && _models.Count(c => c.Value != null && c.Value.MarkedForDeletion) > 0)
+            while (i > 0 && _models.Any(c => c.Value != null && c.Value.MarkedForDeletion))
             {
                 i--;
                 try
@@ -282,20 +273,20 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 
         public void RemoveChannel(int id)
         {
-            if (_models.TryGetValue(id, out var channelWrapper))
+            if (!_models.TryGetValue(id, out var channelWrapper))
             {
-                //ExecutionLog.LogDebug($"Removing channel with channelNumber: {channelWrapper.Id} started ...");
-                if (channelWrapper.MarkedForDeletion)
-                {
-                    channelWrapper.Channel.Close();
-                }
-                if (channelWrapper.Channel.IsClosed)
-                {
-                    channelWrapper.ChannelBasicProperties = null;
-                    channelWrapper.Consumer = null;
-                    channelWrapper.Channel.Dispose();
-                    _models[id] = null;
-                }
+                return;
+            }
+            if (channelWrapper.MarkedForDeletion)
+            {
+                channelWrapper.Channel.Close();
+            }
+            if (channelWrapper.Channel.IsClosed)
+            {
+                channelWrapper.ChannelBasicProperties = null;
+                channelWrapper.Consumer = null;
+                channelWrapper.Channel.Dispose();
+                _models[id] = null;
             }
         }
     }

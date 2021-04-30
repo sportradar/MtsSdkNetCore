@@ -50,8 +50,6 @@ namespace Sportradar.MTS.SDK.Common.Internal.Rest
         /// <exception cref="CommunicationException">Failed to execute http get</exception>
         public override async Task<Stream> GetDataAsync(string authorization, Uri uri)
         {
-            //Metric.Context("FEED").Meter("LogHttpDataFetcher->GetDataAsync", Unit.Requests).Mark();
-
             var dataId = _sequenceGenerator.GetNext().ToString("D7"); // because request can take long time, there may be several request at the same time; Id to know what belongs together.
             var watch = new Stopwatch();
 
@@ -103,8 +101,6 @@ namespace Sportradar.MTS.SDK.Common.Internal.Rest
         /// <exception cref="CommunicationException">Failed to execute http post</exception>
         public override async Task<HttpResponseMessage> PostDataAsync(string authorization, Uri uri, HttpContent content = null)
         {
-            //Metric.Context("FEED").Meter("LogHttpDataFetcher->PostDataAsync", Unit.Requests).Mark();
-
             var dataId = _sequenceGenerator.GetNext().ToString("D7");
 
             RestLog.LogInformation($"Id:{dataId} Posting to url: {uri.AbsoluteUri}");

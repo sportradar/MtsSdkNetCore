@@ -46,7 +46,6 @@ namespace Sportradar.MTS.SDK.Common.Internal.Rest
         {
             Guard.Argument(client, nameof(client)).NotNull();
             Guard.Argument(client.DefaultRequestHeaders, nameof(client.DefaultRequestHeaders)).NotNull();
-            //Guard.Argument(!string.IsNullOrWhiteSpace(accessToken));
             Guard.Argument(connectionFailureLimit, nameof(connectionFailureLimit)).Positive();
             Guard.Argument(connectionFailureTimeout, nameof(connectionFailureTimeout)).Positive();
 
@@ -185,12 +184,9 @@ namespace Sportradar.MTS.SDK.Common.Internal.Rest
                 return;
             }
 
-            if (_connectionFailureCount >= _connectionFailureLimit)
+            if (_connectionFailureCount >= _connectionFailureLimit && !_blockingModeActive)
             {
-                if (!_blockingModeActive)
-                {
-                    _blockingModeActive = true;
-                }
+                _blockingModeActive = true;
             }
 
             if (_blockingModeActive)

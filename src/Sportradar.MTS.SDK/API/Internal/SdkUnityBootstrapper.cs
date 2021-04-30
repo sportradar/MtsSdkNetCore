@@ -53,7 +53,7 @@ namespace Sportradar.MTS.SDK.API.Internal
             Guard.Argument(container, nameof(container)).NotNull();
             Guard.Argument(userConfig, nameof(userConfig)).NotNull();
 
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
             if (loggerFactory != null)
             {
@@ -205,8 +205,7 @@ namespace Sportradar.MTS.SDK.API.Internal
             container.RegisterInstance("TicketCancelResponseChannelSettings", mtsTicketCancelResponseChannelSettings);
             container.RegisterInstance("TicketCashoutResponseChannelSettings", mtsTicketCashoutResponseChannelSettings);
             container.RegisterInstance("TicketNonSrSettleResponseChannelSettings", mtsTicketNonSrSettleResponseChannelSettings);
-
-            //container.RegisterType<IRabbitMqConsumerChannel, RabbitMqConsumerChannel>(new HierarchicalLifetimeManager());
+            
             var ticketResponseConsumerChannel = new RabbitMqConsumerChannel(container.Resolve<IChannelFactory>(),
                                                                             container.Resolve<IMtsChannelSettings>("TicketResponseChannelSettings"),
                                                                             container.Resolve<IRabbitMqChannelSettings>("TicketChannelSettings"));
@@ -343,15 +342,6 @@ namespace Sportradar.MTS.SDK.API.Internal
             {
                 statusProviders.Add((IHealthStatusProvider) mqMessageReceiver);
             }
-
-            //container.RegisterType<MetricsReporter, MetricsReporter>(new ContainerControlledLifetimeManager(),
-            //                                                         new InjectionConstructor(MetricsReportPrintMode.Normal, 2, true));
-
-            //var metricReporter = container.Resolve<MetricsReporter>();
-
-            //Metric.Config.WithAllCounters().WithReporting(rep => rep.WithReport(metricReporter, TimeSpan.FromSeconds(config.StatisticsTimeout)));
-
-            //container.RegisterInstance(metricReporter, new ContainerControlledLifetimeManager());
 
             foreach (var sp in statusProviders)
             {

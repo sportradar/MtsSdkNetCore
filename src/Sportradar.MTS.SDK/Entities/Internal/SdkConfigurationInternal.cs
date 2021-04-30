@@ -16,26 +16,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal
     internal class SdkConfigurationInternal : SdkConfiguration, ISdkConfigurationInternal
     {
         /// <summary>
-        /// Default value for the InactivitySeconds property
-        /// </summary>
-        private const int AmpqDefaultInactivitySeconds = 180;
-
-        /// <summary>
-        /// Specifies minimum allowed value of the InactivitySeconds value
-        /// </summary>
-        private const int AmpqMinInactivitySeconds = 20;
-
-        /// <summary>
-        /// The ampq acknowledgment batch limit
-        /// </summary>
-        private const int AmpqAcknowledgmentBatchLimit = 10;
-
-        /// <summary>
-        /// The ampq acknowledgment timeout in seconds
-        /// </summary>
-        private const int AmpqAcknowledgmentTimeoutInSeconds = 60;
-
-        /// <summary>
         /// Gets the URL of the feed's REST interface
         /// </summary>
         public string ApiHost { get; }

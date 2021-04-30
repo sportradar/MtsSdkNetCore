@@ -66,6 +66,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         }
 
         [JsonConstructor]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
         private TicketCashout(DateTime timestamp, string ticketId, int bookmakerId, long? cashoutStake, int? cashoutPercent, IEnumerable<IBetCashout> betCashouts, string version, string correlationId)
         {
             Timestamp = timestamp;

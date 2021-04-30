@@ -58,6 +58,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var json = dto.ToJson();
 
             var newDto = new TicketDTO {Ticket = Ticket.FromJson(json)};
+            Assert.IsNotNull(newDto);
 
             TicketCompareHelper.Compare(ticket, dto);
             TicketCompareHelper.Compare(ticket, newDto);
@@ -71,6 +72,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var json = dto.ToJson();
 
             var newDto = new TicketCancelDTO {Cancel = Cancel.FromJson(json)};
+            Assert.IsNotNull(newDto);
 
             TicketCompareHelper.Compare(ticket, dto);
             TicketCompareHelper.Compare(ticket, newDto);
@@ -84,6 +86,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var json = dto.ToJson();
 
             var newDto = TicketAckDTO.FromJson(json);
+            Assert.IsNotNull(newDto);
 
             TicketCompareHelper.Compare(ticket, dto);
             TicketCompareHelper.Compare(ticket, newDto);
@@ -97,6 +100,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var json = dto.ToJson();
 
             var newDto = TicketCancelAckDTO.FromJson(json);
+            Assert.IsNotNull(newDto);
 
             TicketCompareHelper.Compare(ticket, dto);
             TicketCompareHelper.Compare(ticket, newDto);
@@ -110,6 +114,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var json = dto.ToJson();
 
             var newDto = new TicketDTO {Ticket = Ticket.FromJson(json)};
+            Assert.IsNotNull(newDto);
 
             TicketCompareHelper.Compare(ticket, dto);
             TicketCompareHelper.Compare(ticket, newDto);
@@ -120,6 +125,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         {
             var dto = TicketBuilderHelper.GetTicketResponse();
             var ticket = new TicketResponseMapper(null).Map(dto, SR.S1000, null, dto.ToJson());
+            Assert.IsNotNull(ticket);
             TicketCompareHelper.Compare(ticket, dto);
         }
 
@@ -128,6 +134,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         {
             var dto = TicketBuilderHelper.GetTicketCancelResponse();
             var ticket = new TicketCancelResponseMapper(null).Map(dto, SR.S1000, null, dto.ToJson());
+            Assert.IsNotNull(ticket);
             TicketCompareHelper.Compare(ticket, dto);
         }
 
@@ -136,6 +143,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         {
             var ticket = TicketBuilderHelper.GetTicketReofferCancel();
             var dto = new TicketReofferCancelMapper().Map(ticket);
+            Assert.IsNotNull(dto);
             TicketCompareHelper.Compare(ticket, dto);
         }
 
@@ -144,6 +152,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         {
             var ticket = TicketBuilderHelper.GetTicketCashout();
             var dto = new TicketCashoutMapper().Map(ticket);
+            Assert.IsNotNull(dto);
             TicketCompareHelper.Compare(ticket, dto);
         }
 
@@ -152,6 +161,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         {
             var dto = TicketBuilderHelper.GetTicketCashoutResponse(null, SDK.Entities.Internal.Dto.TicketCashoutResponse.Status.Rejected);
             var ticket = new TicketCashoutResponseMapper(null).Map(dto, SR.S1000, null, dto.ToJson());
+            Assert.IsNotNull(ticket);
             TicketCompareHelper.Compare(ticket, dto);
         }
 
@@ -200,9 +210,9 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var dto = Cancel.FromJson(json);
 
             Assert.IsNotNull(dto);
-            Assert.AreEqual(dto.Sender.BookmakerId, 9985);
-            Assert.AreEqual(dto.Code, (int)TicketCancellationReason.BookmakerTechnicalIssue);
-            Assert.AreEqual(dto.Version, "2.0");
+            Assert.AreEqual(9985, dto.Sender.BookmakerId);
+            Assert.AreEqual((int)TicketCancellationReason.BookmakerTechnicalIssue, dto.Code);
+            Assert.AreEqual("2.0", dto.Version);
         }
 
         [TestMethod]
@@ -215,9 +225,9 @@ namespace Sportradar.MTS.SDK.Test.Mapping
 
             Assert.IsNotNull(dto);
             Assert.IsNotNull(dto.Sender);
-            Assert.AreEqual(dto.Sender.BookmakerId, 9985);
+            Assert.AreEqual(9985, dto.Sender.BookmakerId);
             Assert.AreEqual(TicketAckDTOTicketStatus.Accepted, dto.TicketStatus);
-            Assert.AreEqual(dto.Version, "2.0");
+            Assert.AreEqual("2.0", dto.Version);
         }
 
         [TestMethod]
@@ -230,9 +240,9 @@ namespace Sportradar.MTS.SDK.Test.Mapping
 
             Assert.IsNotNull(dto);
             Assert.IsNotNull(dto.Sender);
-            Assert.AreEqual(dto.Sender.BookmakerId, 9985);
-            Assert.AreEqual(dto.TicketCancelStatus, TicketCancelAckDTOTicketCancelStatus.Cancelled);
-            Assert.AreEqual(dto.Version, "2.0");
+            Assert.AreEqual(9985, dto.Sender.BookmakerId);
+            Assert.AreEqual(TicketCancelAckDTOTicketCancelStatus.Cancelled, dto.TicketCancelStatus);
+            Assert.AreEqual("2.0", dto.Version);
         }
 
         [TestMethod]
@@ -245,10 +255,10 @@ namespace Sportradar.MTS.SDK.Test.Mapping
 
             Assert.IsNotNull(dto);
             Assert.IsNotNull(dto.Result);
-            Assert.AreEqual(dto.Result.Status, Status.Accepted);
+            Assert.AreEqual(Status.Accepted, dto.Result.Status);
             Assert.IsNotNull(dto.Result.Reason);
-            Assert.AreEqual(dto.Result.Reason.Code, 1024);
-            Assert.AreEqual(dto.Version, "2.0");
+            Assert.AreEqual(1024, dto.Result.Reason.Code);
+            Assert.AreEqual("2.0", dto.Version);
         }
 
         [TestMethod]
@@ -273,6 +283,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var json = FileHelper.ReadFile(DirPath, @"ticket-response2.json");
             var dto = TicketResponseDTO.FromJson(json);
             var ticket = new TicketResponseMapper(null).Map(dto, SR.S1000, null, dto.ToJson());
+            Assert.IsNotNull(ticket);
             TicketCompareHelper.Compare(ticket, dto);
         }
 
@@ -341,14 +352,14 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         [TestMethod]
         public void ValidateDtoEnumValuesTest()
         {
-            Assert.AreEqual((int)TicketAckDTOTicketStatus.Accepted, 1, "Wrong TicketAckDTOTicketStatus.Accepted");
-            Assert.AreEqual((int)TicketAckDTOTicketStatus.Rejected, 0, "Wrong TicketAckDTOTicketStatus.Rejected");
-            Assert.AreEqual((int)TicketCancelAckDTOTicketCancelStatus.Cancelled, 1, "Wrong TicketCancelAckDTOTicketCancelStatus.Cancelled");
-            Assert.AreEqual((int)TicketCancelAckDTOTicketCancelStatus.Not_cancelled, 0, "Wrong TicketCancelAckDTOTicketCancelStatus.Not_Cancelled");
-            Assert.AreEqual((int)Status.Accepted, 1, "Wrong TicketResponse.Status.Accepted");
-            Assert.AreEqual((int)Status.Rejected, 0, "Wrong TicketResponse.Status.Rejected");
-            Assert.AreEqual((int)SDK.Entities.Internal.Dto.TicketCancelResponse.Status.Cancelled, 1, "Wrong TicketCancelResponse.Status");
-            Assert.AreEqual((int)SDK.Entities.Internal.Dto.TicketCancelResponse.Status.Not_cancelled, 0, "Wrong TicketCancelResponse.Status");
+            Assert.AreEqual(1, (int)TicketAckDTOTicketStatus.Accepted, "Wrong TicketAckDTOTicketStatus.Accepted");
+            Assert.AreEqual(0, (int)TicketAckDTOTicketStatus.Rejected, "Wrong TicketAckDTOTicketStatus.Rejected");
+            Assert.AreEqual(1, (int)TicketCancelAckDTOTicketCancelStatus.Cancelled, "Wrong TicketCancelAckDTOTicketCancelStatus.Cancelled");
+            Assert.AreEqual(0, (int)TicketCancelAckDTOTicketCancelStatus.Not_cancelled, "Wrong TicketCancelAckDTOTicketCancelStatus.Not_Cancelled");
+            Assert.AreEqual(1, (int)Status.Accepted, "Wrong TicketResponse.Status.Accepted");
+            Assert.AreEqual(0, (int)Status.Rejected, "Wrong TicketResponse.Status.Rejected");
+            Assert.AreEqual(1, (int)SDK.Entities.Internal.Dto.TicketCancelResponse.Status.Cancelled, "Wrong TicketCancelResponse.Status");
+            Assert.AreEqual(0, (int)SDK.Entities.Internal.Dto.TicketCancelResponse.Status.Not_cancelled, "Wrong TicketCancelResponse.Status");
         }
 
         [TestMethod]
@@ -581,8 +592,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             Assert.IsTrue(!json.Contains("selectionRef"));
         }
 
-        //[TestMethod]
-        //TODO: this should work if sumOfWins can be null, and similar the rest of the DTO objects
+        [TestMethod]
         public void BetWithoutSumOfWinsProducesCorrectJsonTest()
         {
             var ticket = _builderFactory.CreateTicketBuilder()
@@ -785,6 +795,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var json = dto.ToJson();
 
             var newDto = new TicketDTO { Ticket = Ticket.FromJson(json) };
+            Assert.IsNotNull(newDto);
 
             TicketCompareHelper.Compare(ticket, dto);
             TicketCompareHelper.Compare(ticket, newDto);
@@ -898,7 +909,12 @@ namespace Sportradar.MTS.SDK.Test.Mapping
                 .BuildTicket();
 
             Assert.IsNotNull(ticket);
-            Assert.IsFalse(ticket.Bets.Single().CustomBet.Value);
+            Assert.IsNotNull(ticket.Bets);
+            Assert.AreEqual(1, ticket.Bets.Count());
+            Assert.IsNotNull(ticket.Bets.Single().CustomBet);
+            Assert.AreEqual(true, ticket.Bets.Single().CustomBet.HasValue);
+            var customBet = ticket.Bets.Single().CustomBet;
+            Assert.IsFalse(customBet != null && customBet.Value);
             Assert.IsNull(ticket.Bets.Single().CalculationOdds);
         }
 
@@ -906,7 +922,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
         public void BuildBetWithoutCustomBetWithCalculationOdds()
         {
-            var ticket = _builderFactory.CreateTicketBuilder()
+            _builderFactory.CreateTicketBuilder()
                 .SetTicketId("ticket-" + SR.S1000)
                 .SetOddsChange(OddsChangeType.Any)
                 .SetSender(_sender)
@@ -920,7 +936,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
         public void BuildBetWithCustomBet()
         {
-            var ticket = _builderFactory.CreateTicketBuilder()
+            _builderFactory.CreateTicketBuilder()
                 .SetTicketId("ticket-" + SR.S1000)
                 .SetOddsChange(OddsChangeType.Any)
                 .SetSender(_sender)
@@ -943,8 +959,15 @@ namespace Sportradar.MTS.SDK.Test.Mapping
                 .BuildTicket();
 
             Assert.IsNotNull(ticket);
-            Assert.IsTrue(ticket.Bets.Single().CustomBet.Value);
-            Assert.AreEqual(1000, ticket.Bets.Single().CalculationOdds.Value);
+            Assert.IsNotNull(ticket.Bets);
+            Assert.AreEqual(1, ticket.Bets.Count());
+            Assert.IsNotNull(ticket.Bets.Single().CustomBet);
+            Assert.AreEqual(true, ticket.Bets.Single().CustomBet.HasValue);
+            var customBet = ticket.Bets.Single().CustomBet;
+            Assert.IsTrue(customBet != null && customBet.Value);
+            var calculationOdds = ticket.Bets.Single().CalculationOdds;
+            Assert.IsNotNull(calculationOdds);
+            Assert.AreEqual(1000, calculationOdds.Value);
         }
 
         [TestMethod]

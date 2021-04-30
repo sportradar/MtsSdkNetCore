@@ -5833,7 +5833,7 @@
             <param name="type">The type</param>
             <param name="subType">Type of the sub</param>
             <param name="sov">The sov</param>
-            <param name="selectionIds">The selection ids</param>
+            <param name="selectionId">The selection ids</param>
             <returns>ISelectionBuilder</returns>
         </member>
         <member name="M:Sportradar.MTS.SDK.Entities.Internal.Builders.SelectionBuilder.SetIdLcoo(System.Int32,System.Int32,System.String,System.String)">
@@ -5843,7 +5843,7 @@
             <param name="type">The type</param>
             <param name="sportId">The sport identifier</param>
             <param name="sov">The sov</param>
-            <param name="selectionIds">The selection ids</param>
+            <param name="selectionId">The selection ids</param>
             <returns>ISelectionBuilder</returns>
         </member>
         <member name="M:Sportradar.MTS.SDK.Entities.Internal.Builders.SelectionBuilder.SetIdUof(System.Int32,System.String,System.Int32,System.String,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">

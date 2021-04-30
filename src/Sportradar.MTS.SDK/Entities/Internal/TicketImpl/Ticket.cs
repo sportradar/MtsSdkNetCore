@@ -97,7 +97,20 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         }
 
         [JsonConstructor]
-        private Ticket(string ticketId, IEnumerable<IBet> bets, IEnumerable<ISelection> selections, ISender sender, string reofferId, string altStakeRefId, bool testSource, OddsChangeType? oddsChange, DateTime timestamp, string version, string correlationId, int? totalCombinations, DateTime? lastMatchEndTime)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
+        private Ticket(string ticketId, 
+                       IEnumerable<IBet> bets, 
+                       IEnumerable<ISelection> selections, 
+                       ISender sender, 
+                       string reofferId, 
+                       string altStakeRefId, 
+                       bool testSource, 
+                       OddsChangeType? oddsChange, 
+                       DateTime timestamp, 
+                       string version, 
+                       string correlationId, 
+                       int? totalCombinations, 
+                       DateTime? lastMatchEndTime)
         {
             TicketId = ticketId;
             Bets = bets;
@@ -127,7 +140,16 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         /// <exception cref="ArgumentException">Only ReofferId or AltStakeRefId can specified</exception>
         /// <param name="totalCombinations">Expected total number of generated combinations on this ticket (optional, default null). If present is used to validate against actual number of generated combinations</param>
         /// <param name="lastMatchEndTime">End time of last (non Sportradar) match on ticket.</param>
-        public Ticket(string ticketId, ISender sender, IEnumerable<IBet> bets, string reofferId, string altStakeRefId, bool isTestSource, OddsChangeType? oddsChangeType, int? totalCombinations, DateTime? lastMatchEndTime)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
+        public Ticket(string ticketId, 
+                      ISender sender, 
+                      IEnumerable<IBet> bets, 
+                      string reofferId, 
+                      string altStakeRefId,
+                      bool isTestSource, 
+                      OddsChangeType? oddsChangeType, 
+                      int? totalCombinations, 
+                      DateTime? lastMatchEndTime)
         {
             Guard.Argument(ticketId, nameof(ticketId)).Require(TicketHelper.ValidateTicketId(ticketId));
             Guard.Argument(sender, nameof(sender)).NotNull();
@@ -162,7 +184,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
                 {
                     selections.AddRange(bet.Selections);
                 }
-                Guard.Argument(selections, nameof(selections)).NotNull().NotEmpty(); //.MaxCount(64);
+                Guard.Argument(selections, nameof(selections)).NotNull().NotEmpty();
                 Selections = selections.Distinct();
             }
             TotalCombinations = totalCombinations;

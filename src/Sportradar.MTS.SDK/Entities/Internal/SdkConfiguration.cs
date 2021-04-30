@@ -192,6 +192,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         /// <param name="ticketCancellationResponseTimeout">The ticket cancellation response timeout(ms)</param>
         /// <param name="ticketCashoutResponseTimeout">The ticket cashout response timeout(ms)</param>
         /// <param name="ticketNonSrSettleResponseTimeout">The ticket cashout response timeout(ms)</param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
         public SdkConfiguration(
             string username,
             string password,
@@ -268,11 +269,11 @@ namespace Sportradar.MTS.SDK.Entities.Internal
             Username = username;
             Password = password;
             Host = host;
-            VirtualHost = string.IsNullOrEmpty(vhost)
-                ? "/" + Username
-                : vhost.StartsWith("/")
-                    ? vhost
-                    : "/" + vhost;
+            VirtualHost = string.IsNullOrEmpty(vhost) ? "/" + Username : vhost;
+            if (!VirtualHost.StartsWith("/"))
+            {
+                VirtualHost = "/" + VirtualHost;
+            }
             UseSsl = useSsl;
             SslServerName = sslServerName;
             NodeId = nodeId > 0 ? nodeId : 1;
@@ -339,11 +340,11 @@ namespace Sportradar.MTS.SDK.Entities.Internal
             Username = section.Username;
             Password = section.Password;
             Host = section.Host;
-            VirtualHost = string.IsNullOrEmpty(section.VirtualHost)
-                ? "/" + Username
-                : section.VirtualHost.StartsWith("/")
-                    ? section.VirtualHost
-                    : "/" + section.VirtualHost;
+            VirtualHost = string.IsNullOrEmpty(section.VirtualHost) ? "/" + Username : section.VirtualHost;
+            if (!VirtualHost.StartsWith("/"))
+            {
+                VirtualHost = "/" + VirtualHost;
+            }
             UseSsl = section.UseSsl;
             SslServerName = section.SslServerName;
             NodeId = section.NodeId;

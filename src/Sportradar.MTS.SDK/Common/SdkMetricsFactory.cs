@@ -12,12 +12,20 @@ namespace Sportradar.MTS.SDK.Common
     {
         private static IMetricsRoot _metricsRoot;
 
-        //set by dependency injection
-        public SdkMetricsFactory(IMetricsRoot metricsRoot)
+        //set by dependency injection        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SdkMetricsFactory"/> class.
+        /// </summary>
+        /// <param name="metricsRoot">The metrics root.</param>
+        protected SdkMetricsFactory(IMetricsRoot metricsRoot)
         {
             _metricsRoot = metricsRoot;
         }
 
+        /// <summary>
+        /// Gets the metrics root
+        /// </summary>
+        /// <value>The metrics root</value>
         public static IMetricsRoot MetricsRoot
         {
             get

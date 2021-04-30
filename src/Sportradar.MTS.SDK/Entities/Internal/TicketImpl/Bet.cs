@@ -78,7 +78,17 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         /// <param name="customBet">The flag if bet is a custom bet</param>
         /// <param name="calculationOdds">The odds calculated for custom bet</param>
         [JsonConstructor]
-        public Bet(IBetBonus bonus, IStake stake, IStake entireStake, string id, IEnumerable<int> selectedSystems, IEnumerable<ISelection> selections, string reofferRefId, long sumOfWins, bool? customBet, int? calculationOdds)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
+        public Bet(IBetBonus bonus, 
+                   IStake stake, 
+                   IStake entireStake, 
+                   string id, 
+                   IEnumerable<int> selectedSystems, 
+                   IEnumerable<ISelection> selections, 
+                   string reofferRefId, 
+                   long sumOfWins, 
+                   bool? customBet, 
+                   int? calculationOdds)
         {
             Guard.Argument(stake, nameof(stake)).NotNull();
             Guard.Argument(id, nameof(id)).Require(string.IsNullOrEmpty(id) || TicketHelper.ValidateTicketId(id));

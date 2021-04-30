@@ -11,15 +11,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancel
         public Cancel()
         { }
 
-        //public Cancel(long timestamp, string ticketId, int bookmakerId, int code, string version)
-        //{
-        //    _timestampUtc = timestamp;
-        //    _ticketId = ticketId;
-        //    _code = code;
-        //    _version = version;
-        //    _sender = new Sender(bookmakerId);
-        //}
-
         public Cancel(ITicketCancel ticket)
         {
             _timestampUtc = MtsTicketHelper.Convert(ticket.Timestamp);

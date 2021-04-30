@@ -922,7 +922,7 @@ namespace Sportradar.MTS.SDK.Test
         [TestMethod]
         public void BuilderMissingKeycloakUsernameAndPassword()
         {
-            MtsSdk.CreateConfigurationBuilder()
+            var sdkConfiguration = MtsSdk.CreateConfigurationBuilder()
                 .SetUsername("username")
                 .SetPassword("password")
                 .SetHost("host")
@@ -930,13 +930,15 @@ namespace Sportradar.MTS.SDK.Test
                 .SetKeycloakHost("keycloak")
                 .SetKeycloakSecret("secret")
                 .Build();
+            Assert.IsNotNull(sdkConfiguration);
         }
 
         [TestMethod]
         public void ConfigMissingKeycloakUsernameAndPassword()
         {
-            @"<mtsSdkSection username=""username"" password=""password"" host=""host"" mtsClientApiHost=""clientApi"" keycloakHost=""keycloak"" keycloakSecret=""secret"" />"
+            var sdkConfiguration = @"<mtsSdkSection username=""username"" password=""password"" host=""host"" mtsClientApiHost=""clientApi"" keycloakHost=""keycloak"" keycloakSecret=""secret"" />"
                 .ToSdkConfiguration();
+            Assert.IsNotNull(sdkConfiguration);
         }
 
         #endregion

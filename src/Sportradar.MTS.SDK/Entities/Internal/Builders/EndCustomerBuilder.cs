@@ -111,33 +111,21 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
 
         private void ValidateData(bool all = false, bool langId = false, bool deviceId = false, bool clientId = false, bool confidence = false)
         {
-            if (all || langId)
+            if ((all || langId) && !string.IsNullOrEmpty(_langId) && _langId.Length != 2)
             {
-                if (!string.IsNullOrEmpty(_langId) && _langId.Length != 2)
-                {
-                    throw new ArgumentException("LanguageId not valid.");
-                }
+                throw new ArgumentException("LanguageId not valid.");
             }
-            if (all || deviceId)
+            if ((all || deviceId) && !string.IsNullOrEmpty(_deviceId) && !TicketHelper.ValidateUserId(_deviceId))
             {
-                if (!string.IsNullOrEmpty(_deviceId) && !TicketHelper.ValidateUserId(_deviceId))
-                {
-                    throw new ArgumentException("Stake not valid.");
-                }
+                throw new ArgumentException("Stake not valid.");
             }
-            if (all || clientId)
+            if ((all || clientId) && !string.IsNullOrEmpty(_clientId) && !TicketHelper.ValidateUserId(_clientId))
             {
-                if(!string.IsNullOrEmpty(_clientId) && !TicketHelper.ValidateUserId(_clientId))
-                {
-                    throw new ArgumentException("ClientId not valid.");
-                }
+                throw new ArgumentException("ClientId not valid.");
             }
-            if (all || confidence)
+            if ((all || confidence) && _confidence < 0)
             {
-                if (_confidence < 0)
-                {
-                    throw new ArgumentException("Confidence not valid.");
-                }
+                throw new ArgumentException("Confidence not valid.");
             }
         }
     }

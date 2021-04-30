@@ -79,6 +79,7 @@ namespace Sportradar.MTS.SDK.API.Internal.TicketImpl
         /// <param name="version">The version</param>
         /// <param name="additionalInfo">The additional information</param>
         /// <param name="orgJson">The original json string received from the mts</param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
         public TicketCancelResponse(ITicketSender ticketCancelSender,
                                     string ticketId,
                                     TicketCancelAcceptance status,
@@ -114,7 +115,7 @@ namespace Sportradar.MTS.SDK.API.Internal.TicketImpl
         {
             if (_ticketCancelSender == null)
             {
-                throw new NullReferenceException("Missing TicketCancelSender. Can not be null.");
+                throw new InvalidOperationException("Missing TicketCancelSender. Can not be null.");
             }
             var ticketCancelAck = new TicketCancelAck(TicketId,
                                                       bookmakerId,
@@ -134,7 +135,7 @@ namespace Sportradar.MTS.SDK.API.Internal.TicketImpl
             var sentTicket = (ITicketCancel)_ticketCancelSender.GetSentTicket(TicketId);
             if (sentTicket == null)
             {
-                throw new Exception("missing ticket in cache");
+                throw new InvalidOperationException("Missing ticket in cache");
             }
             Acknowledge(markAccepted, sentTicket.BookmakerId, Reason.Code, Reason.Message);
         }

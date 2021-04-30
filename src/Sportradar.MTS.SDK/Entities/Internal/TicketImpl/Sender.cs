@@ -87,15 +87,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         }
 
         // ReSharper disable once UnusedParameter.Local
-        private static void CheckNotNull(object input, string paramName, string msg)
-        {
-            if (input == null)
-            {
-                throw new ArgumentNullException(paramName, msg);
-            }
-        }
-
-        // ReSharper disable once UnusedParameter.Local
         private static void CheckArgument(bool input, string paramName, string msg)
         {
             if (!input)

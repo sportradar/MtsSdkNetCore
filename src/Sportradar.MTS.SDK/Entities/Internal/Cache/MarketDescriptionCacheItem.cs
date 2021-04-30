@@ -36,6 +36,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
 
         internal IEnumerable<MarketAttributeCacheItem> Attributes { get; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
         protected MarketDescriptionCacheItem(
             long id,
             IDictionary<CultureInfo, string> names,
@@ -136,38 +137,48 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
 
             if (dto.Outcomes != null)
             {
-                foreach (var outcomeDto in dto.Outcomes)
-                {
-                    var existingOutcome = Outcomes?.FirstOrDefault(o => o.Id == outcomeDto.Id);
-                    if (existingOutcome != null)
-                    {
-                        existingOutcome.Merge(outcomeDto, culture);
-                    }
-                    else
-                    {
-                        Log.LogWarning($"Could not merge outcome[Id={outcomeDto.Id}] on marketDescription[Id={dto.Id}] because the specified outcome does not exist on stored market description");
-                    }
-                }
+                SaveOutcomes(dto.Id, dto.Outcomes.ToList(), culture);
             }
 
             if (dto.Mappings != null)
             {
-                foreach (var mappingDto in dto.Mappings)
-                {
-                    var existingMapping = Mappings?.FirstOrDefault(m => m.MarketTypeId == mappingDto.MarketTypeId && m.MarketSubTypeId == mappingDto.MarketSubTypeId);
-                    if (existingMapping != null)
-                    {
-                        existingMapping.Merge(mappingDto);
-                    }
-                    else
-                    {
-                        Log.LogWarning($"Could not merge mapping[MarketId={mappingDto.MarketTypeId}:{mappingDto.MarketSubTypeId}] on marketDescription[Id={dto.Id}] because the specified mapping" +
-                                 " does not exist on stored market description");
-                    }
-                }
+                SaveMappings(dto.Id, dto.Mappings.ToList());
             }
 
             _supportedLanguages.Add(culture);
+        }
+
+        private void SaveOutcomes(long marketId, ICollection<OutcomeDescriptionDTO> outcomes, CultureInfo culture)
+        {
+            foreach (var outcomeDto in outcomes)
+            {
+                var existingOutcome = Outcomes?.FirstOrDefault(o => o.Id == outcomeDto.Id);
+                if (existingOutcome != null)
+                {
+                    existingOutcome.Merge(outcomeDto, culture);
+                }
+                else
+                {
+                    Log.LogWarning($"Could not merge outcome[Id={outcomeDto.Id}] on marketDescription[Id={marketId}] because the specified outcome does not exist on stored market description");
+                }
+            }
+        }
+
+        private void SaveMappings(long marketId, ICollection<MarketMappingDTO> mappings)
+        {
+            foreach (var mappingDto in mappings)
+            {
+                var existingMapping = Mappings?.FirstOrDefault(m => m.MarketTypeId == mappingDto.MarketTypeId && m.MarketSubTypeId == mappingDto.MarketSubTypeId);
+                if (existingMapping != null)
+                {
+                    existingMapping.Merge(mappingDto);
+                }
+                else
+                {
+                    Log.LogWarning($"Could not merge mapping[MarketId={mappingDto.MarketTypeId}:{mappingDto.MarketSubTypeId}] on marketDescription[Id={marketId}] because the specified mapping" +
+                                   " does not exist on stored market description");
+                }
+            }
         }
     }
 }

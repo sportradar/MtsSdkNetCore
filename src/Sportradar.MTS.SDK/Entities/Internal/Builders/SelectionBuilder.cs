@@ -110,9 +110,9 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// <param name="type">The type</param>
         /// <param name="subType">Type of the sub</param>
         /// <param name="sov">The sov</param>
-        /// <param name="selectionIds">The selection ids</param>
+        /// <param name="selectionId">The selection id</param>
         /// <returns>ISelectionBuilder</returns>
-        public ISelectionBuilder SetIdLo(int type, int subType, string sov, string selectionIds)
+        public ISelectionBuilder SetIdLo(int type, int subType, string sov, string selectionId)
         {
             if (subType < 0)
             {
@@ -123,9 +123,9 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
                 sov = "*";
             }
             _selectionId = $"live:{type}/{subType}/{sov}";
-            if (!string.IsNullOrEmpty(selectionIds))
+            if (!string.IsNullOrEmpty(selectionId))
             {
-                _selectionId += "/" + selectionIds;
+                _selectionId += "/" + selectionId;
             }
             ValidateData(true);
             return this;
@@ -137,18 +137,18 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// <param name="type">The type</param>
         /// <param name="sportId">The sport identifier</param>
         /// <param name="sov">The sov</param>
-        /// <param name="selectionIds">The selection ids</param>
+        /// <param name="selectionId">The selection ids</param>
         /// <returns>ISelectionBuilder</returns>
-        public ISelectionBuilder SetIdLcoo(int type, int sportId, string sov, string selectionIds)
+        public ISelectionBuilder SetIdLcoo(int type, int sportId, string sov, string selectionId)
         {
             if (string.IsNullOrEmpty(sov))
             {
                 sov = "*";
             }
             _selectionId = $"lcoo:{type}/{sportId}/{sov}";
-            if (!string.IsNullOrEmpty(selectionIds))
+            if (!string.IsNullOrEmpty(selectionId))
             {
-                _selectionId += "/" + selectionIds;
+                _selectionId += "/" + selectionId;
             }
             ValidateData(true);
             return this;
@@ -288,26 +288,17 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
 
         private void ValidateData(bool id = false, bool eventId = false, bool odds = false)
         {
-            if (id)
+            if (id && (string.IsNullOrEmpty(_selectionId) || !TicketHelper.ValidateStringId(_selectionId, false, true, 1, 1000)))
             {
-                if (string.IsNullOrEmpty(_selectionId) || !TicketHelper.ValidateStringId(_selectionId, false, true, 1, 1000))
-                {
-                    throw new ArgumentException($"Id {_selectionId} not valid.");
-                }
+                throw new ArgumentException($"Id {_selectionId} not valid.");
             }
-            if (eventId)
+            if (eventId && (string.IsNullOrEmpty(_eventId) || !TicketHelper.ValidateStringId(_eventId, false, true, 1, 100)))
             {
-                if (string.IsNullOrEmpty(_eventId) || !TicketHelper.ValidateStringId(_eventId, false, true, 1, 100))
-                {
-                    throw new ArgumentException($"EventId {_eventId} not valid.");
-                }
+                throw new ArgumentException($"EventId {_eventId} not valid.");
             }
-            if (odds)
+            if (odds && (_odds == null || !(_odds >= 10000 && _odds <= 1000000000)))
             {
-                if (_odds == null || !(_odds >= 10000 && _odds <= 1000000000))
-                {
-                    throw new ArgumentException($"Odds {_odds} not valid.");
-                }
+                throw new ArgumentException($"Odds {_odds} not valid.");
             }
         }
 

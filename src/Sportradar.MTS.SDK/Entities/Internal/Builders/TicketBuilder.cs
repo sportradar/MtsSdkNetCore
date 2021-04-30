@@ -169,7 +169,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// <returns>Returns a <see cref="ITicketBuilder" /></returns>
         public ITicketBuilder SetLastMatchEndTime(DateTime lastMatchEndTime)
         {
-            if (lastMatchEndTime == null || lastMatchEndTime < DateTime.Now)
+            if (lastMatchEndTime < DateTime.Now)
             {
                 throw new ArgumentException("LastMatchEndTime not valid or in the past.");
             }
