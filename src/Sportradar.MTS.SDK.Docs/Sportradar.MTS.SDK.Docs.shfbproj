@@ -13,7 +13,7 @@
     <RootNamespace>Sportradar.MTS.SDK.Docs</RootNamespace>
     <Name>Sportradar.MTS.SDK.Docs</Name>
     <!-- SHFB properties -->
-    <FrameworkVersion>Cross-platform (.NET Core/.NET Standard)</FrameworkVersion>
+    <FrameworkVersion>.NET Core/.NET Standard/.NET 5.0+</FrameworkVersion>
     <OutputPath>Help\</OutputPath>
     <HtmlHelpName>MTS SDK Core Documentation</HtmlHelpName>
     <Language>en-US</Language>
@@ -30,7 +30,7 @@
       <DocumentationSource sourceFile="..\Sportradar.MTS.SDK\Sportradar.MTS.SDK.csproj" xmlns="" />
     </DocumentationSources>
     <HelpFileFormat>HtmlHelp1, MSHelpViewer, Website</HelpFileFormat>
-    <SyntaxFilters>C#</SyntaxFilters>
+    <SyntaxFilters>None</SyntaxFilters>
     <PresentationStyle>VS2013</PresentationStyle>
     <CleanIntermediates>True</CleanIntermediates>
     <KeepLogFile>True</KeepLogFile>

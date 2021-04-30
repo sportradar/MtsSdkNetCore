@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Topics>
-  <Topic id="44579599-744c-4ef5-abb8-021cbe6646d5" visible="False" isSelected="true" title="Welcome to the Sportradar MTS SDK">
+  <Topic id="44579599-744c-4ef5-abb8-021cbe6646d5" visible="True" isDefault="true" isSelected="true" title="Sportradar MTS SDK .NET Standard">
     <HelpKeywords>
-      <HelpKeyword index="K" term="Welcome" />
+      <HelpKeyword index="K" term="MTS SDK" />
     </HelpKeywords>
   </Topic>
   <Topic id="f487c66f-77c1-47db-918a-7aa105fd4d67" visible="False" isExpanded="true" title="Version History">

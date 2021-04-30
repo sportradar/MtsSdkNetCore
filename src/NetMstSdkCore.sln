@@ -8,6 +8,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sportradar.MTS.SDK.Test", "Sportradar.MTS.SDK.Test\Sportradar.MTS.SDK.Test.csproj", "{5C318AAB-3BA0-45CD-88DE-BA7C153C50FF}"
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Sportradar.MTS.SDK.Docs", "Sportradar.MTS.SDK.Docs\Sportradar.MTS.SDK.Docs.shfbproj", "{8D6A9748-E324-49C3-AE8D-EB8EDD0FF879}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3171F873-E19D-4B92-8D25-B8D10BEA1540} = {3171F873-E19D-4B92-8D25-B8D10BEA1540}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

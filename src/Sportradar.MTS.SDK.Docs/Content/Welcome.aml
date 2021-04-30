@@ -2,38 +2,53 @@
 <topic id="44579599-744c-4ef5-abb8-021cbe6646d5" revisionNumber="1">
 	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
 		<introduction>
-			<para>This is a sample conceptual topic.  You can use this as a starting point for adding more conceptual
-content to your help project.</para>
+			<para>MTS SDK is a client library that enables easier integration with the Sportradar MTS. SDK exposes well defined API and hides ticket response parsing, proper connection handling, error recovery, event queuing and dispatching. It also makes a client solution easier to maintain with regular version updates.</para>
+      <para>
+        SDK supports MTS ticket version <legacyBold>2.3</legacyBold>.
+      </para>
 		</introduction>
 
 		<section>
 			<title>Getting Started</title>
 			<content>
-				<para>To get started, add a documentation source to the project (a Visual Studio solution, project, or
-assembly and XML comments file).  See the <legacyBold>Getting Started</legacyBold> topics in the Sandcastle Help
-File Builder's help file for more information.  The following default items are included in this project:</para>
-
-				<list class="bullet">
+				<para>
+          Before starting to use the SDK please read the appropriate MTS documentation found on
+          www.betradar.com under Help/Developer Zone/Downloads. SDK examples and code
+          documentation is available on the https://sdk.sportradar.com.
+        </para>
+      </content>
+      <sections>
+				<section>
+          <title>Obtaining the SDK</title>
+          <content>
+            <para>
+              The SDK is provided as a code library (Sportradar.MTS.SDK.dll), which is available on the SDK
+              site and via the NuGet package manager. The usage of NuGet package manager is
+              recommended, since it supports update notifications and makes it easier to obtain new
+              releases of the SDK.
+            </para>
+          </content>
+        </section>
+      </sections>
+        
+        <!--<list class="bullet">
 					<listItem>
 						<para><localUri>ContentLayout.content</localUri> - Use the content layout file to manage the
 conceptual content in the project and define its layout in the table of contents.</para>
 					</listItem>
-
-					<listItem>
+          <listItem>
 						<para>The <localUri>.\media</localUri> folder - Place images in this folder that you will reference
 from conceptual content using <codeInline>medialLink</codeInline> or <codeInline>mediaLinkInline</codeInline>
 elements.  If you will not have any images in the file, you may remove this folder.</para>
 					</listItem>
-
-					<listItem>
+          <listItem>
 						<para>The <localUri>.\icons</localUri> folder - This contains a default logo for the help file.  You
 may replace it or remove it and the folder if not wanted.  If removed or if you change the file name, update
 the <ui>Transform Args</ui> project properties page by removing or changing the filename in the
 <codeInline>logoFile</codeInline> transform argument.  Note that unlike images referenced from conceptual topics,
 the logo file should have its <legacyBold>BuildAction</legacyBold> property set to <codeInline>Content</codeInline>.</para>
 					</listItem>
-
-					<listItem>
+          <listItem>
 						<para>The <localUri>.\Content</localUri> folder - Use this to store your conceptual topics.  You may
 name the files and organize them however you like.  One suggestion is to lay the files out on disk as you have
 them in the content layout file as shown in this project but the choice is yours.  Files can be added via the
@@ -41,17 +56,14 @@ Solution Explorer or from within the content layout file editor.  Files must app
 in order to be compiled into the help file.</para>
 					</listItem>
 				</list>
-
-
-
-				<para>See the <legacyBold>Conceptual Content</legacyBold> topics in the Sandcastle Help File Builder's
+        <para>See the <legacyBold>Conceptual Content</legacyBold> topics in the Sandcastle Help File Builder's
 help file for more information.  See the <legacyBold> Sandcastle MAML Guide</legacyBold> for details on Microsoft
-Assistance Markup Language (MAML) which is used to create these topics.</para>
-			</content>
+Assistance Markup Language (MAML) which is used to create these topics.</para>-->
+			
 		</section>
 
 		<relatedTopics>
-			<link xlink:href="f487c66f-77c1-47db-918a-7aa105fd4d67" />
+			<!--<link xlink:href="f487c66f-77c1-47db-918a-7aa105fd4d67" />-->
 		</relatedTopics>
 	</developerConceptualDocument>
 </topic>
