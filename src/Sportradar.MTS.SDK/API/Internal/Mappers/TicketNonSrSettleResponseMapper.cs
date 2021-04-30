@@ -1,7 +1,6 @@
 ﻿/*
  * Copyright (C) Sportradar AG. See LICENSE for full license governing this code
  */
-using Sportradar.MTS.SDK.API.Internal.Senders;
 using Sportradar.MTS.SDK.API.Internal.TicketImpl;
 using Sportradar.MTS.SDK.Entities.Interfaces;
 using Sportradar.MTS.SDK.Entities.Internal.Dto;
@@ -17,20 +16,6 @@ namespace Sportradar.MTS.SDK.API.Internal.Mappers
     internal class TicketNonSrSettleResponseMapper : ITicketResponseMapper<TicketNonSrSettleResponseDTO, ITicketNonSrSettleResponse>
     {
         /// <summary>
-        /// The ticket ack sender
-        /// </summary>
-        private readonly ITicketSender _ticketSender;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TicketNonSrSettleResponseMapper"/> class
-        /// </summary>
-        /// <param name="ticketSender">The ticket non-sportradar settle ack sender (null)</param>
-        public TicketNonSrSettleResponseMapper(ITicketSender ticketSender)
-        {
-            _ticketSender = ticketSender;
-        }
-
-        /// <summary>
         /// Maps the specified source.
         /// </summary>
         /// <param name="source">The source</param>
@@ -40,7 +25,7 @@ namespace Sportradar.MTS.SDK.API.Internal.Mappers
         /// <returns>TicketNonSrSettleResponse</returns>
         public ITicketNonSrSettleResponse Map(TicketNonSrSettleResponseDTO source, string correlationId, IDictionary<string, string> additionalInfo, string orgJson)
         {
-            return new TicketNonSrSettleResponse(_ticketSender,
+            return new TicketNonSrSettleResponse(
                                             source.Result.TicketId,
                                             MtsTicketHelper.Convert(source.Result.Status),
                                             new ResponseReason(source.Result.Reason.Code, source.Result.Reason.Message),
