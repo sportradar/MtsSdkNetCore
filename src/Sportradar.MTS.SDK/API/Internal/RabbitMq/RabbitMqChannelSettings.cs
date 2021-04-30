@@ -1,6 +1,11 @@
 ﻿/*
  * Copyright (C) Sportradar AG. See LICENSE for full license governing this code
  */
+
+using System;
+using Microsoft.Extensions.Logging;
+using RabbitMQ.Client;
+
 namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 {
     internal class RabbitMqChannelSettings : IRabbitMqChannelSettings

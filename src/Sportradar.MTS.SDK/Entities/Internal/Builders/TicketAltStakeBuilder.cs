@@ -190,31 +190,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
                 var newBetBuilder = builderFactory.CreateBetBuilder()
                     .SetBetId(ticketBet.Id + "A")
                     .SetReofferRefId(ticketBet.Id);
-                if (ticketBet.Stake.Type.HasValue)
-                {
-                    newBetBuilder.SetStake(newStake, ticketBet.Stake.Type.Value);
-                }
-                else
-                {
-                    newBetBuilder.SetStake(newStake);
-                }
-                if (ticketBet.SumOfWins > 0)
-                {
-                    newBetBuilder.SetSumOfWins(ticketBet.SumOfWins);
-                }
-                if (ticketBet.Bonus != null)
-                {
-                    newBetBuilder.SetBetBonus(ticketBet.Bonus.Value, ticketBet.Bonus.Mode, ticketBet.Bonus.Type);
-                }
-                foreach (var ticketBetSelection in ticketBet.Selections)
-                {
-                    newBetBuilder.AddSelection(ticketBetSelection);
-                }
-                foreach (var ticketBetSelectedSystem in ticketBet.SelectedSystems)
-                {
-                    newBetBuilder.AddSelectedSystem(ticketBetSelectedSystem);
-                }
-                altStakeTicketBuilder.AddBet(newBetBuilder.Build());
+                
+                altStakeTicketBuilder.AddBet(BuilderHelper.BuildBetFromExisting(newBetBuilder, ticketBet, newStake));
             }
             return altStakeTicketBuilder.BuildTicket();
         }

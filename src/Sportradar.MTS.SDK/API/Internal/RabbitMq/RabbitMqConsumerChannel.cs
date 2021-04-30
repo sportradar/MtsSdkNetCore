@@ -263,25 +263,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                         // try to declare the exchange if it is not the default one
                         if (!string.IsNullOrEmpty(_mtsChannelSettings.ExchangeName))
                         {
-                            try
-                            {
-                                channelWrapper.Channel.ExchangeDeclare(_mtsChannelSettings.ExchangeName,
-                                    _mtsChannelSettings.ExchangeType.ToString().ToLower(),
-                                    _channelSettings.QueueIsDurable,
-                                    false,
-                                    null);
-                            }
-                            catch (Exception ie)
-                            {
-                                ExecutionLog.LogError(ie.Message, ie);
-                                ExecutionLog.LogWarning($"Exchange {_mtsChannelSettings.ExchangeName} creation failed, will try to recreate it.");
-                                channelWrapper.Channel.ExchangeDelete(_mtsChannelSettings.ExchangeName);
-                                channelWrapper.Channel.ExchangeDeclare(_mtsChannelSettings.ExchangeName,
-                                    _mtsChannelSettings.ExchangeType.ToString().ToLower(),
-                                    _channelSettings.QueueIsDurable,
-                                    false,
-                                    null);
-                            }
+                            MtsChannelSettings.TryDeclareExchange(channelWrapper.Channel, _mtsChannelSettings, _channelSettings.QueueIsDurable, ExecutionLog);
                         }
 
                         var arguments = new Dictionary<string, object> { { "x-queue-master-locator", "min-masters" } };

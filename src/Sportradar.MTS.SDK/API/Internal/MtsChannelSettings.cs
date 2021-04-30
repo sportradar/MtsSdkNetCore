@@ -6,9 +6,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
-using Sportradar.MTS.SDK.API.Internal.RabbitMq;
+using Microsoft.Extensions.Logging;
+using RabbitMQ.Client;
 using Sportradar.MTS.SDK.Common.Internal;
 using Sportradar.MTS.SDK.Entities.Internal;
+using ExchangeType = Sportradar.MTS.SDK.API.Internal.RabbitMq.ExchangeType;
 
 namespace Sportradar.MTS.SDK.API.Internal
 {
@@ -190,6 +192,25 @@ namespace Sportradar.MTS.SDK.API.Internal
                                           headerProperties: null,
                                           replyToRoutingKey: null,
                                           environment: environment);
+        }
+
+        public static void TryDeclareExchange(IModel channel, IMtsChannelSettings channelSettings, bool isQueueDurable, ILogger logger)
+        {
+            try
+            {
+                channel.ExchangeDeclare(channelSettings.ExchangeName,
+                    channelSettings.ExchangeType.ToString().ToLower(),
+                    isQueueDurable,
+                    false,
+                    null);
+            }
+            catch (Exception ie)
+            {
+                logger.LogError(ie.Message, ie);
+                logger.LogWarning($"Exchange {channelSettings.ExchangeName} creation failed, will try to recreate it.");
+                channel.ExchangeDelete(channelSettings.ExchangeName);
+                channel.ExchangeDeclare(channelSettings.ExchangeName, channelSettings.ExchangeType.ToString().ToLower(), isQueueDurable, false, null);
+            }
         }
     }
 }

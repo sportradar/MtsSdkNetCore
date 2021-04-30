@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using Dawn;
 using System.Linq;
+using Castle.Core.Internal;
 using Newtonsoft.Json;
 using Sportradar.MTS.SDK.Entities.Enums;
 using Sportradar.MTS.SDK.Entities.Interfaces;
@@ -184,7 +185,10 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
                 {
                     selections.AddRange(bet.Selections);
                 }
-                Guard.Argument(selections, nameof(selections)).NotNull().NotEmpty();
+                if (selections.IsNullOrEmpty())
+                {
+                    throw new ArgumentException("Missing bet selections.");
+                }
                 Selections = selections.Distinct();
             }
             TotalCombinations = totalCombinations;

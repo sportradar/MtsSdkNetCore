@@ -130,38 +130,17 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             foreach (var ticketBet in orgTicket.Bets)
             {
                 var responseBetDetail = orgTicketResponse.BetDetails.First(f => f.BetId == ticketBet.Id);
+
                 if (responseBetDetail == null)
                 {
                     throw new ArgumentException($"Ticket response is missing a bet details for the bet {ticketBet.Id}");
                 }
+
                 var newBetBuilder = builderFactory.CreateBetBuilder()
                     .SetBetId(ticketBet.Id + "R")
                     .SetReofferRefId(ticketBet.Id);
-                if (ticketBet.Stake.Type.HasValue)
-                {
-                    newBetBuilder.SetStake(responseBetDetail.Reoffer.Stake, ticketBet.Stake.Type.Value);
-                }
-                else
-                {
-                    newBetBuilder.SetStake(responseBetDetail.Reoffer.Stake);
-                }
-                if (ticketBet.SumOfWins > 0)
-                {
-                    newBetBuilder.SetSumOfWins(ticketBet.SumOfWins);
-                }
-                if (ticketBet.Bonus != null)
-                {
-                    newBetBuilder.SetBetBonus(ticketBet.Bonus.Value, ticketBet.Bonus.Mode, ticketBet.Bonus.Type);
-                }
-                foreach (var ticketBetSelection in ticketBet.Selections)
-                {
-                    newBetBuilder.AddSelection(ticketBetSelection);
-                }
-                foreach (var ticketBetSelectedSystem in ticketBet.SelectedSystems)
-                {
-                    newBetBuilder.AddSelectedSystem(ticketBetSelectedSystem);
-                }
-                reofferTicketBuilder.AddBet(newBetBuilder.Build());
+
+                reofferTicketBuilder.AddBet(BuilderHelper.BuildBetFromExisting(newBetBuilder, ticketBet, responseBetDetail.Reoffer.Stake));
             }
             return reofferTicketBuilder.BuildTicket();
         }
@@ -213,31 +192,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
                 var newBetBuilder = builderFactory.CreateBetBuilder()
                     .SetBetId(ticketBet.Id + "R")
                     .SetReofferRefId(ticketBet.Id);
-                if (ticketBet.Stake.Type.HasValue)
-                {
-                    newBetBuilder.SetStake(newStake, ticketBet.Stake.Type.Value);
-                }
-                else
-                {
-                    newBetBuilder.SetStake(newStake);
-                }
-                if (ticketBet.SumOfWins > 0)
-                {
-                    newBetBuilder.SetSumOfWins(ticketBet.SumOfWins);
-                }
-                if (ticketBet.Bonus != null)
-                {
-                    newBetBuilder.SetBetBonus(ticketBet.Bonus.Value, ticketBet.Bonus.Mode, ticketBet.Bonus.Type);
-                }
-                foreach (var ticketBetSelection in ticketBet.Selections)
-                {
-                    newBetBuilder.AddSelection(ticketBetSelection);
-                }
-                foreach (var ticketBetSelectedSystem in ticketBet.SelectedSystems)
-                {
-                    newBetBuilder.AddSelectedSystem(ticketBetSelectedSystem);
-                }
-                reofferTicketBuilder.AddBet(newBetBuilder.Build());
+
+                reofferTicketBuilder.AddBet(BuilderHelper.BuildBetFromExisting(newBetBuilder, ticketBet, newStake));
             }
             return reofferTicketBuilder.BuildTicket();
         }

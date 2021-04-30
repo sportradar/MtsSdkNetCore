@@ -499,19 +499,17 @@ namespace Sportradar.MTS.SDK.API
             {
                 return ticketCacheTimeout;
             }
-            else
+
+            lock (_lockForTicketsForNonBlockingRequestsCache)
             {
-                lock (_lockForTicketsForNonBlockingRequestsCache)
+                if (TicketResponseTimedOut != null)
                 {
-                    if (TicketResponseTimedOut != null)
+                    _cacheItemPolicyForTicketsForNonBlockingRequestsCache = new CacheItemPolicy
                     {
-                        _cacheItemPolicyForTicketsForNonBlockingRequestsCache = new CacheItemPolicy
-                                                                                {
-                                                                                    AbsoluteExpiration = new DateTimeOffset(DateTime.Now.AddMilliseconds(ticketCacheTimeout)),
-                                                                                    RemovedCallback = RemovedFromCacheForTicketsForNonBlockingRequestsCallback
-                                                                                };
-                        _ticketsForNonBlockingRequests.Add(ticket.TicketId, ticket, _cacheItemPolicyForTicketsForNonBlockingRequestsCache);
-                    }
+                        AbsoluteExpiration = new DateTimeOffset(DateTime.Now.AddMilliseconds(ticketCacheTimeout)),
+                        RemovedCallback = RemovedFromCacheForTicketsForNonBlockingRequestsCallback
+                    };
+                    _ticketsForNonBlockingRequests.Add(ticket.TicketId, ticket, _cacheItemPolicyForTicketsForNonBlockingRequestsCache);
                 }
             }
             return -1;
@@ -541,8 +539,7 @@ namespace Sportradar.MTS.SDK.API
 
             autoResetEvent.WaitOne(TimeSpan.FromMilliseconds(responseTimeout));
 
-            ISdkTicket responseTicket;
-            if (_responsesFromBlockingRequests.TryRemove(ticket.TicketId, out responseTicket))
+            if (_responsesFromBlockingRequests.TryRemove(ticket.TicketId, out var responseTicket))
             {
                 stopwatch.Stop();
                 ReleaseAutoResetEventFromDictionary(ticket.TicketId);

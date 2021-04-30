@@ -328,7 +328,6 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                 }
                 if (!string.IsNullOrEmpty(correlationId))
                 {
-                    //_channelBasicProperties.Headers["correlationId"] = correlationId;
                     channelBasicProperties.CorrelationId = correlationId;
                 }
                 if (!string.IsNullOrEmpty(replyRoutingKey))
@@ -373,25 +372,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                     // try to declare the exchange if it is not the default one
                     if (!string.IsNullOrEmpty(_mtsChannelSettings.ExchangeName))
                     {
-                        try
-                        {
-                            channelWrapper.Channel.ExchangeDeclare(_mtsChannelSettings.ExchangeName,
-                                                     _mtsChannelSettings.ExchangeType.ToString().ToLower(),
-                                                     _channelSettings.QueueIsDurable,
-                                                     false,
-                                                     null);
-                        }
-                        catch (Exception ie)
-                        {
-                            ExecutionLog.LogError(ie.Message, ie);
-                            ExecutionLog.LogWarning($"Exchange {_mtsChannelSettings.ExchangeName} creation failed, will try to recreate it.");
-                            channelWrapper.Channel.ExchangeDelete(_mtsChannelSettings.ExchangeName);
-                            channelWrapper.Channel.ExchangeDeclare(_mtsChannelSettings.ExchangeName,
-                                                     _mtsChannelSettings.ExchangeType.ToString().ToLower(),
-                                                     _channelSettings.QueueIsDurable,
-                                                     false,
-                                                     null);
-                        }
+                        MtsChannelSettings.TryDeclareExchange(channelWrapper.Channel, _mtsChannelSettings, _channelSettings.QueueIsDurable, ExecutionLog);
                     }
 
                     var channelBasicProperties = channelWrapper.Channel.CreateBasicProperties();
@@ -411,7 +392,6 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                     channelWrapper.ChannelBasicProperties = channelBasicProperties;
 
                     Interlocked.CompareExchange(ref _isOpened, 1, 0);
-                    //ExecutionLog.LogDebug($"Opening the publisher channel with channelNumber: {UniqueId} and exchangeName: {_mtsChannelSettings.ExchangeName} finished.");
                     return;
                 }
                 catch (Exception e)
@@ -466,7 +446,6 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                 {
                     ExecutionLog.LogError($"Cannot close the publisher channel on channelNumber: {UniqueId}, because this channel is already closed.");
                 }
-                //throw new InvalidOperationException("The instance is already closed");
             }
             Interlocked.CompareExchange(ref _shouldBeOpened, 0, 1);
         }

@@ -139,6 +139,27 @@ namespace Sportradar.MTS.SDK.API.Internal
             container.RegisterInstance<IDataFetcher>("Base", logFetcher, new ContainerControlledLifetimeManager());
             container.RegisterInstance<IDataPoster>("Base", logFetcher, new ContainerControlledLifetimeManager());
 
+            container.RegisterType<HttpDataFetcher, HttpDataFetcher>("MtsApi",
+                new ContainerControlledLifetimeManager(),
+                new InjectionConstructor(
+                    new ResolvedParameter<HttpClient>(),
+                    string.Empty,
+                    RestConnectionFailureLimit,
+                    RestConnectionFailureTimeoutInSec));
+
+            container.RegisterType<LogHttpDataFetcher, LogHttpDataFetcher>("MtsApi",
+                new ContainerControlledLifetimeManager(),
+                new InjectionConstructor(
+                    new ResolvedParameter<HttpClient>(),
+                    string.Empty,
+                    new ResolvedParameter<ISequenceGenerator>(),
+                    RestConnectionFailureLimit,
+                    RestConnectionFailureTimeoutInSec));
+
+            var logFetcherApi = container.Resolve<LogHttpDataFetcher>("MtsApi");
+            container.RegisterInstance<IDataFetcher>("MtsApi", logFetcherApi, new ContainerControlledLifetimeManager());
+            container.RegisterInstance<IDataPoster>("MtsApi", logFetcherApi, new ContainerControlledLifetimeManager());
+
             container.RegisterType<ISdkConfigurationInternal, SdkConfigurationInternal>(new ContainerControlledLifetimeManager());
             var configInternal = new SdkConfigurationInternal(config, logFetcher);
             container.RegisterInstance(configInternal);
@@ -442,27 +463,6 @@ namespace Sportradar.MTS.SDK.API.Internal
 
         private static void RegisterClientApi(IUnityContainer container, ISdkConfiguration userConfig)
         {
-            container.RegisterType<HttpDataFetcher, HttpDataFetcher>("MtsClientApi",
-                new ContainerControlledLifetimeManager(),
-                new InjectionConstructor(
-                    new ResolvedParameter<HttpClient>(),
-                    string.Empty,
-                    RestConnectionFailureLimit,
-                    RestConnectionFailureTimeoutInSec));
-
-            container.RegisterType<LogHttpDataFetcher, LogHttpDataFetcher>("MtsClientApi",
-                new ContainerControlledLifetimeManager(),
-                new InjectionConstructor(
-                    new ResolvedParameter<HttpClient>(),
-                    string.Empty,
-                    new ResolvedParameter<ISequenceGenerator>(),
-                    RestConnectionFailureLimit,
-                    RestConnectionFailureTimeoutInSec));
-
-            var logFetcher = container.Resolve<LogHttpDataFetcher>("MtsClientApi");
-            container.RegisterInstance<IDataFetcher>("MtsClientApi", logFetcher, new ContainerControlledLifetimeManager());
-            container.RegisterInstance<IDataPoster>("MtsClientApi", logFetcher, new ContainerControlledLifetimeManager());
-
             container.RegisterType<IDeserializer<MaxStakeResponseDTO>, Entities.Internal.JsonDeserializer<MaxStakeResponseDTO>>(new ContainerControlledLifetimeManager());
             container.RegisterType<ISingleTypeMapperFactory<MaxStakeResponseDTO, MaxStakeImpl>, MaxStakeMapperFactory>(new ContainerControlledLifetimeManager());
             container.RegisterType<IDataProvider<MaxStakeImpl>,
@@ -470,8 +470,8 @@ namespace Sportradar.MTS.SDK.API.Internal
                 new ContainerControlledLifetimeManager(),
                 new InjectionConstructor(
                     userConfig.MtsClientApiHost + "/ClientApi/api/maxStake/v1",
-                    new ResolvedParameter<IDataFetcher>("MtsClientApi"),
-                    new ResolvedParameter<IDataPoster>("MtsClientApi"),
+                    new ResolvedParameter<IDataFetcher>("MtsApi"),
+                    new ResolvedParameter<IDataPoster>("MtsApi"),
                     new ResolvedParameter<IDeserializer<MaxStakeResponseDTO>>(),
                     new ResolvedParameter<ISingleTypeMapperFactory<MaxStakeResponseDTO, MaxStakeImpl>>()));
 
@@ -482,8 +482,8 @@ namespace Sportradar.MTS.SDK.API.Internal
                 new ContainerControlledLifetimeManager(),
                 new InjectionConstructor(
                     userConfig.MtsClientApiHost + "/ClientApi/api/ccf/v1?sourceId={0}",
-                    new ResolvedParameter<IDataFetcher>("MtsClientApi"),
-                    new ResolvedParameter<IDataPoster>("MtsClientApi"),
+                    new ResolvedParameter<IDataFetcher>("MtsApi"),
+                    new ResolvedParameter<IDataPoster>("MtsApi"),
                     new ResolvedParameter<IDeserializer<CcfResponseDTO>>(),
                     new ResolvedParameter<ISingleTypeMapperFactory<CcfResponseDTO, CcfImpl>>()));
 
@@ -499,30 +499,10 @@ namespace Sportradar.MTS.SDK.API.Internal
 
         private static void RegisterReportManager(IUnityContainer container, ISdkConfiguration userConfig)
         {
-            container.RegisterType<HttpDataFetcher, HttpDataFetcher>("ReportManager",
-                new ContainerControlledLifetimeManager(),
-                new InjectionConstructor(
-                    new ResolvedParameter<HttpClient>(),
-                    string.Empty,
-                    RestConnectionFailureLimit,
-                    RestConnectionFailureTimeoutInSec));
-
-            container.RegisterType<LogHttpDataFetcher, LogHttpDataFetcher>("ReportManager",
-                new ContainerControlledLifetimeManager(),
-                new InjectionConstructor(
-                    new ResolvedParameter<HttpClient>(),
-                    string.Empty,
-                    new ResolvedParameter<ISequenceGenerator>(),
-                    RestConnectionFailureLimit,
-                    RestConnectionFailureTimeoutInSec));
-
-            var logFetcher = container.Resolve<LogHttpDataFetcher>("ReportManager"); 
-            container.RegisterInstance<IDataFetcher>("ReportManager", logFetcher, new ContainerControlledLifetimeManager());
-
             container.RegisterType<IReportManager, ReportManager>(
                 new ContainerControlledLifetimeManager(),
                 new InjectionConstructor(
-                    new ResolvedParameter<IDataFetcher>("ReportManager"),
+                    new ResolvedParameter<IDataFetcher>("MtsApi"),
                     userConfig.MtsClientApiHost + "/ReportingCcf/external/api/report/export/history/ccf/changes/client/api",
                     new ResolvedParameter<IMtsAuthService>(),
                     new ResolvedParameter<IMetricsRoot>(),
