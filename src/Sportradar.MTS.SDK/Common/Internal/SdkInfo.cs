@@ -29,6 +29,7 @@ namespace Sportradar.MTS.SDK.Common.Internal
         public const string ApiHostIntegration = "https://stgapi.betradar.com";
         public const string ApiHostProduction = "https://api.betradar.com";
         public const string PublicIpDomain = "http://ipecho.net/plain";
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S1075:URIs should not be hardcoded", Justification = "Approved")]
         public const string DefaultNamespaceUri = "http://schemas.sportradar.com/sportsapi/v1/unified";
 
         /// <summary>

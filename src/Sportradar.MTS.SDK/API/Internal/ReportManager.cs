@@ -86,8 +86,6 @@ namespace Sportradar.MTS.SDK.API.Internal
             _config = config;
         }
 
-
-        /// <inheritdoc />
         [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Needs more arguments")]
         public async Task GetHistoryCcfChangeCsvExportAsync(Stream outputStream, 
                                                             DateTime startDate, 
@@ -104,8 +102,7 @@ namespace Sportradar.MTS.SDK.API.Internal
             var result = await GetHistoryCcfChangeAsync(startDate, endDate, bookmakerId, subBookmakerIds, sourceId, sourceType, username, password).ConfigureAwait(false);
             await result.CopyToAsync(outputStream).ConfigureAwait(false);
         }
-
-        /// <inheritdoc />
+        
         [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Needs more arguments")]
         public async Task<List<ICcfChange>> GetHistoryCcfChangeCsvExportAsync(DateTime startDate, 
                                                                               DateTime endDate, 

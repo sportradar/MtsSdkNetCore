@@ -111,21 +111,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
                 return BuildReofferTicket(builderFactory, orgTicket, orgTicketResponse.BetDetails.First().Reoffer.Stake, newTicketId);
             }
 
-            var reofferTicketBuilder = builderFactory.CreateTicketBuilder()
-                .SetTicketId(string.IsNullOrEmpty(newTicketId) ? orgTicket.TicketId + "R" : newTicketId)
-                .SetSender(orgTicket.Sender)
-                .SetTestSource(orgTicket.TestSource)
-                .SetReofferId(orgTicket.TicketId);
-
-            if (orgTicket.LastMatchEndTime.HasValue)
-            {
-                reofferTicketBuilder.SetLastMatchEndTime(orgTicket.LastMatchEndTime.Value);
-            }
-
-            if (orgTicket.OddsChange.HasValue)
-            {
-                reofferTicketBuilder.SetOddsChange(orgTicket.OddsChange.Value);
-            }
+            var reofferTicketBuilder = InitBuilder(builderFactory, orgTicket, newTicketId);
 
             foreach (var ticketBet in orgTicket.Bets)
             {
@@ -171,11 +157,26 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
                 throw new ArgumentException("New stake info is invalid.");
             }
 
+            var reofferTicketBuilder = InitBuilder(builderFactory, orgTicket, newTicketId);
+
+            foreach (var ticketBet in orgTicket.Bets)
+            {
+                var newBetBuilder = builderFactory.CreateBetBuilder()
+                    .SetBetId(ticketBet.Id + "R")
+                    .SetReofferRefId(ticketBet.Id);
+
+                reofferTicketBuilder.AddBet(BuilderHelper.BuildBetFromExisting(newBetBuilder, ticketBet, newStake));
+            }
+            return reofferTicketBuilder.BuildTicket();
+        }
+
+        private static ITicketBuilder InitBuilder(ISimpleBuilderFactory builderFactory, ITicket orgTicket, string newTicketId = null)
+        {
             var reofferTicketBuilder = builderFactory.CreateTicketBuilder()
-                                         .SetTicketId(string.IsNullOrEmpty(newTicketId) ? orgTicket.TicketId + "R" : newTicketId)
-                                         .SetSender(orgTicket.Sender)
-                                         .SetTestSource(orgTicket.TestSource)
-                                         .SetReofferId(orgTicket.TicketId);
+                .SetTicketId(string.IsNullOrEmpty(newTicketId) ? orgTicket.TicketId + "R" : newTicketId)
+                .SetSender(orgTicket.Sender)
+                .SetTestSource(orgTicket.TestSource)
+                .SetReofferId(orgTicket.TicketId);
 
             if (orgTicket.LastMatchEndTime.HasValue)
             {
@@ -187,15 +188,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
                 reofferTicketBuilder.SetOddsChange(orgTicket.OddsChange.Value);
             }
 
-            foreach (var ticketBet in orgTicket.Bets)
-            {
-                var newBetBuilder = builderFactory.CreateBetBuilder()
-                    .SetBetId(ticketBet.Id + "R")
-                    .SetReofferRefId(ticketBet.Id);
-
-                reofferTicketBuilder.AddBet(BuilderHelper.BuildBetFromExisting(newBetBuilder, ticketBet, newStake));
-            }
-            return reofferTicketBuilder.BuildTicket();
+            return reofferTicketBuilder;
         }
     }
 }
