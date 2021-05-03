@@ -13,13 +13,10 @@ namespace Sportradar.MTS.SDK.Entities.Utils
     /// </summary>
     public static class JsonUtils
     {
-        private static readonly JsonSerializerSettings Settings;
+        private static readonly JsonSerializerSettings Settings = new JsonSerializerSettings {ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor};
+
         static JsonUtils()
         {
-            Settings = new JsonSerializerSettings
-            {
-                ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor
-            };
             Settings.Converters.Add(new ConcreteConverter<ITicket, Ticket>());
             Settings.Converters.Add(new ConcreteConverter<IBet, Bet>());
             Settings.Converters.Add(new ConcreteConverter<IBetBonus, BetBonus>());

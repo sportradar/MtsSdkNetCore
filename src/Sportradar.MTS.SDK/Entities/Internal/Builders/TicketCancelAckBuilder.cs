@@ -55,19 +55,13 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
 
         private void ValidateData(bool all = false, bool ticketId = false, bool bookmakerId = false)
         {
-            if (all || ticketId)
+            if ((all || ticketId) && !TicketHelper.ValidateTicketId(_ticketId))
             {
-                if (!TicketHelper.ValidateTicketId(_ticketId))
-                {
-                    throw new ArgumentException("TicketId not valid");
-                }
+                throw new ArgumentException("TicketId not valid");
             }
-            if (all || bookmakerId)
+            if ((all || bookmakerId) && _bookmakerId <= 0)
             {
-                if (_bookmakerId <= 0)
-                {
-                    throw new ArgumentException("BookmakerId not valid.");
-                }
+                throw new ArgumentException("BookmakerId not valid.");
             }
         }
     }

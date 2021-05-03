@@ -3,6 +3,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Dawn;
 using System.Linq;
 using Castle.Core.Internal;
@@ -98,7 +99,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         }
 
         [JsonConstructor]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
+        [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
+        [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
         private Ticket(string ticketId, 
                        IEnumerable<IBet> bets, 
                        IEnumerable<ISelection> selections, 
@@ -113,6 +115,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
                        int? totalCombinations, 
                        DateTime? lastMatchEndTime)
         {
+            ValidateConstructorParameters(ticketId, sender, bets, reofferId, altStakeRefId, totalCombinations, lastMatchEndTime);
+
             TicketId = ticketId;
             Bets = bets;
             Selections = selections;
@@ -141,7 +145,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         /// <exception cref="ArgumentException">Only ReofferId or AltStakeRefId can specified</exception>
         /// <param name="totalCombinations">Expected total number of generated combinations on this ticket (optional, default null). If present is used to validate against actual number of generated combinations</param>
         /// <param name="lastMatchEndTime">End time of last (non Sportradar) match on ticket.</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
+        [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
         public Ticket(string ticketId, 
                       ISender sender, 
                       IEnumerable<IBet> bets, 
@@ -152,14 +156,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
                       int? totalCombinations, 
                       DateTime? lastMatchEndTime)
         {
-            Guard.Argument(ticketId, nameof(ticketId)).Require(TicketHelper.ValidateTicketId(ticketId));
-            Guard.Argument(sender, nameof(sender)).NotNull();
-            Guard.Argument(bets, nameof(bets)).NotNull().NotEmpty().MaxCount(50);
-            Guard.Argument(reofferId, nameof(reofferId)).Require(string.IsNullOrEmpty(reofferId) || TicketHelper.ValidateTicketId(reofferId));
-            Guard.Argument(altStakeRefId, nameof(altStakeRefId)).Require(string.IsNullOrEmpty(altStakeRefId) || TicketHelper.ValidateTicketId(altStakeRefId));
-            Guard.Argument(reofferId, nameof(reofferId)).Require(!(!string.IsNullOrEmpty(reofferId) && !string.IsNullOrEmpty(altStakeRefId)));
-            Guard.Argument(totalCombinations, nameof(totalCombinations)).Require(totalCombinations == null || totalCombinations > 0);
-            Guard.Argument(lastMatchEndTime, nameof(lastMatchEndTime)).Require(lastMatchEndTime == null || lastMatchEndTime > new DateTime(2000, 1, 1));
+            ValidateConstructorParameters(ticketId, sender, bets, reofferId, altStakeRefId, totalCombinations, lastMatchEndTime);
 
             TicketId = ticketId;
             Sender = sender;
@@ -192,6 +189,24 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
                 Selections = selections.Distinct();
             }
             TotalCombinations = totalCombinations;
+        }
+
+        private void ValidateConstructorParameters(string ticketId, 
+                                                   ISender sender, 
+                                                   IEnumerable<IBet> bets, 
+                                                   string reofferId, 
+                                                   string altStakeRefId, 
+                                                   int? totalCombinations, 
+                                                   DateTime? lastMatchEndTime)
+        {
+            Guard.Argument(ticketId, nameof(ticketId)).Require(TicketHelper.ValidateTicketId(ticketId));
+            Guard.Argument(sender, nameof(sender)).NotNull();
+            Guard.Argument(bets, nameof(bets)).NotNull().NotEmpty().MaxCount(50);
+            Guard.Argument(reofferId, nameof(reofferId)).Require(string.IsNullOrEmpty(reofferId) || TicketHelper.ValidateTicketId(reofferId));
+            Guard.Argument(altStakeRefId, nameof(altStakeRefId)).Require(string.IsNullOrEmpty(altStakeRefId) || TicketHelper.ValidateTicketId(altStakeRefId));
+            Guard.Argument(reofferId, nameof(reofferId)).Require(!(!string.IsNullOrEmpty(reofferId) && !string.IsNullOrEmpty(altStakeRefId)));
+            Guard.Argument(totalCombinations, nameof(totalCombinations)).Require(totalCombinations == null || totalCombinations > 0);
+            Guard.Argument(lastMatchEndTime, nameof(lastMatchEndTime)).Require(lastMatchEndTime == null || lastMatchEndTime > new DateTime(2000, 1, 1));
         }
     }
 }

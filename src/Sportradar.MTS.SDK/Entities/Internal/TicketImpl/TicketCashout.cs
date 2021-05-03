@@ -69,6 +69,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
         private TicketCashout(DateTime timestamp, string ticketId, int bookmakerId, long? cashoutStake, int? cashoutPercent, IEnumerable<IBetCashout> betCashouts, string version, string correlationId)
         {
+            ValidateConstructorParameters(ticketId, bookmakerId, cashoutStake, cashoutPercent, betCashouts);
+
             Timestamp = timestamp;
             TicketId = ticketId;
             BookmakerId = bookmakerId;
@@ -89,19 +91,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         /// <param name="betCashouts">The list of <see cref="IBetCashout"/></param>
         public TicketCashout(string ticketId, int bookmakerId, long? stake, int? percent, IReadOnlyCollection<IBetCashout> betCashouts)
         {
-            Guard.Argument(ticketId).Require(TicketHelper.ValidateTicketId(ticketId));
-            Guard.Argument(bookmakerId, nameof(bookmakerId)).Positive();
-            Guard.Argument(stake, nameof(stake)).Require(stake >= 0 || percent >= 0 || (betCashouts != null && betCashouts.Any()));
-
-            if (percent != null && stake == null)
-            {
-                throw new ArgumentException("If percent is set, also stake must be.");
-            }
-
-            if (betCashouts != null && (stake != null || percent != null))
-            {
-                throw new ArgumentException("Stake and/or Percent cannot be set at the same time as BetCashouts.");
-            }
+            ValidateConstructorParameters(ticketId, bookmakerId, stake, percent, betCashouts);
 
             TicketId = ticketId;
             BookmakerId = bookmakerId;
@@ -111,6 +101,23 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
             Timestamp = DateTime.UtcNow;
             Version = TicketHelper.MtsTicketVersion;
             CorrelationId = TicketHelper.GenerateTicketCorrelationId();
+        }
+
+        private void ValidateConstructorParameters(string ticketId, int bookmakerId, long? stake, int? percent, IEnumerable<IBetCashout> betCashouts)
+        {
+            Guard.Argument(ticketId).Require(TicketHelper.ValidateTicketId(ticketId));
+            Guard.Argument(bookmakerId, nameof(bookmakerId)).Positive();
+            Guard.Argument(stake, nameof(stake)).Require(stake >= 0 || percent >= 0 || (betCashouts != null && betCashouts.Any()));
+
+            if (percent != null && stake == null)
+            {
+                throw new ArgumentException("If percent is set, also stake must be.");
+            }
+
+            if (betCashouts != null && stake != null)
+            {
+                throw new ArgumentException("Stake and/or Percent cannot be set at the same time as BetCashouts.");
+            }
         }
     }
 }

@@ -29,6 +29,7 @@ namespace Sportradar.MTS.SDK.Common.Internal
         public const string ApiHostIntegration = "https://stgapi.betradar.com";
         public const string ApiHostProduction = "https://api.betradar.com";
         public const string PublicIpDomain = "http://ipecho.net/plain";
+        public const string DefaultNamespaceUri = "http://schemas.sportradar.com/sportsapi/v1/unified";
 
         /// <summary>
         /// Gets the version number of the executing assembly

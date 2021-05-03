@@ -3,6 +3,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Text;
@@ -87,7 +88,7 @@ namespace Sportradar.MTS.SDK.API.Internal
 
 
         /// <inheritdoc />
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Needs more arguments")]
+        [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Needs more arguments")]
         public async Task GetHistoryCcfChangeCsvExportAsync(Stream outputStream, 
                                                             DateTime startDate, 
                                                             DateTime endDate, 
@@ -105,7 +106,7 @@ namespace Sportradar.MTS.SDK.API.Internal
         }
 
         /// <inheritdoc />
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Needs more arguments")]
+        [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Needs more arguments")]
         public async Task<List<ICcfChange>> GetHistoryCcfChangeCsvExportAsync(DateTime startDate, 
                                                                               DateTime endDate, 
                                                                               int? bookmakerId = null,
@@ -200,7 +201,7 @@ namespace Sportradar.MTS.SDK.API.Internal
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Needs 8 arguments")]
+        [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Needs 8 arguments")]
         private async Task<Stream> GetHistoryCcfChangeAsync(DateTime startDate,
                                                             DateTime endDate, 
                                                             int? bookmakerId = null,

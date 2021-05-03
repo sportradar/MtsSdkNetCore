@@ -11,6 +11,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.CustomBet
     /// <summary>
     /// Defines a data-transfer-object for available selections for the market
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S101:Types should be named in PascalCase", Justification = "Allowed")]
     internal class MarketDTO
     {
         /// <summary>

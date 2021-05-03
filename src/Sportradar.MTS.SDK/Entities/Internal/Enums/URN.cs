@@ -11,6 +11,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Enums
     /// <summary>
     /// Represents a Uniform Resource Name
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S101:Types should be named in PascalCase", Justification = "Allowed")]
     // ReSharper disable once InconsistentNaming
     internal class URN
     {
