@@ -21,11 +21,9 @@ namespace Sportradar.MTS.SDK.Common.Internal
         {
             Guard.Argument(stream, nameof(stream)).NotNull();
 
-            using (var memoryStream = new MemoryStream())
-            {
-                stream.CopyTo(memoryStream);
-                return Encoding.UTF8.GetString(memoryStream.ToArray());
-            }
+            using var memoryStream = new MemoryStream();
+            stream.CopyTo(memoryStream);
+            return Encoding.UTF8.GetString(memoryStream.ToArray());
         }
     }
 }

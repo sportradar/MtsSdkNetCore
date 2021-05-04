@@ -187,6 +187,7 @@ namespace Sportradar.MTS.SDK.Common.Internal.Log
         private void ExecuteMethod(IInvocation invocation, ILogger logger, bool logEnabled)
         {
             var methodInfo = invocation.Method;
+
             var watch = new Stopwatch();
             watch.Start();
 

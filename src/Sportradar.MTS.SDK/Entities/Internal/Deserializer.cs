@@ -89,6 +89,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         private class NamespaceIgnorantXmlTextReader : XmlTextReader
         {
             public bool IgnoreNamespace { private get; set; }
+            
+            public override string NamespaceURI { get; }
 
             public NamespaceIgnorantXmlTextReader(Stream stream)
                 : base(stream)
@@ -103,8 +105,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal
                     NamespaceURI = base.NamespaceURI;
                 }
             }
-
-            public override string NamespaceURI { get; }
         }
     }
 }

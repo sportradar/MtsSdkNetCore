@@ -170,7 +170,6 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         public void BuildTicketDtoFromJsonTest()
         {
             var json = FileHelper.ReadFile(DirPath, @"ticket-base.json");
-
             var dto = Ticket.FromJson(json);
 
             Assert.IsNotNull(dto);
@@ -182,7 +181,6 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         public void BuildTicketDtoFromJsonMultiBetTest()
         {
             var json = FileHelper.ReadFile(DirPath, @"ticket-multibet.json");
-
             var dto = Ticket.FromJson(json);
 
             Assert.IsNotNull(dto);
@@ -194,7 +192,6 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         public void BuildTicketDtoFromJsonMultiSelectionTest()
         {
             var json = FileHelper.ReadFile(DirPath, @"ticket-multiselection.json");
-
             var dto = Ticket.FromJson(json);
 
             Assert.IsNotNull(dto);
@@ -206,7 +203,6 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         public void BuildTicketCancelDtoFromJsonTest()
         {
             var json = FileHelper.ReadFile(DirPath, @"ticket-cancel.json");
-
             var dto = Cancel.FromJson(json);
 
             Assert.IsNotNull(dto);
@@ -220,7 +216,6 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         public void BuildTicketAckDtoFromJsonTest()
         {
             var json = FileHelper.ReadFile(DirPath, @"ticket-ack.json");
-
             var dto = TicketAckDTO.FromJson(json);
 
             Assert.IsNotNull(dto);
@@ -235,7 +230,6 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         public void BuildTicketCancelAckDtoFromJsonTest()
         {
             var json = FileHelper.ReadFile(DirPath, @"ticket-cancel-ack.json");
-
             var dto = TicketCancelAckDTO.FromJson(json);
 
             Assert.IsNotNull(dto);
@@ -250,7 +244,6 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         public void BuildTicketResponseDtoFromJsonTest()
         {
             var json = FileHelper.ReadFile(DirPath, @"ticket-response.json");
-
             var dto = TicketResponseDTO.FromJson(json);
 
             Assert.IsNotNull(dto);
@@ -822,6 +815,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var json = dto.ToJson();
 
             var newDto = new TicketDTO { Ticket = Ticket.FromJson(json) };
+            Assert.IsNotNull(newDto);
 
             TicketCompareHelper.Compare(ticket, dto);
             TicketCompareHelper.Compare(ticket, newDto);
@@ -848,6 +842,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var json = dto.ToJson();
 
             var newDto = new TicketDTO { Ticket = Ticket.FromJson(json) };
+            Assert.IsNotNull(newDto);
 
             TicketCompareHelper.Compare(ticket, dto);
             TicketCompareHelper.Compare(ticket, newDto);
@@ -874,6 +869,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             var json = dto.ToJson();
 
             var newDto = new TicketDTO { Ticket = Ticket.FromJson(json) };
+            Assert.IsNotNull(newDto);
 
             TicketCompareHelper.Compare(ticket, dto);
             TicketCompareHelper.Compare(ticket, newDto);

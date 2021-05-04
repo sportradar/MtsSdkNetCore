@@ -96,7 +96,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         public string AccessToken { get; }
 
         /// <summary>
-        /// Gets the uf environment for the UF feed (only necessary if UF selections will be build)
+        /// Gets the UF environment for the UF feed (only necessary if UF selections will be build)
         /// </summary>
         /// <value>The UF environment</value>
         public UfEnvironment? UfEnvironment { get; }
@@ -178,7 +178,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         /// <param name="currency">The currency of the placed tickets or a null reference</param>
         /// <param name="channel">The <see cref="SenderChannel"/> specifying the origin of the tickets or a null reference</param>
         /// <param name="accessToken">The access token for the UF feed (only necessary if UF selections will be build)</param>
-        /// <param name="ufEnvironment">The uf environment for the UF feed (only necessary if UF selections will be build)</param>
+        /// <param name="ufEnvironment">The UF environment for the UF feed (only necessary if UF selections will be build)</param>
         /// <param name="provideAdditionalMarketSpecifiers">The value indicating if the additional market specifiers should be provided</param>
         /// <param name="port">The port number used to connect to the AMQP broker</param>
         /// <param name="exclusiveConsumer">Should the consumer channel be exclusive</param>

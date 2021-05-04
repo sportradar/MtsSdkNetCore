@@ -70,9 +70,9 @@ namespace Sportradar.MTS.SDK.API.Internal.Senders
         /// <param name="mtsChannelSettings">The MTS channel settings</param>
         /// <param name="rabbitMqChannelSettings">Rabbit channel settings</param>
         protected TicketSenderBase(IRabbitMqPublisherChannel publisherChannel,
-                              ConcurrentDictionary<string, TicketCacheItem> ticketCache,
-                              IMtsChannelSettings mtsChannelSettings,
-                              IRabbitMqChannelSettings rabbitMqChannelSettings)
+                                  ConcurrentDictionary<string, TicketCacheItem> ticketCache,
+                                  IMtsChannelSettings mtsChannelSettings,
+                                  IRabbitMqChannelSettings rabbitMqChannelSettings)
         {
             Guard.Argument(publisherChannel, nameof(publisherChannel)).NotNull();
             Guard.Argument(ticketCache, nameof(ticketCache)).NotNull();

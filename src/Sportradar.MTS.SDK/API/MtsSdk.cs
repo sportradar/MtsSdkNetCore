@@ -511,6 +511,7 @@ namespace Sportradar.MTS.SDK.API
                     _ticketsForNonBlockingRequests.Add(ticket.TicketId, ticket, cacheItemPolicyForTicketsForNonBlockingRequestsCache);
                 }
             }
+
             return -1;
         }
 

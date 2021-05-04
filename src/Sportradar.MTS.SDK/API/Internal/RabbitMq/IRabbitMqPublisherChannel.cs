@@ -11,7 +11,6 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
     /// <summary>
     /// Represents a contract implemented by classes used to connect to rabbit mq broker
     /// </summary>
-
     internal interface IRabbitMqPublisherChannel : IOpenable
     {
         /// <summary>

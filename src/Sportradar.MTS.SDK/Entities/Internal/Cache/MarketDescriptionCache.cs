@@ -241,7 +241,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Cache
                 throw new CommunicationException("Missing AccessToken.", string.Empty, null);
             }
 
-
             try
             {
                 await _semaphore.WaitAsync();

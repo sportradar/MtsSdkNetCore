@@ -138,28 +138,30 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
             var correlationId = basicDeliverEventArgs?.BasicProperties?.CorrelationId ?? string.Empty;
             FeedLog.LogInformation($"Received message from MTS with correlationId: {correlationId}.");
             ChannelMessageReceived?.Invoke(this, basicDeliverEventArgs);
-            
-            if (_channelSettings.UserAcknowledgmentEnabled)
+
+            if (!_channelSettings.UserAcknowledgmentEnabled)
             {
-                var i = 0;
-                while (i < 10)
+                return;
+            }
+
+            var i = 0;
+            while (i < 10)
+            {
+                i++;
+                try
                 {
-                    i++;
-                    try
+                    var channelWrapper = _channelFactory.GetChannel(UniqueId);
+                    CreateAndOpenConsumerChannel();
+                    channelWrapper.Channel.BasicAck(basicDeliverEventArgs?.DeliveryTag ?? 0, false);
+                    break;
+                }
+                catch (Exception e)
+                {
+                    if (!e.Message.Contains("unknown delivery tag"))
                     {
-                        var channelWrapper = _channelFactory.GetChannel(UniqueId);
-                        CreateAndOpenConsumerChannel();
-                        channelWrapper.Channel.BasicAck(basicDeliverEventArgs?.DeliveryTag ?? 0, false);
-                        break;
+                        FeedLog.LogDebug($"Sending Ack for processed message {basicDeliverEventArgs?.DeliveryTag} failed. {e.Message}");
                     }
-                    catch (Exception e)
-                    {
-                        if (!e.Message.Contains("unknown delivery tag"))
-                        {
-                            FeedLog.LogDebug($"Sending Ack for processed message {basicDeliverEventArgs?.DeliveryTag} failed. {e.Message}");
-                        }
-                        Thread.Sleep(i * 1000);
-                    }
+                    Thread.Sleep(i * 1000);
                 }
             }
         }
@@ -277,11 +279,6 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
             }
         }
 
-        /// <summary>
-        /// Checks the channel wrapper.
-        /// </summary>
-        /// <param name="channelWrapper">The channel wrapper.</param>
-        /// <returns><c>true</c> if should continue while loop, <c>false</c> otherwise.</returns>
         private bool CheckChannelWrapper(ChannelWrapper channelWrapper)
         {
             if (channelWrapper == null)

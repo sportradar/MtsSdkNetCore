@@ -66,6 +66,7 @@ namespace Sportradar.MTS.SDK.API.Internal
         public async Task<ICalculation> CalculateProbabilityAsync(IEnumerable<ISelection> selections)
         {
             var selectionsList = selections as IReadOnlyCollection<ISelection>;
+            
             CheckMethodArguments(selectionsList);
 
             try
