@@ -29,7 +29,7 @@ Fix: Removed ambiguity with setting enableUserAqs (internal)
 
 2020-11-06 2.3.3
 Added sslServerName to the configuration
-IMtsSdk extended with Connectiontatus; provides also event ConnectionChange
+IMtsSdk extended with ConnectionStatus; provides also event ConnectionChange
 Removed ticket selection count limit (mts will check it)
 
 2020-09-18 2.3.2
