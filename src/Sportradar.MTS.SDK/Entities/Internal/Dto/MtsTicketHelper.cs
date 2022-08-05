@@ -11,6 +11,9 @@ using Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancelAck;
 using Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse;
 using SenderChannel = Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.SenderChannel;
 using StakeType = Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.StakeType;
+using FreeStakeDescription = Sportradar.MTS.SDK.Entities.Enums.FreeStakeDescription;
+using FreeStakePaidAs = Sportradar.MTS.SDK.Entities.Enums.FreeStakePaidAs;
+using FreeStakeType = Sportradar.MTS.SDK.Entities.Enums.FreeStakeType;
 
 namespace Sportradar.MTS.SDK.Entities.Internal.Dto
 {
@@ -148,6 +151,76 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto
                     return BonusMode.All;
             }
             throw new InvalidEnumArgumentException($"Invalid BetBonusMode value: {type}.");
+        }
+
+        public static BonusDescription Convert(BetBonusDescription description)
+        {
+            switch (description)
+            {
+                case BetBonusDescription.AccaBonus:
+                    return BonusDescription.AccaBonus;
+                case BetBonusDescription.OddsBooster:
+                    return BonusDescription.OddsBooster;
+                case BetBonusDescription.Other:
+                    return BonusDescription.Other;
+            }
+            throw new InvalidEnumArgumentException($"Invalid BetBonusDescription value: {description}.");
+        }
+
+        public static BonusPaidAs Convert(BetBonusPaidAs paidAs)
+        {
+            switch (paidAs)
+            {
+                case BetBonusPaidAs.Cash:
+                    return BonusPaidAs.Cash;
+                case BetBonusPaidAs.FreeBet:
+                    return BonusPaidAs.FreeBet;
+            }
+            throw new InvalidEnumArgumentException($"Invalid BonusPaidAs value: {paidAs}.");
+        }
+
+        public static Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.FreeStakeDescription Convert(FreeStakeDescription description)
+        {
+            switch (description)
+            {
+                case FreeStakeDescription.FreeBet:
+                    return Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.FreeStakeDescription.FreeBet;
+                case FreeStakeDescription.MoneyBack:
+                    return Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.FreeStakeDescription.MoneyBack;
+                case FreeStakeDescription.Rollover:
+                    return Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.FreeStakeDescription.Rollover;
+                case FreeStakeDescription.PartialFreeBet:
+                    return Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.FreeStakeDescription.PartialFreeBet;
+                case FreeStakeDescription.OddsBooster:
+                    return Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.FreeStakeDescription.OddsBooster;
+                case FreeStakeDescription.Other:
+                    return Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.FreeStakeDescription.Other;
+            }
+            throw new InvalidEnumArgumentException($"Invalid FreeStakeDescription value: {description}.");
+        }
+
+        public static Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.FreeStakePaidAs Convert(FreeStakePaidAs paidAs)
+        {
+            switch (paidAs)
+            {
+                case FreeStakePaidAs.Cash:
+                    return Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.FreeStakePaidAs.Cash;
+                case FreeStakePaidAs.FreeBet:
+                    return Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.FreeStakePaidAs.FreeBet;
+            }
+            throw new InvalidEnumArgumentException($"Invalid FreeStakePaidAs value: {paidAs}.");
+        }
+
+        public static Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.FreeStakeType Convert(FreeStakeType type)
+        {
+            switch (type)
+            {
+                case FreeStakeType.Total:
+                    return Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.FreeStakeType.Total;
+                case FreeStakeType.Unit:
+                    return Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.FreeStakeType.Unit;
+            }
+            throw new InvalidEnumArgumentException($"Invalid FreeStakeType value: {type}.");
         }
 
         public static TicketAcceptance Convert(Status status)

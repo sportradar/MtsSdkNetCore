@@ -92,6 +92,11 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         /// <value>End time of last (non Sportradar) match on ticket</value>
         public DateTime? LastMatchEndTime { get; }
 
+        /// <summary>
+        /// Capped max payout of the ticket
+        /// </summary>
+        public long? PayCap { get; }
+
         public string ToJson()
         {
             var dto = EntitiesMapper.Map(this);
@@ -100,7 +105,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
 
         [JsonConstructor]
         [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
-        [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
         private Ticket(string ticketId, 
                        IEnumerable<IBet> bets, 
                        IEnumerable<ISelection> selections, 
@@ -113,7 +117,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
                        string version, 
                        string correlationId, 
                        int? totalCombinations, 
-                       DateTime? lastMatchEndTime)
+                       DateTime? lastMatchEndTime,
+                       long? payCap)
         {
             ValidateConstructorParameters(ticketId, sender, bets, reofferId, altStakeRefId, totalCombinations, lastMatchEndTime);
 
@@ -130,6 +135,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
             CorrelationId = correlationId;
             TotalCombinations = totalCombinations;
             LastMatchEndTime = lastMatchEndTime;
+            PayCap = payCap;
         }
 
         /// <summary>

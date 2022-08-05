@@ -22,14 +22,14 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
 
         public Stake(long value)
         {
-            Guard.Argument(value, nameof(value)).InRange(1, 1000000000000000000);
+            Guard.Argument(value, nameof(value)).InRange(0, 1000000000000000000);
 
             Value = value;
         }
 
         public Stake(long value, StakeType type)
         {
-            Guard.Argument(value, nameof(value)).InRange(1, 1000000000000000000);
+            Guard.Argument(value, nameof(value)).InRange(0, 1000000000000000000);
 
             Value = value;
             Type = type;

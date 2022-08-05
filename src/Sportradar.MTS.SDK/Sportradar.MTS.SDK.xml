@@ -7199,10 +7199,10 @@
             </summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketAck.TicketAckDTO.Version">
-            <summary>JSON format version (must be '2.3')</summary>
+            <summary>JSON format version (must be '2.4')</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancelAck.TicketCancelAckDTO.Version">
-            <summary>JSON format version (must be '2.3')</summary>
+            <summary>JSON format version (must be '2.4')</summary>
         </member>
         <member name="T:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancelResponse.Reason">
             <summary>Object carrying information about cancellation response</summary>
@@ -7220,13 +7220,13 @@
             <summary>Cancellation status - cancelled, not_cancelled</summary>
         </member>
         <member name="T:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancelResponse.TicketCancelResponseDTO">
-            <summary>Ticket cancel response 2.3 schema</summary>
+            <summary>Ticket cancel response 2.4 schema</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancelResponse.TicketCancelResponseDTO.Signature">
             <summary>Response signature (previous betAcceptanceId)</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancelResponse.TicketCancelResponseDTO.Version">
-            <summary>JSON format version (must be '2.3')</summary>
+            <summary>JSON format version (must be '2.4')</summary>
         </member>
         <member name="T:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancel.Anonymous">
             <summary>
@@ -7259,10 +7259,10 @@
             <summary>Array of (betId, cancelPercent) pairs, if performing partial cancellation. Applicable only if ticket-level cancel percent is null.</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancel.Cancel.Version">
-            <summary>JSON format version (must be '2.3')</summary>
+            <summary>JSON format version (must be '2.4')</summary>
         </member>
         <member name="T:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancel.TicketCancelDTO">
-            <summary>Ticket cancel version 2.3 schema</summary>
+            <summary>Ticket cancel version 2.4 schema</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancel.TicketCancelDTO.Cancel">
             <summary>Actual ticket cancel being sent to Sportradar</summary>
@@ -7283,13 +7283,13 @@
             <summary>Cashout status - accepted, rejected</summary>
         </member>
         <member name="T:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCashoutResponse.TicketCashoutResponseDTO">
-            <summary>Ticket cashout response 2.3 schema</summary>
+            <summary>Ticket cashout response 2.4 schema</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCashoutResponse.TicketCashoutResponseDTO.Signature">
             <summary>Response signature</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCashoutResponse.TicketCashoutResponseDTO.Version">
-            <summary>JSON format version (must be '2.3')</summary>
+            <summary>JSON format version (must be '2.4')</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCashoutResponse.Result.TicketId">
             <summary>Ticket id</summary>
@@ -7310,7 +7310,7 @@
             <summary>Cashout percent. Quantity multiplied by 10_000 and rounded to a long value. Percent of bet to cashout. Max 100%.</summary>
         </member>
         <member name="T:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCashout.TicketCashoutDTO">
-            <summary>Ticket cashout version 2.3 schema</summary>
+            <summary>Ticket cashout version 2.4 schema</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCashout.TicketCashoutDTO.TimestampUtc">
             <summary>Timestamp of ticket cashout placement (in UNIX time millis)</summary>
@@ -7331,7 +7331,7 @@
             <summary>Array of (betId, cashoutStake) pairs, if performing partial cashout. Applicable only if ticket-level cashout stake is null.</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCashout.TicketCashoutDTO.Version">
-            <summary>JSON format version (must be '2.3')</summary>
+            <summary>JSON format version (must be '2.4')</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCashout.Sender.BookmakerId">
             <summary>Client's id (provided by Sportradar to the client)</summary>
@@ -7355,13 +7355,13 @@
             <summary>Response signature</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketNonSrSettleResponse.TicketNonSrSettleResponseDTO.Version">
-            <summary>JSON format version (must be '2.3')</summary>
+            <summary>JSON format version (must be '2.4')</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketNonSrSettleResponse.Result.TicketId">
             <summary>Ticket id</summary>
         </member>
         <member name="T:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketNonSrSettle.TicketNonSrSettleDTO">
-            <summary>Non-Sportradar settle version 2.3 schema</summary>
+            <summary>Non-Sportradar settle version 2.4 schema</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketNonSrSettle.TicketNonSrSettleDTO.TimestampUtc">
             <summary>Timestamp of non-Sportradar settle placement (in UNIX time millis)</summary>
@@ -7376,13 +7376,13 @@
             <summary>Non-Sportradar settle stake in same currency as original ticket. Quantity multiplied by 10_000 and rounded to a long value. Applicable only if performing full cashout.</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketNonSrSettle.TicketNonSrSettleDTO.Version">
-            <summary>JSON format version (must be '2.3')</summary>
+            <summary>JSON format version (must be '2.4')</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketNonSrSettle.Sender.BookmakerId">
             <summary>Client's id (provided by Sportradar to the client)</summary>
         </member>
         <member name="T:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketReofferCancel.TicketReofferCancelDTO">
-            <summary>Re-offer cancel version 2.3 schema</summary>
+            <summary>Re-offer cancel version 2.4 schema</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketReofferCancel.TicketReofferCancelDTO.TimestampUtc">
             <summary>Timestamp of re-offer cancel placement (in UNIX time millis)</summary>
@@ -7394,7 +7394,7 @@
             <summary>Identification and settings of the re-offer cancel sender</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketReofferCancel.TicketReofferCancelDTO.Version">
-            <summary>JSON format version (must be '2.3')</summary>
+            <summary>JSON format version (must be '2.4')</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketReofferCancel.Sender.BookmakerId">
             <summary>Client's id (provided by Sportradar to the client)</summary>
@@ -7412,13 +7412,13 @@
             <summary>Acceptance status - accepted, rejected</summary>
         </member>
         <member name="T:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse.TicketResponseDTO">
-            <summary>Ticket response 2.3 schema</summary>
+            <summary>Ticket response 2.4 schema</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse.TicketResponseDTO.AutoAcceptedOdds">
             <summary>Contains odds auto-acceptance information</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse.TicketResponseDTO.Version">
-            <summary>JSON format version (must be '2.3')</summary>
+            <summary>JSON format version (must be '2.4')</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.TicketResponse.TicketResponseDTO.Signature">
             <summary>Response signature (previous betAcceptanceId)</summary>
@@ -7560,7 +7560,7 @@
             <summary>Payout mode (optional, default all). Relevant mostly for system bets. All: all bets must win for bonus to be paid out.</summary>
         </member>
         <member name="T:Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.TicketDTO">
-            <summary>Ticket version 2.3 schema</summary>
+            <summary>Ticket version 2.4 schema</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.TicketDTO.Ticket">
             <summary>Actual ticket being sent to Sportradar</summary>
@@ -7694,7 +7694,7 @@
             <summary>Alternative stake reference ticket id</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.Ticket.Version">
-            <summary>JSON format version (must be '2.3')</summary>
+            <summary>JSON format version (must be '2.4')</summary>
         </member>
         <member name="P:Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.Ticket.OddsChange">
             <summary>Accept change in odds (optional, default none) none: default behaviour, any: any odds change accepted, higher: accept higher odds</summary>

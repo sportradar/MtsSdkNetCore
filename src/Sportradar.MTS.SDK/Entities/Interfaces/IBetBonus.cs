@@ -28,5 +28,20 @@ namespace Sportradar.MTS.SDK.Entities.Interfaces
         /// All: all bets must win for bonus to be paid out.
         /// </summary>
         BetBonusMode Mode { get; }
+
+        /// <summary>
+        /// The field description is optional. Clients will choose one of the pre-defined types:
+        /// "accaBonus" – default value, assumed if missing in the ticket
+        /// "oddsBooster"
+        /// "other"
+        /// </summary>
+        BetBonusDescription Description { get; }
+
+        /// <summary>
+        /// The field PaidAs is optional, description of the bonus payment type:
+        /// "cash" – default value, assumed if missing in the ticket
+        /// "freeBet"
+        /// </summary>
+        BetBonusPaidAs PaidAs { get; }
     }
 }

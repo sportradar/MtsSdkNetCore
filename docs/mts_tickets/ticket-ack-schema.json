@@ -34,8 +34,8 @@
       },
       "version":{
          "type":"string",
-         "description":"JSON format version (must be '2.3')",
-         "pattern":"^(2\\.3)$",
+         "description":"JSON format version (must be '2.4')",
+         "pattern":"^(2\\.4)$",
          "minLength":3,
          "maxLength":3
       }

@@ -19,7 +19,7 @@
     <PackageReleaseNotes></PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <Version>2.3.4.0</Version>
-    <CodeAnalysisRuleSet>..\.sonarlint\mts_sdk_net_corecsharp.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>Sportradar.MTS.SDK.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

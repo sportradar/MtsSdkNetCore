@@ -111,11 +111,11 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketCancelAck
             }
         }
     
-        /// <summary>JSON format version (must be '2.3')</summary>
+        /// <summary>JSON format version (must be '2.4')</summary>
         [Newtonsoft.Json.JsonProperty("version", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(3, MinimumLength = 3)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^(2\.3)$")]
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"^(2\.4)$")]
         public string Version
         {
             get { return _version; }

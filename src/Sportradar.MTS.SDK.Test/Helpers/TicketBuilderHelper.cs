@@ -279,7 +279,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             return new TicketNonSrSettleResponseDTO
             {
                 Signature = SR.S1000,
-                Version = "2.3",
+                Version = "2.4",
                 Result = new SDK.Entities.Internal.Dto.TicketNonSrSettleResponse.Result
                 {
                     Reason = new SDK.Entities.Internal.Dto.TicketNonSrSettleResponse.Reason

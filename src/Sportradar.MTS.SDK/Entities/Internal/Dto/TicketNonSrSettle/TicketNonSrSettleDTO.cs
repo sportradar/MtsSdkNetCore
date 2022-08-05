@@ -12,7 +12,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketNonSrSettle
 {
     #pragma warning disable // Disable all warnings
 
-    /// <summary>Non-Sportradar settle version 2.3 schema</summary>
+    /// <summary>Non-Sportradar settle version 2.4 schema</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
     internal partial class TicketNonSrSettleDTO : System.ComponentModel.INotifyPropertyChanged
     {
@@ -87,11 +87,11 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.TicketNonSrSettle
             }
         }
     
-        /// <summary>JSON format version (must be '2.3')</summary>
+        /// <summary>JSON format version (must be '2.4')</summary>
         [Newtonsoft.Json.JsonProperty("version", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(3, MinimumLength = 3)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^(2\.3)$")]
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"^(2\.4)$")]
         public string Version
         {
             get { return _version; }

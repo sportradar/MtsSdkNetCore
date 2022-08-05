@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "description": "Ticket cancel response 2.3 schema",
+  "description": "Ticket cancel response 2.4 schema",
   "required": [
     "version",
 	"signature",
@@ -67,8 +67,8 @@
     },
     "version": {
       "type": "string",
-      "description": "JSON format version (must be '2.3')",
-      "pattern": "^(2\\.3)$",
+      "description": "JSON format version (must be '2.4')",
+      "pattern": "^(2\\.4)$",
       "minLength": 3,
       "maxLength": 3
     }

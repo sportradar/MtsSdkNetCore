@@ -18,8 +18,21 @@ namespace Sportradar.MTS.SDK.Entities.Builders
         /// <param name="value">The quantity multiplied by 10000 and rounded to a long value</param>
         /// <param name="betBonusMode">The bet bonus mode</param>
         /// <param name="betBonusType">Type of the bet bonus</param>
+        /// <param name="description">Description of the bet bonus</param>
+        /// <param name="paidAs">PaidAs type of the bet bonus</param>
         /// <returns>Returns a <see cref="IBetBuilder"/></returns>
-        IBetBuilder SetBetBonus(long value, BetBonusMode betBonusMode = BetBonusMode.All, BetBonusType betBonusType = BetBonusType.Total);
+        IBetBuilder SetBetBonus(long value, BetBonusMode betBonusMode = BetBonusMode.All, BetBonusType betBonusType = BetBonusType.Total,
+            BetBonusDescription? description = null, BetBonusPaidAs? paidAs = null);
+
+        /// <summary>
+        /// Sets the <see cref="IFreeStake" />
+        /// </summary>
+        /// <param name="value">The quantity multiplied by 10000 and rounded to a long value</param>
+        /// <param name="freeStakeType">Type of the free stake</param>
+        /// <param name="description">Description of the free stake</param>
+        /// <param name="paidAs">PaidAs type of the free stake</param>
+        /// <returns>Returns a <see cref="IBetBuilder"/></returns>
+        IBetBuilder SetFreeStake(long value, FreeStakeType? freeStakeType = null, FreeStakeDescription? description = null, FreeStakePaidAs? paidAs = null);
 
         /// <summary>
         /// Sets the <see cref="IStake" />

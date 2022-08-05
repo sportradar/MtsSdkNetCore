@@ -2,7 +2,7 @@
    "$schema":"http://json-schema.org/draft-04/schema#",
    "type":"object",
    "additionalProperties":false,
-   "description":"Non-Sportradar settle version 2.3 schema",
+   "description":"Non-Sportradar settle version 2.4 schema",
    "title":"Non-Sportradar settle",
    "required":[
       "timestampUtc",
@@ -48,8 +48,8 @@
       },
       "version":{
          "type":"string",
-         "description":"JSON format version (must be '2.3')",
-         "pattern":"^(2\\.3)$",
+         "description":"JSON format version (must be '2.4')",
+         "pattern":"^(2\\.4)$",
          "minLength":3,
          "maxLength":3
       }

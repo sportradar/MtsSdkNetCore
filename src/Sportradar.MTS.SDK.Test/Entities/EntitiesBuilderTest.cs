@@ -90,6 +90,7 @@ namespace Sportradar.MTS.SDK.Test.Entities
             Assert.IsNotNull(item);
         }
 
+        [Ignore("Promobet")]
         [TestMethod]
         [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
         public void CreateStakeWrongIdTest()

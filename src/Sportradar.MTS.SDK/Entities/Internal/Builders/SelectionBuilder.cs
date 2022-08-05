@@ -53,6 +53,9 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// </summary>
         private readonly bool _isCustomBet;
 
+
+        private int? _boostedOdds;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SelectionBuilder"/> class
         /// </summary>
@@ -277,13 +280,24 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         }
 
         /// <summary>
+        /// Sets the boosted odds multiplied by 10000 and rounded to int value
+        /// </summary>
+        /// <param name="boostedOdds">The boosted odds value to be set</param>
+        /// <returns>Returns a <see cref="ISelectionBuilder" /></returns>
+        public ISelectionBuilder SetBoostedOdds(int? boostedOdds)
+        {
+            _boostedOdds = boostedOdds;
+            return this;
+        }
+
+        /// <summary>
         /// Builds the <see cref="ISelection" />
         /// </summary>
         /// <returns>Returns a <see cref="ITicketBuilder" /></returns>
         public ISelection Build()
         {
             ValidateData(true, true, !_isCustomBet);
-            return new Selection(_eventId, _selectionId, _odds, _isBanker);
+            return new Selection(_eventId, _selectionId, _odds, _isBanker, _boostedOdds);
         }
 
         private void ValidateData(bool id = false, bool eventId = false, bool odds = false)

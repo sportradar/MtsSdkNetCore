@@ -16,6 +16,12 @@ namespace Sportradar.MTS.SDK.Entities.Interfaces
         IBetBonus Bonus { get; }
 
         /// <summary>
+        /// Gets the free stkae of the bet (optional, default null)
+        /// </summary>
+        /// <value>The free stake</value>
+        IFreeStake FreeStake { get; }
+
+        /// <summary>
         /// Gets the stake of the bet
         /// </summary>
         IStake Stake { get; }
