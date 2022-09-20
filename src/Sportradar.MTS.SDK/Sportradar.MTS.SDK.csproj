@@ -2,29 +2,37 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyVersion>2.3.4.0</AssemblyVersion>
-    <FileVersion>2.3.4.0</FileVersion>
+    <AssemblyVersion>2.4.1.0</AssemblyVersion>
+    <FileVersion>2.4.1.0</FileVersion>
     <LangVersion>8</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageId>Sportradar.MTS.SDKCore</PackageId>
     <Authors>Sportradar AG</Authors>
     <Company>Sportradar AG</Company>
     <Product>Sportradar.MTS.SDKCore</Product>
     <Description>The SDK simplifying the integration with Sportradar's MTS services (.NET Standard 2.1)</Description>
-    <Copyright>Copyright © Sportradar AG 2020</Copyright>
+    <Copyright>Copyright © Sportradar AG 2022</Copyright>
     <PackageProjectUrl>http://sdk.sportradar.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/sportradar/MtsSdkNetCore</RepositoryUrl>
     <PackageTags>SportRadar MTS SDK .NETCore</PackageTags>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>Support for ticket version 2.4
+Added new functionality for promotional bets
+Added new payCap attribute to external ticket (Max Payout TC)</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
-    <Version>2.3.4.0</Version>
+    <Version>2.4.1.0</Version>
     <CodeAnalysisRuleSet>Sportradar.MTS.SDK.ruleset</CodeAnalysisRuleSet>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\Sportradar.MTS.SDK.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\Sportradar.MTS.SDKCore.xml</DocumentationFile>
     <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\Sportradar.MTS.SDKCore.xml</DocumentationFile>
+    <OutputPath>bin\Release</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -54,6 +62,10 @@
   <ItemGroup>
     <None Update="Readme.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
     </None>
   </ItemGroup>
 
