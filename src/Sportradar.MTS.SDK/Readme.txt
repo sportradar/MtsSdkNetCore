@@ -22,7 +22,7 @@ The package contains:
  - Resources containing the log4net configuration needed by the MTS SDK
  
 CHANGE LOG:
-2022-09-15 2.4.1
+2022-09-22 2.4.1
 Support for ticket version 2.4
 Added new functionality for promotional bets
 Added new payCap attribute to external ticket (Max Payout T&C)
