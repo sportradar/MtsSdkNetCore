@@ -21,7 +21,11 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             }
             if (existingBet.Bonus != null)
             {
-                betBuilder.SetBetBonus(existingBet.Bonus.Value, existingBet.Bonus.Mode, existingBet.Bonus.Type);
+                betBuilder.SetBetBonus(existingBet.Bonus.Value, existingBet.Bonus.Mode, existingBet.Bonus.Type, existingBet.Bonus.Description, existingBet.Bonus.PaidAs);
+            }
+            if (existingBet.FreeStake != null)
+            {
+                betBuilder.SetFreeStake(existingBet.FreeStake.Value, existingBet.FreeStake.Type, existingBet.FreeStake.Description, existingBet.FreeStake.PaidAs);
             }
             foreach (var ticketBetSelection in existingBet.Selections)
             {

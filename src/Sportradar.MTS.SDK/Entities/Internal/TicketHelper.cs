@@ -18,7 +18,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal
         // ReSharper disable once MemberCanBePrivate.Global
         public const string UserIdPattern = "^[0-9A-Za-z#_-]*";
 
-        public const string MtsTicketVersion = "2.3";
+        public const string MtsTicketVersion = "2.4";
 
         public const int MaxPercent = 1000000;
 

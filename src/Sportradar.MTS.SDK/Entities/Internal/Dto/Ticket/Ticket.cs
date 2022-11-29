@@ -37,6 +37,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
         /// <param name="altStakeRefId">The alternative stake reference id</param>
         /// <param name="totalCombinations">Expected total number of generated combinations on this ticket (optional, default null). If present is used to validate against actual number of generated combinations</param>
         /// <param name="lastMatchEndTime">Time of last non-sportradar selection on ticket</param>
+        /// <param name="payCap">Capped max payout of the ticket</param>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
         public Ticket(string ticketId, 
                       Sender sender, 
@@ -49,7 +50,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
                       string reofferRefId, 
                       string altStakeRefId, 
                       int? totalCombinations, 
-                      DateTime? lastMatchEndTime)
+                      DateTime? lastMatchEndTime,
+                      long? payCap)
         {
             TicketId = ticketId;
             Sender = sender;
@@ -63,6 +65,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
             AltStakeRefId = string.IsNullOrEmpty(altStakeRefId) ? null : altStakeRefId;
             TotalCombinations = totalCombinations;
             LastMatchEndTime = lastMatchEndTime == null ? (long?)null : MtsTicketHelper.Convert(lastMatchEndTime.Value);
+            PayCap = payCap;
         }
 
         /// <summary>
@@ -84,6 +87,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
             AltStakeRefId = string.IsNullOrEmpty(ticket.AltStakeRefId) ? null : ticket.AltStakeRefId;
             TotalCombinations = ticket.TotalCombinations;
             LastMatchEndTime = ticket.LastMatchEndTime == null ? (long?) null : MtsTicketHelper.Convert(ticket.LastMatchEndTime.Value);
+            PayCap = ticket.PayCap;
         }
 
         /// <summary>

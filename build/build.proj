@@ -6,9 +6,9 @@
     <NugetUrl>http://www.nuget.org</NugetUrl>
     <NugetKey></NugetKey>
     <MajorVersion Condition="'$(MajorVersion)' == ''">2</MajorVersion>
-    <MinorVersion Condition="'$(MinorVersion)' == ''">3</MinorVersion>
-    <BuildNumber Condition="'$(BuildNumber)' == ''">3</BuildNumber>
-    <Revision Condition="'$(Revision)' == ''">2</Revision>
+    <MinorVersion Condition="'$(MinorVersion)' == ''">4</MinorVersion>
+    <BuildNumber Condition="'$(BuildNumber)' == ''">1</BuildNumber>
+    <Revision Condition="'$(Revision)' == ''">0</Revision>
     <BuildPlanName Condition="'$(BuildPlanName)' == ''">LocalBuild</BuildPlanName>
     <BuildKey Condition="'$(BuildKey)' == ''">NOKEY</BuildKey>
     <Timestamp>$([System.DateTime]::Now.ToString("yyyy-MM-dd\THH:mm:ss"))</Timestamp>
@@ -55,7 +55,7 @@
     <Error Condition="!Exists('ChangeLog-Template.txt')" Text="File 'ChangeLog-Template.txt' does not exists!" />
     <Error Condition="!Exists('DoNotInternalize.txt')" Text="File 'DoNotInternalize.txt' does not exists!" />
     <Error Condition="!Exists('merge.bat')" Text="File 'merge.bat' does not exists!" />
-    <Error Condition="!Exists('MtsSdk.shfbproj')" Text="File 'MtsSdk.shfbproj' does not exists!" />
+    <Error Condition="!Exists('MtsSdkCore.shfbproj')" Text="File 'MtsSdk.shfbproj' does not exists!" />
     <Error Condition="!Exists('NugetPackage.nuspec')" Text="File 'NugetPackage.nuspec' does not exists!" />
     <Error Condition="!Exists('Readme.txt')" Text="File 'Readme.txt' does not exists!" />
     <Error Condition="!Exists('website-version-template.xml')" Text="File 'website-version-template.xml' does not exists!" />
@@ -100,8 +100,7 @@
   <Target Name="CreateDirs">
     <RemoveDir Directories="export" />
     <MakeDir Directories="export" />
-    <MakeDir Condition="!Exists('lib\net40')" Directories="lib\net40" />
-    <MakeDir Condition="!Exists('lib\net45')" Directories="lib\net45" />
+    <MakeDir Condition="!Exists('lib\netstandard2.1')" Directories="lib\netstandard2.1" />
   </Target>
 
   <Target Name="MergeDlls">

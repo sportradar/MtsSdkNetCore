@@ -30,5 +30,11 @@ namespace Sportradar.MTS.SDK.Entities.Interfaces
         /// </summary>
         /// <value><c>true</c> if this instance is banker; otherwise, <c>false</c></value>
         bool IsBanker { get; }
+
+        /// <summary>
+        /// Gets the boosted odds multiplied by 10000 and rounded to int value
+        /// </summary>
+        /// <remarks>It is optional value</remarks>
+        int? BoostedOdds { get; }
     }
 }

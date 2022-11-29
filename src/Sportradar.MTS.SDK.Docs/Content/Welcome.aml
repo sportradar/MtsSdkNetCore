@@ -4,7 +4,7 @@
 		<introduction>
 			<para>MTS SDK is a client library that enables easier integration with the Sportradar MTS. SDK exposes well defined API and hides ticket response parsing, proper connection handling, error recovery, event queuing and dispatching. It also makes a client solution easier to maintain with regular version updates.</para>
       <para>
-        SDK supports MTS ticket version <legacyBold>2.3</legacyBold>.
+        SDK supports MTS ticket version <legacyBold>2.4</legacyBold>.
       </para>
 		</introduction>
 

@@ -27,6 +27,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
             _eventId = selection.EventId;
             _id = selection.Id;
             _odds = selection.Odds;
+            _boostedOdds = selection.BoostedOdds;
         }
 
         public override bool Equals(object obj)

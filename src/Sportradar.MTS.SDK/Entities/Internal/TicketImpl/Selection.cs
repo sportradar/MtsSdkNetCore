@@ -35,14 +35,21 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
         public bool IsBanker { get; }
 
         /// <summary>
+        /// Gets the boosted odds multiplied by 10000 and rounded to int value
+        /// </summary>
+        /// <remarks>It is optional value</remarks>
+        public int? BoostedOdds { get; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Selection"/> class
         /// </summary>
         /// <param name="eventId">The event identifier</param>
         /// <param name="id">The identifier</param>
         /// <param name="odds">The odds</param>
         /// <param name="isBanker">if set to <c>true</c> [is banker]</param>
+        /// <param name="boostedOdds">The boosted odds</param>
         [JsonConstructor]
-        public Selection(string eventId, string id, int? odds, bool isBanker = false)
+        public Selection(string eventId, string id, int? odds, bool isBanker = false, int? boostedOdds = null)
         {
             Guard.Argument(eventId, nameof(eventId)).NotNull().NotEmpty();
             Guard.Argument(eventId.Length, nameof(eventId.Length)).InRange(1, 50);
@@ -55,6 +62,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.TicketImpl
             Id = id;
             Odds = odds;
             IsBanker = isBanker;
+            BoostedOdds = boostedOdds;
         }
 
         public override bool Equals(object obj)

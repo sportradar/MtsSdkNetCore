@@ -3,7 +3,9 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Dawn;
 using Sportradar.MTS.SDK.Entities.Builders;
 using Sportradar.MTS.SDK.Entities.Enums;
 using Sportradar.MTS.SDK.Entities.Interfaces;
@@ -41,6 +43,12 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// The bet bonus
         /// </summary>
         private IBetBonus _betBonus;
+
+
+        /// <summary>
+        /// The free stkae
+        /// </summary>
+        private IFreeStake _freeStake;
 
         /// <summary>
         /// The stake
@@ -136,14 +144,33 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         /// <param name="value">The quantity multiplied by 10000 and rounded to a long value</param>
         /// <param name="betBonusMode">The bet bonus mode</param>
         /// <param name="betBonusType">Type of the bet bonus</param>
+        /// <param name="description">Description of the bet bonus</param>
+        /// <param name="paidAs">PaidAs type of the bet bonus</param>
         /// <returns>Returns a <see cref="IBetBuilder" /></returns>
-        public IBetBuilder SetBetBonus(long value, BetBonusMode betBonusMode = BetBonusMode.All, BetBonusType betBonusType = BetBonusType.Total)
+        public IBetBuilder SetBetBonus(long value, BetBonusMode betBonusMode = BetBonusMode.All, BetBonusType betBonusType = BetBonusType.Total,
+            BetBonusDescription? description = null, BetBonusPaidAs? paidAs = null)
         {
             if (!(value > 0 && value < 1000000000000000000))
             {
                 throw new ArgumentException("BetBonus value not valid. Must be greater then zero.");
             }
-            _betBonus = new BetBonus(value, betBonusType, betBonusMode);
+            _betBonus = new BetBonus(value, betBonusType, betBonusMode, description, paidAs);
+            return this;
+        }
+
+
+        /// <summary>
+        /// Sets the <see cref="IFreeStake" />
+        /// </summary>
+        /// <param name="value">The quantity multiplied by 10000 and rounded to a long value</param>
+        /// <param name="freeStakeType">Type of the free stake</param>
+        /// <param name="description">Description of the free stake</param>
+        /// <param name="paidAs">PaidAs type of the free stake</param>
+        /// <returns>Returns a <see cref="IBetBuilder"/></returns>
+        public IBetBuilder SetFreeStake(long value, FreeStakeType? freeStakeType = null, FreeStakeDescription? description = null, FreeStakePaidAs? paidAs = null)
+        {
+            _freeStake = new FreeStake(value, freeStakeType, description, paidAs);
+            ValidateData(false, false, false, false, false, false, false, true);
             return this;
         }
 
@@ -257,11 +284,12 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
         public IBet Build()
         {
             ValidateData(true);
-            return new Bet(_betBonus, _stake, _entireStake, _betId, _selectedSystems, _selections, _reofferRefId, _sum, _customBet, _calculationOdds);
+            return new Bet(_betBonus, _stake, _freeStake, _entireStake, _betId, _selectedSystems, _selections, _reofferRefId, _sum, _customBet, _calculationOdds);
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Critical Code Smell", "S3776:Cognitive Complexity of methods should not be too high", Justification = "Approved")]
-        private void ValidateData(bool all = false, bool betId = false, bool stake = false, bool selectedSystems = false, bool selections = false, bool reofferRefId = false, bool sumOfWins = false)
+        [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
+        private void ValidateData(bool all = false, bool betId = false, bool stake = false, bool selectedSystems = false, bool selections = false, bool reofferRefId = false, bool sumOfWins = false, bool freeStake = false)
         {
             if ((all || betId) && !string.IsNullOrEmpty(_betId) && !TicketHelper.ValidateTicketId(_betId))
             {
@@ -270,6 +298,11 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             if ((all || stake) && _stake == null)
             {
                 throw new ArgumentException("Stake not valid.");
+            }
+            if ((all || freeStake) && _freeStake == null && _stake != null)
+            {
+                //check for stake if value is zero when there is no free stake!!!
+                Guard.Argument(_stake.Value, nameof(_stake.Value)).InRange(1, 1000000000000000000);
             }
             if ((all || selectedSystems) && !(_selectedSystems == null
                                               || (_selectedSystems.Any()

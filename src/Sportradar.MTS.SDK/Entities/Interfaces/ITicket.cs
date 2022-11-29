@@ -65,5 +65,10 @@ namespace Sportradar.MTS.SDK.Entities.Interfaces
         /// </summary>
         /// <value>End time of last (non Sportradar) match on ticket</value>
         DateTime? LastMatchEndTime { get; }
+
+        /// <summary>
+        /// Capped max payout of the ticket
+        /// </summary>
+        long? PayCap { get; }
     }
 }

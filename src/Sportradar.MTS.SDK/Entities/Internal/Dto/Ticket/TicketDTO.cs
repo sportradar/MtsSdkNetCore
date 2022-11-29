@@ -13,9 +13,9 @@ using System.Collections.ObjectModel;
 
 namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
 {
-#pragma warning disable // Disable all warnings
+    #pragma warning disable // Disable all warnings
 
-    /// <summary>Ticket version 2.3 schema</summary>
+    /// <summary>Ticket version 2.4 schema</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
     internal partial class TicketDTO : System.ComponentModel.INotifyPropertyChanged
     {
@@ -72,8 +72,9 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
         private TicketOddsChange? _oddsChange = Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.TicketOddsChange.None;
         private int? _totalCombinations;
         private long? _lastMatchEndTime;
+        private long? _payCap;
     
-        /// <summary>Timestamp of ticket placement (in UNIX time milliseconds)</summary>
+        /// <summary>Timestamp of ticket placement (in UNIX time millis)</summary>
         [Newtonsoft.Json.JsonProperty("timestampUtc", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Range(1.0, 9223372036854775807.0)]
         public long TimestampUtc
@@ -186,11 +187,11 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
             }
         }
     
-        /// <summary>JSON format version (must be '2.3')</summary>
+        /// <summary>JSON format version (must be '2.4')</summary>
         [Newtonsoft.Json.JsonProperty("version", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(3, MinimumLength = 3)]
-        [System.ComponentModel.DataAnnotations.RegularExpression(@"^(2\.3)$")]
+        [System.ComponentModel.DataAnnotations.RegularExpression(@"^(2\.4)$")]
         public string Version
         {
             get { return _version; }
@@ -266,6 +267,22 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
             }
         }
     
+        /// <summary>Maximum payment win for ticket (capped).</summary>
+        [Newtonsoft.Json.JsonProperty("payCap", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.Range(0.0, double.MaxValue)]
+        public long? PayCap
+        {
+            get { return _payCap; }
+            set 
+            {
+                if (_payCap != value)
+                {
+                    _payCap = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
     
         public string ToJson() 
@@ -290,6 +307,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     internal partial class Anonymous : System.ComponentModel.INotifyPropertyChanged
     {
         private Bonus _bonus = new Bonus();
+        private FreeStake _freeStake = new FreeStake();
         private bool? _customBet = false;
         private int? _calculationOdds;
         private Stake _stake = new Stake();
@@ -310,6 +328,21 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
                 if (_bonus != value)
                 {
                     _bonus = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        /// <summary>FreeStake Bonus of the bet (optional, default null)</summary>
+        [Newtonsoft.Json.JsonProperty("freeStake", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public FreeStake FreeStake
+        {
+            get { return _freeStake; }
+            set 
+            {
+                if (_freeStake != value)
+                {
+                    _freeStake = value; 
                     RaisePropertyChanged();
                 }
             }
@@ -483,6 +516,7 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
         private string _eventId;
         private string _id;
         private int? _odds;
+        private int? _boostedOdds;
     
         /// <summary>Betradar event (match or outright) id</summary>
         [Newtonsoft.Json.JsonProperty("eventId", Required = Newtonsoft.Json.Required.Always)]
@@ -529,6 +563,22 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
                 if (_odds != value)
                 {
                     _odds = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        /// <summary>Boosted odds multiplied by 10_000 and rounded to int value</summary>
+        [Newtonsoft.Json.JsonProperty("boostedOdds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.Range(10000.0, 1000000000.0)]
+        public int? BoostedOdds
+        {
+            get { return _boostedOdds; }
+            set 
+            {
+                if (_boostedOdds != value)
+                {
+                    _boostedOdds = value; 
                     RaisePropertyChanged();
                 }
             }
@@ -720,6 +770,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
         private long _value;
         private BonusType? _type = Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.BonusType.Total;
         private BonusMode? _mode = Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.BonusMode.All;
+        private BonusDescription? _description = Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.BonusDescription.AccaBonus;
+        private BonusPaidAs? _paidAs = Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.BonusPaidAs.Cash;
     
         /// <summary>Quantity multiplied by 10_000 and rounded to a long value</summary>
         [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Always)]
@@ -769,6 +821,38 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
             }
         }
     
+        /// <summary>Description (optional, default accaBonus) of the Bonus Type.</summary>
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public BonusDescription? Description
+        {
+            get { return _description; }
+            set 
+            {
+                if (_description != value)
+                {
+                    _description = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        /// <summary>Description (optional, default cash) of the bonus payment type.</summary>
+        [Newtonsoft.Json.JsonProperty("paidAs", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public BonusPaidAs? PaidAs
+        {
+            get { return _paidAs; }
+            set 
+            {
+                if (_paidAs != value)
+                {
+                    _paidAs = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
     
         public string ToJson() 
@@ -779,6 +863,98 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
         public static Bonus FromJson(string data)
         {
             return Newtonsoft.Json.JsonConvert.DeserializeObject<Bonus>(data);
+        }
+    
+        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            if (handler != null) 
+                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
+    internal partial class FreeStake : System.ComponentModel.INotifyPropertyChanged
+    {
+        private long _value;
+        private FreeStakeType? _type = Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.FreeStakeType.Total;
+        private FreeStakeDescription? _description = Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.FreeStakeDescription.FreeBet;
+        private FreeStakePaidAs? _paidAs = Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket.FreeStakePaidAs.Cash;
+    
+        /// <summary>Quantity multiplied by 10_000 and rounded to a long value</summary>
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Range(0.0, 1000000000000000000.0)]
+        public long Value
+        {
+            get { return _value; }
+            set 
+            {
+                if (_value != value)
+                {
+                    _value = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        /// <summary>Type (optional, default total)</summary>
+        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public FreeStakeType? Type
+        {
+            get { return _type; }
+            set 
+            {
+                if (_type != value)
+                {
+                    _type = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        /// <summary>Description of the FreeStake Type.</summary>
+        [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public FreeStakeDescription? Description
+        {
+            get { return _description; }
+            set 
+            {
+                if (_description != value)
+                {
+                    _description = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        /// <summary>Description of the FreeStake Payment Type.</summary>
+        [Newtonsoft.Json.JsonProperty("paidAs", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public FreeStakePaidAs? PaidAs
+        {
+            get { return _paidAs; }
+            set 
+            {
+                if (_paidAs != value)
+                {
+                    _paidAs = value; 
+                    RaisePropertyChanged();
+                }
+            }
+        }
+    
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+    
+        public string ToJson() 
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+        }
+        
+        public static FreeStake FromJson(string data)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<FreeStake>(data);
         }
     
         protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
@@ -1119,6 +1295,76 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
     {
         [System.Runtime.Serialization.EnumMember(Value = "all")]
         All = 0,
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
+    internal enum BonusDescription
+    {
+        [System.Runtime.Serialization.EnumMember(Value = "accaBonus")]
+        AccaBonus = 0,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "oddsBooster")]
+        OddsBooster = 1,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "other")]
+        Other = 2,
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
+    internal enum BonusPaidAs
+    {
+        [System.Runtime.Serialization.EnumMember(Value = "cash")]
+        Cash = 0,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "freeBet")]
+        FreeBet = 1,
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
+    internal enum FreeStakeType
+    {
+        [System.Runtime.Serialization.EnumMember(Value = "total")]
+        Total = 0,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "unit")]
+        Unit = 1,
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
+    internal enum FreeStakeDescription
+    {
+        [System.Runtime.Serialization.EnumMember(Value = "freeBet")]
+        FreeBet = 0,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "partialFreeBet")]
+        PartialFreeBet = 1,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "rollover")]
+        Rollover = 2,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "moneyBack")]
+        MoneyBack = 3,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "oddsBooster")]
+        OddsBooster = 4,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "other")]
+        Other = 5,
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.6.6263.34621")]
+    internal enum FreeStakePaidAs
+    {
+        [System.Runtime.Serialization.EnumMember(Value = "cash")]
+        Cash = 0,
+    
+        [System.Runtime.Serialization.EnumMember(Value = "freeBet")]
+        FreeBet = 1,
     
     }
     

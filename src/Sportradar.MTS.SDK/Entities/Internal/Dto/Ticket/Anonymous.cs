@@ -2,6 +2,7 @@
  * Copyright (C) Sportradar AG. See LICENSE for full license governing this code
  */
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Sportradar.MTS.SDK.Entities.Interfaces;
 
@@ -16,7 +17,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
         public Anonymous()
         { }
 
-        public Anonymous(string id, long sumOfWins, Stake stake, Bonus bonus, IEnumerable<int> selectedSystems, IEnumerable<Anonymous3> selectionRefs, string reofferRefId)
+        [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Allowed")]
+        public Anonymous(string id, long sumOfWins, Stake stake, Bonus bonus, FreeStake freeStake, IEnumerable<int> selectedSystems, IEnumerable<Anonymous3> selectionRefs, string reofferRefId)
         {
             _id = string.IsNullOrEmpty(id) ? null : id;
             _sumOfWins = sumOfWins > 0 ? sumOfWins : (long?)null;
@@ -26,6 +28,12 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
             {
                 _bonus = bonus;
             }
+            _freeStake = null;
+            if (freeStake != null)
+            {
+                _freeStake = freeStake;
+            }
+
             _selectedSystems = null;
             if (selectedSystems != null && selectedSystems.Any())
             {
@@ -54,6 +62,12 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Dto.Ticket
             {
                 _bonus = new Bonus(bet.Bonus);
             }
+            _freeStake = null;
+            if (bet.FreeStake != null)
+            {
+                _freeStake = new FreeStake(bet.FreeStake);
+            }
+
             _selectedSystems = null;
             if (bet.SelectedSystems != null && bet.SelectedSystems.Any())
             {

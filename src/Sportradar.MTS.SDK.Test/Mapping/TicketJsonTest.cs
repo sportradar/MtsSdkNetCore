@@ -155,19 +155,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
         [TestMethod]
         public void CheckWithBetBonusTest()
         {
-            var ticketBuilder = TicketBuilderHelper.GetTicketBuilder(_sender);
-
-            var betBuilder = _builderFactory.CreateBetBuilder();
-            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.S1000P).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
-
-            var bet = betBuilder.AddSelectedSystem(1).SetStake(SR.I1000P, StakeType.Unit).SetBetBonus(SR.I1000P).SetBetId("bet-id-" + SR.I1000).Build();
-            ticketBuilder.AddBet(bet);
-            ticketBuilder.SetTotalCombinations(ticketBuilder.GetBets().Count());
-
-            var ticket = ticketBuilder.BuildTicket();
-            var dto = new TicketMapper().Map(ticket);
-            var json = dto.ToJson();
-
+            var json = CreateBonusPromoBetTicket(SR.I1000P, SR.I1000P, null, null, null);
             CheckRequiredFields(json);
 
             Assert.IsTrue(json.Contains("bonus"));
@@ -501,7 +489,7 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             CheckRequiredFields(json);
 
             Assert.IsTrue(json.Contains("endCustomer"));
-            Assert.IsTrue(!json.Contains("ip"));
+            Assert.IsTrue(!json.Contains("\"ip\":"));
             Assert.IsTrue(!json.Contains("deviceId"));
             Assert.IsTrue(!json.Contains("languageId"));
             Assert.IsTrue(!json.Contains("confidence"));
@@ -656,6 +644,111 @@ namespace Sportradar.MTS.SDK.Test.Mapping
             CheckResponseFields(dtoJson);
 
             Assert.AreEqual(ticketJson, dtoJson);
+        }
+
+        [TestMethod]
+        public void CheckWithBetBonusAccumulatorCashTest()
+        {
+            var json = CreateBonusPromoBetTicket(SR.I1000P, SR.I1000P, BetBonusDescription.AccaBonus, BetBonusPaidAs.Cash, null);
+            CheckRequiredFields(json);
+
+            Assert.IsTrue(json.Contains("bonus"));
+            Assert.IsTrue(json.Contains("\"mode\":\"all\""));
+            Assert.IsTrue(json.Contains("\"type\":\"total\""));
+            Assert.IsTrue(json.Contains("\"description\":\"accaBonus\""));
+            Assert.IsTrue(json.Contains("\"paidAs\":\"cash\""));
+        }
+
+        [TestMethod]
+        public void CheckWithBetBonusAccumulatorFreeBetTest()
+        {
+            var json = CreateBonusPromoBetTicket(SR.I1000P, SR.I1000P, BetBonusDescription.Other, BetBonusPaidAs.FreeBet, null);
+            CheckRequiredFields(json);
+
+            Assert.IsTrue(json.Contains("bonus"));
+            Assert.IsTrue(json.Contains("\"mode\":\"all\""));
+            Assert.IsTrue(json.Contains("\"type\":\"total\""));
+            Assert.IsTrue(json.Contains("\"description\":\"other\""));
+            Assert.IsTrue(json.Contains("\"paidAs\":\"freeBet\""));
+        }
+
+        [TestMethod]
+        public void CheckWithBetBonusAccumulatorBoostedOddsTest()
+        {
+            var json = CreateBonusPromoBetTicket(SR.I1000P, SR.I1000P, BetBonusDescription.OddsBooster, BetBonusPaidAs.Cash, SR.I1000P + 1000);
+            CheckRequiredFields(json);
+
+            Assert.IsTrue(json.Contains("bonus"));
+            Assert.IsTrue(json.Contains("\"mode\":\"all\""));
+            Assert.IsTrue(json.Contains("\"type\":\"total\""));
+            Assert.IsTrue(json.Contains("\"description\":\"oddsBooster\""));
+            Assert.IsTrue(json.Contains("\"paidAs\":\"cash\""));
+            Assert.IsTrue(json.Contains("\"boostedOdds\":"));
+        }
+
+        [TestMethod]
+        public void CheckWithFreeStakeCashMoneyBackTotalTest()
+        {
+            var json = CreateFreeStakeBetTicket(SR.I1000P, FreeStakeType.Total, FreeStakeDescription.MoneyBack, FreeStakePaidAs.Cash, false);
+            CheckRequiredFields(json);
+
+            Assert.IsTrue(json.Contains("freeStake"));
+            Assert.IsTrue(json.Contains("\"type\":\"total\""));
+            Assert.IsTrue(json.Contains("\"description\":\"moneyBack\""));
+            Assert.IsTrue(json.Contains("\"paidAs\":\"cash\""));
+        }
+
+        [TestMethod]
+        public void CheckWithFreeStakeFreeBetFreeBetUnitWithStakeZeroTest()
+        {
+            var json = CreateFreeStakeBetTicket(SR.I1000P, FreeStakeType.Unit, FreeStakeDescription.FreeBet, FreeStakePaidAs.FreeBet, true);
+            CheckRequiredFields(json);
+
+            Assert.IsTrue(json.Contains("freeStake"));
+            Assert.IsTrue(TestHelper.ContainsCount(json, "\"type\":\"unit\"", StringComparison.OrdinalIgnoreCase) > 1);
+            Assert.IsTrue(json.Contains("\"description\":\"freeBet\""));
+            Assert.IsTrue(json.Contains("\"paidAs\":\"freeBet\""));
+            Assert.IsTrue(json.Contains("\"version\":\"2.4\""));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception), AllowDerivedTypes = true)]
+        public void CheckWithBetBonusWithStakeZeroTest()
+        {
+            var json = CreateBonusPromoBetTicket(0, SR.I1000P, null, null, null);
+            CheckRequiredFields(json);
+        }
+
+        private string CreateBonusPromoBetTicket(long value, long bonusValue, BetBonusDescription? description, BetBonusPaidAs? paidAs, int? boostedOdds)
+        {
+            var ticketBuilder = TicketBuilderHelper.GetTicketBuilder(_sender);
+
+            var betBuilder = _builderFactory.CreateBetBuilder();
+            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P.ToString()).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBoostedOdds(boostedOdds).SetBanker(SR.I100 > 90).Build());
+
+            var bet = betBuilder.AddSelectedSystem(1).SetStake(value, StakeType.Unit).SetBetBonus(bonusValue, BetBonusMode.All, BetBonusType.Total, description, paidAs).SetBetId("bet-id-" + SR.I1000).Build();
+            ticketBuilder.AddBet(bet);
+            ticketBuilder.SetTotalCombinations(ticketBuilder.GetBets().Count());
+
+            var ticket = ticketBuilder.BuildTicket();
+            var dto = new TicketMapper().Map(ticket);
+            return dto.ToJson();
+        }
+
+        private string CreateFreeStakeBetTicket(long value, FreeStakeType? type, FreeStakeDescription? description, FreeStakePaidAs? paidAs, bool zeroStake)
+        {
+            var ticketBuilder = TicketBuilderHelper.GetTicketBuilder(_sender);
+
+            var betBuilder = _builderFactory.CreateBetBuilder();
+            betBuilder.AddSelection(_builderFactory.CreateSelectionBuilder().SetEventId(SR.I1000P.ToString()).SetIdLcoo(SR.I1000, 1, "", "1").SetOdds(SR.I1000P).SetBanker(SR.I100 > 90).Build());
+
+            var bet = betBuilder.AddSelectedSystem(1).SetStake(zeroStake ? 0 : SR.I1000P, StakeType.Unit).SetFreeStake(value, type, description, paidAs).SetBetId("bet-id-" + SR.I1000).Build();
+            ticketBuilder.AddBet(bet);
+            ticketBuilder.SetTotalCombinations(ticketBuilder.GetBets().Count());
+
+            var ticket = ticketBuilder.BuildTicket();
+            var dto = new TicketMapper().Map(ticket);
+            return dto.ToJson();
         }
     }
 }

@@ -13,7 +13,7 @@
     <RootNamespace>Sportradar.MTS.SDK.Docs</RootNamespace>
     <Name>Sportradar.MTS.SDK.Docs</Name>
     <!-- SHFB properties -->
-    <FrameworkVersion>.NET Core/.NET Standard/.NET 5.0+</FrameworkVersion>
+    <FrameworkVersion>Cross-platform (.NET Core/.NET Standard)</FrameworkVersion>
     <OutputPath>Help\</OutputPath>
     <HtmlHelpName>MTS SDK Core Documentation</HtmlHelpName>
     <Language>en-US</Language>
@@ -39,7 +39,7 @@
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <HelpTitle>MTS SDK Core Documentation</HelpTitle>
-    <HelpFileVersion>2.3.4.0</HelpFileVersion>
+    <HelpFileVersion>2.4.1.0</HelpFileVersion>
     <NamingMethod>MemberName</NamingMethod>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <RootNamespaceContainer>False</RootNamespaceContainer>
@@ -47,7 +47,7 @@
     <MaximumGroupParts>2</MaximumGroupParts>
     <Preliminary>False</Preliminary>
     <CopyrightHref>http://sdk.sportradar.com</CopyrightHref>
-    <CopyrightText>Copyright &amp;#169%3b 2017-2021, Sportradar AG</CopyrightText>
+    <CopyrightText>Copyright &amp;#169%3b 2017-2022, Sportradar AG</CopyrightText>
     <FeedbackEMailAddress>sdk%40sportradar.com</FeedbackEMailAddress>
     <FeedbackEMailLinkText>SDK Team</FeedbackEMailLinkText>
     <SdkLinkTarget>Top</SdkLinkTarget>
