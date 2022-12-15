@@ -62,7 +62,7 @@ namespace Sportradar.MTS.SDK.Entities.Builders
         /// <example>
         ///     SetIdUof(Product.LiveOdds, "sr:sport:1", 101, "10", "total=3.0|playerid=sr:player:10201");
         /// </example>
-        /// <remarks>Method requires accessToken in configuration and access to https://api.betradar.com</remarks>
+        /// <remarks>Method requires accessToken in configuration and access to https://global.api.betradar.com</remarks>
         ISelectionBuilder SetIdUof(int product, string sportId, int marketId, string selectionId, string specifiers, IReadOnlyDictionary<string, object> sportEventStatus);
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Sportradar.MTS.SDK.Entities.Builders
         /// <param name="sportEventStatus">The UF sport event status properties</param>
         /// <returns>Returns a <see cref="ISelectionBuilder" /></returns>
         /// <value>Should be composed according to MTS specification</value>
-        /// <remarks>Method requires accessToken in configuration and access to https://api.betradar.com</remarks>
+        /// <remarks>Method requires accessToken in configuration and access to https://global.api.betradar.com</remarks>
         ISelectionBuilder SetIdUof(int product, string sportId, int marketId, string selectionId, IReadOnlyDictionary<string, string> specifiers, IReadOnlyDictionary<string, object> sportEventStatus);
 
         /// <summary>

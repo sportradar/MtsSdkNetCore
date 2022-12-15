@@ -3573,7 +3573,7 @@
             <example>
                 SetIdUof(Product.LiveOdds, "sr:sport:1", 101, "10", "total=3.0|playerid=sr:player:10201");
             </example>
-            <remarks>Method requires accessToken in configuration and access to https://api.betradar.com</remarks>
+            <remarks>Method requires accessToken in configuration and access to https://global.api.betradar.com</remarks>
         </member>
         <member name="M:Sportradar.MTS.SDK.Entities.Builders.ISelectionBuilder.SetIdUof(System.Int32,System.String,System.Int32,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object})">
             <summary>
@@ -3587,7 +3587,7 @@
             <param name="sportEventStatus">The UF sport event status properties</param>
             <returns>Returns a <see cref="T:Sportradar.MTS.SDK.Entities.Builders.ISelectionBuilder" /></returns>
             <value>Should be composed according to MTS specification</value>
-            <remarks>Method requires accessToken in configuration and access to https://api.betradar.com</remarks>
+            <remarks>Method requires accessToken in configuration and access to https://global.api.betradar.com</remarks>
         </member>
         <member name="M:Sportradar.MTS.SDK.Entities.Builders.ISelectionBuilder.SetOdds(System.Int32)">
             <summary>

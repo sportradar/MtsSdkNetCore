@@ -39,7 +39,7 @@ namespace Sportradar.MTS.SDK.Test
 
             _cultures = new List<CultureInfo> {new CultureInfo("en")};
 
-            var uri = new Uri(@"https://api.betradar.com/v1/descriptions/en/markets.xml?include_mappings=true");
+            var uri = new Uri(@"https://global.api.betradar.com/v1/descriptions/en/markets.xml?include_mappings=true");
 
             _mockDataFetcher = new Mock<DataFetcherHelper>();
             _mockDataFetcher.Setup(p => p.GetDataAsync(It.IsAny<Uri>())).Returns(new DataFetcherHelper(BuilderFactoryHelper.UriReplacements).GetDataAsync(uri));
@@ -102,7 +102,7 @@ namespace Sportradar.MTS.SDK.Test
         [TestMethod]
         public void DataFetcherHelperTest()
         {
-            var uri = new Uri(@"https://api.betradar.com/" + FileName);
+            var uri = new Uri(@"https://global.api.betradar.com/" + FileName);
             var file = _mockDataFetcher.Object.GetDataAsync(uri).Result;
 
             Assert.IsNotNull(file);
