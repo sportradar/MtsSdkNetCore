@@ -8,13 +8,13 @@
     <MajorVersion Condition="'$(MajorVersion)' == ''">2</MajorVersion>
     <MinorVersion Condition="'$(MinorVersion)' == ''">4</MinorVersion>
     <BuildNumber Condition="'$(BuildNumber)' == ''">1</BuildNumber>
-    <Revision Condition="'$(Revision)' == ''">1</Revision>
+    <Revision Condition="'$(Revision)' == ''">2</Revision>
     <BuildPlanName Condition="'$(BuildPlanName)' == ''">LocalBuild</BuildPlanName>
     <BuildKey Condition="'$(BuildKey)' == ''">NOKEY</BuildKey>
     <Timestamp>$([System.DateTime]::Now.ToString("yyyy-MM-dd\THH:mm:ss"))</Timestamp>
 
     <!-- you get new line with inserting !NL! -->
-    <BuildChangeLog>Improved handling of connection to the rabbit server</BuildChangeLog> 
+    <BuildChangeLog>Changed timings on reconnects, updated guides</BuildChangeLog> 
     <ComputedAssemblyVersion>$(MajorVersion).$(MinorVersion).$(BuildNumber).$(Revision)</ComputedAssemblyVersion>
   </PropertyGroup>
 

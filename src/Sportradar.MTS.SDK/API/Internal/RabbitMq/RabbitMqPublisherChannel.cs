@@ -351,7 +351,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 
         private void CreateAndOpenPublisherChannel()
         {
-            var sleepTime = 1000;
+            var sleepTime = 100;
             while (Interlocked.Read(ref _shouldBeOpened) == 1)
             {
                 try
@@ -381,11 +381,11 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                     ExecutionLog.LogInformation($"Error opening the publisher channel with channelNumber: {UniqueId} and exchangeName: {_mtsChannelSettings.ExchangeName}.", e);
                     if (e is IOException || e is AlreadyClosedException || e is SocketException)
                     {
-                        sleepTime = SdkInfo.Increase(sleepTime, 500, 10000);
+                        sleepTime = SdkInfo.Increase(sleepTime, 500, 5000);
                     }
                     else
                     {
-                        sleepTime = SdkInfo.Multiply(sleepTime, 1.25, _channelSettings.MaxPublishQueueTimeoutInMs * 1000);
+                        sleepTime = SdkInfo.Multiply(sleepTime, 1.25, 5000);
                     }
                     ExecutionLog.LogInformation($"Opening the publisher channel will be retried in next {sleepTime} ms.");
                     Thread.Sleep(sleepTime);
