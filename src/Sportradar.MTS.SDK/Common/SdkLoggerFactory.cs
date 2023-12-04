@@ -15,7 +15,7 @@ namespace Sportradar.MTS.SDK.Common
         /// <summary>
         /// Default repository name for the SDK
         /// </summary>
-        internal const string SdkLogRepositoryName = "Sportradar.OddsFeed.SDK";
+        internal const string SdkLogRepositoryName = "Sportradar.MTS.SDK";
 
         private static ILoggerFactory _factory;
         

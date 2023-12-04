@@ -232,6 +232,11 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 
                 if (!_connection.IsOpen)
                 {
+                    if (_connectionStatus.IsConnected)
+                    {
+                        ExecutionLog.LogError($"Error ConnectionStatus is connected: {id}");
+                        _connectionStatus.Disconnect("No connection present!");
+                    }
                     throw new ConnectFailureException("Cannot create the channel because the connection is closed.", null);
                 }
 

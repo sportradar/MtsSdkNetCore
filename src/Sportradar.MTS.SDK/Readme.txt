@@ -22,6 +22,9 @@ The package contains:
  - Resources containing the log4net configuration needed by the MTS SDK
  
 CHANGE LOG:
+2023-11-30 2.4.1.2
+Changed timings on reconnects, updated guides
+
 2022-11-30 2.4.1.1
 Changed url stgapi.betradar.com and api.betradar.com to global
 

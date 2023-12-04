@@ -228,7 +228,7 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
 
         private void CreateAndOpenConsumerChannel()
         {
-            var sleepTime = 1000;
+            var sleepTime = 100;
             while (Interlocked.Read(ref _shouldBeOpened) == 1)
             {
                 lock (_lock)
@@ -265,11 +265,11 @@ namespace Sportradar.MTS.SDK.API.Internal.RabbitMq
                             e);
                         if (e is IOException || e is AlreadyClosedException || e is SocketException)
                         {
-                            sleepTime = SdkInfo.Increase(sleepTime, 500, 10000);
+                            sleepTime = SdkInfo.Increase(sleepTime, 500, 5000);
                         }
                         else
                         {
-                            sleepTime = SdkInfo.Multiply(sleepTime, 1.25, _channelSettings.PublishQueueTimeoutInMs1 * 1000);
+                            sleepTime = SdkInfo.Multiply(sleepTime, 1.25, 5000);
                         }
 
                         ExecutionLog.LogInformation($"Opening the consumer channel will be retried in next {sleepTime} ms.");

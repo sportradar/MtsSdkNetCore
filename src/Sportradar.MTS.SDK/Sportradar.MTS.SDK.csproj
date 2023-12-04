@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyVersion>2.4.1.1</AssemblyVersion>
-    <FileVersion>2.4.1.1</FileVersion>
+    <AssemblyVersion>2.4.1.2</AssemblyVersion>
+    <FileVersion>2.4.1.2</FileVersion>
     <LangVersion>8</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -16,9 +16,9 @@
     <PackageProjectUrl>http://sdk.sportradar.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/sportradar/MtsSdkNetCore</RepositoryUrl>
     <PackageTags>SportRadar MTS SDK .NETCore</PackageTags>
-    <PackageReleaseNotes>Changed url stgapi.betradar.com and api.betradar.com to global</PackageReleaseNotes>
+    <PackageReleaseNotes>Changed timings on reconnects, updated guides</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
-    <Version>2.4.1.1</Version>
+    <Version>2.4.1.2</Version>
     <CodeAnalysisRuleSet>Sportradar.MTS.SDK.ruleset</CodeAnalysisRuleSet>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Nullable>disable</Nullable>
