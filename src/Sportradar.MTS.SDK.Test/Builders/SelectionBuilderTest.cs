@@ -319,5 +319,22 @@ namespace Sportradar.MTS.SDK.Test.Builders
             Assert.IsNull(selection.Odds);
             Assert.AreEqual(false, selection.IsBanker);
         }
+
+        public TestContext TestContext { get; set; }
+
+        [TestMethod]
+        public void CustomSelectionWithMultipleSpecifiers()
+        {
+            var selection = _customSelectionBuilder.SetId("tree:2/0/*/1").SetEventId("sr:match:12345").SetBanker(false)
+                .SetIdUof(1, "sr:sport:1", 1, "selection1", "goalnr=1|type=prematch", null).Build();
+
+            Assert.IsNotNull(selection);
+            Assert.AreEqual("sr:match:12345", selection.EventId);
+            Assert.AreEqual("uof:1/sr:sport:1/1/selection1?goalnr=1|type=prematch", selection.Id);
+            Assert.IsNull(selection.Odds);
+            Assert.AreEqual(false, selection.IsBanker);
+
+            TestContext.WriteLine(selection.Id);
+        }
     }
 }

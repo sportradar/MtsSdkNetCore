@@ -523,14 +523,14 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
         /// <remarks/>
         BAD_REQUEST,
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
-    [System.Xml.Serialization.XmlRootAttribute("available_selections", Namespace="http://schemas.sportradar.com/custombet/v1/endpoints", IsNullable=false)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="available_selections", IsNullable=false)]
     public partial class AvailableSelectionsType {
         
         private EventType eventField;
@@ -558,13 +558,12 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
     public partial class EventType {
         
         private MarketType[] marketsField;
@@ -593,13 +592,12 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
     public partial class MarketType {
         
         private OutcomeType[] outcomeField;
@@ -641,13 +639,12 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
     public partial class OutcomeType {
         
         private string idField;
@@ -669,8 +666,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
-    [System.Xml.Serialization.XmlRootAttribute("calculation_response", Namespace="http://schemas.sportradar.com/custombet/v1/endpoints", IsNullable=false)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName ="calculation_response", IsNullable=false)]
     public partial class CalculationResponseType {
         
         private CalculationResultType calculationField;
@@ -717,7 +714,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
     public partial class CalculationResultType {
         
         private double oddsField;
@@ -752,8 +748,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
-    [System.Xml.Serialization.XmlRootAttribute("response", Namespace="http://schemas.sportradar.com/custombet/v1/endpoints", IsNullable=false)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName ="response", IsNullable=false)]
     public partial class ResponseType {
         
         private string messageField;
@@ -812,8 +808,8 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
-    [System.Xml.Serialization.XmlRootAttribute("selections", Namespace="http://schemas.sportradar.com/custombet/v1/endpoints", IsNullable=false)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="selections", Namespace="http://schemas.sportradar.com/custombet/v1/endpoints", IsNullable =false)]
     public partial class SelectionsType {
         
         private SelectionType[] selectionField;
@@ -835,7 +831,6 @@ namespace Sportradar.MTS.SDK.Entities.Internal.REST
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.sportradar.com/custombet/v1/endpoints")]
     public partial class SelectionType {
         
         private string idField;

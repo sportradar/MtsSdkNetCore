@@ -1,0 +1,1285 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<available_selections xmlns="http://schemas.sportradar.com/custombet/v1/endpoints"
+                      generated_at="2025-03-13T17:30:54+00:00">
+    <event id="sr:match:52630473">
+        <markets>
+            <market id="90" specifiers="total=113.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="303" specifiers="quarternr=2|hcp=-6.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="223" specifiers="hcp=-16.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="223" specifiers="hcp=-4.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="229">
+                <outcome id="70"/>
+                <outcome id="72"/>
+            </market>
+            <market id="90" specifiers="total=114.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="225" specifiers="total=247.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="303" specifiers="quarternr=1|hcp=-2.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="219">
+                <outcome id="4"/>
+                <outcome id="5"/>
+            </market>
+            <market id="14" specifiers="hcp=0:14">
+                <outcome id="1711"/>
+                <outcome id="1712"/>
+                <outcome id="1713"/>
+            </market>
+            <market id="90" specifiers="total=115.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="223" specifiers="hcp=-5.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=246.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="303" specifiers="quarternr=1|hcp=-3.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="88" specifiers="hcp=-4.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="88" specifiers="hcp=-5.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=230.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="66" specifiers="hcp=-6.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="223" specifiers="hcp=-9.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="66" specifiers="hcp=-7.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="303" specifiers="quarternr=3|hcp=-4.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="756" specifiers="quarternr=1|total=31.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="90" specifiers="total=109.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="220">
+                <outcome id="74"/>
+                <outcome id="76"/>
+            </market>
+            <market id="74">
+                <outcome id="70"/>
+                <outcome id="72"/>
+            </market>
+            <market id="225" specifiers="total=234.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="225" specifiers="total=224.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="303" specifiers="quarternr=4|hcp=-3.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=233.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="223" specifiers="hcp=-26.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="756" specifiers="quarternr=1|total=30.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="225" specifiers="total=225.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="68" specifiers="total=115.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="227" specifiers="total=126.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="303" specifiers="quarternr=4|hcp=0.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="236" specifiers="quarternr=2|total=60.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="225" specifiers="total=235.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="303" specifiers="quarternr=4|hcp=-2.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="223" specifiers="hcp=-18.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="223" specifiers="hcp=-17.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="66" specifiers="hcp=-8.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="303" specifiers="quarternr=3|hcp=-5.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="88" specifiers="hcp=-9.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="68" specifiers="total=116.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="68" specifiers="total=117.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="227" specifiers="total=127.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="756" specifiers="quarternr=1|total=33.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="223" specifiers="hcp=-8.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=228.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="88" specifiers="hcp=-6.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="756" specifiers="quarternr=1|total=32.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="223" specifiers="hcp=-19.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="303" specifiers="quarternr=3|hcp=-3.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="68" specifiers="total=118.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="236" specifiers="quarternr=3|total=59.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="90" specifiers="total=111.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="88" specifiers="hcp=-7.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="90" specifiers="total=112.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="88" specifiers="hcp=-8.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=248.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="88" specifiers="hcp=-10.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="223" specifiers="hcp=-10.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="228" specifiers="total=110.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="223" specifiers="hcp=-22.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=236.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="225" specifiers="total=240.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="225" specifiers="total=237.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="225" specifiers="total=226.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="223" specifiers="hcp=-23.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="303" specifiers="quarternr=1|hcp=-6.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="90" specifiers="total=108.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="303" specifiers="quarternr=2|hcp=-4.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="68" specifiers="total=120.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="236" specifiers="quarternr=1|total=60.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="1">
+                <outcome id="1"/>
+                <outcome id="2"/>
+                <outcome id="3"/>
+            </market>
+            <market id="303" specifiers="quarternr=3|hcp=-2.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=227.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="303" specifiers="quarternr=4|hcp=-0.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="94">
+                <outcome id="70"/>
+                <outcome id="72"/>
+            </market>
+            <market id="303" specifiers="quarternr=2|hcp=-5.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=238.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="223" specifiers="hcp=-21.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="228" specifiers="total=111.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="66" specifiers="hcp=-3.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=231.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="228" specifiers="total=112.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="227" specifiers="total=123.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="60">
+                <outcome id="1"/>
+                <outcome id="2"/>
+                <outcome id="3"/>
+            </market>
+            <market id="225" specifiers="total=232.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="227" specifiers="total=125.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="227" specifiers="total=124.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="757" specifiers="quarternr=1|total=29.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="236" specifiers="quarternr=4|total=55.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="68" specifiers="total=119.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="303" specifiers="quarternr=3|hcp=-6.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="223" specifiers="hcp=-25.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="757" specifiers="quarternr=1|total=28.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="303" specifiers="quarternr=2|hcp=-2.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="68" specifiers="total=121.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="303" specifiers="quarternr=2|hcp=-3.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="88" specifiers="hcp=-0.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=239.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="223" specifiers="hcp=-13.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="66" specifiers="hcp=-13.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=241.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="66" specifiers="hcp=-12.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="756" specifiers="quarternr=1|total=34.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="223" specifiers="hcp=-12.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="223" specifiers="hcp=-24.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=242.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="90" specifiers="total=116.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="223" specifiers="hcp=-6.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="90" specifiers="total=117.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="223" specifiers="hcp=-11.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="228" specifiers="total=109.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="68" specifiers="total=122.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="66" specifiers="hcp=-11.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="223" specifiers="hcp=-7.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="303" specifiers="quarternr=1|hcp=-4.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=244.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="90" specifiers="total=118.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="223" specifiers="hcp=-14.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="303" specifiers="quarternr=1|hcp=-5.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=222.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="223" specifiers="hcp=-1.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=243.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="303" specifiers="quarternr=4|hcp=-1.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="223" specifiers="hcp=-20.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="223" specifiers="hcp=-2.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="83">
+                <outcome id="1"/>
+                <outcome id="2"/>
+                <outcome id="3"/>
+            </market>
+            <market id="66" specifiers="hcp=-9.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=223.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="88" specifiers="hcp=-1.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="223" specifiers="hcp=-3.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="66" specifiers="hcp=-10.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="757" specifiers="quarternr=1|total=26.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="228" specifiers="total=108.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="68" specifiers="total=125.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="757" specifiers="quarternr=1|total=25.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="225" specifiers="total=229.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="88" specifiers="hcp=-2.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="68" specifiers="total=123.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="68" specifiers="total=124.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="88" specifiers="hcp=-3.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="90" specifiers="total=110.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="66" specifiers="hcp=-4.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="223" specifiers="hcp=-15.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="66" specifiers="hcp=-5.5">
+                <outcome id="1714"/>
+                <outcome id="1715"/>
+            </market>
+            <market id="225" specifiers="total=245.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="757" specifiers="quarternr=1|total=27.5">
+                <outcome id="12"/>
+                <outcome id="13"/>
+            </market>
+            <market id="773" specifiers="variant=pre:playerprops:52630473:607388">
+                <outcome id="pre:playerprops:52630473:607388:1"/>
+                <outcome id="pre:playerprops:52630473:607388:2"/>
+                <outcome id="pre:playerprops:52630473:607388:3"/>
+                <outcome id="pre:playerprops:52630473:607388:4"/>
+            </market>
+            <market id="768" specifiers="variant=pre:playerprops:52630473:608188">
+                <outcome id="pre:playerprops:52630473:608188:12"/>
+                <outcome id="pre:playerprops:52630473:608188:18"/>
+                <outcome id="pre:playerprops:52630473:608188:10"/>
+                <outcome id="pre:playerprops:52630473:608188:14"/>
+                <outcome id="pre:playerprops:52630473:608188:22"/>
+                <outcome id="pre:playerprops:52630473:608188:20"/>
+                <outcome id="pre:playerprops:52630473:608188:8"/>
+                <outcome id="pre:playerprops:52630473:608188:24"/>
+                <outcome id="pre:playerprops:52630473:608188:26"/>
+                <outcome id="pre:playerprops:52630473:608188:16"/>
+            </market>
+            <market id="771" specifiers="variant=pre:playerprops:52630473:1319316">
+                <outcome id="pre:playerprops:52630473:1319316:2"/>
+                <outcome id="pre:playerprops:52630473:1319316:1"/>
+                <outcome id="pre:playerprops:52630473:1319316:3"/>
+                <outcome id="pre:playerprops:52630473:1319316:4"/>
+                <outcome id="pre:playerprops:52630473:1319316:5"/>
+            </market>
+            <market id="772" specifiers="variant=pre:playerprops:52630473:2652539">
+                <outcome id="pre:playerprops:52630473:2652539:4"/>
+                <outcome id="pre:playerprops:52630473:2652539:8"/>
+                <outcome id="pre:playerprops:52630473:2652539:11"/>
+                <outcome id="pre:playerprops:52630473:2652539:7"/>
+                <outcome id="pre:playerprops:52630473:2652539:9"/>
+                <outcome id="pre:playerprops:52630473:2652539:6"/>
+                <outcome id="pre:playerprops:52630473:2652539:10"/>
+                <outcome id="pre:playerprops:52630473:2652539:5"/>
+            </market>
+            <market id="770" specifiers="variant=pre:playerprops:52630473:2683073">
+                <outcome id="pre:playerprops:52630473:2683073:5"/>
+                <outcome id="pre:playerprops:52630473:2683073:6"/>
+                <outcome id="pre:playerprops:52630473:2683073:4"/>
+                <outcome id="pre:playerprops:52630473:2683073:7"/>
+                <outcome id="pre:playerprops:52630473:2683073:3"/>
+                <outcome id="pre:playerprops:52630473:2683073:2"/>
+            </market>
+            <market id="771" specifiers="variant=pre:playerprops:52630473:2068637">
+                <outcome id="pre:playerprops:52630473:2068637:2"/>
+                <outcome id="pre:playerprops:52630473:2068637:4"/>
+                <outcome id="pre:playerprops:52630473:2068637:1"/>
+                <outcome id="pre:playerprops:52630473:2068637:3"/>
+                <outcome id="pre:playerprops:52630473:2068637:5"/>
+            </market>
+            <market id="768" specifiers="variant=pre:playerprops:52630473:2631631">
+                <outcome id="pre:playerprops:52630473:2631631:25"/>
+                <outcome id="pre:playerprops:52630473:2631631:19"/>
+                <outcome id="pre:playerprops:52630473:2631631:9"/>
+                <outcome id="pre:playerprops:52630473:2631631:15"/>
+                <outcome id="pre:playerprops:52630473:2631631:13"/>
+                <outcome id="pre:playerprops:52630473:2631631:27"/>
+                <outcome id="pre:playerprops:52630473:2631631:17"/>
+                <outcome id="pre:playerprops:52630473:2631631:23"/>
+                <outcome id="pre:playerprops:52630473:2631631:11"/>
+                <outcome id="pre:playerprops:52630473:2631631:21"/>
+            </market>
+            <market id="770" specifiers="variant=pre:playerprops:52630473:1316820">
+                <outcome id="pre:playerprops:52630473:1316820:5"/>
+                <outcome id="pre:playerprops:52630473:1316820:4"/>
+                <outcome id="pre:playerprops:52630473:1316820:8"/>
+                <outcome id="pre:playerprops:52630473:1316820:3"/>
+                <outcome id="pre:playerprops:52630473:1316820:6"/>
+                <outcome id="pre:playerprops:52630473:1316820:7"/>
+                <outcome id="pre:playerprops:52630473:1316820:9"/>
+            </market>
+            <market id="768" specifiers="variant=pre:playerprops:52630473:608250">
+                <outcome id="pre:playerprops:52630473:608250:19"/>
+                <outcome id="pre:playerprops:52630473:608250:29"/>
+                <outcome id="pre:playerprops:52630473:608250:21"/>
+                <outcome id="pre:playerprops:52630473:608250:17"/>
+                <outcome id="pre:playerprops:52630473:608250:15"/>
+                <outcome id="pre:playerprops:52630473:608250:13"/>
+                <outcome id="pre:playerprops:52630473:608250:27"/>
+                <outcome id="pre:playerprops:52630473:608250:23"/>
+                <outcome id="pre:playerprops:52630473:608250:31"/>
+                <outcome id="pre:playerprops:52630473:608250:25"/>
+            </market>
+            <market id="770" specifiers="variant=pre:playerprops:52630473:2218398">
+                <outcome id="pre:playerprops:52630473:2218398:4"/>
+                <outcome id="pre:playerprops:52630473:2218398:2"/>
+                <outcome id="pre:playerprops:52630473:2218398:6"/>
+                <outcome id="pre:playerprops:52630473:2218398:3"/>
+                <outcome id="pre:playerprops:52630473:2218398:5"/>
+                <outcome id="pre:playerprops:52630473:2218398:7"/>
+            </market>
+            <market id="770" specifiers="variant=pre:playerprops:52630473:2631631">
+                <outcome id="pre:playerprops:52630473:2631631:3"/>
+                <outcome id="pre:playerprops:52630473:2631631:6"/>
+                <outcome id="pre:playerprops:52630473:2631631:4"/>
+                <outcome id="pre:playerprops:52630473:2631631:7"/>
+                <outcome id="pre:playerprops:52630473:2631631:2"/>
+                <outcome id="pre:playerprops:52630473:2631631:5"/>
+            </market>
+            <market id="768" specifiers="variant=pre:playerprops:52630473:607388">
+                <outcome id="pre:playerprops:52630473:607388:19"/>
+                <outcome id="pre:playerprops:52630473:607388:23"/>
+                <outcome id="pre:playerprops:52630473:607388:21"/>
+                <outcome id="pre:playerprops:52630473:607388:27"/>
+                <outcome id="pre:playerprops:52630473:607388:17"/>
+                <outcome id="pre:playerprops:52630473:607388:11"/>
+                <outcome id="pre:playerprops:52630473:607388:15"/>
+                <outcome id="pre:playerprops:52630473:607388:13"/>
+                <outcome id="pre:playerprops:52630473:607388:9"/>
+                <outcome id="pre:playerprops:52630473:607388:25"/>
+            </market>
+            <market id="771" specifiers="variant=pre:playerprops:52630473:607440">
+                <outcome id="pre:playerprops:52630473:607440:4"/>
+                <outcome id="pre:playerprops:52630473:607440:3"/>
+                <outcome id="pre:playerprops:52630473:607440:5"/>
+                <outcome id="pre:playerprops:52630473:607440:2"/>
+                <outcome id="pre:playerprops:52630473:607440:1"/>
+            </market>
+            <market id="774" specifiers="variant=pre:playerprops:52630473:2068637">
+                <outcome id="pre:playerprops:52630473:2068637:6"/>
+                <outcome id="pre:playerprops:52630473:2068637:4"/>
+                <outcome id="pre:playerprops:52630473:2068637:3"/>
+                <outcome id="pre:playerprops:52630473:2068637:2"/>
+                <outcome id="pre:playerprops:52630473:2068637:5"/>
+            </market>
+            <market id="771" specifiers="variant=pre:playerprops:52630473:608188">
+                <outcome id="pre:playerprops:52630473:608188:4"/>
+                <outcome id="pre:playerprops:52630473:608188:2"/>
+                <outcome id="pre:playerprops:52630473:608188:5"/>
+                <outcome id="pre:playerprops:52630473:608188:3"/>
+                <outcome id="pre:playerprops:52630473:608188:1"/>
+            </market>
+            <market id="772" specifiers="variant=pre:playerprops:52630473:996295">
+                <outcome id="pre:playerprops:52630473:996295:7"/>
+                <outcome id="pre:playerprops:52630473:996295:4"/>
+                <outcome id="pre:playerprops:52630473:996295:9"/>
+                <outcome id="pre:playerprops:52630473:996295:3"/>
+                <outcome id="pre:playerprops:52630473:996295:8"/>
+                <outcome id="pre:playerprops:52630473:996295:5"/>
+                <outcome id="pre:playerprops:52630473:996295:6"/>
+            </market>
+            <market id="768" specifiers="variant=pre:playerprops:52630473:1837404">
+                <outcome id="pre:playerprops:52630473:1837404:21"/>
+                <outcome id="pre:playerprops:52630473:1837404:11"/>
+                <outcome id="pre:playerprops:52630473:1837404:9"/>
+                <outcome id="pre:playerprops:52630473:1837404:17"/>
+                <outcome id="pre:playerprops:52630473:1837404:13"/>
+                <outcome id="pre:playerprops:52630473:1837404:7"/>
+                <outcome id="pre:playerprops:52630473:1837404:19"/>
+                <outcome id="pre:playerprops:52630473:1837404:5"/>
+                <outcome id="pre:playerprops:52630473:1837404:23"/>
+                <outcome id="pre:playerprops:52630473:1837404:15"/>
+            </market>
+            <market id="771" specifiers="variant=pre:playerprops:52630473:1837404">
+                <outcome id="pre:playerprops:52630473:1837404:2"/>
+                <outcome id="pre:playerprops:52630473:1837404:5"/>
+                <outcome id="pre:playerprops:52630473:1837404:1"/>
+                <outcome id="pre:playerprops:52630473:1837404:3"/>
+                <outcome id="pre:playerprops:52630473:1837404:4"/>
+            </market>
+            <market id="770" specifiers="variant=pre:playerprops:52630473:2652539">
+                <outcome id="pre:playerprops:52630473:2652539:2"/>
+                <outcome id="pre:playerprops:52630473:2652539:4"/>
+                <outcome id="pre:playerprops:52630473:2652539:6"/>
+                <outcome id="pre:playerprops:52630473:2652539:3"/>
+                <outcome id="pre:playerprops:52630473:2652539:7"/>
+                <outcome id="pre:playerprops:52630473:2652539:5"/>
+            </market>
+            <market id="771" specifiers="variant=pre:playerprops:52630473:852174">
+                <outcome id="pre:playerprops:52630473:852174:4"/>
+                <outcome id="pre:playerprops:52630473:852174:3"/>
+                <outcome id="pre:playerprops:52630473:852174:2"/>
+                <outcome id="pre:playerprops:52630473:852174:1"/>
+                <outcome id="pre:playerprops:52630473:852174:5"/>
+            </market>
+            <market id="773" specifiers="variant=pre:playerprops:52630473:2218398">
+                <outcome id="pre:playerprops:52630473:2218398:4"/>
+                <outcome id="pre:playerprops:52630473:2218398:1"/>
+                <outcome id="pre:playerprops:52630473:2218398:2"/>
+                <outcome id="pre:playerprops:52630473:2218398:3"/>
+            </market>
+            <market id="768" specifiers="variant=pre:playerprops:52630473:2652539">
+                <outcome id="pre:playerprops:52630473:2652539:7"/>
+                <outcome id="pre:playerprops:52630473:2652539:13"/>
+                <outcome id="pre:playerprops:52630473:2652539:9"/>
+                <outcome id="pre:playerprops:52630473:2652539:11"/>
+                <outcome id="pre:playerprops:52630473:2652539:21"/>
+                <outcome id="pre:playerprops:52630473:2652539:19"/>
+                <outcome id="pre:playerprops:52630473:2652539:15"/>
+                <outcome id="pre:playerprops:52630473:2652539:23"/>
+                <outcome id="pre:playerprops:52630473:2652539:17"/>
+                <outcome id="pre:playerprops:52630473:2652539:25"/>
+            </market>
+            <market id="768" specifiers="variant=pre:playerprops:52630473:2068637">
+                <outcome id="pre:playerprops:52630473:2068637:43"/>
+                <outcome id="pre:playerprops:52630473:2068637:41"/>
+                <outcome id="pre:playerprops:52630473:2068637:29"/>
+                <outcome id="pre:playerprops:52630473:2068637:31"/>
+                <outcome id="pre:playerprops:52630473:2068637:35"/>
+                <outcome id="pre:playerprops:52630473:2068637:25"/>
+                <outcome id="pre:playerprops:52630473:2068637:37"/>
+                <outcome id="pre:playerprops:52630473:2068637:33"/>
+                <outcome id="pre:playerprops:52630473:2068637:39"/>
+                <outcome id="pre:playerprops:52630473:2068637:27"/>
+            </market>
+            <market id="774" specifiers="variant=pre:playerprops:52630473:2683073">
+                <outcome id="pre:playerprops:52630473:2683073:5"/>
+                <outcome id="pre:playerprops:52630473:2683073:4"/>
+                <outcome id="pre:playerprops:52630473:2683073:2"/>
+                <outcome id="pre:playerprops:52630473:2683073:3"/>
+            </market>
+            <market id="768" specifiers="variant=pre:playerprops:52630473:1319316">
+                <outcome id="pre:playerprops:52630473:1319316:18"/>
+                <outcome id="pre:playerprops:52630473:1319316:24"/>
+                <outcome id="pre:playerprops:52630473:1319316:12"/>
+                <outcome id="pre:playerprops:52630473:1319316:20"/>
+                <outcome id="pre:playerprops:52630473:1319316:10"/>
+                <outcome id="pre:playerprops:52630473:1319316:26"/>
+                <outcome id="pre:playerprops:52630473:1319316:16"/>
+                <outcome id="pre:playerprops:52630473:1319316:14"/>
+                <outcome id="pre:playerprops:52630473:1319316:22"/>
+            </market>
+            <market id="774" specifiers="variant=pre:playerprops:52630473:607388">
+                <outcome id="pre:playerprops:52630473:607388:5"/>
+                <outcome id="pre:playerprops:52630473:607388:2"/>
+                <outcome id="pre:playerprops:52630473:607388:4"/>
+                <outcome id="pre:playerprops:52630473:607388:3"/>
+            </market>
+            <market id="773" specifiers="variant=pre:playerprops:52630473:1319316">
+                <outcome id="pre:playerprops:52630473:1319316:1"/>
+                <outcome id="pre:playerprops:52630473:1319316:3"/>
+                <outcome id="pre:playerprops:52630473:1319316:2"/>
+                <outcome id="pre:playerprops:52630473:1319316:4"/>
+            </market>
+            <market id="772" specifiers="variant=pre:playerprops:52630473:1837404">
+                <outcome id="pre:playerprops:52630473:1837404:12"/>
+                <outcome id="pre:playerprops:52630473:1837404:11"/>
+                <outcome id="pre:playerprops:52630473:1837404:8"/>
+                <outcome id="pre:playerprops:52630473:1837404:7"/>
+                <outcome id="pre:playerprops:52630473:1837404:9"/>
+                <outcome id="pre:playerprops:52630473:1837404:5"/>
+                <outcome id="pre:playerprops:52630473:1837404:6"/>
+                <outcome id="pre:playerprops:52630473:1837404:10"/>
+            </market>
+            <market id="770" specifiers="variant=pre:playerprops:52630473:2068637">
+                <outcome id="pre:playerprops:52630473:2068637:14"/>
+                <outcome id="pre:playerprops:52630473:2068637:9"/>
+                <outcome id="pre:playerprops:52630473:2068637:12"/>
+                <outcome id="pre:playerprops:52630473:2068637:11"/>
+                <outcome id="pre:playerprops:52630473:2068637:10"/>
+                <outcome id="pre:playerprops:52630473:2068637:13"/>
+                <outcome id="pre:playerprops:52630473:2068637:8"/>
+            </market>
+            <market id="772" specifiers="variant=pre:playerprops:52630473:608250">
+                <outcome id="pre:playerprops:52630473:608250:9"/>
+                <outcome id="pre:playerprops:52630473:608250:8"/>
+                <outcome id="pre:playerprops:52630473:608250:13"/>
+                <outcome id="pre:playerprops:52630473:608250:6"/>
+                <outcome id="pre:playerprops:52630473:608250:14"/>
+                <outcome id="pre:playerprops:52630473:608250:7"/>
+                <outcome id="pre:playerprops:52630473:608250:10"/>
+                <outcome id="pre:playerprops:52630473:608250:11"/>
+                <outcome id="pre:playerprops:52630473:608250:12"/>
+            </market>
+            <market id="770" specifiers="variant=pre:playerprops:52630473:607636">
+                <outcome id="pre:playerprops:52630473:607636:6"/>
+                <outcome id="pre:playerprops:52630473:607636:5"/>
+                <outcome id="pre:playerprops:52630473:607636:4"/>
+                <outcome id="pre:playerprops:52630473:607636:2"/>
+                <outcome id="pre:playerprops:52630473:607636:7"/>
+                <outcome id="pre:playerprops:52630473:607636:3"/>
+            </market>
+            <market id="772" specifiers="variant=pre:playerprops:52630473:607636">
+                <outcome id="pre:playerprops:52630473:607636:4"/>
+                <outcome id="pre:playerprops:52630473:607636:7"/>
+                <outcome id="pre:playerprops:52630473:607636:8"/>
+                <outcome id="pre:playerprops:52630473:607636:3"/>
+                <outcome id="pre:playerprops:52630473:607636:6"/>
+                <outcome id="pre:playerprops:52630473:607636:5"/>
+            </market>
+            <market id="772" specifiers="variant=pre:playerprops:52630473:608188">
+                <outcome id="pre:playerprops:52630473:608188:5"/>
+                <outcome id="pre:playerprops:52630473:608188:6"/>
+                <outcome id="pre:playerprops:52630473:608188:3"/>
+                <outcome id="pre:playerprops:52630473:608188:4"/>
+                <outcome id="pre:playerprops:52630473:608188:7"/>
+                <outcome id="pre:playerprops:52630473:608188:8"/>
+                <outcome id="pre:playerprops:52630473:608188:9"/>
+            </market>
+            <market id="774" specifiers="variant=pre:playerprops:52630473:996295">
+                <outcome id="pre:playerprops:52630473:996295:3"/>
+                <outcome id="pre:playerprops:52630473:996295:6"/>
+                <outcome id="pre:playerprops:52630473:996295:4"/>
+                <outcome id="pre:playerprops:52630473:996295:5"/>
+                <outcome id="pre:playerprops:52630473:996295:7"/>
+                <outcome id="pre:playerprops:52630473:996295:8"/>
+            </market>
+            <market id="771" specifiers="variant=pre:playerprops:52630473:996295">
+                <outcome id="pre:playerprops:52630473:996295:2"/>
+                <outcome id="pre:playerprops:52630473:996295:5"/>
+                <outcome id="pre:playerprops:52630473:996295:3"/>
+                <outcome id="pre:playerprops:52630473:996295:4"/>
+                <outcome id="pre:playerprops:52630473:996295:1"/>
+            </market>
+            <market id="773" specifiers="variant=pre:playerprops:52630473:1316820">
+                <outcome id="pre:playerprops:52630473:1316820:4"/>
+                <outcome id="pre:playerprops:52630473:1316820:3"/>
+                <outcome id="pre:playerprops:52630473:1316820:2"/>
+                <outcome id="pre:playerprops:52630473:1316820:1"/>
+            </market>
+            <market id="773" specifiers="variant=pre:playerprops:52630473:607636">
+                <outcome id="pre:playerprops:52630473:607636:4"/>
+                <outcome id="pre:playerprops:52630473:607636:3"/>
+                <outcome id="pre:playerprops:52630473:607636:2"/>
+                <outcome id="pre:playerprops:52630473:607636:1"/>
+            </market>
+            <market id="771" specifiers="variant=pre:playerprops:52630473:2218398">
+                <outcome id="pre:playerprops:52630473:2218398:5"/>
+                <outcome id="pre:playerprops:52630473:2218398:4"/>
+                <outcome id="pre:playerprops:52630473:2218398:1"/>
+                <outcome id="pre:playerprops:52630473:2218398:3"/>
+                <outcome id="pre:playerprops:52630473:2218398:2"/>
+            </market>
+            <market id="772" specifiers="variant=pre:playerprops:52630473:852174">
+                <outcome id="pre:playerprops:52630473:852174:8"/>
+                <outcome id="pre:playerprops:52630473:852174:13"/>
+                <outcome id="pre:playerprops:52630473:852174:6"/>
+                <outcome id="pre:playerprops:52630473:852174:9"/>
+                <outcome id="pre:playerprops:52630473:852174:10"/>
+                <outcome id="pre:playerprops:52630473:852174:12"/>
+                <outcome id="pre:playerprops:52630473:852174:11"/>
+                <outcome id="pre:playerprops:52630473:852174:7"/>
+                <outcome id="pre:playerprops:52630473:852174:14"/>
+            </market>
+            <market id="768" specifiers="variant=pre:playerprops:52630473:2683073">
+                <outcome id="pre:playerprops:52630473:2683073:13"/>
+                <outcome id="pre:playerprops:52630473:2683073:27"/>
+                <outcome id="pre:playerprops:52630473:2683073:21"/>
+                <outcome id="pre:playerprops:52630473:2683073:19"/>
+                <outcome id="pre:playerprops:52630473:2683073:25"/>
+                <outcome id="pre:playerprops:52630473:2683073:23"/>
+                <outcome id="pre:playerprops:52630473:2683073:11"/>
+                <outcome id="pre:playerprops:52630473:2683073:17"/>
+                <outcome id="pre:playerprops:52630473:2683073:15"/>
+            </market>
+            <market id="768" specifiers="variant=pre:playerprops:52630473:852174">
+                <outcome id="pre:playerprops:52630473:852174:9"/>
+                <outcome id="pre:playerprops:52630473:852174:11"/>
+                <outcome id="pre:playerprops:52630473:852174:21"/>
+                <outcome id="pre:playerprops:52630473:852174:19"/>
+                <outcome id="pre:playerprops:52630473:852174:7"/>
+                <outcome id="pre:playerprops:52630473:852174:13"/>
+                <outcome id="pre:playerprops:52630473:852174:25"/>
+                <outcome id="pre:playerprops:52630473:852174:17"/>
+                <outcome id="pre:playerprops:52630473:852174:15"/>
+                <outcome id="pre:playerprops:52630473:852174:23"/>
+            </market>
+            <market id="774" specifiers="variant=pre:playerprops:52630473:607636">
+                <outcome id="pre:playerprops:52630473:607636:3"/>
+                <outcome id="pre:playerprops:52630473:607636:6"/>
+                <outcome id="pre:playerprops:52630473:607636:5"/>
+                <outcome id="pre:playerprops:52630473:607636:4"/>
+                <outcome id="pre:playerprops:52630473:607636:2"/>
+            </market>
+            <market id="773" specifiers="variant=pre:playerprops:52630473:2652539">
+                <outcome id="pre:playerprops:52630473:2652539:1"/>
+                <outcome id="pre:playerprops:52630473:2652539:2"/>
+                <outcome id="pre:playerprops:52630473:2652539:3"/>
+                <outcome id="pre:playerprops:52630473:2652539:4"/>
+            </market>
+            <market id="774" specifiers="variant=pre:playerprops:52630473:1319316">
+                <outcome id="pre:playerprops:52630473:1319316:2"/>
+                <outcome id="pre:playerprops:52630473:1319316:4"/>
+                <outcome id="pre:playerprops:52630473:1319316:3"/>
+                <outcome id="pre:playerprops:52630473:1319316:5"/>
+                <outcome id="pre:playerprops:52630473:1319316:6"/>
+            </market>
+            <market id="774" specifiers="variant=pre:playerprops:52630473:608250">
+                <outcome id="pre:playerprops:52630473:608250:3"/>
+                <outcome id="pre:playerprops:52630473:608250:4"/>
+                <outcome id="pre:playerprops:52630473:608250:2"/>
+                <outcome id="pre:playerprops:52630473:608250:5"/>
+            </market>
+            <market id="772" specifiers="variant=pre:playerprops:52630473:1319316">
+                <outcome id="pre:playerprops:52630473:1319316:7"/>
+                <outcome id="pre:playerprops:52630473:1319316:9"/>
+                <outcome id="pre:playerprops:52630473:1319316:5"/>
+                <outcome id="pre:playerprops:52630473:1319316:6"/>
+                <outcome id="pre:playerprops:52630473:1319316:3"/>
+                <outcome id="pre:playerprops:52630473:1319316:4"/>
+                <outcome id="pre:playerprops:52630473:1319316:8"/>
+            </market>
+            <market id="770" specifiers="variant=pre:playerprops:52630473:607388">
+                <outcome id="pre:playerprops:52630473:607388:9"/>
+                <outcome id="pre:playerprops:52630473:607388:7"/>
+                <outcome id="pre:playerprops:52630473:607388:6"/>
+                <outcome id="pre:playerprops:52630473:607388:5"/>
+                <outcome id="pre:playerprops:52630473:607388:3"/>
+                <outcome id="pre:playerprops:52630473:607388:4"/>
+                <outcome id="pre:playerprops:52630473:607388:8"/>
+            </market>
+            <market id="774" specifiers="variant=pre:playerprops:52630473:2652539">
+                <outcome id="pre:playerprops:52630473:2652539:2"/>
+                <outcome id="pre:playerprops:52630473:2652539:5"/>
+                <outcome id="pre:playerprops:52630473:2652539:4"/>
+                <outcome id="pre:playerprops:52630473:2652539:3"/>
+            </market>
+            <market id="772" specifiers="variant=pre:playerprops:52630473:607388">
+                <outcome id="pre:playerprops:52630473:607388:4"/>
+                <outcome id="pre:playerprops:52630473:607388:8"/>
+                <outcome id="pre:playerprops:52630473:607388:6"/>
+                <outcome id="pre:playerprops:52630473:607388:7"/>
+                <outcome id="pre:playerprops:52630473:607388:3"/>
+                <outcome id="pre:playerprops:52630473:607388:5"/>
+            </market>
+            <market id="772" specifiers="variant=pre:playerprops:52630473:1316820">
+                <outcome id="pre:playerprops:52630473:1316820:5"/>
+                <outcome id="pre:playerprops:52630473:1316820:3"/>
+                <outcome id="pre:playerprops:52630473:1316820:6"/>
+                <outcome id="pre:playerprops:52630473:1316820:7"/>
+                <outcome id="pre:playerprops:52630473:1316820:4"/>
+                <outcome id="pre:playerprops:52630473:1316820:8"/>
+                <outcome id="pre:playerprops:52630473:1316820:9"/>
+            </market>
+            <market id="773" specifiers="variant=pre:playerprops:52630473:2631631">
+                <outcome id="pre:playerprops:52630473:2631631:3"/>
+                <outcome id="pre:playerprops:52630473:2631631:4"/>
+                <outcome id="pre:playerprops:52630473:2631631:2"/>
+                <outcome id="pre:playerprops:52630473:2631631:1"/>
+            </market>
+            <market id="772" specifiers="variant=pre:playerprops:52630473:2683073">
+                <outcome id="pre:playerprops:52630473:2683073:7"/>
+                <outcome id="pre:playerprops:52630473:2683073:11"/>
+                <outcome id="pre:playerprops:52630473:2683073:9"/>
+                <outcome id="pre:playerprops:52630473:2683073:10"/>
+                <outcome id="pre:playerprops:52630473:2683073:14"/>
+                <outcome id="pre:playerprops:52630473:2683073:6"/>
+                <outcome id="pre:playerprops:52630473:2683073:13"/>
+                <outcome id="pre:playerprops:52630473:2683073:8"/>
+                <outcome id="pre:playerprops:52630473:2683073:12"/>
+            </market>
+            <market id="773" specifiers="variant=pre:playerprops:52630473:608250">
+                <outcome id="pre:playerprops:52630473:608250:3"/>
+                <outcome id="pre:playerprops:52630473:608250:4"/>
+                <outcome id="pre:playerprops:52630473:608250:2"/>
+                <outcome id="pre:playerprops:52630473:608250:1"/>
+            </market>
+            <market id="772" specifiers="variant=pre:playerprops:52630473:2631631">
+                <outcome id="pre:playerprops:52630473:2631631:5"/>
+                <outcome id="pre:playerprops:52630473:2631631:11"/>
+                <outcome id="pre:playerprops:52630473:2631631:10"/>
+                <outcome id="pre:playerprops:52630473:2631631:7"/>
+                <outcome id="pre:playerprops:52630473:2631631:12"/>
+                <outcome id="pre:playerprops:52630473:2631631:13"/>
+                <outcome id="pre:playerprops:52630473:2631631:9"/>
+                <outcome id="pre:playerprops:52630473:2631631:8"/>
+                <outcome id="pre:playerprops:52630473:2631631:6"/>
+            </market>
+            <market id="773" specifiers="variant=pre:playerprops:52630473:2683073">
+                <outcome id="pre:playerprops:52630473:2683073:2"/>
+                <outcome id="pre:playerprops:52630473:2683073:3"/>
+                <outcome id="pre:playerprops:52630473:2683073:4"/>
+                <outcome id="pre:playerprops:52630473:2683073:1"/>
+            </market>
+            <market id="768" specifiers="variant=pre:playerprops:52630473:607440">
+                <outcome id="pre:playerprops:52630473:607440:20"/>
+                <outcome id="pre:playerprops:52630473:607440:22"/>
+                <outcome id="pre:playerprops:52630473:607440:26"/>
+                <outcome id="pre:playerprops:52630473:607440:28"/>
+                <outcome id="pre:playerprops:52630473:607440:24"/>
+                <outcome id="pre:playerprops:52630473:607440:14"/>
+                <outcome id="pre:playerprops:52630473:607440:18"/>
+                <outcome id="pre:playerprops:52630473:607440:12"/>
+                <outcome id="pre:playerprops:52630473:607440:10"/>
+                <outcome id="pre:playerprops:52630473:607440:16"/>
+            </market>
+            <market id="768" specifiers="variant=pre:playerprops:52630473:2218398">
+                <outcome id="pre:playerprops:52630473:2218398:15"/>
+                <outcome id="pre:playerprops:52630473:2218398:19"/>
+                <outcome id="pre:playerprops:52630473:2218398:13"/>
+                <outcome id="pre:playerprops:52630473:2218398:17"/>
+                <outcome id="pre:playerprops:52630473:2218398:25"/>
+                <outcome id="pre:playerprops:52630473:2218398:27"/>
+                <outcome id="pre:playerprops:52630473:2218398:21"/>
+                <outcome id="pre:playerprops:52630473:2218398:29"/>
+                <outcome id="pre:playerprops:52630473:2218398:31"/>
+                <outcome id="pre:playerprops:52630473:2218398:23"/>
+            </market>
+            <market id="771" specifiers="variant=pre:playerprops:52630473:1316820">
+                <outcome id="pre:playerprops:52630473:1316820:2"/>
+                <outcome id="pre:playerprops:52630473:1316820:5"/>
+                <outcome id="pre:playerprops:52630473:1316820:4"/>
+                <outcome id="pre:playerprops:52630473:1316820:3"/>
+                <outcome id="pre:playerprops:52630473:1316820:1"/>
+            </market>
+            <market id="773" specifiers="variant=pre:playerprops:52630473:607440">
+                <outcome id="pre:playerprops:52630473:607440:1"/>
+                <outcome id="pre:playerprops:52630473:607440:2"/>
+                <outcome id="pre:playerprops:52630473:607440:3"/>
+                <outcome id="pre:playerprops:52630473:607440:4"/>
+            </market>
+            <market id="771" specifiers="variant=pre:playerprops:52630473:607388">
+                <outcome id="pre:playerprops:52630473:607388:5"/>
+                <outcome id="pre:playerprops:52630473:607388:2"/>
+                <outcome id="pre:playerprops:52630473:607388:1"/>
+                <outcome id="pre:playerprops:52630473:607388:4"/>
+                <outcome id="pre:playerprops:52630473:607388:3"/>
+            </market>
+            <market id="771" specifiers="variant=pre:playerprops:52630473:608250">
+                <outcome id="pre:playerprops:52630473:608250:2"/>
+                <outcome id="pre:playerprops:52630473:608250:4"/>
+                <outcome id="pre:playerprops:52630473:608250:3"/>
+                <outcome id="pre:playerprops:52630473:608250:1"/>
+                <outcome id="pre:playerprops:52630473:608250:5"/>
+            </market>
+            <market id="773" specifiers="variant=pre:playerprops:52630473:852174">
+                <outcome id="pre:playerprops:52630473:852174:3"/>
+                <outcome id="pre:playerprops:52630473:852174:1"/>
+                <outcome id="pre:playerprops:52630473:852174:4"/>
+                <outcome id="pre:playerprops:52630473:852174:2"/>
+            </market>
+            <market id="768" specifiers="variant=pre:playerprops:52630473:1316820">
+                <outcome id="pre:playerprops:52630473:1316820:31"/>
+                <outcome id="pre:playerprops:52630473:1316820:29"/>
+                <outcome id="pre:playerprops:52630473:1316820:23"/>
+                <outcome id="pre:playerprops:52630473:1316820:37"/>
+                <outcome id="pre:playerprops:52630473:1316820:21"/>
+                <outcome id="pre:playerprops:52630473:1316820:19"/>
+                <outcome id="pre:playerprops:52630473:1316820:25"/>
+                <outcome id="pre:playerprops:52630473:1316820:27"/>
+                <outcome id="pre:playerprops:52630473:1316820:33"/>
+                <outcome id="pre:playerprops:52630473:1316820:35"/>
+            </market>
+            <market id="768" specifiers="variant=pre:playerprops:52630473:607636">
+                <outcome id="pre:playerprops:52630473:607636:11"/>
+                <outcome id="pre:playerprops:52630473:607636:23"/>
+                <outcome id="pre:playerprops:52630473:607636:9"/>
+                <outcome id="pre:playerprops:52630473:607636:25"/>
+                <outcome id="pre:playerprops:52630473:607636:7"/>
+                <outcome id="pre:playerprops:52630473:607636:13"/>
+                <outcome id="pre:playerprops:52630473:607636:19"/>
+                <outcome id="pre:playerprops:52630473:607636:17"/>
+                <outcome id="pre:playerprops:52630473:607636:21"/>
+                <outcome id="pre:playerprops:52630473:607636:15"/>
+            </market>
+            <market id="774" specifiers="variant=pre:playerprops:52630473:1316820">
+                <outcome id="pre:playerprops:52630473:1316820:7"/>
+                <outcome id="pre:playerprops:52630473:1316820:8"/>
+                <outcome id="pre:playerprops:52630473:1316820:4"/>
+                <outcome id="pre:playerprops:52630473:1316820:5"/>
+                <outcome id="pre:playerprops:52630473:1316820:6"/>
+                <outcome id="pre:playerprops:52630473:1316820:3"/>
+            </market>
+            <market id="772" specifiers="variant=pre:playerprops:52630473:2068637">
+                <outcome id="pre:playerprops:52630473:2068637:9"/>
+                <outcome id="pre:playerprops:52630473:2068637:12"/>
+                <outcome id="pre:playerprops:52630473:2068637:10"/>
+                <outcome id="pre:playerprops:52630473:2068637:6"/>
+                <outcome id="pre:playerprops:52630473:2068637:13"/>
+                <outcome id="pre:playerprops:52630473:2068637:8"/>
+                <outcome id="pre:playerprops:52630473:2068637:5"/>
+                <outcome id="pre:playerprops:52630473:2068637:11"/>
+                <outcome id="pre:playerprops:52630473:2068637:7"/>
+            </market>
+            <market id="771" specifiers="variant=pre:playerprops:52630473:2652539">
+                <outcome id="pre:playerprops:52630473:2652539:2"/>
+                <outcome id="pre:playerprops:52630473:2652539:1"/>
+                <outcome id="pre:playerprops:52630473:2652539:5"/>
+                <outcome id="pre:playerprops:52630473:2652539:3"/>
+                <outcome id="pre:playerprops:52630473:2652539:4"/>
+            </market>
+            <market id="773" specifiers="variant=pre:playerprops:52630473:608188">
+                <outcome id="pre:playerprops:52630473:608188:3"/>
+                <outcome id="pre:playerprops:52630473:608188:1"/>
+                <outcome id="pre:playerprops:52630473:608188:2"/>
+                <outcome id="pre:playerprops:52630473:608188:4"/>
+            </market>
+            <market id="771" specifiers="variant=pre:playerprops:52630473:2631631">
+                <outcome id="pre:playerprops:52630473:2631631:3"/>
+                <outcome id="pre:playerprops:52630473:2631631:5"/>
+                <outcome id="pre:playerprops:52630473:2631631:1"/>
+                <outcome id="pre:playerprops:52630473:2631631:4"/>
+                <outcome id="pre:playerprops:52630473:2631631:2"/>
+            </market>
+            <market id="774" specifiers="variant=pre:playerprops:52630473:607440">
+                <outcome id="pre:playerprops:52630473:607440:4"/>
+                <outcome id="pre:playerprops:52630473:607440:3"/>
+                <outcome id="pre:playerprops:52630473:607440:2"/>
+                <outcome id="pre:playerprops:52630473:607440:5"/>
+            </market>
+            <market id="773" specifiers="variant=pre:playerprops:52630473:996295">
+                <outcome id="pre:playerprops:52630473:996295:2"/>
+                <outcome id="pre:playerprops:52630473:996295:3"/>
+                <outcome id="pre:playerprops:52630473:996295:1"/>
+                <outcome id="pre:playerprops:52630473:996295:4"/>
+            </market>
+            <market id="772" specifiers="variant=pre:playerprops:52630473:2218398">
+                <outcome id="pre:playerprops:52630473:2218398:17"/>
+                <outcome id="pre:playerprops:52630473:2218398:15"/>
+                <outcome id="pre:playerprops:52630473:2218398:19"/>
+                <outcome id="pre:playerprops:52630473:2218398:20"/>
+                <outcome id="pre:playerprops:52630473:2218398:18"/>
+                <outcome id="pre:playerprops:52630473:2218398:16"/>
+                <outcome id="pre:playerprops:52630473:2218398:13"/>
+                <outcome id="pre:playerprops:52630473:2218398:12"/>
+                <outcome id="pre:playerprops:52630473:2218398:14"/>
+            </market>
+            <market id="773" specifiers="variant=pre:playerprops:52630473:2068637">
+                <outcome id="pre:playerprops:52630473:2068637:1"/>
+                <outcome id="pre:playerprops:52630473:2068637:4"/>
+                <outcome id="pre:playerprops:52630473:2068637:3"/>
+                <outcome id="pre:playerprops:52630473:2068637:2"/>
+            </market>
+            <market id="773" specifiers="variant=pre:playerprops:52630473:1837404">
+                <outcome id="pre:playerprops:52630473:1837404:4"/>
+                <outcome id="pre:playerprops:52630473:1837404:2"/>
+                <outcome id="pre:playerprops:52630473:1837404:3"/>
+                <outcome id="pre:playerprops:52630473:1837404:1"/>
+            </market>
+            <market id="774" specifiers="variant=pre:playerprops:52630473:608188">
+                <outcome id="pre:playerprops:52630473:608188:7"/>
+                <outcome id="pre:playerprops:52630473:608188:6"/>
+                <outcome id="pre:playerprops:52630473:608188:2"/>
+                <outcome id="pre:playerprops:52630473:608188:5"/>
+                <outcome id="pre:playerprops:52630473:608188:4"/>
+                <outcome id="pre:playerprops:52630473:608188:3"/>
+            </market>
+            <market id="768" specifiers="variant=pre:playerprops:52630473:996295">
+                <outcome id="pre:playerprops:52630473:996295:23"/>
+                <outcome id="pre:playerprops:52630473:996295:31"/>
+                <outcome id="pre:playerprops:52630473:996295:15"/>
+                <outcome id="pre:playerprops:52630473:996295:21"/>
+                <outcome id="pre:playerprops:52630473:996295:19"/>
+                <outcome id="pre:playerprops:52630473:996295:13"/>
+                <outcome id="pre:playerprops:52630473:996295:25"/>
+                <outcome id="pre:playerprops:52630473:996295:17"/>
+                <outcome id="pre:playerprops:52630473:996295:29"/>
+                <outcome id="pre:playerprops:52630473:996295:27"/>
+            </market>
+            <market id="772" specifiers="variant=pre:playerprops:52630473:607440">
+                <outcome id="pre:playerprops:52630473:607440:5"/>
+                <outcome id="pre:playerprops:52630473:607440:4"/>
+                <outcome id="pre:playerprops:52630473:607440:10"/>
+                <outcome id="pre:playerprops:52630473:607440:6"/>
+                <outcome id="pre:playerprops:52630473:607440:3"/>
+                <outcome id="pre:playerprops:52630473:607440:11"/>
+                <outcome id="pre:playerprops:52630473:607440:7"/>
+                <outcome id="pre:playerprops:52630473:607440:9"/>
+                <outcome id="pre:playerprops:52630473:607440:8"/>
+            </market>
+            <market id="770" specifiers="variant=pre:playerprops:52630473:607440">
+                <outcome id="pre:playerprops:52630473:607440:2"/>
+                <outcome id="pre:playerprops:52630473:607440:6"/>
+                <outcome id="pre:playerprops:52630473:607440:5"/>
+                <outcome id="pre:playerprops:52630473:607440:3"/>
+                <outcome id="pre:playerprops:52630473:607440:8"/>
+                <outcome id="pre:playerprops:52630473:607440:7"/>
+                <outcome id="pre:playerprops:52630473:607440:4"/>
+            </market>
+            <market id="771" specifiers="variant=pre:playerprops:52630473:2683073">
+                <outcome id="pre:playerprops:52630473:2683073:5"/>
+                <outcome id="pre:playerprops:52630473:2683073:2"/>
+                <outcome id="pre:playerprops:52630473:2683073:4"/>
+                <outcome id="pre:playerprops:52630473:2683073:1"/>
+                <outcome id="pre:playerprops:52630473:2683073:3"/>
+            </market>
+            <market id="771" specifiers="variant=pre:playerprops:52630473:607636">
+                <outcome id="pre:playerprops:52630473:607636:3"/>
+                <outcome id="pre:playerprops:52630473:607636:2"/>
+                <outcome id="pre:playerprops:52630473:607636:4"/>
+                <outcome id="pre:playerprops:52630473:607636:1"/>
+                <outcome id="pre:playerprops:52630473:607636:5"/>
+            </market>
+        </markets>
+    </event>
+</available_selections>

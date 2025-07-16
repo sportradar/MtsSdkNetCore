@@ -62,7 +62,7 @@ namespace Sportradar.MTS.SDK.Test.Helpers
             }
 
             HttpResponseMessage httpResponseMessage;
-            if (File.Exists(path))
+            if (File.Exists(FileHelper.FindFileInDir(path)))
             {
                 using (StreamReader stream = File.OpenText(path))
                 {

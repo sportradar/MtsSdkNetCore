@@ -218,8 +218,15 @@ namespace Sportradar.MTS.SDK.Entities.Internal.Builders
             var newSpecifiers = HandleMarketDescription(product, sportId, marketId, specifiers, sportEventStatus);
             if (newSpecifiers != null && newSpecifiers.Any())
             {
-                var specs = newSpecifiers.Aggregate(string.Empty, (s, pair) => s + "&" + pair.Key + "=" + pair.Value);
+                string delimeter = "&";
+                if (this._isCustomBet) 
+                {
+                    delimeter = "|";
+                } 
+
+                var specs = newSpecifiers.Aggregate(string.Empty, (s, pair) => s + delimeter + pair.Key + "=" + pair.Value);
                 _selectionId += "?" + specs.Substring(1);
+
             }
             ValidateData(true);
             return this;

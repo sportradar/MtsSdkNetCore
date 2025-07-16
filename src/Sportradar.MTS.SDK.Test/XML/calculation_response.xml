@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<calculation_response xmlns="http://schemas.sportradar.com/custombet/v1/endpoints" generated_at="2021-05-28T10:53:04+00:00">
+	<calculation odds="52.12785544736257" probability="0.008867832108498131"/>
+	<available_selections>
+		<event id="sr:match:20521207">
+			<markets>
+				<market id="18" specifiers="total=2.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="90" specifiers="total=0.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="91" specifiers="total=1.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="25" specifiers="variant=sr:point_range:6+">
+					<outcome id="sr:point_range:6+:1121"/>
+					<outcome id="sr:point_range:6+:1122"/>
+					<outcome id="sr:point_range:6+:1123"/>
+					<outcome id="sr:point_range:6+:1124"/>
+				</market>
+				<market id="34">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="87" specifiers="hcp=2:0">
+					<outcome id="1711"/>
+					<outcome id="1712"/>
+					<outcome id="1713"/>
+				</market>
+				<market id="552">
+					<outcome id="1746"/>
+					<outcome id="1747"/>
+					<outcome id="1748"/>
+					<outcome id="1749"/>
+					<outcome id="1805"/>
+				</market>
+				<market id="51">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="60">
+					<outcome id="1"/>
+					<outcome id="2"/>
+					<outcome id="3"/>
+				</market>
+				<market id="77">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="70" specifiers="total=1.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="65" specifiers="hcp=1:0">
+					<outcome id="1711"/>
+					<outcome id="1712"/>
+					<outcome id="1713"/>
+				</market>
+				<market id="92" specifiers="total=1.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="19" specifiers="total=1.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="57">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="20" specifiers="total=4.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="96">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="29">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="70" specifiers="total=2.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="19" specifiers="total=2.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="18" specifiers="total=1.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="32">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="65" specifiers="hcp=3:0">
+					<outcome id="1711"/>
+					<outcome id="1712"/>
+					<outcome id="1713"/>
+				</market>
+				<market id="1">
+					<outcome id="1"/>
+					<outcome id="2"/>
+					<outcome id="3"/>
+				</market>
+				<market id="93" specifiers="variant=sr:exact_goals:2+">
+					<outcome id="sr:exact_goals:2+:85"/>
+					<outcome id="sr:exact_goals:2+:86"/>
+					<outcome id="sr:exact_goals:2+:87"/>
+				</market>
+				<market id="548">
+					<outcome id="1730"/>
+					<outcome id="1731"/>
+					<outcome id="1732"/>
+					<outcome id="1733"/>
+					<outcome id="1734"/>
+					<outcome id="1735"/>
+					<outcome id="1736"/>
+					<outcome id="1737"/>
+					<outcome id="1738"/>
+					<outcome id="1739"/>
+					<outcome id="1740"/>
+					<outcome id="1804"/>
+					<outcome id="1741"/>
+					<outcome id="1742"/>
+					<outcome id="1743"/>
+					<outcome id="1744"/>
+					<outcome id="1745"/>
+				</market>
+				<market id="49">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="70" specifiers="total=0.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="19" specifiers="total=0.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="81">
+					<outcome id="464"/>
+					<outcome id="480"/>
+					<outcome id="466"/>
+					<outcome id="468"/>
+					<outcome id="470"/>
+					<outcome id="472"/>
+					<outcome id="474"/>
+					<outcome id="476"/>
+					<outcome id="462"/>
+					<outcome id="478"/>
+				</market>
+				<market id="33">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="881">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="21" specifiers="variant=sr:exact_goals:6+">
+					<outcome id="sr:exact_goals:6+:68"/>
+					<outcome id="sr:exact_goals:6+:69"/>
+					<outcome id="sr:exact_goals:6+:70"/>
+					<outcome id="sr:exact_goals:6+:71"/>
+					<outcome id="sr:exact_goals:6+:72"/>
+					<outcome id="sr:exact_goals:6+:73"/>
+					<outcome id="sr:exact_goals:6+:74"/>
+				</market>
+				<market id="880">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="74">
+					<outcome id="70"/>
+					<outcome id="72"/>
+				</market>
+				<market id="8" specifiers="goalnr=1">
+					<outcome id="6"/>
+					<outcome id="7"/>
+					<outcome id="8"/>
+				</market>
+				<market id="18" specifiers="total=0.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="551">
+					<outcome id="1750"/>
+					<outcome id="1751"/>
+					<outcome id="1752"/>
+					<outcome id="1753"/>
+					<outcome id="1754"/>
+					<outcome id="1755"/>
+					<outcome id="1803"/>
+					<outcome id="1756"/>
+					<outcome id="1757"/>
+					<outcome id="1758"/>
+					<outcome id="1759"/>
+				</market>
+				<market id="76">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="27">
+					<outcome id="70"/>
+					<outcome id="72"/>
+				</market>
+				<market id="71" specifiers="variant=sr:exact_goals:2+">
+					<outcome id="sr:exact_goals:2+:85"/>
+					<outcome id="sr:exact_goals:2+:86"/>
+					<outcome id="sr:exact_goals:2+:87"/>
+				</market>
+				<market id="68" specifiers="total=2.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="84" specifiers="goalnr=1">
+					<outcome id="6"/>
+					<outcome id="7"/>
+					<outcome id="8"/>
+				</market>
+				<market id="92" specifiers="total=0.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="20" specifiers="total=3.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="59" specifiers="total=1.5">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="25" specifiers="variant=sr:goal_range:7+">
+					<outcome id="sr:goal_range:7+:1344"/>
+					<outcome id="sr:goal_range:7+:1345"/>
+					<outcome id="sr:goal_range:7+:1342"/>
+					<outcome id="sr:goal_range:7+:1343"/>
+				</market>
+				<market id="56">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="68" specifiers="total=1.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="18" specifiers="total=5.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="52">
+					<outcome id="436"/>
+					<outcome id="438"/>
+					<outcome id="440"/>
+				</market>
+				<market id="879">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="18" specifiers="total=4.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="45">
+					<outcome id="320"/>
+					<outcome id="322"/>
+					<outcome id="324"/>
+					<outcome id="274"/>
+					<outcome id="276"/>
+					<outcome id="278"/>
+					<outcome id="280"/>
+					<outcome id="282"/>
+					<outcome id="284"/>
+					<outcome id="286"/>
+					<outcome id="288"/>
+					<outcome id="290"/>
+					<outcome id="292"/>
+					<outcome id="294"/>
+					<outcome id="296"/>
+					<outcome id="298"/>
+					<outcome id="300"/>
+					<outcome id="302"/>
+					<outcome id="304"/>
+					<outcome id="306"/>
+					<outcome id="308"/>
+					<outcome id="310"/>
+					<outcome id="312"/>
+					<outcome id="314"/>
+					<outcome id="316"/>
+					<outcome id="318"/>
+				</market>
+				<market id="21" specifiers="variant=sr:exact_goals:5+">
+					<outcome id="sr:exact_goals:5+:1336"/>
+					<outcome id="sr:exact_goals:5+:1337"/>
+					<outcome id="sr:exact_goals:5+:1338"/>
+					<outcome id="sr:exact_goals:5+:1339"/>
+					<outcome id="sr:exact_goals:5+:1340"/>
+					<outcome id="sr:exact_goals:5+:1341"/>
+				</market>
+				<market id="30">
+					<outcome id="784"/>
+					<outcome id="788"/>
+					<outcome id="790"/>
+					<outcome id="792"/>
+				</market>
+				<market id="50">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="20" specifiers="total=1.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="14" specifiers="hcp=3:0">
+					<outcome id="1711"/>
+					<outcome id="1712"/>
+					<outcome id="1713"/>
+				</market>
+				<market id="20" specifiers="total=2.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="14" specifiers="hcp=1:0">
+					<outcome id="1711"/>
+					<outcome id="1712"/>
+					<outcome id="1713"/>
+				</market>
+				<market id="90" specifiers="total=2.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="14" specifiers="hcp=4:0">
+					<outcome id="1711"/>
+					<outcome id="1712"/>
+					<outcome id="1713"/>
+				</market>
+				<market id="69" specifiers="total=0.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="14" specifiers="hcp=0:1">
+					<outcome id="1711"/>
+					<outcome id="1712"/>
+					<outcome id="1713"/>
+				</market>
+				<market id="58" specifiers="total=1.5">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="90" specifiers="total=1.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="14" specifiers="hcp=0:2">
+					<outcome id="1711"/>
+					<outcome id="1712"/>
+					<outcome id="1713"/>
+				</market>
+				<market id="83">
+					<outcome id="1"/>
+					<outcome id="2"/>
+					<outcome id="3"/>
+				</market>
+				<market id="15" specifiers="variant=sr:winning_margin:3+">
+					<outcome id="sr:winning_margin:3+:113"/>
+					<outcome id="sr:winning_margin:3+:114"/>
+					<outcome id="sr:winning_margin:3+:115"/>
+					<outcome id="sr:winning_margin:3+:116"/>
+					<outcome id="sr:winning_margin:3+:117"/>
+					<outcome id="sr:winning_margin:3+:118"/>
+					<outcome id="sr:winning_margin:3+:119"/>
+				</market>
+				<market id="71" specifiers="variant=sr:exact_goals:3+">
+					<outcome id="sr:exact_goals:3+:88"/>
+					<outcome id="sr:exact_goals:3+:89"/>
+					<outcome id="sr:exact_goals:3+:90"/>
+					<outcome id="sr:exact_goals:3+:91"/>
+				</market>
+				<market id="62" specifiers="goalnr=1">
+					<outcome id="6"/>
+					<outcome id="7"/>
+					<outcome id="8"/>
+				</market>
+				<market id="28">
+					<outcome id="70"/>
+					<outcome id="72"/>
+				</market>
+				<market id="65" specifiers="hcp=2:0">
+					<outcome id="1711"/>
+					<outcome id="1712"/>
+					<outcome id="1713"/>
+				</market>
+				<market id="87" specifiers="hcp=3:0">
+					<outcome id="1711"/>
+					<outcome id="1712"/>
+					<outcome id="1713"/>
+				</market>
+				<market id="75">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="54">
+					<outcome id="436"/>
+					<outcome id="438"/>
+					<outcome id="440"/>
+				</market>
+				<market id="92" specifiers="total=2.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="23" specifiers="variant=sr:exact_goals:3+">
+					<outcome id="sr:exact_goals:3+:88"/>
+					<outcome id="sr:exact_goals:3+:89"/>
+					<outcome id="sr:exact_goals:3+:90"/>
+					<outcome id="sr:exact_goals:3+:91"/>
+				</market>
+				<market id="14" specifiers="hcp=2:0">
+					<outcome id="1711"/>
+					<outcome id="1712"/>
+					<outcome id="1713"/>
+				</market>
+				<market id="549">
+					<outcome id="1746"/>
+					<outcome id="1747"/>
+					<outcome id="1748"/>
+					<outcome id="1749"/>
+					<outcome id="1805"/>
+				</market>
+				<market id="98">
+					<outcome id="560"/>
+					<outcome id="546"/>
+					<outcome id="562"/>
+					<outcome id="548"/>
+					<outcome id="564"/>
+					<outcome id="550"/>
+					<outcome id="552"/>
+					<outcome id="554"/>
+					<outcome id="556"/>
+					<outcome id="558"/>
+				</market>
+				<market id="31">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="91" specifiers="total=0.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="87" specifiers="hcp=1:0">
+					<outcome id="1711"/>
+					<outcome id="1712"/>
+					<outcome id="1713"/>
+				</market>
+				<market id="53">
+					<outcome id="436"/>
+					<outcome id="438"/>
+					<outcome id="440"/>
+				</market>
+				<market id="69" specifiers="total=1.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="550">
+					<outcome id="1746"/>
+					<outcome id="1747"/>
+					<outcome id="1748"/>
+					<outcome id="1749"/>
+					<outcome id="1805"/>
+				</market>
+				<market id="41" specifiers="score=0:0">
+					<outcome id="128"/>
+					<outcome id="130"/>
+					<outcome id="132"/>
+					<outcome id="134"/>
+					<outcome id="136"/>
+					<outcome id="138"/>
+					<outcome id="140"/>
+					<outcome id="142"/>
+					<outcome id="144"/>
+					<outcome id="146"/>
+					<outcome id="148"/>
+					<outcome id="150"/>
+					<outcome id="152"/>
+					<outcome id="154"/>
+					<outcome id="156"/>
+					<outcome id="158"/>
+					<outcome id="160"/>
+					<outcome id="162"/>
+					<outcome id="164"/>
+					<outcome id="166"/>
+					<outcome id="110"/>
+					<outcome id="114"/>
+					<outcome id="116"/>
+					<outcome id="118"/>
+					<outcome id="120"/>
+					<outcome id="122"/>
+					<outcome id="124"/>
+					<outcome id="126"/>
+				</market>
+				<market id="68" specifiers="total=0.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="94">
+					<outcome id="70"/>
+					<outcome id="72"/>
+				</market>
+				<market id="87" specifiers="hcp=0:1">
+					<outcome id="1711"/>
+					<outcome id="1712"/>
+					<outcome id="1713"/>
+				</market>
+				<market id="553">
+					<outcome id="1746"/>
+					<outcome id="1747"/>
+					<outcome id="1748"/>
+					<outcome id="1749"/>
+					<outcome id="1805"/>
+				</market>
+				<market id="95">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="20" specifiers="total=0.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="24" specifiers="variant=sr:exact_goals:3+">
+					<outcome id="sr:exact_goals:3+:88"/>
+					<outcome id="sr:exact_goals:3+:89"/>
+					<outcome id="sr:exact_goals:3+:90"/>
+					<outcome id="sr:exact_goals:3+:91"/>
+				</market>
+				<market id="97">
+					<outcome id="74"/>
+					<outcome id="76"/>
+				</market>
+				<market id="18" specifiers="total=3.5">
+					<outcome id="12"/>
+					<outcome id="13"/>
+				</market>
+				<market id="47">
+					<outcome id="432"/>
+					<outcome id="418"/>
+					<outcome id="434"/>
+					<outcome id="420"/>
+					<outcome id="422"/>
+					<outcome id="424"/>
+					<outcome id="426"/>
+					<outcome id="428"/>
+					<outcome id="430"/>
+				</market>
+			</markets>
+		</event>
+	</available_selections>
+</calculation_response>
